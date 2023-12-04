@@ -1,4 +1,8 @@
+import Arrows from "../components/Arrows/Arrows"
 import Button from "../components/Button/Button"
+import ButtonGift from "../components/ButtonGift/ButtonGift"
+import CurvedBottomSection from "../components/CurvedBottomSection/CurvedBottomSection"
+import CurvedTopSection from "../components/CurvedTopSection/CurvedSection"
 import ImageComponent from "../components/ImageComponent/ImageComponent"
 import InfoSection from "../components/InfoSection/InfoSection"
 import MainHeadline from "../components/MainHeadline/MainHeadline"
@@ -9,29 +13,36 @@ const Layout = () => {
    return (
       <div className=" h-min-screen flex flex-col items-center overflow-hidden">
 
-         <section className=" relative flex flex-col items-center w-full text-sm bg-[#E1DFDB] h-[100vh] z-20">
+         {/* 1° Section --------------------------------------- */}
+         <section className=" relative flex flex-col items-center w-full text-sm bg-[#E1DFDB] h-[100vh] z-20 pt-8 px-8 overflow-hidden">
             <Spinner />
+            <ButtonGift />
             <Portrait />
             <MainHeadline />
+            <Arrows />
+            <CurvedTopSection bgColor={ "bg-[#C49F5F]" } />
          </section>
 
-         <section className="flex flex-col items-center w-full text-sm bg-[#C49F5F] h-[100vh]   z-30">
+         {/* 2° Section --------------------------------------- */}
+         <section className="flex flex-col items-center justify-center w-full text-sm bg-[#C49F5F] h-fit px-8 z-30">
             <h5>Faltan</h5>
             <div>CONTADOR</div>
-            <Button buttonText={ "Agendar" } widthClass={ "w-48" } colorCode={ "bg-[#5F7752]" } />
+            <Button buttonText={ "Agendar" } widthclassName={ "w-48" } colorCode={ "bg-[#5F7752]" } />
             <ImageComponent src={ "/assets/images/church-icon.png" } alt={ "church icon" }/>
             <InfoSection header={ "Ceremonia | 10:00 am" } subtitle={ "Nuestra Señora del Perpetuo Socorro" } lineColorCode={ "border-[#5F7752]"  }>
                Mazzolari 1 | Chacras de Coria, Mza
             </InfoSection>
-            <Button buttonText={ "¿Cómo llego?" } widthClass={ "w-48" } colorCode={ "bg-[#5F7752]" } />
+            <Button buttonText={ "¿Cómo llego?" } widthclassName={ "w-48" } colorCode={ "bg-[#5F7752]" } />
             <ImageComponent src={ "/assets/images/music-icon.png" } alt={ "music icon" }/>
             <InfoSection header={ "Fiesta | 13:00 pm" } subtitle={ "Finca AMproS" } lineColorCode={ "border-[#5F7752]" }>
                C. Pescara, Cruz de Piedra, Mendoza
             </InfoSection>
-            <Button buttonText={ "¿Cómo llego?" } widthClass={ "w-48" } colorCode={ "bg-[#5F7752]" } />
+            <Button buttonText={ "¿Cómo llego?" } widthclassName={ "w-48" } colorCode={ "bg-[#5F7752]" } />
          </section>
 
-         <section className="flex flex-col items-center h-fit w-full text-sm bg-[#5F7752]  z-20">
+         {/* 3° Section --------------------------------------- */}
+         <section className="relative flex flex-col items-center justify-center h-[100vh] w-full text-sm bg-[#5F7752] px-8 z-20">
+            <CurvedBottomSection bgColor={ "bg-[#C49F5F]" }/>
             <InfoSection header={ "¿Qué me pongo?" } subtitle={ "Dresscode: Elegante | Sport" } lineColorCode={ "border-[#C49F5F]" }>
             (Vos metele facha y comodidad porque,
                oxidados o no, vamos a bailar)
@@ -42,10 +53,12 @@ const Layout = () => {
                afuera ningún tema de esos que te
                hacen darlo todo.
             </InfoSection>
-            <Button buttonText={ "Añadir tu tema" } widthClass={ "w-64" } colorCode={ "bg-[#C49F5F]" } />
+            <Button buttonText={ "Añadir tu tema" } widthclassName={ "w-64" } colorCode={ "bg-[#C49F5F]" } />
+            <CurvedTopSection bgColor={ "bg-[#E3E0D9]" } />
          </section>
 
-         <section className="flex flex-col items-center h-fit w-full text-sm bg-[#E1DFDB] z-20">
+         {/* 4° Section --------------------------------------- */}
+         <section className="relative flex flex-col items-center h-fit w-full text-sm bg-[#E1DFDB] px-8 z-20">
             <ImageComponent src={ "/assets/images/confirm-icon.png" } alt={ "confirm icon" } />
             <InfoSection header={ "¿Hay equipo?" } lineColorCode={ "border-[#C49F5F]" } textColorCode={ "text-[#404040]" }>
                Esperamos que puedas acompañarnos 
@@ -53,14 +66,14 @@ const Layout = () => {
                PD: Si no confirmás nos dolerá el bolsillo
                (y el alma).
             </InfoSection>
-            <Button buttonText={ "Confirmar asistencia" } widthClass={ "w-64" } colorCode={ "bg-[#5F7752]" } />
+            <Button buttonText={ "Confirmar asistencia" } widthclassName={ "w-64" } colorCode={ "bg-[#5F7752]" } />
             <ImageComponent src={ "/assets/images/plane-icon.png" } alt={ "plane icon" }/>
             <InfoSection header={ "¿Qué les regalo?" } lineColorCode={ "border-[#C49F5F]"} textColorCode={ "text-[#404040]" } >
                ¿El mejor regalo? tu presencia,
                pero si querés ayudarnos a cumplir un
                sueño hacé click en el botón.
             </InfoSection>
-            <Button buttonText={ "¿Ver información?" } widthClass={ "w-64" } colorCode={ "bg-[#5F7752]" } />
+            <Button buttonText={ "¿Ver información?" } widthclassName={ "w-64" } colorCode={ "bg-[#5F7752]" } />
          </section>
 
       </div>

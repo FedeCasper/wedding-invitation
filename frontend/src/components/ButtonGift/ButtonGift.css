@@ -1,0 +1,6 @@
+.unselectable{
+   user-select: none !important;
+   -webkit-tap-highlight-color: rgba(0, 0, 0, 0) !important; /* Safari y Chrome */
+   -webkit-user-drag: none !important; /* Safari (puede evitar el resaltado al mover elementos) */
+   touch-action: manipulation !important; /* Algunos navegadores más modernos */
+}

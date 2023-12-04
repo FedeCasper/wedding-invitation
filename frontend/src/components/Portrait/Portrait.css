@@ -8,14 +8,13 @@
 }
 
 .main-pic{
-   /* border: 1px solid red; */
    height: 90vh;
    width: 130%;
    position: absolute;
    top: 48%;
    left: 50%;
    transform: translate(-50%, -50%) rotate(10deg);
-   z-index: 0;
+   z-index: 10;
    object-fit: contain;
    object-position: center;
    background-image: url('/assets/photos/main-pic.png');

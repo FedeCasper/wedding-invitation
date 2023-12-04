@@ -1,0 +1,9 @@
+.curved-bottom{
+   content: '';
+   position: absolute;
+   top: 0;
+   height: 50px;
+   width: 120%;
+   border-bottom-left-radius: 50% 100%;
+   border-bottom-right-radius: 50% 100%;
+}

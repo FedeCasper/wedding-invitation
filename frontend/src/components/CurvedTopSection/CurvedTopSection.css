@@ -1,0 +1,9 @@
+.curved-top{
+   content: '';
+   position: absolute;
+   bottom: 0;
+   height: 50px;
+   width: 120%;
+   border-top-left-radius: 50% 100%;
+   border-top-right-radius: 50% 100%;
+}
