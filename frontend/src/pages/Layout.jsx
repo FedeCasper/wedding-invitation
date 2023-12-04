@@ -1,6 +1,7 @@
 import Arrows from "../components/Arrows/Arrows"
 import Button from "../components/Button/Button"
 import ButtonGift from "../components/ButtonGift/ButtonGift"
+import Countdown from "../components/Countdown/Countdown"
 import CurvedBottomSection from "../components/CurvedBottomSection/CurvedBottomSection"
 import CurvedTopSection from "../components/CurvedTopSection/CurvedSection"
 import ImageComponent from "../components/ImageComponent/ImageComponent"
@@ -26,7 +27,7 @@ const Layout = () => {
          {/* 2° Section --------------------------------------- */}
          <section className="flex flex-col items-center justify-center w-full text-sm bg-[#C49F5F] h-fit px-8 z-30">
             <h5>Faltan</h5>
-            <div>CONTADOR</div>
+            <Countdown />
             <Button buttonText={ "Agendar" } widthclassName={ "w-48" } colorCode={ "bg-[#5F7752]" } />
             <ImageComponent src={ "/assets/images/church-icon.png" } alt={ "church icon" }/>
             <InfoSection header={ "Ceremonia | 10:00 am" } subtitle={ "Nuestra Señora del Perpetuo Socorro" } lineColorCode={ "border-[#5F7752]"  }>
