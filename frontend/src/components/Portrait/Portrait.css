@@ -1,0 +1,26 @@
+@keyframes opacity-animation {
+   0% {
+      opacity: 0;
+   }
+   100% {
+      opacity: 1;
+   }
+}
+
+.main-pic{
+   /* border: 1px solid red; */
+   height: 90vh;
+   width: 130%;
+   position: absolute;
+   top: 48%;
+   left: 50%;
+   transform: translate(-50%, -50%) rotate(10deg);
+   z-index: 0;
+   object-fit: contain;
+   object-position: center;
+   background-image: url('/assets/photos/main-pic.png');
+   background-repeat: no-repeat;
+   background-size: contain;
+   background-position: center;
+   animation: 0.4s ease-in-out 1s forwards opacity-animation;
+}

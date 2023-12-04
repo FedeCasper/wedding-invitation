@@ -6,7 +6,6 @@
 
 :root {
   font-family: "Poppins", sans-serif;
-  line-height: 1.5;
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
@@ -19,10 +18,10 @@
 
   --mycream: #EAE8E4;
   --mygray: #404040;
+  --myligthgray: #E3E0D9;
   --mygreen: #5D7551;
   --mybrown: #C49F5F;
 }
-
 
 body {
   min-height: 100vh;
@@ -31,8 +30,6 @@ body {
 #root{
   width: 100vw;
 }
-
-
 
 @media (prefers-color-scheme: light) {
   :root {

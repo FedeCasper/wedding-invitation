@@ -1,11 +1,11 @@
 import './Button.css'
 
-const Button = () => {
+const Button = ( { buttonText, widthClass, colorCode } ) => {
    return (
       <button 
          type="button" 
-         className="bg-[#5F7752] text-white text-lg regular-button unselectable">
-         Agendar
+         className={`text-lg btn-normal unselectable ${widthClass} ${colorCode}`}>
+         { buttonText }
       </button>
    )
 }
