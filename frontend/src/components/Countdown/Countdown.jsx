@@ -74,7 +74,7 @@ class FlipClock extends Component {
 	}
 
 	updateTime() {
-		const time = new Date();
+		const time = new Date(2024, 2, 9, 18, 0, 0);
 		const months = time.getMonth() + 1; // getMonth() devuelve valores de 0 a 11
 		const days = time.getDate();
 		const hours = time.getHours();
@@ -111,13 +111,23 @@ class FlipClock extends Component {
 		const { months, days, hours, minutes, seconds, monthsShuffle, daysShuffle, hoursShuffle, minutesShuffle, secondsShuffle } = this.state;
 
 		return (
-			<div className={'flipClock'}>
-				<FlipUnitContainer unit={'months'} digit={months} shuffle={monthsShuffle} />
-				<FlipUnitContainer unit={'days'} digit={days} shuffle={daysShuffle} />
-				<FlipUnitContainer unit={'hours'} digit={hours} shuffle={hoursShuffle} />
-				<FlipUnitContainer unit={'minutes'} digit={minutes} shuffle={minutesShuffle} />
-				<FlipUnitContainer unit={'seconds'} digit={seconds} shuffle={secondsShuffle} />
-			</div>
+			<>
+				<h5  className='text-xl text-center font-medium w-64 text-white tracking-wide mb-4'>Faltan...</h5>
+				<div className={'flipClock'}>
+					<FlipUnitContainer unit={'months'} digit={months} shuffle={monthsShuffle} />
+					<FlipUnitContainer unit={'days'} digit={days} shuffle={daysShuffle} />
+					<FlipUnitContainer unit={'hours'} digit={hours} shuffle={hoursShuffle} />
+					<FlipUnitContainer unit={'minutes'} digit={minutes} shuffle={minutesShuffle} />
+					<FlipUnitContainer unit={'seconds'} digit={seconds} shuffle={secondsShuffle} />
+				</div>
+				<div className='grid grid-rows-1 grid-cols-5 gap-1 text-xs w-full mt-3 text-center'>
+					<div>meses</div>
+					<div>días</div>
+					<div>hrs</div>
+					<div>min</div>
+					<div>seg</div>
+				</div>
+			</>
 		);
 	}
 }

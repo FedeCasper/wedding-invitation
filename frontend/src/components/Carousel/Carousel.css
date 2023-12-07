@@ -1,0 +1,120 @@
+.middle-pic {
+   position: absolute;
+   height: 256px;
+   top: -40px;
+   left: 0;
+   right: 0;
+   margin-left: auto;
+   margin-right: auto;
+   z-index: 50;
+   animation: mover1 4s linear infinite;
+}
+
+.left-pic {
+   position: absolute;
+   height: 256px;
+   top: -40px;
+   left: 0;
+   right: 0;
+   margin-left: auto;
+   margin-right: auto;
+   z-index: 50;
+   animation: mover2 4s linear infinite;
+}
+
+.right-pic {
+   position: absolute;
+   height: 256px;
+   top: -40px;
+   left: 0;
+   right: 0;
+   margin-left: auto;
+   margin-right: auto;
+   z-index: 50;
+   animation: move 4s linear infinite;
+}
+
+@keyframes mover1{
+   0%{
+      left: -528px;
+      transform: translateY(100px) rotate(-24deg);
+   }
+
+   14.16%{
+      left: -164px;
+      transform: translateY(50px) rotate(-12deg);
+   }
+   19.16%{
+      left: -164px;
+      transform: translateY(50px) rotate(-12deg);
+   }
+
+   47.49%{
+      left: 0;
+      right: 0;
+      transform: translateY(0) rotate(0);
+   }
+   52.49%{
+      left: 0;
+      right: 0;
+      transform: translateY(0) rotate(0);
+   }
+
+   80.82%{
+      right: -164px;
+      transform: translateY(50px) rotate(12deg);
+   }
+   85.82%{
+      right: -164px;
+      transform: translateY(50px) rotate(12deg);
+   }
+
+   100%{
+      right: -528px;
+      transform: translateY(100px) rotate(24deg);
+   }
+}
+
+
+@keyframes mover2{
+   0%{
+      left: 0;
+      right: 0;
+      transform: translateY(0) rotate(0);
+   }
+
+   14.16%{
+      right: -164px;
+      transform: translateY(50px) rotate(12deg);
+   }
+   19.16%{
+      right: -164px;
+      transform: translateY(50px) rotate(12deg);
+   }
+
+   33.32%{
+      right: -528px;
+      transform: translateY(100px) rotate(24deg);
+   }
+   47.48%{
+      left: -164px;
+      transform: translateY(50px) rotate(-12deg);
+   }
+
+   80.82%{
+      right: -164px;
+      transform: translateY(50px) rotate(12deg);
+   }
+   85.82%{
+      right: -164px;
+      transform: translateY(50px) rotate(12deg);
+   }
+
+   100%{
+      right: -528px;
+      transform: translateY(100px) rotate(24deg);
+   }
+   80%{
+      
+   }
+}
