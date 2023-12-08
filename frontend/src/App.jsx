@@ -1,12 +1,13 @@
 import Layout from "./pages/Layout"
+import ModalProvider from "./context/ModalProvider"
 
 function App() {
 
 
   return (
-    <>
-      <Layout/>
-    </>
+      <ModalProvider>
+        <Layout/>
+      </ModalProvider>
   )
 }
 
