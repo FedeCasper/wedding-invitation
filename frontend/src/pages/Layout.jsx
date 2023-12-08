@@ -12,29 +12,36 @@ import Portrait from "../components/Portrait/Portrait"
 import Spinner from "../components/Spinner/Spinner"
 import { useContext } from "react"
 import { ModalContext } from "../context/ModalContext"
+import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 
 const Layout = () => {
 
    const { modal, setModal } = useContext(ModalContext);
 
    return (
-         <div className={` h-min-screen relative flex flex-col items-center overflow-hidden backdrop-blur-md ${ modal && 'h-screen' } `}>
+         <div className={` h-min-screen relative flex flex-col items-center overflow-hidden ${ modal && 'h-screen' } `}>
 
+            <ButtonGift />
+
+            {/* Modal --------------------------------------- */}
             {
                modal && (
                   <div className="absolute h-full w-full backdrop-blur-md bg-white/30 z-50">
-                     <div className=" h-[90vh] sticky top-[5vh] w-11/12 bg-red-500 z-50 mx-auto">
+                     <div className=" h-[90vh] sticky top-[5vh] w-11/12 bg-red-500 z-50 mx-auto rounded-md">
+                        <section className="flex w-full p-2 border border-red-900 pt-72">
+                           <div className="w-full p-2 border border-red-900">123465</div>
+                           <ContentCopyIcon className="w-6 h-6 cursor-pointer" onClick={ () => navigator.clipboard.writeText('123465') } />
+                        </section>
+
                         <button type="button" className="bg-slate-900 text-white p-2 rounded-md absolute right-5 top-5 z-50" onClick={ () => setModal(false) } aria-label="Close">X</button>
                      </div>
                   </div>
                )
             }
-            
+
             {/* 1° Section --------------------------------------- */}
             <section className=" relative flex flex-col items-center w-full text-sm bg-[#E1DFDB] h-[100vh] z-20 pt-8 px-8 overflow-hidden">
                <Spinner />
-               <ButtonGift />
-               {/* <button type="button" className="bg-slate-400 z-50" onClick={ handleClick }>qwqwq</button> */}
                <Portrait />
                <MainHeadline  />
                <Arrows />
@@ -42,12 +49,13 @@ const Layout = () => {
             </section>
 
             {/* 2° Section --------------------------------------- */}
-            <section className="flex flex-col items-center justify-center w-full bg-[#C49F5F] h-fit px-8 z-30">
+            <section className=" relative flex flex-col items-center justify-center w-full bg-[#C49F5F] h-fit px-8 z-30">
                <Countdown />
                <Button
                   buttonText={"Agendar"}
                   widthClass={"w-48"}
                   colorCode={"bg-[#5F7752]"}
+                  url={'calendar'}
                />
                <ImageComponent
                   src={"/assets/images/church-icon.png"}
@@ -64,6 +72,7 @@ const Layout = () => {
                   buttonText={"¿Cómo llego?"}
                   widthClass={"w-48"}
                   colorCode={"bg-[#5F7752]"}
+                  url={'church'}
                />
                <ImageComponent
                   src={"/assets/images/music-icon.png"}
@@ -80,11 +89,12 @@ const Layout = () => {
                   buttonText={"¿Cómo llego?"}
                   widthClass={"w-48"}
                   colorCode={"bg-[#5F7752]"}
+                  url={'salon'}
                />
             </section>
 
             {/* 3° Section --------------------------------------- */}
-            <section className="relative flex flex-col items-center justify-center h-[100vh] w-full text-sm bg-[#5F7752] px-8 z-20">
+            <section className=" relative flex flex-col items-center justify-center h-[100vh] w-full text-sm bg-[#5F7752] px-8 z-20">
                <CurvedBottomSection bgColor={"bg-[#C49F5F]"} />
                <InfoSection
                   header={"¿Qué me pongo?"}
@@ -108,12 +118,13 @@ const Layout = () => {
                   buttonText={"Añadir tu tema"}
                   widthClass={"w-64"}
                   colorCode={"bg-[#C49F5F]"}
+                  url={'spotify'}
                />
                <CurvedTopSection bgColor={"bg-[#E3E0D9]"} />
             </section>
 
             {/* 4° Section --------------------------------------- */}
-            <section className="relative flex flex-col items-center h-fit w-full text-sm bg-[#E1DFDB] px-8 z-20">
+            <section className=" relative flex flex-col items-center h-fit w-full text-sm bg-[#E1DFDB] px-8 z-20">
                <ImageComponent
                   src={"/assets/images/confirm-icon.png"}
                   alt={"confirm icon"}
@@ -144,7 +155,7 @@ const Layout = () => {
                   sueño hacé click en el botón.
                </InfoSection>
                <Button
-                  buttonText={"¿Ver información?"}
+                  buttonText={"Ver información"}
                   widthClass={"w-64"}
                   colorCode={"bg-[#5F7752]"}
                />

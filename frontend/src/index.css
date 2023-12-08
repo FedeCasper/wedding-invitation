@@ -23,12 +23,23 @@
   --mybrown: #C49F5F;
 }
 
-body {
-  min-height: 100vh;
-}
-
 #root{
   width: 100vw;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn;
 }
 
 @media (prefers-color-scheme: light) {
@@ -38,3 +49,4 @@ body {
   }
 
 }
+
