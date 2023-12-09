@@ -43,7 +43,7 @@ const Layout = () => {
             </section>
 
             {/* 2° Section --------------------------------------- */}
-            <section className=" relative flex flex-col items-center justify-center w-full bg-[#C49F5F] h-fit px-8 z-30">
+            <section className=" relative flex flex-col items-center justify-center w-full bg-[#C49F5F] h-fit px-8 z-30"> 
                <Countdown />
                <Button
                   buttonText={"Agendar"}

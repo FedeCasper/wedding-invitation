@@ -1,9 +1,13 @@
 @keyframes float {
-   0% { transform: translateY(5px) translateX(-5px) rotate(3deg) scale(1.1); }
-   50% { transform: translateY(-5px) translateX(5px) rotate(-3deg); }
-   100% { transform: translateY(-10px) translateX(-10px) rotate(0deg) scale(0.9); }
+   /* 0% { transform: translateY(5px) translateX(-5px) rotate(3deg) scale(1.1); } */
+   50% { transform: translateY(-5px) translateX(5px) rotate(-3deg) scale(1.05); }
+   /* 100% { transform: translateY(-10px) translateX(-10px) rotate(0deg) scale(0.9); } */
 }
 
 .jumping-element {
-   animation: float 4s ease-in-out alternate infinite; 
+   animation: float 3s ease-in-out alternate infinite; 
+}
+
+.jumping-element-reverse {
+   animation: float 4s ease-in-out alternate-reverse infinite; 
 }

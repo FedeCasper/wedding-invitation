@@ -25,7 +25,7 @@ const CbuComponent = () => {
             className="absolute top-4 right-4 h-10 cursor-pointer 
                transition-all delay-50 duration-150 hover:cursor-pointer hover:scale-90 hover:drop-shadow-md hover:rotate-90" />
             <img src="./assets/images/cbu-header-pieces-02.png" alt="" className="h-28 absolute bottom-5 right-5 jumping-element" />
-            <img src="./assets/images/cbu-header-pieces-01.png" alt="" className="h-28 absolute top-5 left-5 jumping-element" />
+            <img src="./assets/images/cbu-header-pieces-01.png" alt="" className="h-28 absolute top-5 left-5 jumping-element-reverse" />
             <img src="./assets/images/cbu-header-pieces-03.png" alt="" className="h-8 absolute bottom-5 right-25 jumping-element" />
          </header>
 
@@ -46,7 +46,7 @@ const CbuComponent = () => {
                         <span className='font-semibold'> FEDE.Y.FEDE</span>
                      </div>
                      <button
-                        class="group relative inline-flex " >
+                        className="group relative inline-flex " >
                         <img 
                            onClick={ () => copyToClipboard('FEDE.Y.FEDE') } 
                            src="./assets/images/copy-icon.png" 
@@ -54,11 +54,11 @@ const CbuComponent = () => {
                            title='Copiar' 
                            className='h-6 cursor-pointer
                            transition origin-bottom-left duration-300 ease-in-out hover:scale-110 hover:rotate-3' />
-                        <div class="hidden group-hover:block">
+                        <div className="hidden group-hover:block">
                            <div
-                              class="group absolute -top-12 left-1/2 z-50 flex -translate-x-1/2 flex-col items-center rounded-sm text-center text-sm text-[#EAE8E4] before:-top-2">
-                              <div class="rounded-sm bg-[#5D7551] py-1 px-2">
-                                 <p class="whitespace-nowrap">Copiar</p>
+                              className="group absolute -top-12 left-1/2 z-50 flex -translate-x-1/2 flex-col items-center rounded-sm text-center text-sm text-[#EAE8E4] before:-top-2">
+                              <div className="rounded-sm bg-[#5D7551] py-1 px-2">
+                                 <p className="whitespace-nowrap">Copiar</p>
                               </div>
                            </div>
                         </div>
@@ -73,7 +73,7 @@ const CbuComponent = () => {
                   <div className='flex items-center gap-2'>
                      <span className='font-semibold'> 0340060908600037774006</span>
                      <button
-                        class="group relative inline-flex " >
+                        className="group relative inline-flex " >
                         <img 
                            onClick={ () => copyToClipboard('0340060908600037774006') } 
                            src="./assets/images/copy-icon.png" 
@@ -81,11 +81,11 @@ const CbuComponent = () => {
                            title='Copiar' 
                            className='h-6 cursor-pointer
                            transition origin-bottom-left duration-300 ease-in-out hover:scale-110 hover:rotate-3' />
-                        <div class="hidden group-hover:block">
+                        <div className="hidden group-hover:block">
                            <div
-                              class="group absolute -top-12 left-1/2 z-50 flex -translate-x-1/2 flex-col items-center rounded-sm text-center text-sm text-[#EAE8E4] before:-top-2">
-                              <div class="rounded-sm bg-[#5D7551] py-1 px-2">
-                                 <p class="whitespace-nowrap">Copiar</p>
+                              className="group absolute -top-12 left-1/2 z-50 flex -translate-x-1/2 flex-col items-center rounded-sm text-center text-sm text-[#EAE8E4] before:-top-2">
+                              <div className="rounded-sm bg-[#5D7551] py-1 px-2">
+                                 <p className="whitespace-nowrap">Copiar</p>
                               </div>
                            </div>
                         </div>
@@ -114,6 +114,7 @@ const CbuComponent = () => {
             </article>
 
          </main>
+
          <footer className='h-[10vh] bg-[#5D7551] border border-green-900 flex items-center justify-center'>
             <img src="./assets/images/cbu-footer.png" alt="" className=" h-3/6" />
          </footer>
