@@ -13,28 +13,22 @@ import Spinner from "../components/Spinner/Spinner"
 import { useContext } from "react"
 import { ModalContext } from "../context/ModalContext"
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
+import CbuComponent from "../components/CbuComponent/CbuComponent"
 
 const Layout = () => {
 
-   const { modal, setModal } = useContext(ModalContext);
+   const { modal } = useContext(ModalContext);
 
    return (
-         <div className={` h-min-screen relative flex flex-col items-center overflow-hidden ${ modal && 'h-screen' } `}>
+         <div className={` relative flex flex-col items-center overflow-hidden ${ modal ? 'h-[110vh]' : 'h-min-screen' } `}>
 
             <ButtonGift />
 
             {/* Modal --------------------------------------- */}
             {
                modal && (
-                  <div className="absolute h-full w-full backdrop-blur-md bg-white/30 z-50">
-                     <div className=" h-[90vh] sticky top-[5vh] w-11/12 bg-red-500 z-50 mx-auto rounded-md">
-                        <section className="flex w-full p-2 border border-red-900 pt-72">
-                           <div className="w-full p-2 border border-red-900">123465</div>
-                           <ContentCopyIcon className="w-6 h-6 cursor-pointer" onClick={ () => navigator.clipboard.writeText('123465') } />
-                        </section>
-
-                        <button type="button" className="bg-slate-900 text-white p-2 rounded-md absolute right-5 top-5 z-50" onClick={ () => setModal(false) } aria-label="Close">X</button>
-                     </div>
+                  <div className="absolute flex justify-center pt-4 h-[110vh] w-full backdrop-blur-md bg-white/30 z-50 border border-red-600">
+                     <CbuComponent />
                   </div>
                )
             }

@@ -6,10 +6,10 @@ const ImageComponent = ({ src, alt }) => {
       <AnimatedElement>
          <section className="max-h-12">
             <img src={src} alt={alt} className="mt-16 mb-6 h-32"/>
-            <div class="loader">
-            <li class="ball"></li>
-            <li class="ball"></li>
-            <li class="ball"></li>
+            <div className="loader">
+            <li className="ball"></li>
+            <li className="ball"></li>
+            <li className="ball"></li>
             </div>
          </section>
 
