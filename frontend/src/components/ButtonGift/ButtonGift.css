@@ -1,6 +1,33 @@
-.unselectable{
+.unselectable {
    user-select: none !important;
-   -webkit-tap-highlight-color: rgba(0, 0, 0, 0) !important; /* Safari y Chrome */
+   -webkit-tap-highlight-color: rgba(
+      0,
+      0,
+      0,
+      0
+  ) !important; /* Safari y Chrome */
    -webkit-user-drag: none !important; /* Safari (puede evitar el resaltado al mover elementos) */
    touch-action: manipulation !important; /* Algunos navegadores más modernos */
+}
+
+@keyframes ring {
+   0%,
+   100% {
+      transform: translateY(0) rotate(0);
+   }
+   20%,
+   40%,
+   60%,
+   80% {
+      transform: translateX(-5px) rotate(12deg);
+   }
+   30%,
+   50%,
+   70% {
+      transform: translateX(5px) rotate(-12deg);
+   }
+}
+
+.phone {
+  animation: ring 1s linear ; /* Ajusta la duración y la transición aquí */
 }

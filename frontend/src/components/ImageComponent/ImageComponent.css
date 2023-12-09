@@ -1,10 +1,10 @@
 .loader {
-   width: 60px;
-   display: flex;
-   gap: 15px;
+  width: 60px;
+  display: flex;
+  gap: 15px;
   position: absolute;
   z-index: 10;
- }
+}
  
  .ball {
    list-style: none;
@@ -19,54 +19,42 @@
  
  @keyframes bounce-1 {
   0%{
-    background-color: white;
+    background-color: var(--mycream);
   }
    50% {
-     transform: translateY(-18px);
+     transform: translateY(-8px);
      width: 6px;
      height: 6px;
-     background-color: var(--mygreen) ;
-   }
-   75%{
-    background-color: var(--mybrown);
    }
  }
  
  .ball:nth-child(2) {
-   animation: bounce-3 4.1s ease-in-out 0.6s alternate-reverse infinite;
+   animation: bounce-3 2.1s ease-in-out 0.6s alternate-reverse infinite;
  }
  
  @keyframes bounce-2 {
   0%{
-    background-color: white;
+    background-color: var(--mygreen) ;
   }
    50% {
-     transform: translateY(-18px);
+     transform: translateY(-4px);
      width: 6px;
      height: 6px;
-     background-color: var(--mygreen) ;
-   }
-   75%{
-    background-color: var(--mybrown);
    }
  }
  
  .ball:nth-child(3) {
-   animation: bounce-2 4.1s ease-in-out 0.6s alternate infinite;
+   animation: bounce-2 2.1s ease-in-out 0.6s alternate infinite;
  }
  
  @keyframes bounce-3 {
   0%{
-    background-color: white;
+    background-color: var(--mybrown);
   }
    50% {
-     transform: translateY(-18px);
+     transform: translateY(-4px);
      width: 6px;
      height: 6px;
-     background-color: var(--mygreen) ;
      transform: scale(1.1);
-   }
-   75%{
-    background-color: var(--mybrown);
    }
  }
