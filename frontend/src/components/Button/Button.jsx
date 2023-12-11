@@ -1,8 +1,15 @@
 import './Button.css'
 import AnimatedElement from "../AnimatedElement/AnimatedElement"
+import { ModalContext } from "../../context/ModalContext"
+import { useContext } from "react"
 
 const Button = ( { buttonText, widthClass, colorCode, url } ) => {
+   
+   const { setConfirmationModal } = useContext(ModalContext);
 
+   const handleForm = () => {
+      setConfirmationModal(true);
+   };
 
    const abrirEnlaceGoogleMaps = (url) => {
 
@@ -20,16 +27,12 @@ const Button = ( { buttonText, widthClass, colorCode, url } ) => {
       }  else if(url === 'spotify'){
          window.location.href = url_spotify
       }
-
-      console.log({url});
    };
-
-
 
    return (
       <AnimatedElement>
          <button 
-            onClick={ () => abrirEnlaceGoogleMaps(url) }
+            onClick={ url ? () => abrirEnlaceGoogleMaps(url) : handleForm }
             type="button" 
             className={`text-lg btn-normal unselectable ${widthClass} ${colorCode}`}>
             { buttonText }

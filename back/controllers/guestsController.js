@@ -13,9 +13,9 @@ const guestsController = {
    },
 
    postGuests: async (req, res) => {
-      const { name, last_name, answer } = req.body;
+      const { fullName, assist, drinkPreferences, partner, partnersName, assistChurch, contact, foodPreferences, message } = req.body;
       try {
-         const newGuest = new Guest({ name, last_name, answer });
+         const newGuest = new Guest({ fullName, assist, drinkPreferences, partner, partnersName, assistChurch, contact, foodPreferences, message });
          await newGuest.save();
          res.json({ success: true });
       } catch (error) {

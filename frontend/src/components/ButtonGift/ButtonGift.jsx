@@ -15,7 +15,7 @@ const ButtonGift = () => {
    const handleMovementInterval = () => {
       setTimeout(() => {
          setRingMovement(!ringMovement);
-         console.log('ringMovement', ringMovement);
+         // console.log('ringMovement', ringMovement);
       }, 4000);
    };
 
