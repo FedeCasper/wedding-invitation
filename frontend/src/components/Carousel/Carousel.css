@@ -1,120 +1,105 @@
-.middle-pic {
+.pic01 {
    position: absolute;
+   background-color: rgb(102, 157, 204);
    height: 256px;
-   top: -40px;
-   left: 0;
-   right: 0;
-   margin-left: auto;
-   margin-right: auto;
-   z-index: 50;
-   animation: mover1 4s linear infinite;
+   width: 190px;
+   animation: animation01 16s ease-in-out infinite;
 }
 
-.left-pic {
+.pic02 {
    position: absolute;
+   background-color: rgb(164, 220, 188);
    height: 256px;
-   top: -40px;
-   left: 0;
-   right: 0;
-   margin-left: auto;
-   margin-right: auto;
-   z-index: 50;
-   animation: mover2 4s linear infinite;
+   width: 190px;
+   animation: animation02 16s ease-in-out infinite;
 }
 
-.right-pic {
+.pic03 {
    position: absolute;
+   background-color: rgb(205, 178, 200);
    height: 256px;
-   top: -40px;
-   left: 0;
-   right: 0;
-   margin-left: auto;
-   margin-right: auto;
-   z-index: 50;
-   animation: move 4s linear infinite;
+   width: 190px;
+   animation: animation03 16s ease-in-out infinite;
 }
 
-@keyframes mover1{
-   0%{
-      left: -528px;
-      transform: translateY(100px) rotate(-24deg);
-   }
-
-   14.16%{
-      left: -164px;
-      transform: translateY(50px) rotate(-12deg);
-   }
-   19.16%{
-      left: -164px;
-      transform: translateY(50px) rotate(-12deg);
-   }
-
-   47.49%{
-      left: 0;
-      right: 0;
-      transform: translateY(0) rotate(0);
-   }
-   52.49%{
-      left: 0;
-      right: 0;
-      transform: translateY(0) rotate(0);
-   }
-
-   80.82%{
-      right: -164px;
-      transform: translateY(50px) rotate(12deg);
-   }
-   85.82%{
-      right: -164px;
-      transform: translateY(50px) rotate(12deg);
-   }
-
-   100%{
-      right: -528px;
-      transform: translateY(100px) rotate(24deg);
-   }
+.pic04 {
+   position: absolute;
+   background-color: rgb(117, 163, 166);
+   height: 256px;
+   width: 190px;
+   animation: animation04  16s ease-in-out infinite;
 }
 
-
-@keyframes mover2{
-   0%{
-      left: 0;
-      right: 0;
-      transform: translateY(0) rotate(0);
-   }
-
-   14.16%{
-      right: -164px;
-      transform: translateY(50px) rotate(12deg);
-   }
-   19.16%{
-      right: -164px;
-      transform: translateY(50px) rotate(12deg);
-   }
-
-   33.32%{
-      right: -528px;
-      transform: translateY(100px) rotate(24deg);
-   }
-   47.48%{
-      left: -164px;
-      transform: translateY(50px) rotate(-12deg);
-   }
-
-   80.82%{
-      right: -164px;
-      transform: translateY(50px) rotate(12deg);
-   }
-   85.82%{
-      right: -164px;
-      transform: translateY(50px) rotate(12deg);
-   }
-
-   100%{
-      right: -528px;
-      transform: translateY(100px) rotate(24deg);
-   }
-   80%{
-      
-   }
+.pic05 {
+   position: absolute;
+   background-color: aliceblue;
+   height: 256px;
+   width: 190px;
+   animation: animation05 16s ease-in-out infinite;
 }
+
+@keyframes animation01{
+   0%{ transform: translate(-350px, 100px) rotate(-12deg);  z-index: 30;}
+   5%{ transform: translate(-350px, 100px) rotate(-12deg); z-index: 1;}
+   20%{ transform: translate(-150px, 50px) rotate(-12deg); z-index: 30;}
+   25%{ transform: translate(-150px, 50px) rotate(-12deg); z-index: 30;}
+   45%{  transform: translate(0px, 0px) rotate(0); z-index: 50;}
+   50%{  transform: translate(0px, 0px) rotate(0); z-index: 50;}
+   70%{ transform: translate(150px, 50px) rotate(12deg); z-index: 30;}
+   75%{ transform: translate(150px, 50px) rotate(12deg); z-index: 30;}
+   /* 95%{ transform: translate(150px, 100px); } */
+   100%{ transform: translate(350px, 100px) rotate(12deg); z-index: 30;}
+}
+
+@keyframes animation02{
+   0%{ transform: translate(-150px, 50px) rotate(-12deg); z-index: 30; }
+   5%{ transform: translate(-150px, 50px) rotate(-12deg); z-index: 30;}
+   20%{ transform: translate(0px, 0px) rotate(0); z-index: 50;}
+   25%{ transform: translate(0px, 0px) rotate(0); z-index: 50;}
+   45%{  transform: translate(150px, 50px) rotate(12deg); z-index: 30;}
+   50%{  transform: translate(150px, 50px) rotate(12deg); z-index: 30;}
+   70%{ transform: translate(350px, 100px) rotate(12deg); z-index: 1;}
+   75%{ transform: translate(350px, 100px) rotate(12deg); z-index: 1;}
+   /* 95%{ transform: translate(-150px, 100px); } */
+   100%{ transform: translate(-150px, 50px) rotate(-12deg); z-index: 30;}
+}
+
+@keyframes animation03{
+   0%{ transform: translate(0px, 0px) rotate(0); ; z-index: 50;}
+   5%{ transform: translate(0px, 0px) rotate(0); z-index: 50;}
+   20%{ transform: translate(150px, 50px) rotate(12deg); z-index: 30;}
+   25%{ transform: translate(150px, 50px) rotate(12deg); z-index: 30;}
+   45%{  transform: translate(350px, 100px) rotate(12deg); z-index: 1;}
+   50%{  transform: translate(350px, 100px) rotate(12deg); z-index: 1;}
+   70%{ transform: translate(-350px, 100px) rotate(-12deg); z-index: 1;}
+   75%{ transform: translate(-350px, 100px) rotate(-12deg); z-index: 1;}
+   /* 95%{ transform: translate(-50px, 50px); } */
+   100%{ transform: translate(0px, 0px) rotate(0); z-index: 50;}
+}
+
+@keyframes animation04{
+   0%{ transform: translate(150px, 50px) rotate(12deg); z-index: 30; }
+   5%{ transform: translate(150px, 50px) rotate(12deg); z-index: 30;}
+   20%{ transform: translate(350px, 100px) rotate(12deg); z-index: 1;}
+   25%{ transform: translate(350px, 100px) rotate(12deg); z-index: 1;}
+   45%{  transform: translate(-350px, 100px) rotate(-12deg); z-index: 1;}
+   50%{  transform: translate(-350px, 100px) rotate(-12deg); z-index: 1;}
+   70%{ transform: translate(-150px, 50px) rotate(-12deg); z-index: 30;}
+   75%{ transform: translate(-150px, 50px) rotate(-12deg); z-index: 30;}
+   /* 95%{ transform: translate(0px, 0px); } */
+   100%{ transform: translate(150px, 50px) rotate(12deg); z-index: 30;}
+}
+
+@keyframes animation05{
+   0%{ transform: translate(350px, 100px) rotate(12deg); z-index: 1;}
+   5%{ transform: translate(350px, 100px) rotate(12deg); z-index: 1;}
+   20%{ transform: translate(-350px, 100px) rotate(-12deg); z-index: 1;}
+   25%{ transform: translate(-350px, 100px) rotate(-12deg); z-index: 1;}
+   45%{  transform: translate(-150px, 50px) rotate(-12deg); z-index: 30;}
+   50%{  transform: translate(-150px, 50px) rotate(-12deg); z-index: 30;}
+   70%{ transform: translate(0px, 0px) rotate(0); z-index: 50;}
+   75%{ transform: translate(0px, 0px) rotate(0); z-index: 50;}
+   /* 95%{ transform: translate(50px, 50px); } */
+   100%{ transform: translate(350px, 100px) rotate(12deg); z-index: 1;}
+}
+

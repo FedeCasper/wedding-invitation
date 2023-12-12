@@ -69,7 +69,7 @@ const ModalConfirm = () => {
 
 
    return (
-      <div className="relative flex h-5/6 w-11/12 text-gray-700 antialiased flex-col justify-center overflow-hidden bg-gray-50 py-6 sm:py-12">
+      <div className="relative flex  w-11/12 text-gray-700 antialiased flex-col justify-start overflow-hidden bg-gray-50 py-6 sm:py-12">
 
          <img 
             onClick={ () => setConfirmationModal( false ) }

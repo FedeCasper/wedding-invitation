@@ -74,20 +74,19 @@ class FlipClock extends Component {
 	}
 
 	updateTime() {
-		const targetDate = new Date(2024, 3, 9, 18, 0, 0);
+		const targetDate = new Date(2024, 2, 9, 18, 0, 0);
 
 		// Fecha actual
 		const currentDate = new Date();
 	
 		// Diferencia en milisegundos entre las dos fechas
 		const difference = targetDate - currentDate;
-	
-		// Calcular meses, días, horas, minutos y segundos a partir de la diferencia
-		const months = Math.max(0, targetDate.getMonth() - currentDate.getMonth() + (12 * (targetDate.getFullYear() - currentDate.getFullYear())));
-		const days = Math.max(0, Math.floor(difference / (1000 * 60 * 60 * 24)) % 30); // Tomar el componente de días
-		const hours = Math.max(0, Math.floor(difference / (1000 * 60 * 60)) % 24);
-		const minutes = Math.max(0, Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60)));
-		const seconds = Math.max(0, Math.floor((difference % (1000 * 60)) / 1000));
+		const months = Math.floor(difference / (1000 * 60 * 60 * 24 * 30.44)); // Promedio de días en un mes
+		const days = Math.floor(difference / (1000 * 60 * 60 * 24) % 30);
+		const hours = Math.floor(difference / (1000 * 60 * 60) % 24);
+		const minutes = Math.floor((difference / (1000 * 60)) % 60);
+		const seconds = Math.floor((difference / 1000) % 60);
+		
 
 		if (months !== this.state.months) {
 			const monthsShuffle = !this.state.monthsShuffle;

@@ -12,7 +12,6 @@ import Portrait from "../components/Portrait/Portrait"
 import Spinner from "../components/Spinner/Spinner"
 import { useContext, useState } from "react"
 import { ModalContext } from "../context/ModalContext"
-import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import CbuComponent from "../components/CbuComponent/CbuComponent"
 import ModalConfirm from "../components/ModalConfirm/ModalConfirm"
 
@@ -22,15 +21,19 @@ const Layout = () => {
 
    console.log(modal);
 
+   // overflow-hidden
    return (
-      <div className={` relative flex flex-col items-center overflow-hidden ${modal || confirmationModal ?  'h-screen overflow-y-scroll' : 'h-min-screen'} `}>
+      <div className={` relative flex flex-col items-center overflow-hidden  
+         ${modal ?  'h-screen' : 'h-min-screen'} 
+         ${confirmationModal ? 'h-screen overflow-y-scroll' : 'h-min-screen'} `
+      }>
 
          <ButtonGift />
 
          {/* Modals --------------------------------------- */}
          {
             modal && (
-               <div className="absolute flex justify-center pt-4 h-[110vh] w-full backdrop-blur-md bg-white/30 z-50 border border-red-600">
+               <div className="absolute flex justify-center pt-4 h-[110vh] w-full backdrop-blur-md bg-white/30 z-50 ">
                   <CbuComponent />
                </div>
             )
@@ -38,7 +41,7 @@ const Layout = () => {
 
          {
             confirmationModal && (
-               <div className="absolute flex justify-center pt-4 h-fit w-full backdrop-blur-md bg-white/30 z-50 border border-red-600 ">
+               <div className="absolute flex justify-center pt-4 h-fit w-full backdrop-blur-md bg-white/30 z-50 ">
                   <ModalConfirm />
                </div>
             )
@@ -164,12 +167,17 @@ const Layout = () => {
                buttonText={"Ver información"}
                widthClass={"w-64"}
                colorCode={"bg-[#5F7752]"}
+               url={false}
+               action={"infoModal"}
             />
+         </section>
+         <section className="bg-[#E1DFDB] w-full">
             <Carousel />
          </section>
 
-            </div>
-            );
+
+      </div>
+      );
 }
 
             export default Layout
