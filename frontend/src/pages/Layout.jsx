@@ -10,7 +10,7 @@ import InfoSection from "../components/InfoSection/InfoSection"
 import MainHeadline from "../components/MainHeadline/MainHeadline"
 import Portrait from "../components/Portrait/Portrait"
 import Spinner from "../components/Spinner/Spinner"
-import { useContext, useState } from "react"
+import { useContext } from "react"
 import { ModalContext } from "../context/ModalContext"
 import CbuComponent from "../components/CbuComponent/CbuComponent"
 import ModalConfirm from "../components/ModalConfirm/ModalConfirm"
@@ -45,7 +45,7 @@ const Layout = () => {
          }
 
          {/* 1° Section --------------------------------------- */}
-         <section className=" relative flex flex-col items-center w-full text-sm bg-[#E1DFDB] h-[100vh] z-20 pt-8 px-8 overflow-hidden">
+         <section className=" relative flex flex-col items-center w-full h-[100vh] text-sm bg-cream pt-8 px-8 overflow-hidden z-20">
             <Spinner />
             <Portrait />
             <MainHeadline />
@@ -99,12 +99,12 @@ const Layout = () => {
          </section>
 
          {/* 3° Section --------------------------------------- */}
-         <section className=" relative flex flex-col items-center h-fit text-sm bg-[#5F7752] px-8 pt-20 pb-24 z-20">
+         <section className=" relative flex flex-col items-center h-fit text-sm bg-green px-8 pt-20 pb-24 z-20">
             <CurvedBottomSection bgColor={"bg-mustard"} />
             <InfoSection
                header={"¿Qué me pongo?"}
                subtitle={"Dresscode: Vos metele facha y comodidad porque, oxidados o no, vamos a bailar"}
-               lineColorCode={"border-[#C49F5F]"}
+               lineColorCode={"border-mustard"}
             >
             </InfoSection>
             <ImageComponent
@@ -113,7 +113,7 @@ const Layout = () => {
             />
             <InfoSection
                header={"¿Temones que no pueden faltar?"}
-               lineColorCode={"border-[#C49F5F]"}
+               lineColorCode={"border-mustard"}
             >
                Ayudanos a armar la lista y no dejar, afuera ningún tema de esos que
                te hacen darlo todo.
@@ -136,7 +136,7 @@ const Layout = () => {
             />
             <InfoSection
                header={"¿Hay equipo?"}
-               lineColorCode={"border-[#C49F5F]"}
+               lineColorCode={"border-mustard"}
                textColorCode={"text-[#404040]"}
             >
                Esperamos que puedas acompañarnos en este momento tan especial PD: Si
@@ -154,7 +154,7 @@ const Layout = () => {
             />
             <InfoSection
                header={"¿Qué les regalo?"}
-               lineColorCode={"border-[#C49F5F]"}
+               lineColorCode={"border-mustard"}
                textColorCode={"text-[#404040]"}
             >
                ¿El mejor regalo? tu presencia, pero si querés ayudarnos a cumplir un
@@ -168,7 +168,7 @@ const Layout = () => {
                action={"infoModal"}
             />
          </section>
-         <section className="bg-[#E1DFDB] w-full">
+         <section className="bg-[#E1DFDB] w-full z-20">
             <Carousel />
          </section>
 

@@ -30,7 +30,7 @@ const CbuComponent = () => {
             <img src="./assets/images/cbu-header-pieces-03.png" alt="" className="h-8 absolute bottom-5 right-25 jumping-element" />
          </header>
 
-         <main className='flex flex-col gap-8 grow bg-[#EAE8E4] p-6 items-center text-[#404040] text-sm'>
+         <main className='flex flex-col items-center gap-8 grow bg-cream p-6 text-gray-dark text-sm'>
 
             <article className="flex flex-col gap-2 w-full">
                <section className="flex items-center gap-2">
@@ -57,8 +57,8 @@ const CbuComponent = () => {
                            transition origin-bottom-left duration-300 ease-in-out hover:scale-110 hover:rotate-3' />
                         <div className="hidden group-hover:block">
                            <div
-                              className="group absolute -top-12 left-1/2 z-50 flex -translate-x-1/2 flex-col items-center rounded-sm text-center text-sm text-[#EAE8E4] before:-top-2">
-                              <div className="rounded-sm bg-[#5D7551] py-1 px-2">
+                              className="group absolute -top-12 left-1/2 z-50 flex -translate-x-1/2 flex-col items-center rounded-sm text-center text-sm text-cream before:-top-2">
+                              <div className="rounded-sm bg-green py-1 px-2">
                                  <p className="whitespace-nowrap">Copiar</p>
                               </div>
                            </div>
@@ -85,7 +85,7 @@ const CbuComponent = () => {
                         <div className="hidden group-hover:block">
                            <div
                               className="group absolute -top-12 left-1/2 z-50 flex -translate-x-1/2 flex-col items-center rounded-sm text-center text-sm text-[#EAE8E4] before:-top-2">
-                              <div className="rounded-sm bg-[#5D7551] py-1 px-2">
+                              <div className="rounded-sm bg-green py-1 px-2">
                                  <p className="whitespace-nowrap">Copiar</p>
                               </div>
                            </div>
@@ -116,7 +116,7 @@ const CbuComponent = () => {
 
          </main>
 
-         <footer className='h-[10vh] bg-[#5D7551] flex items-center justify-center rounded-b-md'>
+         <footer className='h-[10vh] bg-green flex items-center justify-center rounded-b-md'>
             <img src="./assets/images/cbu-footer.png" alt="" className=" h-3/6" />
          </footer>
 

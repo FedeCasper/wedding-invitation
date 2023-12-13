@@ -1,8 +1,8 @@
 import './CurvedBottomSection.css'
 
-const CurvedBottomSection = ( {bgColor} ) => {
+const CurvedBottomSection = ( { bgColor } ) => {
    return (
-      <div className={`curved-bottom ${bgColor}`}></div>
+      <div className={`curved-bottom ${ bgColor }`}></div>
    )
 }
 

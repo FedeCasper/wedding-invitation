@@ -2,7 +2,7 @@ import './CurvedTopSection.css'
 
 const CurvedTopSection = ( { bgColor } ) => {
   return (
-    <div className={`curved-top ${bgColor}`}></div>
+    <div className={`curved-top ${ bgColor }`}></div>
   )
 }
 

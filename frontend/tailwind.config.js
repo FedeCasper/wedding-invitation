@@ -8,9 +8,11 @@ export default {
     colors: {
       white: '#fff',
       cream: '#EAE8E4',
-      darkgray: '#404040',
-      ligthgray: '#E3E0D9',
-      armygreen: {
+      gray:{
+        dark: '#404040',
+        light: '#E3E0D9',
+      } ,
+      green: {
         DEFAULT:'#5D7551',
         dark: '#506841'
       } ,

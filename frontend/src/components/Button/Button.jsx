@@ -34,8 +34,8 @@ const Button = ( { buttonText, widthClass, colorCode, url, action } ) => {
          <button 
             onClick={ url ? () => handleUrl(url) : handleForm }
             type="button" 
-            className={`unselectable text-lg active:bg-armygreen-dark
-            ${ url === 'spotify' ? 'btn-special' : 'btn-normal' }  
+            className={`unselectable text-lg active:bg-green-dark
+            ${ url === 'spotify' ? 'btn-spotify' : 'btn-normal' }  
             ${widthClass} ${colorCode} `}
          >
             { buttonText }
