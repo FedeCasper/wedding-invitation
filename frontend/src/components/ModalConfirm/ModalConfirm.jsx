@@ -69,7 +69,7 @@ const ModalConfirm = () => {
 
 
    return (
-      <div className="relative flex flex-col justify-start w-11/12 rounded-md antialiased overflow-hidden bg-white text-gray-700 py-6 sm:py-12">
+      <div className="relative flex flex-col justify-start w-11/12 rounded-md antialiased overflow-hidden bg-white text-darkgray py-6 sm:py-12">
 
          <img 
             onClick={ () => setConfirmationModal( false ) }
@@ -150,7 +150,7 @@ const ModalConfirm = () => {
                               onChange={ key === 'otro' ? handleChange : () => handleCheckboxChange('drinkPreferences', event) }
                               placeholder={ key === 'otro' ? 'Ingresá tu bebida favorita' : '' }
                               className={ key === "otro" ? 
-                                 "cursor-pointer border border-gray-700 rounded-md px-3 py-2 hover:outline-none focus:outline-none focus:ring-[#5D7551] focus:ring-1 placeholder:italic placeholder:font-light " : 
+                                 "w-full cursor-pointer border border-darkgray rounded-md px-3 py-2 hover:outline-none focus:outline-none focus:ring-[#5D7551] focus:ring-1 placeholder:italic placeholder:font-light " : 
                                  "cursor-pointer appearance-none border border-gray-700 w-4 h-4 rounded-full checked:bg-mustard checked:border-2 checked:border-[#F9FAFB]"
                               }
                            />
