@@ -1,14 +1,19 @@
 import { ModalContext } from "../../context/ModalContext"
-import { useContext } from "react"
+import { useContext, useState } from "react"
 import './CbuComponent.css'
 
 
 const CbuComponent = () => {
 
    const { setModal } = useContext(ModalContext);
+   const [ copied, setCopied ] = useState(false);
 
    const copyToClipboard = (text) => {
       navigator.clipboard.writeText(text);
+      setCopied(true);
+      setTimeout(() => {
+         setCopied(false);
+      }, 1000);
    }
 
    return (
@@ -16,8 +21,8 @@ const CbuComponent = () => {
 
          <header className="relative flex flex-col items-center justify-center gap-2 h-fit w-full pb-16 pt-6 rounded-t-md
             bg-[url('/assets/backgrounds/cbu-header-vertical.png')] bg-no-repeat bg-cover bg-bottom">
-            <h2 className="text-lg font-semibold text-center text-white z-50">¡Llegó el esperado<br></br> regalo!</h2>
-            <h3 className="text-base font-medium text-center text-[#404040] z-50">Nuestros datos bancarios:</h3>
+            <h2 className="text-xl font-semibold text-center text-white z-50">¡Llegó el esperado<br></br> regalo!</h2>
+            <h3 className="text-base font-medium text-center text-gray-dark z-50">Nuestros datos bancarios:</h3>
             <img 
                onClick={ () => setModal( false ) }
                src="./assets/images/btn-close.png" 
@@ -26,8 +31,8 @@ const CbuComponent = () => {
                   transition-all delay-50 duration-150 hover:cursor-pointer hover:scale-90 hover:drop-shadow-md hover:rotate-90" 
             />
             <img src="./assets/images/cbu-header-pieces-02.png" alt="" className="h-28 absolute bottom-5 right-5 jumping-element" />
-            <img src="./assets/images/cbu-header-pieces-01.png" alt="" className="h-28 absolute top-5 left-5 jumping-element-reverse" />
-            <img src="./assets/images/cbu-header-pieces-03.png" alt="" className="h-8 absolute bottom-5 right-25 jumping-element" />
+            <img src="./assets/images/cbu-header-pieces-01.png" alt="" className="h-28 absolute top-5 left-2 jumping-element-reverse" />
+            <img src="./assets/images/cbu-header-pieces-03.png" alt="" className="h-8 absolute bottom-2 right-25 jumping-element" />
          </header>
 
          <main className='flex flex-col items-center gap-8 grow bg-cream p-6 text-gray-dark text-sm'>
@@ -58,8 +63,8 @@ const CbuComponent = () => {
                         <div className="hidden group-hover:block">
                            <div
                               className="group absolute -top-12 left-1/2 z-50 flex -translate-x-1/2 flex-col items-center rounded-sm text-center text-sm text-cream before:-top-2">
-                              <div className="rounded-sm bg-green py-1 px-2">
-                                 <p className="whitespace-nowrap">Copiar</p>
+                              <div className={`rounded-md py-1 px-2 ${ copied ? 'bg-mustard' : 'bg-green' }`}>
+                                 <p className="whitespace-nowrap">{ copied ? 'Copiado!' : 'Copiar' }</p>
                               </div>
                            </div>
                         </div>
@@ -85,8 +90,8 @@ const CbuComponent = () => {
                         <div className="hidden group-hover:block">
                            <div
                               className="group absolute -top-12 left-1/2 z-50 flex -translate-x-1/2 flex-col items-center rounded-sm text-center text-sm text-[#EAE8E4] before:-top-2">
-                              <div className="rounded-sm bg-green py-1 px-2">
-                                 <p className="whitespace-nowrap">Copiar</p>
+                              <div className={`rounded-md py-1 px-2 ${ copied ? 'bg-mustard' : 'bg-green' }`}>
+                                 <p className="whitespace-nowrap">{ copied ? 'Copiado!' : 'Copiar' }</p>
                               </div>
                            </div>
                         </div>
@@ -107,16 +112,15 @@ const CbuComponent = () => {
                      No dólar cara chica o estropeado (es que después nadie los recibe 😥)
                   </span>
                </p>
-            </article>
-
-            <article className='flex flex-col gap-6 items-center'>
-               <hr className='w-48 border border-[#5D7551]' />
-               <h2 className='text-lg font-medium'>¡Desde ya mil gracias!</h2>
+               <article className='flex flex-col gap-3 items-center'>
+                  <hr className='w-48 border border-[#5D7551]' />
+                  <h2 className='text-lg font-medium'>¡Desde ya mil gracias!</h2>
+               </article>
             </article>
 
          </main>
 
-         <footer className='h-[10vh] bg-green flex items-center justify-center rounded-b-md'>
+         <footer className='h-[8vh] bg-green flex items-center justify-center rounded-b-md'>
             <img src="./assets/images/cbu-footer.png" alt="" className=" h-3/6" />
          </footer>
 

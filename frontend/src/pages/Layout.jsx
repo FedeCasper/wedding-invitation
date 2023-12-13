@@ -21,7 +21,7 @@ const Layout = () => {
 
    return (
       <div className={` relative flex flex-col items-center overflow-hidden  
-         ${modal ?  'h-screen' : 'h-min-screen'} 
+         ${modal ?  'h-[105vh]' : 'h-min-screen'} 
          ${confirmationModal ? 'h-screen overflow-y-scroll' : 'h-min-screen'} `
       }>
 
@@ -30,7 +30,7 @@ const Layout = () => {
          {/* Modals --------------------------------------- */}
          {
             modal && (
-               <div className="absolute flex justify-center pt-4 h-[110vh] w-full backdrop-blur-md bg-white/30 z-50 ">
+               <div className="absolute flex justify-center pt-4 h-[105vh] w-full backdrop-blur-md bg-white/30 z-50 ">
                   <CbuComponent />
                </div>
             )
@@ -44,8 +44,8 @@ const Layout = () => {
             )
          }
 
-         {/* 1° Section --------------------------------------- */}
-         <section className=" relative flex flex-col items-center w-full h-[100vh] text-sm bg-cream pt-8 px-8 overflow-hidden z-20">
+         {/* 1° Portrait Section --------------------------------------- */}
+         <section className="relative flex flex-col items-center w-full h-[100vh] text-sm bg-cream pt-8 px-8 overflow-hidden z-20">
             <Spinner />
             <Portrait />
             <MainHeadline />
@@ -53,13 +53,13 @@ const Layout = () => {
             <CurvedTopSection bgColor={"bg-mustard"} />
          </section>
 
-         {/* 2° Section --------------------------------------- */}
-         <section className=" relative flex flex-col items-center justify-center w-full bg-mustard h-fit px-8 z-30">
+         {/* 2° Countdown, maps and schelude section --------------------------------------- */}
+         <section className="relative flex flex-col items-center justify-center w-full bg-mustard h-fit px-8 z-30">
             <Countdown />
             <Button
                buttonText={"Agendar"}
                widthClass={"w-48"}
-               colorCode={"bg-[#5F7752]"}
+               colorCode={"bg-green"}
                url={'calendar'}
             />
             <ImageComponent
@@ -76,7 +76,7 @@ const Layout = () => {
             <Button
                buttonText={"¿Cómo llego?"}
                widthClass={"w-48"}
-               colorCode={"bg-[#5F7752]"}
+               colorCode={"bg-green"}
                url={'church'}
             />
             <ImageComponent
@@ -93,13 +93,13 @@ const Layout = () => {
             <Button
                buttonText={"¿Cómo llego?"}
                widthClass={"w-48"}
-               colorCode={"bg-[#5F7752]"}
+               colorCode={"bg-green"}
                url={'salon'}
             />
          </section>
 
-         {/* 3° Section --------------------------------------- */}
-         <section className=" relative flex flex-col items-center h-fit text-sm bg-green px-8 pt-20 pb-24 z-20">
+         {/* 3° Music & clothes section --------------------------------------- */}
+         <section className="relative flex flex-col items-center h-fit text-sm bg-green px-8 pt-20 pb-24 z-20">
             <CurvedBottomSection bgColor={"bg-mustard"} />
             <InfoSection
                header={"¿Qué me pongo?"}
@@ -124,11 +124,11 @@ const Layout = () => {
                colorCode={"bg-mustard"}
                url={'spotify'}
             />
-            <CurvedTopSection bgColor={"bg-[#E3E0D9]"} />
+            <CurvedTopSection bgColor={"bg-cream"} />
          </section>
 
-         {/* 4° Section --------------------------------------- */}
-         <section className=" relative flex flex-col items-center h-fit w-full text-sm bg-[#E1DFDB] px-8 z-20">
+         {/* 4° Confirmation section --------------------------------------- */}
+         <section className="relative flex flex-col items-center h-fit w-full text-sm bg-cream px-8 z-20">
             <ImageComponent
                src={"/assets/images/confirm-icon.png"}
                alt={"confirm icon"}
@@ -137,7 +137,7 @@ const Layout = () => {
             <InfoSection
                header={"¿Hay equipo?"}
                lineColorCode={"border-mustard"}
-               textColorCode={"text-[#404040]"}
+               textColorCode={"text-gray-dark"}
             >
                Esperamos que puedas acompañarnos en este momento tan especial PD: Si
                no confirmás nos dolerá el bolsillo (y el alma).
@@ -145,7 +145,7 @@ const Layout = () => {
             <Button
                buttonText={"Confirmar asistencia"}
                widthClass={"w-64"}
-               colorCode={"bg-[#5F7752]"}
+               colorCode={"bg-green"}
                url={false}
             />
             <ImageComponent
@@ -155,7 +155,7 @@ const Layout = () => {
             <InfoSection
                header={"¿Qué les regalo?"}
                lineColorCode={"border-mustard"}
-               textColorCode={"text-[#404040]"}
+               textColorCode={"text-gray-dark"}
             >
                ¿El mejor regalo? tu presencia, pero si querés ayudarnos a cumplir un
                sueño hacé click en el botón.
@@ -163,12 +163,14 @@ const Layout = () => {
             <Button
                buttonText={"Ver información"}
                widthClass={"w-64"}
-               colorCode={"bg-[#5F7752]"}
+               colorCode={"bg-green"}
                url={false}
                action={"infoModal"}
             />
          </section>
-         <section className="bg-[#E1DFDB] w-full z-20">
+
+         {/* 5° Carousel section --------------------------------------- */}
+         <section className="flex justify-center bg-cream w-full z-20">
             <Carousel />
          </section>
 
