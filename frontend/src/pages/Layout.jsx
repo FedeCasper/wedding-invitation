@@ -103,10 +103,9 @@ const Layout = () => {
             <CurvedBottomSection bgColor={"bg-mustard"} />
             <InfoSection
                header={"¿Qué me pongo?"}
-               subtitle={"Dresscode: Elegante | Sport"}
+               subtitle={"Dresscode: Vos metele facha y comodidad porque, oxidados o no, vamos a bailar"}
                lineColorCode={"border-[#C49F5F]"}
             >
-               (Vos metele facha y comodidad porque, oxidados o no, vamos a bailar)
             </InfoSection>
             <ImageComponent
                src={"/assets/images/dance-icon.png"}
