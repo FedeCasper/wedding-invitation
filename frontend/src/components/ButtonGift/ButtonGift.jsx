@@ -31,7 +31,7 @@ const ButtonGift = () => {
    return (
       <button 
          onClick={ handleClick }
-         className={` fixed h-12 w-12 z-50 top-[10px] right-[30px]
+         className={`unselectable fixed h-12 w-12 z-50 top-[10px] right-[30px]
             transition-all duration-300 ease-in-out hover:scale-110 active:scale-95 
             ${ ringMovement && 'phone' }`}
          >
