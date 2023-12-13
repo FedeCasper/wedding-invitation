@@ -15,7 +15,7 @@ const CbuComponent = () => {
       <div className="flex flex-col w-11/12 h-[95vh] rounded-md">
 
          <header className="relative flex flex-col items-center justify-center gap-2 h-fit w-full pb-16 pt-6 rounded-t-md
-            bg-[url('./assets/backgrounds/cbu-header-vertical.png')] bg-no-repeat bg-cover bg-bottom">
+            bg-[url('/backgrounds/cbu-header-vertical.png')] bg-no-repeat bg-cover bg-bottom">
             <h2 className="text-lg font-semibold text-center text-white z-50">¡Llegó el esperado<br></br> regalo!</h2>
             <h3 className="text-base font-medium text-center text-[#404040] z-50">Nuestros datos bancarios:</h3>
             <img 
