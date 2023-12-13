@@ -7,9 +7,9 @@ const InfoSection = ( { header, subtitle, children, lineColorCode, textColorCode
          <hr className={ `w-32 mx-auto my-2 border-1 ${ lineColorCode }` } />
          {
             subtitle &&
-            <p className={ `text-base ${ textColorCode? textColorCode : 'text-[#E3E0D9]' } ` }> { subtitle } </p>
+            <p className={ `text-base ${ textColorCode? textColorCode : 'text-ligthgray' } ` }> { subtitle } </p>
          }
-         <p className={ `text-base ${ textColorCode? textColorCode : 'text-[#E3E0D9]' } ` }> { children } </p>
+         <p className={ `text-base ${ textColorCode? textColorCode : 'text-ligthgray' } ` }> { children } </p>
       </section>
    )
 }
