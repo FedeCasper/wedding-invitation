@@ -1,7 +1,7 @@
 import AnimatedElement from "../AnimatedElement/AnimatedElement"
 import './ImageComponent.css'
 
-const ImageComponent = ({ src, alt }) => {
+const ImageComponent = ({ src, alt, margin }) => {
    return (
       <AnimatedElement>
          <section className="relative">
@@ -9,7 +9,7 @@ const ImageComponent = ({ src, alt }) => {
                <li className="ball"></li>
                <li className="ball"></li>
             </div>
-            <img src={src} alt={alt} className="relative mt-16 mb-6 h-32 "/>
+            <img src={src} alt={alt} className={`relative mb-6 h-32 ${margin === 'disabled' ? 'mt-1' : 'mt-16'}`}/>
             <div className=" loader bottom-12 -left-4 rotate-45 z-0">
                <li className="ball"></li>
                <li className="ball"></li>
@@ -19,9 +19,7 @@ const ImageComponent = ({ src, alt }) => {
                <li className="ball"></li>
                <li className="ball"></li>
             </div>
-
          </section>
-
       </AnimatedElement>
    );
 }

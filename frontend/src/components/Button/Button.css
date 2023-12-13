@@ -53,7 +53,7 @@
   border-radius: 15px;
   border: none;
   margin-top: 24px;
-  color: #fff;
+  color: var(--mycream);
   font-weight: normal;
   cursor: pointer;
   transition: all 0.2s ease;
@@ -84,7 +84,7 @@
   background-image: radial-gradient(circle, var(--mygreen) 20%, transparent 20%),
     radial-gradient(circle,transparent 20%,var(--mygreen) 20%,transparent 30%),
     radial-gradient(circle, var(--mygreen) 20%, transparent 20%),
-    radial-gradient(circle, var(--mygreen) 20%, transparent 20%),
+    radial-gradient(circle, var(--mygreen) 20%, transparent 20%), /* Active color bug */
     radial-gradient(circle,transparent 10%,var(--mygreen) 15%,transparent 20%),
     radial-gradient(circle, var(--mygreen) 20%, transparent 20%),
     radial-gradient(circle, var(--mygreen) 20%, transparent 20%),
@@ -105,6 +105,74 @@
     radial-gradient(circle, var(--mygreen) 20%, transparent 20%),
     radial-gradient(circle, var(--mygreen) 20%, transparent 20%),
     radial-gradient(circle, var(--mygreen) 20%, transparent 20%);
+  background-size: 15% 15%, 20% 20%, 18% 18%, 20% 20%, 15% 15%, 20% 20%, 18% 18%;
+  background-position: 50% 0%;
+  animation: greenbottomBubbles 0.6s ease;
+}
+
+/*--------------------------------------------------*/
+/*--------------- Spotify Buttton ------------------*/
+/*--------------------------------------------------*/
+
+.btn-special {
+  position: relative;
+  z-index: 50;
+  padding: 14px 25px;
+  border-radius: 15px;
+  border: none;
+  margin-top: 24px;
+  color: #fff;
+  font-weight: normal;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  user-select: none;
+  -webkit-tap-highlight-color: rgba(0,0,0,0) !important; /* Safari y Chrome */
+  -webkit-user-drag: none !important; /* Safari (puede evitar el resaltado al mover elementos) */
+  touch-action: manipulation !important; /* Algunos navegadores más modernos */
+}
+
+.btn-special:active {
+  transform: scale(0.96);
+}
+
+.btn-special:before,
+.btn-special:after {
+  position: absolute;
+  content: "";
+  width: 150%;
+  left: 50%;
+  height: 100%;
+  transform: translateX(-50%);
+  z-index: -1000;
+  background-repeat: no-repeat;
+}
+
+.btn-special:hover:before {
+  top: -70%;
+  background-image: radial-gradient(circle, var(--mybrown) 20%, transparent 20%),
+    radial-gradient(circle,transparent 20%,var(--mybrown) 20%,transparent 30%),
+    radial-gradient(circle, var(--mybrown) 20%, transparent 20%),
+    radial-gradient(circle, var(--mybrown) 20%, transparent 20%), /* Active color bug */
+    radial-gradient(circle,transparent 10%,var(--mybrown) 15%,transparent 20%),
+    radial-gradient(circle, var(--mybrown) 20%, transparent 20%),
+    radial-gradient(circle, var(--mybrown) 20%, transparent 20%),
+    radial-gradient(circle, var(--mybrown) 20%, transparent 20%),
+    radial-gradient(circle, var(--mybrown) 20%, transparent 20%);
+  background-size: 10% 10%, 20% 20%, 15% 15%, 20% 20%, 18% 18%, 10% 10%, 15% 15%,
+    10% 10%, 18% 18%;
+  background-position: 50% 120%;
+  animation: greentopBubbles 0.6s ease;
+}
+
+.btn-special:hover::after {
+  bottom: -70%;
+  background-image: radial-gradient(circle, var(--mybrown) 20%, transparent 20%),
+    radial-gradient(circle, var(--mybrown) 20%, transparent 20%),
+    radial-gradient(circle,transparent 10%,var(--mybrown) 15%,transparent 20%),
+    radial-gradient(circle, var(--mybrown) 20%, transparent 20%),
+    radial-gradient(circle, var(--mybrown) 20%, transparent 20%),
+    radial-gradient(circle, var(--mybrown) 20%, transparent 20%),
+    radial-gradient(circle, var(--mybrown) 20%, transparent 20%);
   background-size: 15% 15%, 20% 20%, 18% 18%, 20% 20%, 15% 15%, 20% 20%, 18% 18%;
   background-position: 50% 0%;
   animation: greenbottomBubbles 0.6s ease;

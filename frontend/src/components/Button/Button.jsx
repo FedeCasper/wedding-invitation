@@ -23,7 +23,9 @@ const Button = ( { buttonText, widthClass, colorCode, url, action } ) => {
          spotify: 'https://open.spotify.com/playlist/4zl9JhttxJvAHzJlsdpdaH?si=wIC9a0QvRYOEjgeDUgYATQ&pt=a7701318c99dae1208e60faafbb0f603'
       };
       if (url in urlMapping) {
-         window.location.href = urlMapping[url];
+         setTimeout(() => {
+            window.location.href = urlMapping[url];
+         }, 500);
       }
    };
 
@@ -32,7 +34,10 @@ const Button = ( { buttonText, widthClass, colorCode, url, action } ) => {
          <button 
             onClick={ url ? () => handleUrl(url) : handleForm }
             type="button" 
-            className={`text-lg btn-normal unselectable ${widthClass} ${colorCode}`}>
+            className={`unselectable text-lg active:bg-armygreen-dark
+            ${ url === 'spotify' ? 'btn-special' : 'btn-normal' }  
+            ${widthClass} ${colorCode} `}
+         >
             { buttonText }
          </button>
       </AnimatedElement>

@@ -9,7 +9,10 @@ export default {
       cream: '#EAE8E4',
       darkgray: '#404040',
       ligthgray: '#E3E0D9',
-      armygreen: '#5D7551',
+      armygreen: {
+        DEFAULT:'#5D7551',
+        dark: '#506841'
+      } ,
       mustard: '#C49F5F',
     }
     // extend: {},

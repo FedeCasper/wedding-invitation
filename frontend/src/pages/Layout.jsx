@@ -99,7 +99,7 @@ const Layout = () => {
          </section>
 
          {/* 3° Section --------------------------------------- */}
-         <section className=" relative flex flex-col items-center justify-center h-[100vh] w-full text-sm bg-[#5F7752] px-8 z-20">
+         <section className=" relative flex flex-col items-center h-fit text-sm bg-[#5F7752] px-8 pt-20 pb-24 z-20">
             <CurvedBottomSection bgColor={"bg-mustard"} />
             <InfoSection
                header={"¿Qué me pongo?"}
@@ -133,6 +133,7 @@ const Layout = () => {
             <ImageComponent
                src={"/assets/images/confirm-icon.png"}
                alt={"confirm icon"}
+               margin={"disabled"}
             />
             <InfoSection
                header={"¿Hay equipo?"}
