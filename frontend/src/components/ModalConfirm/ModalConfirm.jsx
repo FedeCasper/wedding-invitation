@@ -11,19 +11,19 @@ const initialFormState = {
    contact: '',
    message: '',
    drinkPreferences: {
-      fernet: false,
-      gin_tonic: false,
-      campari: false,
-      vino: false,
-      cerveza: false,
-      no_tomo_alcohol: false,
-      otro: '',
+      ['fernet_🥤']: false,
+      ['gin_tonic 🍸']: false,
+      ['campari_🍹']: false,
+      ['vino_🍷']: false,
+      ['cerveza_🍺']: false,
+      ['no_tomo_alcohol_💧']: false,
+      ['otro']: '',
    },
    foodPreferences: {
-      como_sin_tac: false,
-      soy_vegano: false,
-      soy_vegetariano: false,
-      otro: false,
+      ['como_sin_tac_❌🌾']: false,
+      ['soy_vegano_❌🥩']: false,
+      ['soy_vegetariano_💗🥑']: false,
+      ['otro']: false,
    },
 };
 
@@ -69,7 +69,7 @@ const ModalConfirm = () => {
 
 
    return (
-      <div className="relative flex  w-11/12 text-gray-700 antialiased flex-col justify-start overflow-hidden bg-gray-50 py-6 sm:py-12">
+      <div className="relative flex flex-col justify-start w-11/12 rounded-md antialiased overflow-hidden bg-ligthgray text-gray-700 py-6 sm:py-12">
 
          <img 
             onClick={ () => setConfirmationModal( false ) }
@@ -89,7 +89,7 @@ const ModalConfirm = () => {
 
                {/* Full name section ---------------------- */}
                <section className="shadow-md rounded-b-md ">
-                  <div className="h-2 bg-[#C49F5F] rounded-t-md"></div>
+                  <div className="h-2 bg-mustard rounded-t-md"></div>
                   <div className="flex flex-col px-8 py-6">
                      <h2 className="font-semibold mb-4">Nombre y Apellido <span className='text-red-500 font-medium'>*</span></h2>
                      <label className="block font-semibold">
@@ -100,7 +100,7 @@ const ModalConfirm = () => {
                            placeholder="Ingresá tu nombre y apellido"
                            value={formData.fullName} 
                            onChange={handleChange}
-                           className="border w-full h-5 px-3 py-5 mt-2 hover:outline-none focus:outline-none focus:ring-[#5D7551] focus:ring-1 rounded-md placeholder:italic placeholder:font-light"
+                           className="border w-full px-3 py-2 mt-2 hover:outline-none focus:outline-none focus:ring-[#5D7551] focus:ring-1 rounded-md placeholder:italic placeholder:font-light"
                         />
                      </label>
                   </div>
@@ -108,7 +108,7 @@ const ModalConfirm = () => {
 
                {/* Assists section ---------------------- */}
                <section className="shadow-md rounded-b-md ">
-                  <div className="h-2 bg-[#C49F5F] rounded-t-md"></div>
+                  <div className="h-2 bg-mustard rounded-t-md"></div>
                   <div className="flex flex-col px-8 py-6">
                      <h2 className="font-semibold mb-4">¿Venís a nuestro casamiento? <span className='text-red-500 font-medium'>*</span></h2>
                      <label className="flex gap-2 mt-3">
@@ -135,7 +135,7 @@ const ModalConfirm = () => {
 
                {/* Drinks section ---------------------- */}
                <section className="shadow-md rounded-b-md ">
-                  <div className="h-2 bg-[#C49F5F] rounded-t-md"></div>
+                  <div className="h-2 bg-mustard rounded-t-md"></div>
                   <div className="flex flex-col px-8 py-6">
                      <h2 className="font-semibold mb-4">BEBIDAS</h2>
                      <h3 className="font-medium mb-4">Tendremos una barra pequeña y por eso queremos saber qué preferís tomar (no vaya a ser que te deshidrates)</h3>
@@ -143,14 +143,18 @@ const ModalConfirm = () => {
                      {Object.entries(formData.drinkPreferences).map(([key, value]) => (
                         <label key={key} className="flex items-center gap-2 mt-3">
                            <input
-                              type={key === 'other' ? 'text' : 'checkbox'}
-                              name={key}
-                              checked={key === 'other' ? false : formData.drinkPreferences[key] }
-                              value={key === 'other' ? value : key}
-                              onChange={key === 'other' ? handleChange : () => handleCheckboxChange('drinkPreferences', event)}
-                              className='cursor-pointer appearance-none border border-gray-700 w-4 h-4 rounded-full checked:bg-[#C49F5F] checked:border-2 checked:border-[#F9FAFB]'
+                              type={ key === 'otro' ? 'text' : 'checkbox' }
+                              name={ key }
+                              checked={ key === 'otro' ? false : formData.drinkPreferences[key] }
+                              value={ key === 'otro' ? value : key }
+                              onChange={ key === 'otro' ? handleChange : () => handleCheckboxChange('drinkPreferences', event) }
+                              placeholder={ key === 'otro' ? 'Ingresá tu bebida favorita' : '' }
+                              className={ key === "otro" ? 
+                                 "cursor-pointer border border-gray-700 rounded-md px-3 py-2 hover:outline-none focus:outline-none focus:ring-[#5D7551] focus:ring-1 placeholder:italic placeholder:font-light " : 
+                                 "cursor-pointer appearance-none border border-gray-700 w-4 h-4 rounded-full checked:bg-mustard checked:border-2 checked:border-[#F9FAFB]"
+                              }
                            />
-                           {key === 'other' ? 'Otro' : key.toUpperCase().replace(/_/g, ' ')} {key === 'other' && value}
+                           { key === 'otro' ? '' : key.toUpperCase().replace(/_/g, ' ')} {key === 'otro' && value }
                         </label>
                      ))}
 
@@ -159,7 +163,7 @@ const ModalConfirm = () => {
 
                {/* Food section ---------------------- */}
                <section className="shadow-md rounded-b-md ">
-                  <div className="h-2 bg-[#C49F5F] rounded-t-md"></div>
+                  <div className="h-2 bg-mustard rounded-t-md"></div>
                   <div className="flex flex-col px-8 py-6">
                      <h2 className="font-semibold mb-4">COMIDAS</h2>
                      <h3 className="font-medium mb-4">Seleccioná si tenés alguna restricción alimentaria. Haremos lo posible para sumar al menú alguna opción apta para vos.</h3>
@@ -172,7 +176,7 @@ const ModalConfirm = () => {
                               checked={ formData.foodPreferences[key] }
                               value={key}
                               onChange={ () => handleCheckboxChange('foodPreferences', event) }
-                              className='cursor-pointer appearance-none border border-gray-700 w-4 h-4 rounded-full checked:bg-[#C49F5F] checked:border-2 checked:border-[#F9FAFB]'
+                              className='cursor-pointer appearance-none border border-gray-700 w-4 h-4 rounded-full checked:bg-mustard checked:border-2 checked:border-[#F9FAFB]'
                            />
                            { key.toUpperCase().replace(/_/g, ' ')} {value}
                         </label>
@@ -183,7 +187,7 @@ const ModalConfirm = () => {
 
                {/* Partners section ---------------------- */}
                <section className="shadow-md rounded-b-md ">
-                  <div className="h-2 bg-[#C49F5F] rounded-t-md"></div>
+                  <div className="h-2 bg-mustard rounded-t-md"></div>
                   <div className="flex flex-col px-8 py-6">
                      <h2 className="font-semibold mb-4">ACOMPAÑANTES <span className='text-red-500 font-medium'>*</span></h2>
                      <label className="flex gap-2 mt-3">
@@ -201,7 +205,7 @@ const ModalConfirm = () => {
                            name='partner'
                            value={true}
                            onChange={handleCheckboxChange}
-                           className="cursor-pointer border h-5 px-3 py-5 hover:outline-none focus:outline-none checked:bg-[#C49F5F] focus:ring-indigo-500 focus:ring-1 rounded-md"
+                           className="cursor-pointer border h-5 px-3 py-5 hover:outline-none focus:outline-none checked:bg-mustard focus:ring-indigo-500 focus:ring-1 rounded-md"
                         />VOY CON ALGUIEN 😉
                      </label>
                   </div>
@@ -209,7 +213,7 @@ const ModalConfirm = () => {
 
                {/* Partner's name section ---------------------- */}
                <section className="shadow-md rounded-b-md ">
-                  <div className="h-2 bg-[#C49F5F] rounded-t-md"></div>
+                  <div className="h-2 bg-mustard rounded-t-md"></div>
                   <div className="flex flex-col px-8 py-6">
                      <h2 className="font-semibold mb-4">¿CON QUIÉN VENÍS? <span className='text-red-500 font-medium'>*</span></h2>
                      <h3 className="font-medium mb-4">Necesitamos saber el Nombre y Apellido de esa persona para poder agregarla a la lista.</h3>
@@ -228,7 +232,7 @@ const ModalConfirm = () => {
 
                {/* Church assists section ---------------------- */}
                <section className="shadow-md rounded-b-md ">
-                  <div className="h-2 bg-[#C49F5F] rounded-t-md"></div>
+                  <div className="h-2 bg-mustard rounded-t-md"></div>
                   <div className="flex flex-col px-8 py-6">
                      <h2 className="font-semibold mb-4">¿Asistirás a la iglesia o directo al salón? <span className='text-red-500 font-medium'>*</span></h2>
                      <label className="flex mt-3 gap-2">
@@ -254,7 +258,7 @@ const ModalConfirm = () => {
 
                {/* Contact section ---------------------- */}
                <section className="shadow-md rounded-b-md ">
-                  <div className="h-2 bg-[#C49F5F] rounded-t-md"></div>
+                  <div className="h-2 bg-mustard rounded-t-md"></div>
                   <div className="flex flex-col px-8 py-6">
                      <h2 className="font-semibold mb-4">CONTACTO <span className='text-red-500 font-medium'>*</span></h2>
                      <h3 className="font-medium mb-4">Dejanos un número de Whatsapp o mail donde podamos encontrarte si necesitamos consultarte o informarte algo del evento.</h3>
@@ -273,7 +277,7 @@ const ModalConfirm = () => {
 
                {/* Message section ---------------------- */}
                <section className="shadow-md rounded-b-md ">
-                  <div className="h-2 bg-[#C49F5F] rounded-t-md"></div>
+                  <div className="h-2 bg-mustard rounded-t-md"></div>
                   <div className="flex flex-col px-8 py-6">
                      <h2 className="font-semibold mb-4">MENSAJE PARA LOS NOVIOS <span className='text-red-500 font-medium'>*</span></h2>
                      <h3 className="font-medium mb-4">Si necesitas hacernos alguna consulta o querés dejarnos algún mensaje este es el lugar.</h3>
@@ -294,7 +298,7 @@ const ModalConfirm = () => {
                   <button
                      onClick={handleSubmit}
                      type="submit"
-                     className="mt-4 bg-[#C49F5F] text-white py-2 px-6 rounded-md hover:bg-purple-600 ">
+                     className="mt-4 bg-mustard text-white py-2 px-6 rounded-md hover:bg-purple-600 ">
                      Enviar
                   </button>
                </div>

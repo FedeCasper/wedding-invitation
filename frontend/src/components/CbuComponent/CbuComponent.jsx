@@ -111,7 +111,7 @@ const CbuComponent = () => {
 
             <article className='flex flex-col gap-6 items-center'>
                <hr className='w-48 border border-[#5D7551]' />
-               <h2 className='text-2xl font-medium'>¡Desde ya mil gracias!</h2>
+               <h2 className='text-lg font-medium'>¡Desde ya mil gracias!</h2>
             </article>
 
          </main>

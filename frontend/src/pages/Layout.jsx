@@ -19,9 +19,6 @@ const Layout = () => {
 
    const { modal, confirmationModal } = useContext(ModalContext);
 
-   console.log(modal);
-
-   // overflow-hidden
    return (
       <div className={` relative flex flex-col items-center overflow-hidden  
          ${modal ?  'h-screen' : 'h-min-screen'} 
@@ -53,11 +50,11 @@ const Layout = () => {
             <Portrait />
             <MainHeadline />
             <Arrows />
-            <CurvedTopSection bgColor={"bg-[#C49F5F]"} />
+            <CurvedTopSection bgColor={"bg-mustard"} />
          </section>
 
          {/* 2° Section --------------------------------------- */}
-         <section className=" relative flex flex-col items-center justify-center w-full bg-[#C49F5F] h-fit px-8 z-30">
+         <section className=" relative flex flex-col items-center justify-center w-full bg-mustard h-fit px-8 z-30">
             <Countdown />
             <Button
                buttonText={"Agendar"}
@@ -103,7 +100,7 @@ const Layout = () => {
 
          {/* 3° Section --------------------------------------- */}
          <section className=" relative flex flex-col items-center justify-center h-[100vh] w-full text-sm bg-[#5F7752] px-8 z-20">
-            <CurvedBottomSection bgColor={"bg-[#C49F5F]"} />
+            <CurvedBottomSection bgColor={"bg-mustard"} />
             <InfoSection
                header={"¿Qué me pongo?"}
                subtitle={"Dresscode: Elegante | Sport"}
@@ -125,7 +122,7 @@ const Layout = () => {
             <Button
                buttonText={"Añadir tu tema"}
                widthClass={"w-64"}
-               colorCode={"bg-[#C49F5F]"}
+               colorCode={"bg-mustard"}
                url={'spotify'}
             />
             <CurvedTopSection bgColor={"bg-[#E3E0D9]"} />

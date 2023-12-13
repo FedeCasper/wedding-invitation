@@ -1,6 +1,5 @@
 .pic01 {
    position: absolute;
-   background-color: rgb(102, 157, 204);
    height: 256px;
    width: 190px;
    animation: animation01 16s ease-in-out infinite;
@@ -8,7 +7,6 @@
 
 .pic02 {
    position: absolute;
-   background-color: rgb(164, 220, 188);
    height: 256px;
    width: 190px;
    animation: animation02 16s ease-in-out infinite;
@@ -16,7 +14,6 @@
 
 .pic03 {
    position: absolute;
-   background-color: rgb(205, 178, 200);
    height: 256px;
    width: 190px;
    animation: animation03 16s ease-in-out infinite;
@@ -24,7 +21,6 @@
 
 .pic04 {
    position: absolute;
-   background-color: rgb(117, 163, 166);
    height: 256px;
    width: 190px;
    animation: animation04  16s ease-in-out infinite;
@@ -32,7 +28,6 @@
 
 .pic05 {
    position: absolute;
-   background-color: aliceblue;
    height: 256px;
    width: 190px;
    animation: animation05 16s ease-in-out infinite;
