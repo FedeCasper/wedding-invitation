@@ -14,15 +14,18 @@ import { useContext } from "react"
 import { ModalContext } from "../context/ModalContext"
 import CbuComponent from "../components/CbuComponent/CbuComponent"
 import ModalConfirm from "../components/ModalConfirm/ModalConfirm"
+import axios from "axios"
+import ModalWeather from "../components/ModalWeather/ModalWeather"
 
 const Layout = () => {
 
-   const { modal, confirmationModal } = useContext(ModalContext);
+   const { modal, confirmationModal, weatherModal } = useContext(ModalContext);
+
+   console.log(weatherModal);
 
    return (
-      <div className={` relative flex flex-col items-center overflow-hidden  
-         ${modal ?  'h-[105vh]' : 'h-min-screen'} 
-         ${confirmationModal ? 'h-screen overflow-y-scroll' : 'h-min-screen'} `
+      <div className={` relative flex flex-col items-center 
+         ${confirmationModal || weatherModal || modal ? ' h-screen overflow-hidden ' : 'h-min-screen'} `
       }>
 
          <ButtonGift />
@@ -30,15 +33,23 @@ const Layout = () => {
          {/* Modals --------------------------------------- */}
          {
             modal && (
-               <div className="absolute flex justify-center pt-4 h-[105vh] w-full backdrop-blur-md bg-white/30 z-50 ">
+               <div className="fixed inset-0 mx-auto flex justify-center py-4 h-screen w-full backdrop-blur-md bg-white/30 z-50 ">
                   <CbuComponent />
                </div>
             )
          }
 
          {
+            weatherModal && (
+               <div className="fixed inset-0 mx-auto flex justify-center py-4 h-screen w-full backdrop-blur-md bg-white/30 z-50 ">
+                  <ModalWeather />
+               </div>
+            )
+         }
+
+         {
             confirmationModal && (
-               <div className="absolute flex justify-center pt-4 h-fit w-full backdrop-blur-md bg-white/30 z-50 ">
+               <div className="fixed inset-0 mx-auto flex justify-center py-4 h-screen over w-full backdrop-blur-sm bg-white/30 z-50 ">
                   <ModalConfirm />
                </div>
             )
@@ -142,7 +153,7 @@ const Layout = () => {
                         buttonText={"Mirá el clima"}
                         widthClass={"w-64"}
                         colorCode={"bg-mustard"}
-                        url={'weather'}
+                        action={ 'openWeatherModal' }
                      />
                   </div>
                </div>
@@ -198,7 +209,7 @@ const Layout = () => {
                      buttonText={"Confirmar asistencia"}
                      widthClass={"w-64"}
                      colorCode={"bg-green"}
-                     url={false}
+                     action={ 'openConfirmationModal' }
                   />
                </div>
 
@@ -217,11 +228,11 @@ const Layout = () => {
                      sueño hacé click en el botón.
                   </InfoSection>
                   <Button
-                     buttonText={"Ver información"}
-                     widthClass={"w-64"}
-                     colorCode={"bg-green"}
+                     buttonText={ 'Ver información' }
+                     widthClass={ 'w-64' }
+                     colorCode={ 'bg-green' }
                      url={false}
-                     action={"infoModal"}
+                     action={ 'openInfoModal' }
                   />
                </div>
             </div>
@@ -229,7 +240,7 @@ const Layout = () => {
          </section>
 
          {/* 5° Carousel section --------------------------------------- */}
-         <section className="flex justify-center items-end bg-cream w-full z-20
+         <section className="relative flex justify-center items-end bg-cream w-full z-20
          lg:pt-12">
             <div className=" bg-cream h-[180px] w-12 shadow-[22px_5px_17px_-10px_rgba(0,0,0,0.3)] z-50"></div>
             <Carousel />

@@ -5,13 +5,19 @@ import { useContext } from "react"
 
 const Button = ( { buttonText, widthClass, colorCode, url, action } ) => {
    
-   const { setModal, setConfirmationModal } = useContext(ModalContext);
+   const { setModal, setConfirmationModal, setWeatherModal } = useContext(ModalContext);
 
    const handleForm = () => {
-      if( !url && action ){
-         setModal( true );
-      } else if( !url && !action ){
-         setConfirmationModal( true );
+      switch(action) {
+         case 'openWeatherModal':
+            setWeatherModal(true);
+            break;
+         case 'openConfirmationModal':
+            setConfirmationModal(true);
+            break;
+         case 'openInfoModal':
+            setModal(true);
+            break;
       }
    };
 
@@ -21,8 +27,6 @@ const Button = ( { buttonText, widthClass, colorCode, url, action } ) => {
          salon: 'https://www.google.com.ar/maps/place/AMProS+Finca/@-33.0299681,-68.7834189,17z/data=!3m1!4b1!4m6!3m5!1s0x967e73a636a5a81d:0x781563d83c3e0d97!8m2!3d-33.0299681!4d-68.780844!16s%2Fg%2F11j20rqk2q?entry=ttu',
          church: 'https://www.google.com.ar/maps/place/Nuestra+Se%C3%B1ora+del+Perpetuo+Socorro/@-32.9861458,-68.8823416,19.5z/data=!4m14!1m7!3m6!1s0x967e0aed5218d66d:0x7764b4bce40bb3a3!2sMazzolari+11,+Luj%C3%A1n+de+Cuyo,+Mendoza!3b1!8m2!3d-32.9861862!4d-68.8818644!3m5!1s0x967e0aed5a60252d:0xfdad166df1aef71f!8m2!3d-32.9859832!4d-68.8816163!16s%2Fg%2F11b6nrlfd4?entry=ttu',
          spotify: 'https://open.spotify.com/playlist/4zl9JhttxJvAHzJlsdpdaH?si=wIC9a0QvRYOEjgeDUgYATQ&pt=a7701318c99dae1208e60faafbb0f603',
-         weather: 'https://www.accuweather.com/es/ar/mendoza/5126/weather-forecast/5126'
-         
       };
       if (url in urlMapping) {
          setTimeout(() => {
@@ -37,7 +41,7 @@ const Button = ( { buttonText, widthClass, colorCode, url, action } ) => {
             onClick={ url ? () => handleUrl(url) : handleForm }
             type="button" 
             className={`unselectable text-lg active:bg-green-dark
-            ${ url === 'spotify' || url === 'weather' ? 'btn-special' : 'btn-normal' }  
+            ${ colorCode === 'bg-mustard' ? 'btn-special' : 'btn-normal' }  
             ${widthClass} ${colorCode} `}
          >
             { buttonText }

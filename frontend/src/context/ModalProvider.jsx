@@ -6,9 +6,10 @@ const ModalProvider = ( { children } ) => {
    const [ modal, setModal ] = useState(false)
    const [ musicModal, setMusicModal ] = useState(false)
    const [ confirmationModal, setConfirmationModal ] = useState(false)
+   const [ weatherModal, setWeatherModal ] = useState(false)
 
    return (
-      <ModalContext.Provider value={ { modal, setModal, musicModal, setMusicModal, confirmationModal, setConfirmationModal } }>
+      <ModalContext.Provider value={ { modal, setModal, musicModal, setMusicModal, confirmationModal, setConfirmationModal, weatherModal, setWeatherModal } }>
          {children}
       </ModalContext.Provider>
    )
