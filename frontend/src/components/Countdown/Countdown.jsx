@@ -128,7 +128,7 @@ class FlipClock extends Component {
 					<FlipUnitContainer unit={'minutes'} digit={minutes} shuffle={minutesShuffle} />
 					<FlipUnitContainer unit={'seconds'} digit={seconds} shuffle={secondsShuffle} />
 				</div>
-				<div className='grid grid-rows-1 grid-cols-5 gap-1 text-xs w-full mt-3 text-center'>
+				<div className='grid grid-rows-1 grid-cols-5 gap-1 text-xs w-full md:w-[764px] mt-3 text-center'>
 					<div>meses</div>
 					<div>días</div>
 					<div>hrs</div>

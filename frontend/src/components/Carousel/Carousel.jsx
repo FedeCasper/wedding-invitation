@@ -2,7 +2,7 @@ import './Carousel.css'
 const Carousel = () => {
 
    return (
-      <section className='flex justify-center items-baseline relative z-50 w-[450px] h-72 pt-12 overflow-hidden'>
+      <section className='flex justify-center items-baseline relative z-40 w-[450px] h-72 pt-12 overflow-hidden'>
          < img src="/assets/photos/img-01.png" className="pic01"/>
          < img src="/assets/photos/img-02.png" className="pic02"/>
          < img src="/assets/photos/img-03.png" className="pic03"/>

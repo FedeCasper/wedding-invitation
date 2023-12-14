@@ -114,7 +114,7 @@
 /*--------------- Spotify Buttton ------------------*/
 /*--------------------------------------------------*/
 
-.btn-spotify {
+.btn-special {
   position: relative;
   z-index: 50;
   padding: 14px 25px;
@@ -131,12 +131,12 @@
   touch-action: manipulation !important; /* Algunos navegadores más modernos */
 }
 
-.btn-spotify:active {
+.btn-special:active {
   transform: scale(0.96);
 }
 
-.btn-spotify:before,
-.btn-spotify:after {
+.btn-special:before,
+.btn-special:after {
   position: absolute;
   content: "";
   width: 150%;
@@ -147,7 +147,7 @@
   background-repeat: no-repeat;
 }
 
-.btn-spotify:hover:before {
+.btn-special:hover:before {
   top: -70%;
   background-image: radial-gradient(circle, var(--mustard) 20%, transparent 20%),
     radial-gradient(circle,transparent 20%,var(--mustard) 20%,transparent 30%),
@@ -164,7 +164,7 @@
   animation: greentopBubbles 0.6s ease;
 }
 
-.btn-spotify:hover::after {
+.btn-special:hover::after {
   bottom: -70%;
   background-image: radial-gradient(circle, var(--mustard) 20%, transparent 20%),
     radial-gradient(circle, var(--mustard) 20%, transparent 20%),
