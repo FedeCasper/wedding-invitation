@@ -24,8 +24,8 @@ const Layout = () => {
    console.log(weatherModal);
 
    return (
-      <div className={` relative flex flex-col items-center 
-         ${confirmationModal || weatherModal || modal ? ' h-screen overflow-hidden ' : 'h-min-screen'} `
+      <div className={` relative flex flex-col items-center overflow-hidden
+         ${confirmationModal || weatherModal || modal ? ' h-screen' : 'h-min-screen'} `
       }>
 
          <ButtonGift />
