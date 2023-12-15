@@ -6,7 +6,6 @@ export default {
   ],
   theme: {
     colors: {
-      white: '#fff',
       cream: '#EAE8E4',
       gray:{
         dark: '#404040',
@@ -17,6 +16,8 @@ export default {
         dark: '#506841'
       } ,
       mustard: '#C49F5F',
+      red: '#C44848',
+      white: '#FFF',
     }
     // extend: {},
   },

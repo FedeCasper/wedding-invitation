@@ -34,15 +34,15 @@ const ModalConfirm = () => {
    const [formData, setFormData] = useState(initialFormState);
 
    const handleChange = (event) => {
-      console.log([event.target.name], [event.target.value] );
+      console.log([event.target.name], [event.target.value]);
       const { name, type, value, checked } = event.target;
-      setFormData( prevData => ({
+      setFormData(prevData => ({
          ...prevData,
          [name]: type === 'checkbox' ? checked : value,
       }));
    };
 
-   const handleCheckboxChange = ( group, event ) => {
+   const handleCheckboxChange = (group, event) => {
       console.log([group], [event.target.value]);
       const { name, checked } = event.target;
       setFormData((prevData) => ({
@@ -74,10 +74,10 @@ const ModalConfirm = () => {
          sm:py-12
          lg:w-6/12">
 
-         <img 
-            onClick={ () => setConfirmationModal( false ) }
-            src="./assets/images/btn-close.png" 
-            alt=" Boton cerrar " 
+         <img
+            onClick={() => setConfirmationModal(false)}
+            src="./assets/images/btn-close.png"
+            alt=" Boton cerrar "
             className="absolute top-5 right-5 h-10 cursor-pointer shadow-md z-50
                transition-all delay-50 duration-150 hover:cursor-pointer hover:scale-90 hover:drop-shadow-md hover:rotate-90" />
 
@@ -91,29 +91,146 @@ const ModalConfirm = () => {
             <form className="mt-4 flex flex-col gap-4 text-left">
 
                {/* Full name section ---------------------- */}
-               <section className="modal-confirm-section">
+               {/* <section className="modal-confirm-section">
                   <div className="h-2 bg-mustard rounded-t-md"></div>
                   <div className="flex flex-col px-8 py-6">
-                     <h2 className="font-semibold mb-4">Nombre y Apellido <span className='text-red-500 font-medium'>*</span></h2>
+                     <h2 className="font-semibold mb-4">
+                        Nombre y Apellido <span className='text-red font-medium'>*</span>
+                     </h2>
                      <label className="block font-semibold">
                         <input
                            required
                            type="text"
                            name="fullName"
                            placeholder="Ingresá tu nombre y apellido"
-                           value={formData.fullName} 
+                           value={formData.fullName}
                            onChange={handleChange}
                            className="border w-full px-3 py-2 mt-2 hover:outline-none focus:outline-none focus:ring-[#5D7551] focus:ring-1 rounded-md placeholder:italic placeholder:font-light"
                         />
                      </label>
                   </div>
-               </section>
+               </section> */}
+
+
+               <label>
+                  <input class="peer/showLabel absolute scale-0" type="checkbox" />
+                  <div className="h-2 bg-mustard rounded-t-md"></div>
+                  <span class="block bg-white max-h-14 overflow-hidden rounded-lg bg-emerald-100 px-4 py-0 text-cyan-800 shadow-lg transition-all duration-300 peer-checked/showLabel:max-h-52">
+                     <h3 class="flex h-14 cursor-pointer items-center font-bold gap-1">
+                        Nombre y Apellido
+                        <span className='text-red font-medium'>*</span>
+                     </h3>
+                     <div className="flex flex-col pb-6">
+                        <label className="block font-semibold">
+                           <input
+                              required
+                              type="text"
+                              name="fullName"
+                              placeholder="Ingresá tu nombre y apellido"
+                              value={formData.fullName}
+                              onChange={handleChange}
+                              className="border w-full px-3 py-2 mt-2 hover:outline-none focus:outline-none focus:ring-[#5D7551] focus:ring-1 rounded-md placeholder:italic placeholder:font-light"
+                           />
+                        </label>
+                     </div>
+                  </span>
+               </label>
+
+               <label>
+                  <input class="peer/showLabel absolute scale-0" type="checkbox" />
+                  <div className="h-2 bg-mustard rounded-t-md"></div>
+                  <span class="block bg-white max-h-14 overflow-hidden rounded-lg bg-emerald-100 px-4 py-0 text-cyan-800 shadow-lg transition-all duration-300 peer-checked/showLabel:max-h-52">
+                     <h3 class="flex h-14 cursor-pointer items-center font-bold gap-1">
+                        ¿Venís a nuestro casamiento?
+                        <span className='text-red font-medium'>*</span>
+                     </h3>
+                     <div className="flex flex-col pb-6">
+                        <label className="flex items-center gap-2 mt-3">
+                           <input
+                              required
+                              type="radio"
+                              name="assist"
+                              value={true}
+                              onChange={handleChange}
+                              className="cursor-pointer appearance-none border-2 border-mustard bg-cream w-4 h-4 rounded-full checked:bg-mustard hover:bg-mustard active:scale-90"
+                           />YENDO 🚀
+                        </label>
+                        <label className="flex items-center gap-2 mt-3">
+                           <input
+                              type="radio"
+                              name="assist"
+                              value={false}
+                              onChange={handleChange}
+                              className="cursor-pointer appearance-none border-2 border-mustard bg-cream w-4 h-4 rounded-full checked:bg-mustard hover:bg-mustard active:scale-90"
+                           />NO VOY A PODER ASISTIR 😔
+                        </label>
+                     </div>
+                  </span>
+               </label>
+
+               <label>
+                  <input class="peer/showLabel absolute scale-0" type="checkbox" />
+                  <div className="h-2 bg-mustard rounded-t-md"></div>
+                  <span class="block bg-white max-h-14 overflow-hidden rounded-lg bg-emerald-100 px-4 py-0 text-cyan-800 shadow-lg transition-all duration-300 peer-checked/showLabel:max-h-fit">
+                     <h3 class="flex h-14 cursor-pointer items-center font-bold gap-1">
+                        Bebidas
+                     </h3>
+                     <h3 className="font-medium mb-4">Tendremos una barra pequeña y por eso queremos saber qué preferís tomar (no vaya a ser que te deshidrates)</h3>
+                     <div className="flex flex-col pb-6">
+                        {Object.entries(formData.drinkPreferences).map(([key, value]) => (
+                           <label key={key} className="flex items-center gap-2 mt-3">
+                              <input
+                                 type={key === 'otro' ? 'text' : 'checkbox'}
+                                 name={key}
+                                 checked={key === 'otro' ? false : formData.drinkPreferences[key]}
+                                 value={key === 'otro' ? value : key}
+                                 onChange={key === 'otro' ? handleChange : () => handleCheckboxChange('drinkPreferences', event)}
+                                 placeholder={key === 'otro' ? 'Ingresá tu bebida favorita' : ''}
+                                 className={key === "otro" ?
+                                    "w-full cursor-pointer border-2 border-darkgray rounded-md px-3 py-2 hover:outline-none focus:outline-none focus:ring-[#5D7551] focus:ring-1 placeholder:italic placeholder:font-light " :
+                                    "cursor-pointer appearance-none border-2 border-mustard bg-cream w-4 h-4 rounded-full checked:bg-mustard hover:bg-mustard active:scale-90"
+                                 }
+                              />
+                              {key === 'otro' ? '' : key.toUpperCase().replace(/_/g, ' ')} {key === 'otro' && value}
+                           </label>
+                        ))}
+                     </div>
+                  </span>
+               </label>
+
+               <label>
+                  <input class="peer/showLabel absolute scale-0" type="checkbox" />
+                  <div className="h-2 bg-mustard rounded-t-md"></div>
+                  <span class="block bg-white max-h-14 overflow-hidden rounded-lg bg-emerald-100 px-4 py-0 text-cyan-800 shadow-lg transition-all duration-300 peer-checked/showLabel:max-h-96">
+                     <h3 class="flex h-14 cursor-pointer items-center font-bold gap-1">
+                        Comida
+                     </h3>
+                     <h3 className="font-medium mb-4">Seleccioná si tenés alguna restricción alimentaria. Haremos lo posible para sumar al menú alguna opción apta para vos.</h3>
+                     <div className="flex flex-col pb-6">
+                        {Object.entries(formData.foodPreferences).map(([key, value]) => (
+                           <label key={key} className="flex items-center gap-2 mt-3">
+                              <input
+                                 type={'checkbox'}
+                                 name={key}
+                                 checked={formData.foodPreferences[key]}
+                                 value={key}
+                                 onChange={() => handleCheckboxChange('foodPreferences', event)}
+                                 className='cursor-pointer appearance-none border-2 border-mustard bg-cream w-4 h-4 rounded-full checked:bg-mustard hover:bg-mustard active:scale-90'
+                              />
+                              {key.toUpperCase().replace(/_/g, ' ')} {value}
+                           </label>
+                        ))}
+                     </div>
+                  </span>
+               </label>
 
                {/* Assists section ---------------------- */}
-               <section className="modal-confirm-section">
+               {/* <section className="modal-confirm-section">
                   <div className="h-2 bg-mustard rounded-t-md"></div>
                   <div className="flex flex-col px-8 py-6">
-                     <h2 className="font-semibold mb-4">¿Venís a nuestro casamiento? <span className='text-red-500 font-medium'>*</span></h2>
+                     <h2 className="font-semibold mb-4">
+                        ¿Venís a nuestro casamiento? <span className='text-red font-medium'>*</span>
+                     </h2>
                      <label className="flex items-center gap-2 mt-3">
                         <input
                            required
@@ -134,10 +251,10 @@ const ModalConfirm = () => {
                         />NO VOY A PODER ASISTIR 😔
                      </label>
                   </div>
-               </section>
+               </section> */}
 
                {/* Drinks section ---------------------- */}
-               <section className="modal-confirm-section">
+               {/* <section className="modal-confirm-section">
                   <div className="h-2 bg-mustard rounded-t-md"></div>
                   <div className="flex flex-col px-8 py-6">
                      <h2 className="font-semibold mb-4">BEBIDAS</h2>
@@ -146,26 +263,26 @@ const ModalConfirm = () => {
                      {Object.entries(formData.drinkPreferences).map(([key, value]) => (
                         <label key={key} className="flex items-center gap-2 mt-3">
                            <input
-                              type={ key === 'otro' ? 'text' : 'checkbox' }
-                              name={ key }
-                              checked={ key === 'otro' ? false : formData.drinkPreferences[key] }
-                              value={ key === 'otro' ? value : key }
-                              onChange={ key === 'otro' ? handleChange : () => handleCheckboxChange('drinkPreferences', event) }
-                              placeholder={ key === 'otro' ? 'Ingresá tu bebida favorita' : '' }
-                              className={ key === "otro" ? 
-                                 "w-full cursor-pointer border-2 border-darkgray rounded-md px-3 py-2 hover:outline-none focus:outline-none focus:ring-[#5D7551] focus:ring-1 placeholder:italic placeholder:font-light " : 
+                              type={key === 'otro' ? 'text' : 'checkbox'}
+                              name={key}
+                              checked={key === 'otro' ? false : formData.drinkPreferences[key]}
+                              value={key === 'otro' ? value : key}
+                              onChange={key === 'otro' ? handleChange : () => handleCheckboxChange('drinkPreferences', event)}
+                              placeholder={key === 'otro' ? 'Ingresá tu bebida favorita' : ''}
+                              className={key === "otro" ?
+                                 "w-full cursor-pointer border-2 border-darkgray rounded-md px-3 py-2 hover:outline-none focus:outline-none focus:ring-[#5D7551] focus:ring-1 placeholder:italic placeholder:font-light " :
                                  "cursor-pointer appearance-none border-2 border-mustard bg-cream w-4 h-4 rounded-full checked:bg-mustard hover:bg-mustard active:scale-90"
                               }
                            />
-                           { key === 'otro' ? '' : key.toUpperCase().replace(/_/g, ' ')} {key === 'otro' && value }
+                           {key === 'otro' ? '' : key.toUpperCase().replace(/_/g, ' ')} {key === 'otro' && value}
                         </label>
                      ))}
 
                   </div>
-               </section>
+               </section> */}
 
                {/* Food section ---------------------- */}
-               <section className="modal-confirm-section">
+               {/* <section className="modal-confirm-section">
                   <div className="h-2 bg-mustard rounded-t-md"></div>
                   <div className="flex flex-col px-8 py-6">
                      <h2 className="font-semibold mb-4">COMIDAS</h2>
@@ -176,17 +293,17 @@ const ModalConfirm = () => {
                            <input
                               type={'checkbox'}
                               name={key}
-                              checked={ formData.foodPreferences[key] }
+                              checked={formData.foodPreferences[key]}
                               value={key}
-                              onChange={ () => handleCheckboxChange('foodPreferences', event) }
+                              onChange={() => handleCheckboxChange('foodPreferences', event)}
                               className='cursor-pointer appearance-none border-2 border-mustard bg-cream w-4 h-4 rounded-full checked:bg-mustard hover:bg-mustard active:scale-90'
                            />
-                           { key.toUpperCase().replace(/_/g, ' ')} {value}
+                           {key.toUpperCase().replace(/_/g, ' ')} {value}
                         </label>
                      ))}
 
                   </div>
-               </section>
+               </section> */}
 
                {/* Partners section ---------------------- */}
                <section className="modal-confirm-section">
