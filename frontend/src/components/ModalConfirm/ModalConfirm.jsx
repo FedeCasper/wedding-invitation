@@ -85,7 +85,7 @@ const ModalConfirm = () => {
 
             <section className="flex flex-col">
                <span className="text-2xl font-medium mb-4">¿Hay equipo?</span>
-               <span className="text-xl font-light ">Esperamos que puedas acompañarnos en este momento tan especial</span>
+               <span className="text-base font-light ">Esperamos que puedas acompañarnos en este momento tan especial</span>
             </section>
 
             <form className="mt-4 flex flex-col gap-4 text-left">
