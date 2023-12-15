@@ -1,0 +1,9 @@
+::-webkit-scrollbar {
+   display: none;
+}
+
+.modal-confirm-section{
+   border-radius: 10px;
+   background-color: white;
+   box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.162);
+}

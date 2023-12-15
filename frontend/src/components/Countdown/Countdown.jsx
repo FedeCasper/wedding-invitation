@@ -120,7 +120,8 @@ class FlipClock extends Component {
 
 		return (
 			<>
-				<h5  className='text-xl text-center font-medium w-64 text-white tracking-wide mb-4'>Faltan...</h5>
+				<h5  className='text-xl text-center font-medium w-64 text-white tracking-wide mb-4
+					lg:text-2xl lg:pb-8'>Faltan...</h5>
 				<div className={'flipClock'}>
 					<FlipUnitContainer unit={'months'} digit={months} shuffle={monthsShuffle} />
 					<FlipUnitContainer unit={'days'} digit={days} shuffle={daysShuffle} />
@@ -128,7 +129,8 @@ class FlipClock extends Component {
 					<FlipUnitContainer unit={'minutes'} digit={minutes} shuffle={minutesShuffle} />
 					<FlipUnitContainer unit={'seconds'} digit={seconds} shuffle={secondsShuffle} />
 				</div>
-				<div className='grid grid-rows-1 grid-cols-5 gap-1 text-xs w-full md:w-[764px] mt-3 text-center'>
+				<div className='grid grid-rows-1 grid-cols-5 gap-1 text-xs w-full md:w-[764px] mt-3 text-center
+					lg:text-base'>
 					<div>meses</div>
 					<div>días</div>
 					<div>hrs</div>

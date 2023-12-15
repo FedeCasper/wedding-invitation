@@ -20,9 +20,9 @@
   --mustard: #C49F5F;
 }
 
-#root{
+/* #root{
   width: 100vw;
-}
+} */
 
 @keyframes fadeIn {
   from {

@@ -35,7 +35,7 @@ const Layout = () => {
          {/* Modals --------------------------------------- */}
          {
             modal && (
-               <div className="fixed inset-0 mx-auto flex justify-center py-4 h-screen w-full backdrop-blur-md bg-white/30 z-50 ">
+               <div className="fixed inset-0 mx-auto flex justify-center py-4 h-screen w-full backdrop-blur-md bg-cream/60 z-50 ">
                   <CbuComponent />
                </div>
             )
@@ -43,7 +43,7 @@ const Layout = () => {
 
          {
             weatherModal && (
-               <div className="fixed inset-0 mx-auto flex justify-center py-4 h-screen w-full backdrop-blur-md bg-white/30 z-50 ">
+               <div className="fixed inset-0 mx-auto flex justify-center py-4 h-screen w-full backdrop-blur-md bg-cream/60 z-50 ">
                   <ModalWeather />
                </div>
             )
@@ -51,7 +51,7 @@ const Layout = () => {
 
          {
             confirmationModal && (
-               <div className="fixed inset-0 mx-auto flex justify-center py-4 h-screen over w-full backdrop-blur-sm bg-white/30 z-50 ">
+               <div className="fixed inset-0 mx-auto flex justify-center py-4 h-screen over w-full backdrop-blur-sm bg-cream/40 z-50 ">
                   <ModalConfirm />
                </div>
             )
@@ -67,8 +67,8 @@ const Layout = () => {
          </section>
 
          {/* 2° Countdown, maps and schelude section --------------------------------------- */}
-         <section className="relative flex flex-col items-center justify-center w-full bg-mustard h-fit px-8 z-30
-            lg:px-60 lg:pb-24">
+         <section className="relative flex flex-col items-center justify-center w-full bg-mustard h-fit px-8 pb-4 z-30
+            lg:px-60 lg:pb-20">
 
             <Countdown />
             <Button
@@ -128,7 +128,7 @@ const Layout = () => {
          </section>
 
          {/* 3° Music & clothes section --------------------------------------- */}
-         <section className="relative flex flex-col items-center w-full h-fit text-sm bg-green px-8 pt-20 pb-24 z-20
+         <section className="relative flex flex-col items-center w-full h-fit text-sm bg-green px-8 pt-20 pb-32 z-20
             lg:pb-40">
             <CurvedBottomSection bgColor={"bg-mustard"} />
 

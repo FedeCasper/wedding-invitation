@@ -1,6 +1,7 @@
 import React, { useState, useContext } from 'react';
 import axios from 'axios';
 import { ModalContext } from "../../context/ModalContext"
+import './ModalConfirm.css';
 
 const initialFormState = {
    fullName: '',
@@ -69,7 +70,9 @@ const ModalConfirm = () => {
 
 
    return (
-      <div className="relative flex flex-col justify-start w-11/12 rounded-md antialiased overflow-y-scroll bg-white text-gray-dark py-6 sm:py-12">
+      <div className="relative flex flex-col justify-start w-11/12 rounded-md antialiased overflow-y-scroll bg-cream text-gray-dark py-6 shadow-md
+         sm:py-12
+         lg:w-6/12">
 
          <img 
             onClick={ () => setConfirmationModal( false ) }
@@ -88,7 +91,7 @@ const ModalConfirm = () => {
             <form className="mt-4 flex flex-col gap-4 text-left">
 
                {/* Full name section ---------------------- */}
-               <section className="shadow-md rounded-b-md ">
+               <section className="modal-confirm-section">
                   <div className="h-2 bg-mustard rounded-t-md"></div>
                   <div className="flex flex-col px-8 py-6">
                      <h2 className="font-semibold mb-4">Nombre y Apellido <span className='text-red-500 font-medium'>*</span></h2>
@@ -107,34 +110,34 @@ const ModalConfirm = () => {
                </section>
 
                {/* Assists section ---------------------- */}
-               <section className="shadow-md rounded-b-md ">
+               <section className="modal-confirm-section">
                   <div className="h-2 bg-mustard rounded-t-md"></div>
                   <div className="flex flex-col px-8 py-6">
                      <h2 className="font-semibold mb-4">¿Venís a nuestro casamiento? <span className='text-red-500 font-medium'>*</span></h2>
-                     <label className="flex gap-2 mt-3">
+                     <label className="flex items-center gap-2 mt-3">
                         <input
                            required
                            type="radio"
                            name="assist"
                            value={true}
                            onChange={handleChange}
-                           className="cursor-pointer border h-5 px-3 py-5 hover:outline-none focus:outline-none focus:ring-[#5D7551] focus:ring-1 rounded-md "
+                           className="cursor-pointer appearance-none border-2 border-mustard bg-cream w-4 h-4 rounded-full checked:bg-mustard hover:bg-mustard active:scale-90"
                         />YENDO 🚀
                      </label>
-                     <label className="flex gap-2 mt-3">
+                     <label className="flex items-center gap-2 mt-3">
                         <input
                            type="radio"
                            name="assist"
                            value={false}
                            onChange={handleChange}
-                           className="cursor-pointer borderh-5 px-3 py-5 hover:outline-none focus:outline-none focus:ring-indigo-500 focus:ring-1 rounded-md"
+                           className="cursor-pointer appearance-none border-2 border-mustard bg-cream w-4 h-4 rounded-full checked:bg-mustard hover:bg-mustard active:scale-90"
                         />NO VOY A PODER ASISTIR 😔
                      </label>
                   </div>
                </section>
 
                {/* Drinks section ---------------------- */}
-               <section className="shadow-md rounded-b-md ">
+               <section className="modal-confirm-section">
                   <div className="h-2 bg-mustard rounded-t-md"></div>
                   <div className="flex flex-col px-8 py-6">
                      <h2 className="font-semibold mb-4">BEBIDAS</h2>
@@ -150,8 +153,8 @@ const ModalConfirm = () => {
                               onChange={ key === 'otro' ? handleChange : () => handleCheckboxChange('drinkPreferences', event) }
                               placeholder={ key === 'otro' ? 'Ingresá tu bebida favorita' : '' }
                               className={ key === "otro" ? 
-                                 "w-full cursor-pointer border border-darkgray rounded-md px-3 py-2 hover:outline-none focus:outline-none focus:ring-[#5D7551] focus:ring-1 placeholder:italic placeholder:font-light " : 
-                                 "cursor-pointer appearance-none border border-gray-700 w-4 h-4 rounded-full checked:bg-mustard checked:border-2 checked:border-[#F9FAFB]"
+                                 "w-full cursor-pointer border-2 border-darkgray rounded-md px-3 py-2 hover:outline-none focus:outline-none focus:ring-[#5D7551] focus:ring-1 placeholder:italic placeholder:font-light " : 
+                                 "cursor-pointer appearance-none border-2 border-mustard bg-cream w-4 h-4 rounded-full checked:bg-mustard hover:bg-mustard active:scale-90"
                               }
                            />
                            { key === 'otro' ? '' : key.toUpperCase().replace(/_/g, ' ')} {key === 'otro' && value }
@@ -162,7 +165,7 @@ const ModalConfirm = () => {
                </section>
 
                {/* Food section ---------------------- */}
-               <section className="shadow-md rounded-b-md ">
+               <section className="modal-confirm-section">
                   <div className="h-2 bg-mustard rounded-t-md"></div>
                   <div className="flex flex-col px-8 py-6">
                      <h2 className="font-semibold mb-4">COMIDAS</h2>
@@ -176,7 +179,7 @@ const ModalConfirm = () => {
                               checked={ formData.foodPreferences[key] }
                               value={key}
                               onChange={ () => handleCheckboxChange('foodPreferences', event) }
-                              className='cursor-pointer appearance-none border border-gray-700 w-4 h-4 rounded-full checked:bg-mustard checked:border-2 checked:border-[#F9FAFB]'
+                              className='cursor-pointer appearance-none border-2 border-mustard bg-cream w-4 h-4 rounded-full checked:bg-mustard hover:bg-mustard active:scale-90'
                            />
                            { key.toUpperCase().replace(/_/g, ' ')} {value}
                         </label>
@@ -186,33 +189,33 @@ const ModalConfirm = () => {
                </section>
 
                {/* Partners section ---------------------- */}
-               <section className="shadow-md rounded-b-md ">
+               <section className="modal-confirm-section">
                   <div className="h-2 bg-mustard rounded-t-md"></div>
                   <div className="flex flex-col px-8 py-6">
                      <h2 className="font-semibold mb-4">ACOMPAÑANTES <span className='text-red-500 font-medium'>*</span></h2>
-                     <label className="flex gap-2 mt-3">
+                     <label className="flex items-center gap-2 mt-3">
                         <input
                            type="radio"
                            name='partner'
                            value={false}
                            onChange={handleChange}
-                           className="cursor-pointer border h-5 px-3 py-5 hover:outline-none focus:outline-none focus:ring-indigo-500 focus:ring-1 rounded-md"
+                           className="cursor-pointer appearance-none border-2 border-mustard bg-cream w-4 h-4 rounded-full checked:bg-mustard hover:bg-mustard active:scale-90"
                         />VOY SOLO 😏
                      </label>
-                     <label className="flex gap-2 mt-3">
+                     <label className="flex items-center gap-2 mt-3">
                         <input
                            type="radio"
                            name='partner'
                            value={true}
                            onChange={handleCheckboxChange}
-                           className="cursor-pointer border h-5 px-3 py-5 hover:outline-none focus:outline-none checked:bg-mustard focus:ring-indigo-500 focus:ring-1 rounded-md"
+                           className="cursor-pointer appearance-none border-2 border-mustard bg-cream w-4 h-4 rounded-full checked:bg-mustard hover:bg-mustard active:scale-90"
                         />VOY CON ALGUIEN 😉
                      </label>
                   </div>
                </section>
 
                {/* Partner's name section ---------------------- */}
-               <section className="shadow-md rounded-b-md ">
+               <section className="modal-confirm-section">
                   <div className="h-2 bg-mustard rounded-t-md"></div>
                   <div className="flex flex-col px-8 py-6">
                      <h2 className="font-semibold mb-4">¿CON QUIÉN VENÍS? <span className='text-red-500 font-medium'>*</span></h2>
@@ -231,33 +234,33 @@ const ModalConfirm = () => {
                </section>
 
                {/* Church assists section ---------------------- */}
-               <section className="shadow-md rounded-b-md ">
+               <section className="modal-confirm-section">
                   <div className="h-2 bg-mustard rounded-t-md"></div>
                   <div className="flex flex-col px-8 py-6">
                      <h2 className="font-semibold mb-4">¿Asistirás a la iglesia o directo al salón? <span className='text-red-500 font-medium'>*</span></h2>
-                     <label className="flex mt-3 gap-2">
+                     <label className="flex items-center mt-3 gap-2">
                         <input
                            type="radio"
                            name='assistChurch'
                            value={true}
                            onChange={handleChange}
-                           className="cursor-pointer borderh-5 px-3 py-5 hover:outline-none focus:outline-none focus:ring-indigo-500 focus:ring-1 rounded-md"
+                           className="cursor-pointer appearance-none border-2 border-mustard bg-cream w-4 h-4 rounded-full checked:bg-mustard hover:bg-mustard active:scale-90"
                         />Sí, 17h estoy en la iglesia 💒
                      </label>
-                     <label className="flex mt-3 gap-2">
+                     <label className="flex items-center mt-3 gap-2">
                         <input
                            type="radio"
                            name='assistChurch'
                            value={false}
                            onChange={handleChange}
-                           className="cursor-pointer borderh-5 px-3 py-5 hover:outline-none focus:outline-none focus:ring-indigo-500 focus:ring-1 rounded-md"
+                           className="cursor-pointer appearance-none border-2 border-mustard bg-cream w-4 h-4 rounded-full checked:bg-mustard hover:bg-mustard active:scale-90ss"
                         />No, directo al salón a las 19h 🙌🏼
                      </label>
                   </div>
                </section>
 
                {/* Contact section ---------------------- */}
-               <section className="shadow-md rounded-b-md ">
+               <section className="modal-confirm-section">
                   <div className="h-2 bg-mustard rounded-t-md"></div>
                   <div className="flex flex-col px-8 py-6">
                      <h2 className="font-semibold mb-4">CONTACTO <span className='text-red-500 font-medium'>*</span></h2>
@@ -276,7 +279,7 @@ const ModalConfirm = () => {
                </section>
 
                {/* Message section ---------------------- */}
-               <section className="shadow-md rounded-b-md ">
+               <section className="modal-confirm-section">
                   <div className="h-2 bg-mustard rounded-t-md"></div>
                   <div className="flex flex-col px-8 py-6">
                      <h2 className="font-semibold mb-4">MENSAJE PARA LOS NOVIOS <span className='text-red-500 font-medium'>*</span></h2>
