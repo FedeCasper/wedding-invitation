@@ -9,7 +9,7 @@ const ImageComponent = ({ src, alt, margin }) => {
                <li className="ball"></li>
                <li className="ball"></li>
             </div>
-            <img src={src} alt={alt} className={`relative mb-6 h-32 ${margin === 'disabled' ? 'mt-1' : 'mt-16'} lg:mt-16`}/>
+            <img src={src} alt={alt} className={`relative mb-8 h-32 ${margin === 'disabled' ? 'mt-1' : 'mt-16'} lg:mt-16`}/>
             <div className=" loader bottom-12 -left-4 rotate-45 z-0">
                <li className="ball"></li>
                <li className="ball"></li>

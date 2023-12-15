@@ -14,8 +14,10 @@ import { useContext } from "react"
 import { ModalContext } from "../context/ModalContext"
 import CbuComponent from "../components/CbuComponent/CbuComponent"
 import ModalConfirm from "../components/ModalConfirm/ModalConfirm"
-import axios from "axios"
 import ModalWeather from "../components/ModalWeather/ModalWeather"
+import SectionContainer from "../components/SectionContainer/SectionContainer"
+import SectionContainerElement from "../components/SectionContainerElement/SectionContainerElement"
+
 
 const Layout = () => {
 
@@ -77,17 +79,16 @@ const Layout = () => {
             />
 
             {/* Church and party container ---------- */}
-            <div className=" w-full 
-               lg:w-[764px] lg:flex lg:justify-between lg:gap-6">
+            <SectionContainer>
 
                {/* Church section ---------- */}
-               <div className="relative flex flex-col items-center">
+               <SectionContainerElement>
                   <ImageComponent
                      src={"/assets/images/church-icon.png"}
                      alt={"church icon"}
                   />
                   <InfoSection
-                     header={"Ceremonia | 10:00 am"}
+                     header={"Ceremonia | 17:00 pm"}
                      subtitle={"Nuestra Señora del Perpetuo Socorro"}
                      lineColorCode={"border-[#5F7752]"}
                   >
@@ -99,16 +100,16 @@ const Layout = () => {
                      colorCode={"bg-green"}
                      url={'church'}
                   />
-               </div>
+               </SectionContainerElement>
 
                {/* Party section ---------- */}
-               <div className="relative flex flex-col items-center">
+               <SectionContainerElement>
                   <ImageComponent
                      src={"/assets/images/music-icon.png"}
-                     alt={"music icon"}
+                     alt={"Icono música"}
                   />
                   <InfoSection
-                     header={"Fiesta | 13:00 pm"}
+                     header={"Fiesta | 19:00 pm"}
                      subtitle={"Finca AMproS"}
                      lineColorCode={"border-[#5F7752]"}
                   >
@@ -120,9 +121,9 @@ const Layout = () => {
                      colorCode={"bg-green"}
                      url={'salon'}
                   />
-               </div>
-            </div>
+               </SectionContainerElement>
 
+            </SectionContainer>
 
          </section>
 
@@ -132,44 +133,42 @@ const Layout = () => {
             <CurvedBottomSection bgColor={"bg-mustard"} />
 
             {/* Dress and music container ---------- */}
-            <div className=" w-full 
-               lg:w-[764px] lg:flex lg:justify-between lg:gap-6">
+            <SectionContainer>
 
                {/* Dress section ---------- */}
-               <div className="relative flex flex-col items-center justify-between">
-               <ImageComponent
-                     src={"/assets/images/dress-icon.png"}
-                     alt={"Icono vestimenta"}
-                     margin={"disabled"}
-                  />
+               <SectionContainerElement>
+                  <ImageComponent
+                        src={"/assets/images/dress-icon.png"}
+                        alt={"Icono vestimenta"}
+                        margin={"disabled"}
+                     />
                   <div className="flex flex-col items-center">
                      <InfoSection
-                        header={"¿Qué me pongo?"}
-                        subtitle={"Dresscode: Vos metele facha y comodidad porque, oxidados o no, vamos a bailar"}
-                        lineColorCode={"border-mustard"}
+                        header={ '¿Qué me pongo?' }
+                        subtitle={ 'Dresscode: Vos metele facha y comodidad porque, oxidados o no, vamos a bailar.' }
+                        lineColorCode={ 'border-mustard' }
                      >
                      </InfoSection>
                      <Button
-                        buttonText={"Mirá el clima"}
-                        widthClass={"w-64"}
-                        colorCode={"bg-mustard"}
+                        buttonText={ 'Mirá el clima' }
+                        widthClass={ 'w-64' }
+                        colorCode={ 'bg-mustard' }
                         action={ 'openWeatherModal' }
                      />
                   </div>
-               </div>
+               </SectionContainerElement>
 
                {/* Music section ---------- */}
-               <div className="relative flex flex-col items-center">
+               <SectionContainerElement>
                   <ImageComponent
                      src={"/assets/images/dance-icon.png"}
                      alt={"Icono baile"}
                   />
                   <InfoSection
-                     header={"¿Temones que no pueden faltar?"}
+                     header={"¿Temones Imprescindible?"}
                      lineColorCode={"border-mustard"}
                   >
-                     Ayudanos a armar la lista y no dejar, afuera ningún tema de esos que
-                     te hacen darlo todo.
+                     Ayudanos a armar la lista y no dejar afuera ningún tema de esos que te hacen darlo todo.
                   </InfoSection>
                   <Button
                      buttonText={"Añadir tu tema"}
@@ -177,44 +176,47 @@ const Layout = () => {
                      colorCode={"bg-mustard"}
                      url={'spotify'}
                   />
-               </div>
-            </div>
+               </SectionContainerElement>
+
+            </SectionContainer>
 
             <CurvedTopSection bgColor={"bg-cream"} />
          </section>
 
          {/* 4° Confirmation section --------------------------------------- */}
-         <section className="relative flex flex-col items-center h-fit w-full text-sm bg-cream px-8 z-20">
+         <section className="relative flex flex-col items-center h-fit w-full text-sm bg-cream px-8 z-20
+            sm:pb-24">
 
             {/* Dress and music container ---------- */}
-            <div className=" w-full 
-               lg:w-[764px] lg:flex lg:justify-between lg:gap-6">
+            <SectionContainer>
 
                {/* Confirmation section ---------- */}
-               <div className="relative flex flex-col items-center">
+               <SectionContainerElement>
                   <ImageComponent
                      src={"/assets/images/confirm-icon.png"}
                      alt={"Icono confimación"}
                      margin={"disabled"}
                   />
                   <InfoSection
-                     header={"¿Hay equipo?"}
-                     lineColorCode={"border-mustard"}
-                     textColorCode={"text-gray-dark"}
+                     header={ '¿Hay equipo?' }
+                     lineColorCode={ 'border-mustard' }
+                     textColorCode={ 'text-gray-dark' }
                   >
-                     Esperamos que puedas acompañarnos en este momento tan especial PD: Si
-                     no confirmás nos dolerá el bolsillo (y el alma).
+                     Esperamos que puedas acompañarnos<br></br>
+                     en este momento tan especial.<br></br>
+                     PD: Si no confirmás nos dolerá el bolsillo<br></br>
+                     (y el alma).
                   </InfoSection>
                   <Button
-                     buttonText={"Confirmar asistencia"}
-                     widthClass={"w-64"}
-                     colorCode={"bg-green"}
+                     buttonText={ 'Confirmar asistencia' }
+                     widthClass={ 'w-64' }
+                     colorCode={ 'bg-green' }
                      action={ 'openConfirmationModal' }
                   />
-               </div>
+               </SectionContainerElement>
 
                {/* Present section ---------- */}
-               <div className="relative flex flex-col items-center">
+               <SectionContainerElement>
                   <ImageComponent
                      src={"/assets/images/plane-icon.png"}
                      alt={"plane icon"}
@@ -224,8 +226,10 @@ const Layout = () => {
                      lineColorCode={"border-mustard"}
                      textColorCode={"text-gray-dark"}
                   >
-                     ¿El mejor regalo? tu presencia, pero si querés ayudarnos a cumplir un
-                     sueño hacé click en el botón.
+                     ¿El mejor regalo?<br></br>
+                     tu presencia, pero si querés ayudarnos<br></br>
+                     a cumplir un sueño hacé click<br></br>
+                     en el botón.
                   </InfoSection>
                   <Button
                      buttonText={ 'Ver información' }
@@ -234,17 +238,16 @@ const Layout = () => {
                      url={false}
                      action={ 'openInfoModal' }
                   />
-               </div>
-            </div>
+               </SectionContainerElement>
+
+            </SectionContainer>
 
          </section>
 
          {/* 5° Carousel section --------------------------------------- */}
          <section className="relative flex justify-center items-end bg-cream w-full z-20
-         lg:pt-12">
-            <div className=" bg-cream h-[180px] w-12 shadow-[22px_5px_17px_-10px_rgba(0,0,0,0.3)] z-50"></div>
+         lg:pt-12 sm:hidden">
             <Carousel />
-            <div className=" bg-cream h-[180px] w-12 shadow-[-22px_5px_17px_-10px_rgba(0,0,0,0.3)] z-50"></div>
          </section>
 
 
