@@ -106,7 +106,7 @@ const ModalConfirm = () => {
 
                {/* Full name section ---------------------- */}
                <label>
-                  <input className="peer/showLabel absolute scale-0" type="checkbox" name='fullname' />
+                  <input className="peer/showLabel absolute scale-0 unselectable" type="checkbox" name='fullname' />
                   <div className="section-line"></div>
                   <span className="block bg-white max-h-14 overflow-hidden rounded-lg px-4 py-0 shadow-lg transition-all duration-300 peer-checked/showLabel:max-h-52">
                      <div className="section-header">
@@ -134,7 +134,7 @@ const ModalConfirm = () => {
 
                {/* Assists section ---------------------- */}
                <label>
-                  <input className="peer/showLabel absolute scale-0" type="checkbox" name='assist' />
+                  <input className="peer/showLabel absolute scale-0 unselectable" type="checkbox" name='assist' />
                   <div className="section-line"></div>
                   <span className="block bg-white max-h-14 overflow-hidden rounded-lg  px-4 py-0  shadow-lg transition-all duration-300 peer-checked/showLabel:max-h-52">
                   <div className="section-header">
