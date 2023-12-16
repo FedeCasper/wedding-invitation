@@ -35,10 +35,12 @@ const ModalConfirm = () => {
    const [formData, setFormData] = useState(initialFormState);
    const [ arrowBehavior, setArrowBehavior ] = useState(false);
 
+   console.log(formData);
+
    const handleChange = (event) => {
       console.log([event.target.name], [event.target.value]);
       const { name, type, value, checked } = event.target;
-      setFormData(prevData => ({
+      setFormData( prevData => ({
          ...prevData,
          [name]: type === 'checkbox' ? checked : value,
       }));
@@ -51,7 +53,9 @@ const ModalConfirm = () => {
          ...prevData,
          [group]: {
             ...prevData[group],
-            [name]: name === 'other' ? (checked ? '' : prevData[group].other) : checked,
+            [name]: name === 'other' ? 
+               (checked ? '' : prevData[group].other) :
+               checked,
          },
       }));
    };
@@ -61,7 +65,6 @@ const ModalConfirm = () => {
             name: e.target.name,
             checked: e.target.checked
          })
-         console.log(arrowBehavior);
    }
 
    const handleSubmit = (e) => {
@@ -85,7 +88,7 @@ const ModalConfirm = () => {
          lg:w-6/12">
 
          <img
-            onClick={() => setConfirmationModal(false)}
+            onClick={ () => setConfirmationModal(false) }
             src="./assets/images/btn-close.png"
             alt=" Boton cerrar "
             className="absolute top-5 right-5 h-10 cursor-pointer shadow-md z-50
@@ -104,24 +107,25 @@ const ModalConfirm = () => {
                {/* Full name section ---------------------- */}
                <label>
                   <input className="peer/showLabel absolute scale-0" type="checkbox" name='fullname' />
-                  <div className="h-2 bg-mustard rounded-t-md"></div>
-                  <span className="block bg-white max-h-14 overflow-hidden rounded-lg bg-emerald-100 px-4 py-0 text-cyan-800 shadow-lg transition-all duration-300 peer-checked/showLabel:max-h-52">
-                     <h3 className="flex h-14 cursor-pointer items-center font-bold gap-1">
-                        Nombre y Apellido
-                        {console.log(handleArrowBehavior)}
-                        <span className='text-red font-medium'>*</span>
-                        <KeyboardArrowDownIcon className={ `text-gray-dark ${ arrowBehavior.checked && arrowBehavior.name === 'fullname' && 'rotate-180' }` } fontSize='medium' /> 
-                     </h3>
-                     <div className="flex flex-col pb-6">
-                        <label className="block font-semibold">
+                  <div className="section-line"></div>
+                  <span className="block bg-white max-h-14 overflow-hidden rounded-lg px-4 py-0 shadow-lg transition-all duration-300 peer-checked/showLabel:max-h-52">
+                     <div className="section-header">
+                        <h3>
+                           Nombre y Apellido
+                           <span className='section-required'>*</span>
+                        </h3>
+                        <KeyboardArrowDownIcon className={ `text-gray-dark ${ (arrowBehavior.checked && arrowBehavior.name === 'fullname') && 'rotate-180' }` } fontSize='medium' /> 
+                     </div>
+                     <div className="section-label-text">
+                        <label>
                            <input
                               required
                               type="text"
                               name="fullName"
                               placeholder="Ingresá tu nombre y apellido"
-                              value={formData.fullName}
-                              onChange={handleChange}
-                              className="border w-full px-3 py-2 mt-2 hover:outline-none focus:outline-none focus:ring-[#5D7551] focus:ring-1 rounded-md placeholder:italic placeholder:font-light"
+                              value={ formData.fullName }
+                              onChange={ handleChange }
+                              className="section-input-text"
                            />
                         </label>
                      </div>
@@ -131,13 +135,15 @@ const ModalConfirm = () => {
                {/* Assists section ---------------------- */}
                <label>
                   <input className="peer/showLabel absolute scale-0" type="checkbox" name='assist' />
-                  <div className="h-2 bg-mustard rounded-t-md"></div>
-                  <span className="block bg-white max-h-14 overflow-hidden rounded-lg bg-emerald-100 px-4 py-0 text-cyan-800 shadow-lg transition-all duration-300 peer-checked/showLabel:max-h-52">
-                     <h3 className="flex h-14 cursor-pointer items-center font-bold gap-1">
+                  <div className="section-line"></div>
+                  <span className="block bg-white max-h-14 overflow-hidden rounded-lg  px-4 py-0  shadow-lg transition-all duration-300 peer-checked/showLabel:max-h-52">
+                  <div className="section-header">
+                     <h3>
                         ¿Venís a nuestro casamiento?
-                        <span className='text-red font-medium'>*</span>
-                        <KeyboardArrowDownIcon className={ `text-gray-dark ${ arrowBehavior.checked && arrowBehavior.name === 'assist' && 'rotate-180' }` } fontSize='medium' /> 
+                        <span className='section-required'>*</span>
                      </h3>
+                     <KeyboardArrowDownIcon className={ `text-gray-dark ${ (arrowBehavior.checked && arrowBehavior.name === 'assist') && 'rotate-180' }` } fontSize='medium' /> 
+                  </div>
                      <div className="flex flex-col pb-6">
                         <label className="flex items-center gap-2 mt-3">
                            <input
@@ -146,7 +152,7 @@ const ModalConfirm = () => {
                               name="assist"
                               value={true}
                               onChange={handleChange}
-                              className="cursor-pointer appearance-none border-2 border-mustard bg-cream w-4 h-4 rounded-full checked:bg-mustard hover:bg-mustard active:scale-90"
+                              className="section-input-radio"
                            />YENDO 🚀
                         </label>
                         <label className="flex items-center gap-2 mt-3">
@@ -155,7 +161,7 @@ const ModalConfirm = () => {
                               name="assist"
                               value={false}
                               onChange={handleChange}
-                              className="cursor-pointer appearance-none border-2 border-mustard bg-cream w-4 h-4 rounded-full checked:bg-mustard hover:bg-mustard active:scale-90"
+                              className="section-input-radio"
                            />NO VOY A PODER ASISTIR 😔
                         </label>
                      </div>
@@ -165,12 +171,15 @@ const ModalConfirm = () => {
                {/* Drinks section ---------------------- */}
                <label>
                   <input className="peer/showLabel absolute scale-0" type="checkbox" name='drinks' />
-                  <div className="h-2 bg-mustard rounded-t-md"></div>
-                  <span className="block bg-white max-h-14 overflow-hidden rounded-lg bg-emerald-100 px-4 py-0 text-cyan-800 shadow-lg transition-all duration-300 peer-checked/showLabel:max-h-fit">
-                     <h3 className="flex h-14 cursor-pointer items-center font-bold gap-1">
-                        Bebidas
-                        <KeyboardArrowDownIcon className={ `text-gray-dark ${ arrowBehavior.checked && arrowBehavior.name === 'drinks' && 'rotate-180' }` } fontSize='medium' />
-                     </h3>
+                  <div className="section-line"></div>
+                  <span className="block bg-white max-h-14 overflow-hidden rounded-lg  px-4 py-0  shadow-lg transition-all duration-300 peer-checked/showLabel:max-h-fit">
+                     <div className="section-header">
+                        <h3>
+                           ¿Qué bebidas preferís?
+                           <span className='section-required'>*</span>
+                        </h3>
+                        <KeyboardArrowDownIcon className={ `text-gray-dark ${ (arrowBehavior.checked && arrowBehavior.name === 'drinks') && 'rotate-180' }` } fontSize='medium' /> 
+                     </div>
                      <h3 className="font-medium mb-4">Tendremos una barra pequeña y por eso queremos saber qué preferís tomar (no vaya a ser que te deshidrates)</h3>
                      <div className="flex flex-col pb-6">
                         {Object.entries(formData.drinkPreferences).map(([key, value]) => (
@@ -183,8 +192,8 @@ const ModalConfirm = () => {
                                  onChange={key === 'otro' ? handleChange : () => handleCheckboxChange('drinkPreferences', event)}
                                  placeholder={key === 'otro' ? 'Ingresá tu bebida favorita' : ''}
                                  className={key === "otro" ?
-                                    "w-full cursor-pointer border-2 border-darkgray rounded-md px-3 py-2 hover:outline-none focus:outline-none focus:ring-[#5D7551] focus:ring-1 placeholder:italic placeholder:font-light " :
-                                    "cursor-pointer appearance-none border-2 border-mustard bg-cream w-4 h-4 rounded-full checked:bg-mustard hover:bg-mustard active:scale-90"
+                                    "section-input-text" :
+                                    "section-input-radio"
                                  }
                               />
                               {key === 'otro' ? '' : key.toUpperCase().replace(/_/g, ' ')} {key === 'otro' && value}
@@ -197,12 +206,15 @@ const ModalConfirm = () => {
                {/* Food section ---------------------- */}
                <label>
                   <input className="peer/showLabel absolute scale-0" type="checkbox" name='food' />
-                  <div className="h-2 bg-mustard rounded-t-md"></div>
-                  <span className="block bg-white max-h-14 overflow-hidden rounded-lg bg-emerald-100 px-4 py-0 text-cyan-800 shadow-lg transition-all duration-300 peer-checked/showLabel:max-h-96">
-                     <h3 className="flex h-14 cursor-pointer items-center font-bold gap-1">
-                        Comida
-                        <KeyboardArrowDownIcon className={ `text-gray-dark ${ arrowBehavior.checked && arrowBehavior.name === 'food' && 'rotate-180' }` } fontSize='medium' />
-                     </h3>
+                  <div className="section-line"></div>
+                  <span className="block bg-white max-h-14 overflow-hidden rounded-lg  px-4 py-0  shadow-lg transition-all duration-300 peer-checked/showLabel:max-h-96">
+                     <div className="section-header">
+                        <h3>
+                           ¿Tenés preferencia de menú?
+                           <span className='section-required'>*</span>
+                        </h3>
+                        <KeyboardArrowDownIcon className={ `text-gray-dark ${ (arrowBehavior.checked && arrowBehavior.name === 'food') && 'rotate-180' }` } fontSize='medium' /> 
+                     </div>
                      <h3 className="font-medium mb-4">Seleccioná si tenés alguna restricción alimentaria. Haremos lo posible para sumar al menú alguna opción apta para vos.</h3>
                      <div className="flex flex-col pb-6">
                         {Object.entries(formData.foodPreferences).map(([key, value]) => (
@@ -213,7 +225,7 @@ const ModalConfirm = () => {
                                  checked={formData.foodPreferences[key]}
                                  value={key}
                                  onChange={() => handleCheckboxChange('foodPreferences', event)}
-                                 className='cursor-pointer appearance-none border-2 border-mustard bg-cream w-4 h-4 rounded-full checked:bg-mustard hover:bg-mustard active:scale-90'
+                                 className='section-input-radio'
                               />
                               {key.toUpperCase().replace(/_/g, ' ')} {value}
                            </label>
@@ -225,13 +237,15 @@ const ModalConfirm = () => {
                {/* Partners section ---------------------- */}
                <label>
                   <input className="peer/showLabel absolute scale-0" type="checkbox" name='partner' />
-                  <div className="h-2 bg-mustard rounded-t-md"></div>
-                  <span className="block bg-white max-h-14 overflow-hidden rounded-lg bg-emerald-100 px-4 py-0 text-cyan-800 shadow-lg transition-all duration-300 peer-checked/showLabel:max-h-52">
-                     <h3 className="flex h-14 cursor-pointer items-center font-bold gap-1">
-                        Acompañantes
-                        <span className='text-red font-medium'>*</span>
-                        <KeyboardArrowDownIcon className={ `text-gray-dark ${ arrowBehavior.checked && arrowBehavior.name === 'partner' && 'rotate-180' }` } fontSize='medium' />
-                     </h3>
+                  <div className="section-line"></div>
+                  <span className="block bg-white max-h-14 overflow-hidden rounded-lg  px-4 py-0  shadow-lg transition-all duration-300 peer-checked/showLabel:max-h-52">
+                     <div className="section-header">
+                        <h3>
+                           ¿Venís en pareja?
+                           <span className='section-required'>*</span>
+                        </h3>
+                        <KeyboardArrowDownIcon className={ `text-gray-dark ${ (arrowBehavior.checked && arrowBehavior.name === 'partner') && 'rotate-180' }` } fontSize='medium' /> 
+                     </div>
                      <div className="flex flex-col pb-6">
                      <label className="flex items-center gap-2 mt-3">
                         <input
@@ -239,7 +253,7 @@ const ModalConfirm = () => {
                            name='partner'
                            value={false}
                            onChange={handleChange}
-                           className="cursor-pointer appearance-none border-2 border-mustard bg-cream w-4 h-4 rounded-full checked:bg-mustard hover:bg-mustard active:scale-90"
+                           className="section-input-radio"
                         />VOY SOLO 😏
                      </label>
                      <label className="flex items-center gap-2 mt-3">
@@ -247,8 +261,8 @@ const ModalConfirm = () => {
                            type="radio"
                            name='partner'
                            value={true}
-                           onChange={handleCheckboxChange}
-                           className="cursor-pointer appearance-none border-2 border-mustard bg-cream w-4 h-4 rounded-full checked:bg-mustard hover:bg-mustard active:scale-90"
+                           onChange={handleChange}
+                           className="section-input-radio"
                         />VOY CON ALGUIEN 😉
                      </label>
                      </div>
@@ -258,23 +272,25 @@ const ModalConfirm = () => {
                {/* Partners name section ---------------------- */}
                <label>
                   <input className="peer/showLabel absolute scale-0" type="checkbox" name='partners_name' />
-                  <div className="h-2 bg-mustard rounded-t-md"></div>
-                  <span className="block bg-white max-h-14 overflow-hidden rounded-lg bg-emerald-100 px-4 py-0 text-cyan-800 shadow-lg transition-all duration-300 peer-checked/showLabel:max-h-52">
-                     <h3 className="flex h-14 cursor-pointer items-center font-bold gap-1">
-                        ¿Con quién venís?
-                        <span className='text-red font-medium'>*</span>
-                        <KeyboardArrowDownIcon className={ `text-gray-dark ${ arrowBehavior.checked && arrowBehavior.name === 'partners_name' && 'rotate-180' }` } fontSize='medium' />
-                     </h3>
+                  <div className="section-line"></div>
+                  <span className="block bg-white max-h-14 overflow-hidden rounded-lg  px-4 py-0  shadow-lg transition-all duration-300 peer-checked/showLabel:max-h-52">
+                     <div className="section-header">
+                        <h3>
+                           ¿Cómo se llama tu pareja?
+                           <span className='section-required'>*</span>
+                        </h3>
+                        <KeyboardArrowDownIcon className={ `text-gray-dark ${ (arrowBehavior.checked && arrowBehavior.name === 'partners_name') && 'rotate-180' }` } fontSize='medium' /> 
+                     </div>
                      <h3 className="font-medium mb-4">Necesitamos saber el Nombre y Apellido de esa persona para poder agregarla a la lista.</h3>
-                     <div className="flex flex-col pb-6">
-                        <label className="block font-semibold">
+                     <div className="section-label-text">
+                        <label>
                            <input
                               type="text"
                               name="partnersName"
-                              placeholder="Ingresá el nombre de tu acompañante"
+                              placeholder="Nombre y apellido de tu acompañante"
                               value={formData.partnersName}
                               onChange={handleChange}
-                              className="border w-full h-5 px-3 py-5 mt-2 hover:outline-none focus:outline-none focus:ring-[#5D7551] focus:ring-1 rounded-md placeholder:italic placeholder:font-light"
+                              className="section-input-text"
                            />
                         </label>
                      </div>
@@ -284,13 +300,15 @@ const ModalConfirm = () => {
                {/* Assist church section ---------------------- */}
                <label>
                   <input className="peer/showLabel absolute scale-0" type="checkbox" name='assist_church' />
-                  <div className="h-2 bg-mustard rounded-t-md"></div>
-                  <span className="block bg-white max-h-14 overflow-hidden rounded-lg bg-emerald-100 px-4 py-0 text-cyan-800 shadow-lg transition-all duration-300 peer-checked/showLabel:max-h-52">
-                     <h3 className="flex h-14 cursor-pointer items-center font-bold gap-1">
-                        ¿Asistís a la iglesia?
-                        <span className='text-red font-medium'>*</span>
-                        <KeyboardArrowDownIcon className={ `text-gray-dark ${ arrowBehavior.checked && arrowBehavior.name === 'assist_church' && 'rotate-180' }` } fontSize='medium' />
-                     </h3>
+                  <div className="section-line"></div>
+                  <span className="block bg-white max-h-14 overflow-hidden rounded-lg  px-4 py-0  shadow-lg transition-all duration-300 peer-checked/showLabel:max-h-52">
+                     <div className="section-header">
+                        <h3>
+                           ¿Asistís a la iglesia?
+                           <span className='section-required'>*</span>
+                        </h3>
+                        <KeyboardArrowDownIcon className={ `text-gray-dark ${ (arrowBehavior.checked && arrowBehavior.name === 'assist_church') && 'rotate-180' }` } fontSize='medium' /> 
+                     </div>
                      <div className="flex flex-col pb-6">
                         <label className="flex items-center mt-3 gap-2">
                            <input
@@ -298,7 +316,7 @@ const ModalConfirm = () => {
                               name='assistChurch'
                               value={true}
                               onChange={handleChange}
-                              className="cursor-pointer appearance-none border-2 border-mustard bg-cream w-4 h-4 rounded-full checked:bg-mustard hover:bg-mustard active:scale-90"
+                              className="section-input-radio"
                            />Sí, 17hs estoy en la iglesia 💒
                         </label>
                         <label className="flex items-center mt-3 gap-2">
@@ -307,7 +325,7 @@ const ModalConfirm = () => {
                               name='assistChurch'
                               value={false}
                               onChange={handleChange}
-                              className="cursor-pointer appearance-none border-2 border-mustard bg-cream w-4 h-4 rounded-full checked:bg-mustard hover:bg-mustard active:scale-90ss"
+                              className="section-input-radio"
                            />No, directo al salón a las 19h 🙌🏼
                         </label>
                      </div>
@@ -317,23 +335,25 @@ const ModalConfirm = () => {
                {/* Contact section ---------------------- */}
                <label>
                   <input className="peer/showLabel absolute scale-0" type="checkbox" name='contact' />
-                  <div className="h-2 bg-mustard rounded-t-md"></div>
-                  <span className="block bg-white max-h-14 overflow-hidden rounded-lg bg-emerald-100 px-4 py-0 text-cyan-800 shadow-lg transition-all duration-300 peer-checked/showLabel:max-h-64">
-                     <h3 className="flex h-14 cursor-pointer items-center font-bold gap-1">
-                        Contacto
-                        <span className='text-red font-medium'>*</span>
-                        <KeyboardArrowDownIcon className={ `text-gray-dark ${ arrowBehavior.checked && arrowBehavior.name === 'contact' && 'rotate-180' }` } fontSize='medium' />
-                     </h3>
+                  <div className="section-line"></div>
+                  <span className="block bg-white max-h-14 overflow-hidden rounded-lg  px-4 py-0  shadow-lg transition-all duration-300 peer-checked/showLabel:max-h-64">
+                     <div className="section-header">
+                        <h3>
+                           Contacto
+                           <span className='section-required'>*</span>
+                        </h3>
+                        <KeyboardArrowDownIcon className={ `text-gray-dark ${ (arrowBehavior.checked && arrowBehavior.name === 'contact') && 'rotate-180' }` } fontSize='medium' /> 
+                     </div>
                      <h3 className="font-medium mb-4">Dejanos un número de Whatsapp o mail donde podamos encontrarte si necesitamos consultarte o informarte algo del evento.</h3>
-                     <div className="flex flex-col pb-6">
-                        <label className="block font-semibold">
+                     <div className="section-label-text">
+                        <label>
                            <input
                               type="text"
                               name="contact"
                               placeholder="Dejanos un número de celular o mail"
                               value={formData.contact}
                               onChange={handleChange}
-                              className="border w-full h-5 px-3 py-5 mt-2 hover:outline-none focus:outline-none focus:ring-[#5D7551] focus:ring-1 rounded-md placeholder:font-light placeholder:italic"
+                              className="section-input-text"
                            />
                         </label>
                      </div>
@@ -343,242 +363,34 @@ const ModalConfirm = () => {
                {/* Message section ---------------------- */}
                <label>
                   <input className="peer/showLabel absolute scale-0" type="checkbox" name='message' />
-                  <div className="h-2 bg-mustard rounded-t-md"></div>
-                  <span className="block bg-white max-h-14 overflow-hidden rounded-lg bg-emerald-100 px-4 py-0 text-cyan-800 shadow-lg transition-all duration-300 peer-checked/showLabel:max-h-52">
-                     <h3 className="flex h-14 cursor-pointer items-center font-bold gap-1">
-                        Mensaje para los novios
-                        <KeyboardArrowDownIcon className={ `text-gray-dark ${ arrowBehavior.checked && arrowBehavior.name === 'message' && 'rotate-180' }` } fontSize='medium' />
-                     </h3>
+                  <div className="section-line"></div>
+                  <span className="block bg-white max-h-14 overflow-hidden rounded-lg px-4 py-0 shadow-lg transition-all duration-300 peer-checked/showLabel:max-h-52">
+                     <div className="section-header">
+                        <h3>
+                           Mensaje para los novios
+                           <span className='section-required'>*</span>
+                        </h3>
+                        <KeyboardArrowDownIcon className={ `text-gray-dark ${ (arrowBehavior.checked && arrowBehavior.name === 'message') && 'rotate-180' }` } fontSize='medium' /> 
+                     </div>
                      <h3 className="font-medium mb-4">Si necesitas hacernos alguna consulta o querés dejarnos algún mensaje este es el lugar.</h3>
-                     <div className="flex flex-col pb-6">
-                        <label className="block font-semibold">
+                     <div className="section-label-text">
+                        <label>
                            <input
                               type="text"
                               name="message"
                               placeholder="Te leemos"
-                              value={formData.message}
-                              onChange={handleChange}
-                              className="border w-full h-5 px-3 py-5 mt-2 hover:outline-none focus:outline-none focus:ring-[#5D7551] focus:ring-1 rounded-md placeholder:font-light placeholder:italic"
+                              value={ formData.message }
+                              onChange={ handleChange }
+                              className='section-input-text'
                            />
                         </label>
                      </div>
                   </span>
                </label>
 
-               {/* Full name section ---------------------- */}
-               {/* <section className="modal-confirm-section">
-                  <div className="h-2 bg-mustard rounded-t-md"></div>
-                  <div className="flex flex-col px-8 py-6">
-                     <h2 className="font-semibold mb-4">
-                        Nombre y Apellido <span className='text-red font-medium'>*</span>
-                     </h2>
-                     <label className="block font-semibold">
-                        <input
-                           required
-                           type="text"
-                           name="fullName"
-                           placeholder="Ingresá tu nombre y apellido"
-                           value={formData.fullName}
-                           onChange={handleChange}
-                           className="border w-full px-3 py-2 mt-2 hover:outline-none focus:outline-none focus:ring-[#5D7551] focus:ring-1 rounded-md placeholder:italic placeholder:font-light"
-                        />
-                     </label>
-                  </div>
-               </section> */}
-
-               {/* Assists section ---------------------- */}
-               {/* <section className="modal-confirm-section">
-                  <div className="h-2 bg-mustard rounded-t-md"></div>
-                  <div className="flex flex-col px-8 py-6">
-                     <h2 className="font-semibold mb-4">
-                        ¿Venís a nuestro casamiento? <span className='text-red font-medium'>*</span>
-                     </h2>
-                     <label className="flex items-center gap-2 mt-3">
-                        <input
-                           required
-                           type="radio"
-                           name="assist"
-                           value={true}
-                           onChange={handleChange}
-                           className="cursor-pointer appearance-none border-2 border-mustard bg-cream w-4 h-4 rounded-full checked:bg-mustard hover:bg-mustard active:scale-90"
-                        />YENDO 🚀
-                     </label>
-                     <label className="flex items-center gap-2 mt-3">
-                        <input
-                           type="radio"
-                           name="assist"
-                           value={false}
-                           onChange={handleChange}
-                           className="cursor-pointer appearance-none border-2 border-mustard bg-cream w-4 h-4 rounded-full checked:bg-mustard hover:bg-mustard active:scale-90"
-                        />NO VOY A PODER ASISTIR 😔
-                     </label>
-                  </div>
-               </section> */}
-
-               {/* Drinks section ---------------------- */}
-               {/* <section className="modal-confirm-section">
-                  <div className="h-2 bg-mustard rounded-t-md"></div>
-                  <div className="flex flex-col px-8 py-6">
-                     <h2 className="font-semibold mb-4">BEBIDAS</h2>
-                     <h3 className="font-medium mb-4">Tendremos una barra pequeña y por eso queremos saber qué preferís tomar (no vaya a ser que te deshidrates)</h3>
-
-                     {Object.entries(formData.drinkPreferences).map(([key, value]) => (
-                        <label key={key} className="flex items-center gap-2 mt-3">
-                           <input
-                              type={key === 'otro' ? 'text' : 'checkbox'}
-                              name={key}
-                              checked={key === 'otro' ? false : formData.drinkPreferences[key]}
-                              value={key === 'otro' ? value : key}
-                              onChange={key === 'otro' ? handleChange : () => handleCheckboxChange('drinkPreferences', event)}
-                              placeholder={key === 'otro' ? 'Ingresá tu bebida favorita' : ''}
-                              className={key === "otro" ?
-                                 "w-full cursor-pointer border-2 border-darkgray rounded-md px-3 py-2 hover:outline-none focus:outline-none focus:ring-[#5D7551] focus:ring-1 placeholder:italic placeholder:font-light " :
-                                 "cursor-pointer appearance-none border-2 border-mustard bg-cream w-4 h-4 rounded-full checked:bg-mustard hover:bg-mustard active:scale-90"
-                              }
-                           />
-                           {key === 'otro' ? '' : key.toUpperCase().replace(/_/g, ' ')} {key === 'otro' && value}
-                        </label>
-                     ))}
-
-                  </div>
-               </section> */}
-
-               {/* Food section ---------------------- */}
-               {/* <section className="modal-confirm-section">
-                  <div className="h-2 bg-mustard rounded-t-md"></div>
-                  <div className="flex flex-col px-8 py-6">
-                     <h2 className="font-semibold mb-4">COMIDAS</h2>
-                     <h3 className="font-medium mb-4">Seleccioná si tenés alguna restricción alimentaria. Haremos lo posible para sumar al menú alguna opción apta para vos.</h3>
-
-                     {Object.entries(formData.foodPreferences).map(([key, value]) => (
-                        <label key={key} className="flex items-center gap-2 mt-3">
-                           <input
-                              type={'checkbox'}
-                              name={key}
-                              checked={formData.foodPreferences[key]}
-                              value={key}
-                              onChange={() => handleCheckboxChange('foodPreferences', event)}
-                              className='cursor-pointer appearance-none border-2 border-mustard bg-cream w-4 h-4 rounded-full checked:bg-mustard hover:bg-mustard active:scale-90'
-                           />
-                           {key.toUpperCase().replace(/_/g, ' ')} {value}
-                        </label>
-                     ))}
-
-                  </div>
-               </section> */}
-
-               {/* Partners section ---------------------- */}
-               {/* <section className="modal-confirm-section">
-                  <div className="h-2 bg-mustard rounded-t-md"></div>
-                  <div className="flex flex-col px-8 py-6">
-                     <h2 className="font-semibold mb-4">ACOMPAÑANTES <span className='text-red-500 font-medium'>*</span></h2>
-                     <label className="flex items-center gap-2 mt-3">
-                        <input
-                           type="radio"
-                           name='partner'
-                           value={false}
-                           onChange={handleChange}
-                           className="cursor-pointer appearance-none border-2 border-mustard bg-cream w-4 h-4 rounded-full checked:bg-mustard hover:bg-mustard active:scale-90"
-                        />VOY SOLO 😏
-                     </label>
-                     <label className="flex items-center gap-2 mt-3">
-                        <input
-                           type="radio"
-                           name='partner'
-                           value={true}
-                           onChange={handleCheckboxChange}
-                           className="cursor-pointer appearance-none border-2 border-mustard bg-cream w-4 h-4 rounded-full checked:bg-mustard hover:bg-mustard active:scale-90"
-                        />VOY CON ALGUIEN 😉
-                     </label>
-                  </div>
-               </section> */}
-
-               {/* Partner's name section ---------------------- */}
-               {/* <section className="modal-confirm-section">
-                  <div className="h-2 bg-mustard rounded-t-md"></div>
-                  <div className="flex flex-col px-8 py-6">
-                     <h2 className="font-semibold mb-4">¿CON QUIÉN VENÍS? <span className='text-red-500 font-medium'>*</span></h2>
-                     <h3 className="font-medium mb-4">Necesitamos saber el Nombre y Apellido de esa persona para poder agregarla a la lista.</h3>
-                     <label className="block font-semibold">
-                        <input
-                           type="text"
-                           name="partnersName"
-                           placeholder="Ingresá el nombre de tu acompañante"
-                           value={formData.partnersName}
-                           onChange={handleChange}
-                           className="border w-full h-5 px-3 py-5 mt-2 hover:outline-none focus:outline-none focus:ring-[#5D7551] focus:ring-1 rounded-md placeholder:italic placeholder:font-light"
-                        />
-                     </label>
-                  </div>
-               </section> */}
-
-               {/* Church assists section ---------------------- */}
-               {/* <section className="modal-confirm-section">
-                  <div className="h-2 bg-mustard rounded-t-md"></div>
-                  <div className="flex flex-col px-8 py-6">
-                     <h2 className="font-semibold mb-4">¿Asistirás a la iglesia o directo al salón? <span className='text-red-500 font-medium'>*</span></h2>
-                     <label className="flex items-center mt-3 gap-2">
-                        <input
-                           type="radio"
-                           name='assistChurch'
-                           value={true}
-                           onChange={handleChange}
-                           className="cursor-pointer appearance-none border-2 border-mustard bg-cream w-4 h-4 rounded-full checked:bg-mustard hover:bg-mustard active:scale-90"
-                        />Sí, 17h estoy en la iglesia 💒
-                     </label>
-                     <label className="flex items-center mt-3 gap-2">
-                        <input
-                           type="radio"
-                           name='assistChurch'
-                           value={false}
-                           onChange={handleChange}
-                           className="cursor-pointer appearance-none border-2 border-mustard bg-cream w-4 h-4 rounded-full checked:bg-mustard hover:bg-mustard active:scale-90ss"
-                        />No, directo al salón a las 19h 🙌🏼
-                     </label>
-                  </div>
-               </section> */}
-
-               {/* Contact section ---------------------- */}
-               {/* <section className="modal-confirm-section">
-                  <div className="h-2 bg-mustard rounded-t-md"></div>
-                  <div className="flex flex-col px-8 py-6">
-                     <h2 className="font-semibold mb-4">CONTACTO <span className='text-red-500 font-medium'>*</span></h2>
-                     <h3 className="font-medium mb-4">Dejanos un número de Whatsapp o mail donde podamos encontrarte si necesitamos consultarte o informarte algo del evento.</h3>
-                     <label className="block font-semibold">
-                        <input
-                           type="text"
-                           name="contact"
-                           placeholder="Dejanos un número de celular o mail"
-                           value={formData.contact}
-                           onChange={handleChange}
-                           className="border w-full h-5 px-3 py-5 mt-2 hover:outline-none focus:outline-none focus:ring-[#5D7551] focus:ring-1 rounded-md placeholder:font-light placeholder:italic"
-                        />
-                     </label>
-                  </div>
-               </section> */}
-
-               {/* Message section ---------------------- */}
-               {/* <section className="modal-confirm-section">
-                  <div className="h-2 bg-mustard rounded-t-md"></div>
-                  <div className="flex flex-col px-8 py-6">
-                     <h2 className="font-semibold mb-4">MENSAJE PARA LOS NOVIOS <span className='text-red-500 font-medium'>*</span></h2>
-                     <h3 className="font-medium mb-4">Si necesitas hacernos alguna consulta o querés dejarnos algún mensaje este es el lugar.</h3>
-                     <label className="block font-semibold">
-                        <input
-                           type="text"
-                           name="message"
-                           placeholder="Te leemos"
-                           value={formData.message}
-                           onChange={handleChange}
-                           className="border w-full h-5 px-3 py-5 mt-2 hover:outline-none focus:outline-none focus:ring-[#5D7551] focus:ring-1 rounded-md placeholder:font-light placeholder:italic"
-                        />
-                     </label>
-                  </div>
-               </section> */}
-
                <div className="flex justify-between items-baseline">
                   <button
-                     onClick={handleSubmit}
+                     onClick={ handleSubmit }
                      type="submit"
                      className="mt-4 bg-mustard text-white py-2 px-6 rounded-md hover:bg-purple-600 ">
                      Enviar
