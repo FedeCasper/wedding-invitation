@@ -187,7 +187,7 @@ const Layout = () => {
          <section className="relative flex flex-col items-center h-fit w-full text-sm bg-cream px-8 z-20
             sm:pb-24">
 
-            {/* Dress and music container ---------- */}
+            {/* Confirmation and present container ---------- */}
             <SectionContainer>
 
                {/* Confirmation section ---------- */}
@@ -203,8 +203,9 @@ const Layout = () => {
                      textColorCode={ 'text-gray-dark' }
                   >
                      Esperamos que puedas acompañarnos.<br></br>
-                     PD: Si no confirmás nos dolerá el bolsillo<br></br>
-                     (y el alma).
+                     PD: Si no confirmás nos dolerá<br></br>
+                     el bolsillo (y el alma).
+                     
                   </InfoSection>
                   <Button
                      buttonText={ 'Confirmar asistencia' }
