@@ -38,6 +38,15 @@
    font-weight: 600;
 }
 
+.section-label-radio{
+   display: flex;
+   align-items: center;
+   margin-top: 12px;
+   gap: 8px;
+}
+
+flex items-center mt-3 gap-2
+
 .section-input-text{
    width: 100%;
    height: 20px;

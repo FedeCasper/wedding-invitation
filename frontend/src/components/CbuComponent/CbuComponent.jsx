@@ -35,7 +35,7 @@ const CbuComponent = () => {
                onClick={ () => setModal( false ) }
                src="./assets/images/btn-close.png" 
                alt=" Boton cerrar " 
-               className="absolute top-4 right-4 h-10 cursor-pointer z-50
+               className="absolute top-4 right-4 h-10 cursor-pointer rounded-md z-50
                   transition-all delay-50 duration-150 hover:cursor-pointer hover:scale-90 hover:drop-shadow-md hover:rotate-90" 
             />
             <img src="./assets/images/cbu-header-pieces-02.png" alt="" className="h-28 absolute bottom-5 right-5 jumping-element lg:h-40 lg:bottom-16 lg:right-32" />

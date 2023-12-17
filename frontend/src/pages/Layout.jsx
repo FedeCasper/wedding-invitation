@@ -202,8 +202,7 @@ const Layout = () => {
                      lineColorCode={ 'border-mustard' }
                      textColorCode={ 'text-gray-dark' }
                   >
-                     Esperamos que puedas acompañarnos<br></br>
-                     en este momento tan especial.<br></br>
+                     Esperamos que puedas acompañarnos.<br></br>
                      PD: Si no confirmás nos dolerá el bolsillo<br></br>
                      (y el alma).
                   </InfoSection>
@@ -226,16 +225,16 @@ const Layout = () => {
                      lineColorCode={"border-mustard"}
                      textColorCode={"text-gray-dark"}
                   >
-                     ¿El mejor regalo?<br></br>
-                     tu presencia, pero si querés ayudarnos<br></br>
-                     a cumplir un sueño hacé click<br></br>
-                     en el botón.
+                     ¿El mejor regalo? tu presencia,<br></br>
+                     pero si querés ayudarnos a cumplir<br></br>
+                     un sueño hacé click en el botón.
+                     
                   </InfoSection>
                   <Button
                      buttonText={ 'Ver información' }
                      widthClass={ 'w-64' }
                      colorCode={ 'bg-green' }
-                     url={false}
+                     url={ false }
                      action={ 'openInfoModal' }
                   />
                </SectionContainerElement>
@@ -246,7 +245,7 @@ const Layout = () => {
 
          {/* 5° Carousel section --------------------------------------- */}
          <section className="relative flex justify-center items-end bg-cream w-full z-20
-         lg:pt-12 sm:hidden">
+            sm:hidden">
             <Carousel />
          </section>
 
