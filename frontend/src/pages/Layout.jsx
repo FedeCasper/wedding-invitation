@@ -202,8 +202,8 @@ const Layout = () => {
                      lineColorCode={ 'border-mustard' }
                      textColorCode={ 'text-gray-dark' }
                   >
-                     Esperamos que puedas acompañarnos.<br></br>
-                     PD: Si no confirmás nos dolerá<br></br>
+                     Esperamos que puedas acompañarnos.
+                     PD: Si no confirmás nos dolerá
                      el bolsillo (y el alma).
                      
                   </InfoSection>
@@ -226,8 +226,8 @@ const Layout = () => {
                      lineColorCode={"border-mustard"}
                      textColorCode={"text-gray-dark"}
                   >
-                     ¿El mejor regalo? tu presencia,<br></br>
-                     pero si querés ayudarnos a cumplir<br></br>
+                     ¿El mejor regalo? tu presencia,
+                     pero si querés ayudarnos a cumplir
                      un sueño hacé click en el botón.
                      
                   </InfoSection>
