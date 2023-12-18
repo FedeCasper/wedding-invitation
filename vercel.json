@@ -1,10 +1,10 @@
 {
    "builds": [
-         { "src": "frontend/index.html", "use": "@vercel/static" },
-         { "src": "back/server.js", "use": "@vercel/node" }
-      
+     { "src": "frontend/index.html", "use": "@vercel/static" },
+     { "src": "back/server.js", "use": "@vercel/node" }
    ],
    "rewrites": [
-      { "source": "/(.*)", "destination": "/index.html" }
+     { "source": "/api/(.*)", "destination": "/back/$1" },
+     { "source": "/(.*)", "destination": "/frontend/$1" }
    ]
-}
+ }
