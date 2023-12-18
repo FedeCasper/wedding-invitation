@@ -68,12 +68,12 @@ const Layout = () => {
 
          {/* 2° Countdown, maps and schelude section --------------------------------------- */}
          <section className="relative flex flex-col items-center justify-center w-full bg-mustard h-fit px-8 pb-4 z-30
-            lg:px-60 lg:pb-20">
+            lg:px-8 lg:pb-20">
 
             <Countdown />
             <Button
-               buttonText={"Agendar"}
-               widthClass={"w-48"}
+               buttonText={ 'Agendar' }
+               widthClass={ 'w-48 lg:w-64' }
                colorCode={"bg-green"}
                url={'calendar'}
             />
@@ -90,13 +90,13 @@ const Layout = () => {
                   <InfoSection
                      header={"Ceremonia | 17:00 pm"}
                      subtitle={"Nuestra Señora del Perpetuo Socorro"}
-                     lineColorCode={"border-[#5F7752]"}
+                     lineColorCode={"border-green"}
                   >
-                     Mazzolari 1 | Chacras de Coria, Mza
+                     Mazzolari 1 | Chacras de Coria, Mendoza
                   </InfoSection>
                   <Button
                      buttonText={"¿Cómo llego?"}
-                     widthClass={"w-48"}
+                     widthClass={ 'w-48 lg:w-64' }
                      colorCode={"bg-green"}
                      url={'church'}
                   />
@@ -111,17 +111,40 @@ const Layout = () => {
                   <InfoSection
                      header={"Fiesta | 19:00 pm"}
                      subtitle={"Finca AMproS"}
-                     lineColorCode={"border-[#5F7752]"}
+                     lineColorCode={"border-green"}
                   >
-                     C. Pescara, Cruz de Piedra, Mendoza
+                     C. Pescara, Cruz de Piedra, Maipú, Mendoza
                   </InfoSection>
                   <Button
                      buttonText={"¿Cómo llego?"}
-                     widthClass={"w-48"}
+                     widthClass={ 'w-48 lg:w-64' }
                      colorCode={"bg-green"}
                      url={'salon'}
                   />
                </SectionContainerElement>
+
+               {/* Present section (only Desktop) ---------- */}
+               <SectionContainerElement>
+                  <ImageComponent
+                     src={"/assets/images/plane-icon.png"}
+                     alt={"plane icon"}
+                  />
+                  <InfoSection
+                     header={"¿Qué les regalo?"}
+                     lineColorCode={"border-green"}
+                  >
+                     ¿El mejor regalo? tu presencia, pero si querés cumplirnos un sueño hacé click.
+
+                  </InfoSection>
+                  <Button
+                     buttonText={'Ver información'}
+                     widthClass={'w-64'}
+                     colorCode={'bg-green'}
+                     url={false}
+                     action={'openInfoModal'}
+                  />
+               </SectionContainerElement>
+
 
             </SectionContainer>
 
@@ -138,22 +161,22 @@ const Layout = () => {
                {/* Dress section ---------- */}
                <SectionContainerElement>
                   <ImageComponent
-                        src={"/assets/images/dress-icon.png"}
-                        alt={"Icono vestimenta"}
-                        margin={"disabled"}
-                     />
+                     src={"/assets/images/dress-icon.png"}
+                     alt={"Icono vestimenta"}
+                     margin={"disabled"}
+                  />
                   <div className="flex flex-col items-center">
                      <InfoSection
-                        header={ '¿Qué me pongo?' }
-                        subtitle={ 'Dresscode: Vos metele facha y comodidad porque, oxidados o no, vamos a bailar.' }
-                        lineColorCode={ 'border-mustard' }
+                        header={'¿Qué me pongo?'}
+                        subtitle={'Dresscode: Vos metele facha y comodidad porque, oxidados o no, vamos a bailar.'}
+                        lineColorCode={'border-mustard'}
                      >
                      </InfoSection>
                      <Button
-                        buttonText={ 'Mirá el clima' }
-                        widthClass={ 'w-64' }
-                        colorCode={ 'bg-mustard' }
-                        action={ 'openWeatherModal' }
+                        buttonText={'Mirá el clima'}
+                        widthClass={'w-64'}
+                        colorCode={'bg-mustard'}
+                        action={'openWeatherModal'}
                      />
                   </div>
                </SectionContainerElement>
@@ -165,8 +188,8 @@ const Layout = () => {
                      alt={"Icono baile"}
                   />
                   <InfoSection
-                     header={"¿Temones Imprescindible?"}
-                     lineColorCode={"border-mustard"}
+                     header={"#ModoDJ"}
+                     lineColorCode={'border-mustard'}
                   >
                      Ayudanos a armar la lista y no dejar afuera ningún tema de esos que te hacen darlo todo.
                   </InfoSection>
@@ -178,19 +201,7 @@ const Layout = () => {
                   />
                </SectionContainerElement>
 
-            </SectionContainer>
-
-            <CurvedTopSection bgColor={"bg-cream"} />
-         </section>
-
-         {/* 4° Confirmation section --------------------------------------- */}
-         <section className="relative flex flex-col items-center h-fit w-full text-sm bg-cream px-8 z-20
-            sm:pb-24">
-
-            {/* Confirmation and present container ---------- */}
-            <SectionContainer>
-
-               {/* Confirmation section ---------- */}
+               {/* Confirmation section (only Desktop) ---------- */}
                <SectionContainerElement>
                   <ImageComponent
                      src={"/assets/images/confirm-icon.png"}
@@ -198,25 +209,61 @@ const Layout = () => {
                      margin={"disabled"}
                   />
                   <InfoSection
-                     header={ '¿Hay equipo?' }
-                     lineColorCode={ 'border-mustard' }
-                     textColorCode={ 'text-gray-dark' }
+                     header={'¿Hay equipo?'}
+                     lineColorCode={'border-mustard'}
                   >
                      Esperamos que puedas acompañarnos.
                      PD: Si no confirmás nos dolerá
                      el bolsillo (y el alma).
-                     
+
                   </InfoSection>
                   <Button
-                     buttonText={ 'Confirmar asistencia' }
-                     widthClass={ 'w-64' }
-                     colorCode={ 'bg-green' }
-                     action={ 'openConfirmationModal' }
+                     buttonText={'Confirmar asistencia'}
+                     widthClass={'w-64'}
+                     colorCode={'bg-mustard'}
+                     action={'openConfirmationModal'}
+                  />
+               </SectionContainerElement>
+
+            </SectionContainer>
+
+            <CurvedTopSection bgColor={"bg-cream"} />
+         </section>
+
+         {/* 4° Confirmation section --------------------------------------- */}
+         <section className="relative flex flex-col items-center h-fit w-full text-sm bg-cream px-8 z-20
+            sm:pb-24 md:pb-0 md:px-0">
+
+            {/* Confirmation and present container ---------- */}
+            <SectionContainer>
+
+               {/* Confirmation section ---------- */}
+               <SectionContainerElement desktopView={ 'off' }>
+                  <ImageComponent
+                     src={"/assets/images/confirm-icon.png"}
+                     alt={"Icono confimación"}
+                     margin={"disabled"}
+                  />
+                  <InfoSection
+                     header={'¿Hay equipo?'}
+                     lineColorCode={'border-mustard'}
+                     textColorCode={'text-gray-dark'}
+                  >
+                     Esperamos que puedas acompañarnos.
+                     PD: Si no confirmás nos dolerá
+                     el bolsillo (y el alma).
+
+                  </InfoSection>
+                  <Button
+                     buttonText={'Confirmar asistencia'}
+                     widthClass={'w-64'}
+                     colorCode={'bg-green'}
+                     action={'openConfirmationModal'}
                   />
                </SectionContainerElement>
 
                {/* Present section ---------- */}
-               <SectionContainerElement>
+               <SectionContainerElement desktopView={ 'off' }>
                   <ImageComponent
                      src={"/assets/images/plane-icon.png"}
                      alt={"plane icon"}
@@ -229,18 +276,20 @@ const Layout = () => {
                      ¿El mejor regalo? tu presencia,
                      pero si querés ayudarnos a cumplir
                      un sueño hacé click en el botón.
-                     
+
                   </InfoSection>
                   <Button
-                     buttonText={ 'Ver información' }
-                     widthClass={ 'w-64' }
-                     colorCode={ 'bg-green' }
-                     url={ false }
-                     action={ 'openInfoModal' }
+                     buttonText={'Ver información'}
+                     widthClass={'w-64'}
+                     colorCode={'bg-green'}
+                     url={false}
+                     action={'openInfoModal'}
                   />
                </SectionContainerElement>
 
             </SectionContainer>
+
+            <Carousel desktopView={ 'off' } />
 
          </section>
 
@@ -252,7 +301,7 @@ const Layout = () => {
 
 
       </div>
-      );
+   );
 }
 
-            export default Layout
+export default Layout

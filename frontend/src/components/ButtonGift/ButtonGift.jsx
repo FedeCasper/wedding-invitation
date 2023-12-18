@@ -31,7 +31,7 @@ const ButtonGift = () => {
          onClick={ handleClick }
          className={`unselectable fixed h-12 w-12 z-50 top-[10px] right-[30px]
             transition-all duration-300 ease-in-out hover:scale-110 active:scale-95
-            lg:top-6 lg:right-60
+            lg:top-6 lg:right-40
             ${ ringMovement && 'phone' }`}
          >
             <section className='relative'>
