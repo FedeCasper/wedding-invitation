@@ -1,9 +1,10 @@
 {
    "builds": [
-     { "src": "frontend/dist", "use": "@vercel/static" },
-     { "src": "back/server.js", "use": "@vercel/node" }
+      { "src": "frontend", "use": "@vercel/static" },
+      { "src": "back", "use": "@vercel/node" }
    ],
    "rewrites": [
-     { "source": "/(.*)", "destination": "/index.html" }
+      { "source": "/api/(.*)", "dest": "back/$1" },
+      { "source": "/(.*)", "dest": "frontend/index.html" }
    ]
- }
+}
