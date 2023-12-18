@@ -1,10 +1,10 @@
 {
    "builds": [
-      { "src": "/frontend/index.html", "use": "@vercel/static" },
-      { "src": "/back/server.js", "use": "@vercel/node" }
+      { "src": "./frontend/index.html", "use": "@vercel/static" },
+      { "src": "./back/server.js", "use": "@vercel/node" }
    ],
    "routes": [
-      { "src": "/api/(.*)", "dest": "server.js" },
-      { "src": "/(.*)", "dest": "index.html" }
+      { "src": "/api/(.*)", "dest": "./back/server.js" },
+      { "src": "/(.*)", "dest": "./frontend/index.html" }
    ]
 }
