@@ -3,8 +3,11 @@
       { "src": "frontend", "use": "@vercel/static" },
       { "src": "back", "use": "@vercel/node" }
    ],
+   "routes": [
+      { "src": "/api/(.*)", "dest": "back/$1" },
+      { "src": "/(.*)", "dest": "frontend/index.html" }
+   ],
    "rewrites": [
-      { "source": "/api/(.*)", "dest": "back/$1" },
-      { "source": "/(.*)", "dest": "frontend/index.html" }
+      { "source": "/(.*)", "destination": "/frontend/$1" }
    ]
 }
