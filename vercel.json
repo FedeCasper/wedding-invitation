@@ -1,7 +1,7 @@
 {
    "builds": [
-         { "src": "frontend", "use": "@vercel/static" },
-         { "src": "back", "use": "@vercel/node" }
+         { "src": "frontend/server.js", "use": "@vercel/static" },
+         { "src": "back/server.js", "use": "@vercel/node" }
       
    ],
    "rewrites": [
