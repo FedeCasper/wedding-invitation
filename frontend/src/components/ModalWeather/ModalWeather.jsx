@@ -5,11 +5,13 @@ import { ModalContext } from '../../context/ModalContext'
 
 const ModalWeather = () => {
 
-   const [localWeather, setLocalWeather] = useState({})
+   const [ localWeather, setLocalWeather ] = useState({})
+   const [ futureWeather, setFutureWeather ] = useState({})
+   const [ formatDate, setFormatDate ] = useState('')
    const { setWeatherModal } = useContext(ModalContext);
 
    const handleWeather = () => {
-      axios.get(`https://api.weatherapi.com/v1/future.json?q=Mendoza&dt=2024-03-09&lang=es&key=${import.meta.env.VITE_REACT_APP_WEATHER_API_KEY}`)
+      axios.get(`https://api.weatherapi.com/v1/current.json?q=Mendoza&lang=es&key=${import.meta.env.VITE_REACT_APP_WEATHER_API_KEY}`)
          .then((response) => {
             console.log('Response:', response.data);
             setLocalWeather(response.data)
@@ -19,8 +21,41 @@ const ModalWeather = () => {
          })
    }
 
+   const fechaActual = () => {
+      const todayDate = new Date();
+
+      const year = todayDate.getFullYear();
+      const month = todayDate.getMonth() + 1; // Months start from 0, so 1 is added
+      const day = todayDate.getDate();
+
+      const lastDayOfMonth = new Date(year, month, 0).getDate();
+      console.log("lastDayOfMonth", lastDayOfMonth);
+
+      // Formatear la fecha como "YYYY-MM-DD"
+      if( ( (day + 3) <= lastDayOfMonth) ){
+         setFormatDate( `${year}-${month < 10 ? '0' + month : month}-${day < 10 ? '0' + day + 1 : day + 1}` )
+      }else{
+         setFormatDate( `${year}-${month < 10 ? '0' + month : month}-${day < 10 ? '0' + day : day }` )
+      }
+
+      console.log(formatDate);
+   }
+
+   const handleFutureWeather = () => {
+      axios.get(`https://api.weatherapi.com/v1/forecast.json?q=Mendoza&dt=${formatDate}&lang=es&key=${import.meta.env.VITE_REACT_APP_WEATHER_API_KEY}`)
+         .then((response) => {
+            console.log('Response:', response.data);
+            setFutureWeather(response.data)
+         })
+         .catch((error) => {
+            console.error('Error:', error);
+         })
+   }
+
    useEffect(() => {
       handleWeather()
+      handleFutureWeather()
+      fechaActual()
    }, [])
 
    return (
@@ -53,35 +88,31 @@ const ModalWeather = () => {
 
             <article className="flex flex-col gap-2 w-full">
                <section className="flex items-center gap-2 mb-4">
-                  <img src="./assets/images/green-arrows-icon.png" alt="" className='h-6' />
-                  <h2 className='font-semibold text-base'>Pronóstico: {localWeather?.forecast?.forecastday[0]?.day?.condition?.text}</h2>
+                  <img src={`${localWeather?.current?.condition?.icon}`} alt="" className='h-12' />
+                  <h2 className='font-semibold text-base'>Pronóstico: {localWeather?.current?.condition?.text}</h2>
                </section>
                <div className='flex flex-col flex-wrap'>
-                  <span className='italic'>Tempreatura máxima 🥵:</span>
-                  <span className='font-semibold text-2xl'> {localWeather?.forecast?.forecastday[0]?.day?.maxtemp_c}° </span>
+                  <span className='italic'>Tempreatura actual:</span>
+                  <span className='font-semibold text-2xl'> {localWeather?.current?.temp_c}° </span>
                </div>
                <div className='flex flex-col flex-wrap'>
-                  <span className='italic'>Tempreatura promedio 🌡: </span>
-                  <span className='font-semibold text-2xl'> {localWeather?.forecast?.forecastday[0]?.day?.avgtemp_c}° </span>
+                  <span className='italic'>Sensación térmica: </span>
+                  <span className='font-semibold text-2xl'> {localWeather?.current?.feelslike_c}° </span>
                </div>
                <div className='flex flex-col flex-wrap'>
-                  <span className='italic'>Tempreatura mínima 🥶: </span>
-                  <span className='font-semibold text-2xl'> {localWeather?.forecast?.forecastday[0]?.day?.mintemp_c}° </span>
+                  <span className='italic'>Humedad:</span>
+                  <span className='font-semibold text-2xl'> {localWeather?.current?.humidity}% </span>
                </div>
-               <div className='flex flex-col flex-wrap'>
-                  <span className='italic'>Humedad promedio 💧:</span>
-                  <span className='font-semibold text-2xl'> {localWeather?.forecast?.forecastday[0]?.day?.avghumidity}% </span>
-               </div>
-               <div className='flex flex-col flex-wrap'>
-                  <span className='italic'>A la hora de la iglesia 💒:</span>
-                  <span className='font-semibold text-2xl'> {localWeather?.forecast?.forecastday[0]?.hour[17]?.temp_c}° 
-                     <span className='text-base ms-2'>({localWeather?.forecast?.forecastday[0]?.hour[17]?.condition?.text})</span>
+               <div className='flex flex-col flex-wrap mt-4'>
+                  <span className='italic'>Mañana:</span>
+                  <span className='font-semibold text-lg'>{futureWeather?.forecast?.forecastday[0]?.day?.condition?.text}.</span>
+                  <span className=' font-semibold text-2xl'> 
+                     {futureWeather?.forecast?.forecastday[0]?.day?.maxtemp_c}° 
+                     <span className='text-base mx-2'>(Máxima)</span>
+                     - {futureWeather?.forecast?.forecastday[0]?.day?.mintemp_c}° 
+                     <span className='text-base ms-2'>(Mínima)</span>
                   </span>
-               </div>
-               <div className='flex flex-col flex-wrap'>
-                  <span className='italic'>A la hora del salón 🎶:</span>
-                  <span className='font-semibold text-2xl'> {localWeather?.forecast?.forecastday[0]?.hour[17]?.temp_c}° 
-                     <span className='text-base ms-2'>({localWeather?.forecast?.forecastday[0]?.hour[19]?.condition?.text})</span>
+                  <span className='font-semibold text-2xl'> 
                   </span>
                </div>
             </article>
