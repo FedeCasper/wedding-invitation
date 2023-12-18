@@ -1,0 +1,11 @@
+{
+   "builds": [
+      { "src": "back", "use": "@vercel/node" }
+   ],
+   "routes": [
+      { "src": "/api/(.*)", "dest": "back/$1" }
+   ],
+   "rewrites": [
+      { "source": "/(.*)", "destination": "/" }
+   ]
+}
