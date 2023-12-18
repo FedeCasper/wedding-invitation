@@ -73,7 +73,6 @@ const Layout = () => {
             <Countdown />
             <Button
                buttonText={ 'Agendar' }
-               widthClass={ 'w-48 lg:w-64' }
                colorCode={"bg-green"}
                url={'calendar'}
             />
@@ -96,7 +95,6 @@ const Layout = () => {
                   </InfoSection>
                   <Button
                      buttonText={"¿Cómo llego?"}
-                     widthClass={ 'w-48 lg:w-64' }
                      colorCode={"bg-green"}
                      url={'church'}
                   />
@@ -117,7 +115,6 @@ const Layout = () => {
                   </InfoSection>
                   <Button
                      buttonText={"¿Cómo llego?"}
-                     widthClass={ 'w-48 lg:w-64' }
                      colorCode={"bg-green"}
                      url={'salon'}
                   />
@@ -138,7 +135,6 @@ const Layout = () => {
                   </InfoSection>
                   <Button
                      buttonText={'Ver información'}
-                     widthClass={'w-64'}
                      colorCode={'bg-green'}
                      url={false}
                      action={'openInfoModal'}
@@ -174,7 +170,6 @@ const Layout = () => {
                      </InfoSection>
                      <Button
                         buttonText={'Mirá el clima'}
-                        widthClass={'w-64'}
                         colorCode={'bg-mustard'}
                         action={'openWeatherModal'}
                      />
@@ -219,7 +214,7 @@ const Layout = () => {
                   </InfoSection>
                   <Button
                      buttonText={'Confirmar asistencia'}
-                     widthClass={'w-64'}
+                     
                      colorCode={'bg-mustard'}
                      action={'openConfirmationModal'}
                   />
@@ -256,7 +251,7 @@ const Layout = () => {
                   </InfoSection>
                   <Button
                      buttonText={'Confirmar asistencia'}
-                     widthClass={'w-64'}
+                     
                      colorCode={'bg-green'}
                      action={'openConfirmationModal'}
                   />
@@ -280,7 +275,7 @@ const Layout = () => {
                   </InfoSection>
                   <Button
                      buttonText={'Ver información'}
-                     widthClass={'w-64'}
+                     
                      colorCode={'bg-green'}
                      url={false}
                      action={'openInfoModal'}
