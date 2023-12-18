@@ -23,8 +23,6 @@ const Layout = () => {
 
    const { modal, confirmationModal, weatherModal } = useContext(ModalContext);
 
-   console.log(import.meta.env.VITE_REACT_APP_WEATHER_API_KEY);
-
    return (
       <div className={` relative flex flex-col items-center overflow-hidden
          ${confirmationModal || weatherModal || modal ? ' h-screen' : 'h-min-screen'} `
