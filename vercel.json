@@ -1,6 +1,6 @@
 {
    "builds": [
-         { "src": "frontend/server.js", "use": "@vercel/static" },
+         { "src": "frontend/index.html", "use": "@vercel/static" },
          { "src": "back/server.js", "use": "@vercel/node" }
       
    ],
