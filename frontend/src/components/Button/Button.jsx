@@ -40,9 +40,9 @@ const Button = ( { buttonText, widthClass, colorCode, url, action } ) => {
          <button 
             onClick={ url ? () => handleUrl(url) : handleForm }
             type="button" 
-            className={`unselectable w-64 text-lg active:bg-green-dark
-            ${ colorCode === 'bg-mustard' ? 'btn-special' : 'btn-normal' }  
-            ${colorCode} `}
+            className={` unselectable w-64 text-lg active:bg-green-dark
+            ${colorCode}
+            ${ colorCode === 'bg-mustard' ? 'btn-special' : 'btn-normal' }  `}
          >
             { buttonText }
          </button>
