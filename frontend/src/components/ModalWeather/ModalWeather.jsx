@@ -80,8 +80,8 @@ const ModalWeather = () => {
                className="absolute top-4 right-4 h-10 cursor-pointer rounded-md z-50
                   transition-all delay-50 duration-150 hover:cursor-pointer hover:scale-90 hover:drop-shadow-md hover:rotate-90"
             />
-            <img src="./assets/images/weather-header-pieces-03.png" alt="" className="h-28 absolute bottom-5 right-5 jumping-element lg:h-40 lg:bottom-10 lg:right-32" />
-            <img src="./assets/images/weather-header-pieces-02.png" alt="" className="h-28 absolute top-5 left-2 jumping-element-reverse lg:h-40 lg:top-10 lg:left-32" />
+            <img src="./assets/images/weather-header-pieces-02.png" alt="" className="h-28 absolute bottom-5 right-5 jumping-element lg:h-40 lg:bottom-10 lg:right-32" />
+            <img src="./assets/images/weather-header-pieces-03.png" alt="" className="h-32 absolute top-5 left-8 jumping-element-reverse lg:h-40 lg:top-10 lg:left-32" />
          </header>
 
          <main className='flex flex-col items-center gap-8 grow bg-cream p-6 text-gray-dark text-sm'>
