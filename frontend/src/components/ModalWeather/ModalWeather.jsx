@@ -67,7 +67,7 @@ const ModalWeather = () => {
             lg:h-[30vh]">
             <h2 className="text-xl font-semibold text-center text-white z-50
                lg:text-3xl">
-               ¿Cómo va e estar el clima?
+               ¿Y el clima?
             </h2>
             <h3 className="text-base font-medium text-center text-gray-dark z-50
                lg:text-xl">
