@@ -3,7 +3,7 @@ import AnimatedElement from "../AnimatedElement/AnimatedElement"
 import { ModalContext } from "../../context/ModalContext"
 import { useContext } from "react"
 
-const Button = ( { buttonText, widthClass, colorCode, url, action } ) => {
+const Button = ( { buttonText, colorCode, url, action } ) => {
    
    const { setModal, setConfirmationModal, setWeatherModal } = useContext(ModalContext);
 
