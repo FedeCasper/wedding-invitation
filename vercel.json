@@ -4,8 +4,7 @@
          { "src": "back", "use": "@vercel/node" }
       
    ],
-   "routes": [
-      { "src": "/api/(.*)", "dest": "back/$1" },
-      { "src": "/(.*)", "dest": "frontend/$1" }
+   "rewrites": [
+      { "source": "/(.*)", "destination": "/index.html" }
    ]
 }
