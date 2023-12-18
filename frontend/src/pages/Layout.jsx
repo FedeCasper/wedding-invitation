@@ -124,7 +124,7 @@ const Layout = () => {
                </SectionContainerElement>
 
                {/* Present section (only Desktop) ---------- */}
-               <SectionContainerElement>
+               <SectionContainerElement mobileView={ 'off' }>
                   <ImageComponent
                      src={"/assets/images/plane-icon.png"}
                      alt={"plane icon"}
@@ -202,7 +202,7 @@ const Layout = () => {
                </SectionContainerElement>
 
                {/* Confirmation section (only Desktop) ---------- */}
-               <SectionContainerElement>
+               <SectionContainerElement mobileView={ 'off' }>
                   <ImageComponent
                      src={"/assets/images/confirm-icon.png"}
                      alt={"Icono confimación"}
@@ -289,7 +289,10 @@ const Layout = () => {
 
             </SectionContainer>
 
-            <Carousel desktopView={ 'off' } />
+            <section className="hidden lg:flex lg:w-full lg:justify-center">
+               <Carousel />
+            </section>
+
 
          </section>
 
