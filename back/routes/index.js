@@ -4,7 +4,7 @@ import guestsRoutes from "./guestsRouter.js";
 const indexRouter = express.Router()
 
 indexRouter.get("/", (req, res) => {
-     res.send("api invitatio")
+     res.send("api invitation")
 })
 
 indexRouter.use( "/guests",  guestsRoutes )
