@@ -21,13 +21,13 @@
    justify-content: space-between;
    align-items: center;
    gap: 4px;
-   font-weight: bold;
+   fontWeight: bold;
    cursor: pointer;
 }
 
 .section-required{
    color: var(--red);
-   font-weight: 600;
+   fontWeight: 600;
    margin-left: 5px;
 }
 
@@ -35,7 +35,7 @@
    display: flex;
    flex-direction: column;
    padding-bottom: 24px;
-   font-weight: 600;
+   fontWeight: 600;
 }
 
 .section-label-radio{
@@ -57,7 +57,7 @@ flex items-center mt-3 gap-2
 }
 
 .section-input-text::placeholder{
-   font-weight: 300;
+   fontWeight: 300;
    font-style: italic;
    color: rgb(181, 181, 181);
 }

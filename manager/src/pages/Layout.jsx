@@ -3,14 +3,24 @@ import { useEffect, useState } from 'react';
 
 const Layout = () => {
 
-   const [ fullData, setFullData ] = useState([]);
-   const [ executed, setExecuted ] = useState(false);
-   const [ stadisticData, setStadisticData ] = useState({
+   const [fullData, setFullData] = useState([]);
+   const [executed, setExecuted] = useState(false);
+   const [stadisticData, setStadisticData] = useState({
       assistToChucrh: 0,
       notAssistToChucrh: 0,
       assistsToWedding: 0,
       notAssistsToWedding: 0,
-      partner:[], 
+      partner: [],
+      drinks: {
+         fernet: 0,
+         gin_tonic: 0,
+         campari: 0,
+         vino: 0,
+         cerveza: 0,
+         no_tomo_alcohol: 0,
+         otro: 0
+      },
+      food: [],
    });
 
    const handleData = (e) => {
@@ -26,32 +36,46 @@ const Layout = () => {
    };
 
    const handleStadistic = () => {
-      if(!executed){
+      if (!executed) {
 
-         fullData?.forEach( guest => {
+         fullData?.forEach(guest => {
             if (guest.assistChurch) {
-               setStadisticData( prev => ( { ...prev, assistToChucrh: prev.assistToChucrh + 1 } ) );
+               setStadisticData(prev => ({ ...prev, assistToChucrh: prev.assistToChucrh + 1 }));
             } else {
-               setStadisticData( prev => ( { ...prev, notAssistToChucrh: prev.notAssistToChucrh + 1 } ) );
-            }
-   
-            if (guest.assist) {
-               setStadisticData( prev => ( { ...prev, assistsToWedding: prev.assistsToWedding + 1 } ) );
-            } else {
-               setStadisticData( prev => ( { ...prev, notAssistsToWedding: prev.notAssistsToWedding + 1 } ) );
+               setStadisticData(prev => ({ ...prev, notAssistToChucrh: prev.notAssistToChucrh + 1 }));
             }
 
-            if(guest.partner){
-               setStadisticData( prev => ( { ...prev, partner: [...prev.partner,{ fullName: guest.fullName, partnerName: guest.partnersName, partnerId: guest._id }] } ) );
+            if (guest.assist) {
+               setStadisticData(prev => ({ ...prev, assistsToWedding: prev.assistsToWedding + 1 }));
+            } else {
+               setStadisticData(prev => ({ ...prev, notAssistsToWedding: prev.notAssistsToWedding + 1 }));
             }
-   
-            setExecuted(true);
+
+            if (guest.partner) {
+               setStadisticData(prev => ({ ...prev, partner: [...prev.partner, { fullName: guest.fullName, partnerName: guest.partnersName, partnerId: guest._id }] }));
+            }
+
+            if (guest.drinkPreferences) {
+               const updatedStadisticData = { ...stadisticData.drinks };
+
+               for(let drink in guest.drinkPreferences){
+                  let formatKey = drink.slice(0, (drink.length -3))
+
+                  if( guest.drinkPreferences[drink] ){
+                     updatedStadisticData[formatKey] = (updatedStadisticData[formatKey] || 0) + 1;
+                  }
+
+               } 
+               setStadisticData(prev => ({ ...prev, drinks: updatedStadisticData }));
+            }
+
          })
 
+         setExecuted(true);
       }
    }
 
-   console.log(stadisticData.partner);
+   console.log(stadisticData.drinks);
 
    useEffect(() => {
       handleData();
@@ -64,6 +88,8 @@ const Layout = () => {
    return (
       <>
          <div className="min-h-screen bg-gray-200">
+
+            {/* ----- SIDE MENU ----- */}
             <aside className="bg-gradient-to-br from-gray-800 to-gray-900 -translate-x-80 fixed inset-0 z-50 my-4 ml-4 h-[calc(100vh-32px)] w-72 rounded-xl transition-transform duration-300 xl:translate-x-0">
                <div className="relative border-b border-white/20">
                   <a className="flex items-center gap-4 py-6 px-8" href="#/">
@@ -148,6 +174,7 @@ const Layout = () => {
                   </ul>
                </div>
             </aside>
+
             <div className="p-4 xl:ml-80">
                <nav className="block w-full max-w-full bg-transparent text-white shadow-none rounded-xl transition-all px-0 py-1">
                   <div className="flex flex-col-reverse justify-between gap-6 md:flex-row md:items-center">
@@ -170,8 +197,8 @@ const Layout = () => {
                      <div className="flex items-center">
                         <div className="mr-auto md:mr-4 md:w-56">
                            <div className="relative w-full min-w-[200px] h-10">
-                              <input className="peer w-full h-full bg-transparent text-gray-700 font-sans font-normal outline outline-0 focus:outline-0 disabled:bg-blue-gray-50 disabled:border-0 transition-all placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 border focus:border-2 border-t-transparent focus:border-t-transparent text-sm px-3 py-2.5 rounded-[7px] border-blue-gray-200 focus:border-blue-500" placeholder=" "/>
-                                 <label className="flex w-full h-full select-none pointer-events-none absolute left-0 font-normal peer-placeholder-shown:text-gray-500 leading-tight peer-focus:leading-tight peer-disabled:text-transparent peer-disabled:peer-placeholder-shown:text-blue-gray-500 transition-all -top-1.5 peer-placeholder-shown:text-sm text-[11px] peer-focus:text-[11px] before:content[' '] before:block before:box-border before:w-2.5 before:h-1.5 before:mt-[6.5px] before:mr-1 peer-placeholder-shown:before:border-transparent before:rounded-tl-md before:border-t peer-focus:before:border-t-2 before:border-l peer-focus:before:border-l-2 before:pointer-events-none before:transition-all peer-disabled:before:border-transparent after:content[' '] after:block after:flex-grow after:box-border after:w-2.5 after:h-1.5 after:mt-[6.5px] after:ml-1 peer-placeholder-shown:after:border-transparent after:rounded-tr-md after:border-t peer-focus:after:border-t-2 after:border-r peer-focus:after:border-r-2 after:pointer-events-none after:transition-all peer-disabled:after:border-transparent peer-placeholder-shown:leading-[3.75] text-blue-gray-400 peer-focus:text-blue-500 before:border-blue-gray-200 peer-focus:before:border-blue-500 after:border-blue-gray-200 peer-focus:after:border-blue-500">Type here</label>
+                              <input className="peer w-full h-full bg-transparent text-gray-700 font-sans font-normal outline outline-0 focus:outline-0 disabled:bg-blue-gray-50 disabled:border-0 transition-all placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 border focus:border-2 border-t-transparent focus:border-t-transparent text-sm px-3 py-2.5 rounded-[7px] border-blue-gray-200 focus:border-blue-500" placeholder=" " />
+                              <label className="flex w-full h-full select-none pointer-events-none absolute left-0 font-normal peer-placeholder-shown:text-gray-500 leading-tight peer-focus:leading-tight peer-disabled:text-transparent peer-disabled:peer-placeholder-shown:text-blue-gray-500 transition-all -top-1.5 peer-placeholder-shown:text-sm text-[11px] peer-focus:text-[11px] before:content[' '] before:block before:box-border before:w-2.5 before:h-1.5 before:mt-[6.5px] before:mr-1 peer-placeholder-shown:before:border-transparent before:rounded-tl-md before:border-t peer-focus:before:border-t-2 before:border-l peer-focus:before:border-l-2 before:pointer-events-none before:transition-all peer-disabled:before:border-transparent after:content[' '] after:block after:flex-grow after:box-border after:w-2.5 after:h-1.5 after:mt-[6.5px] after:ml-1 peer-placeholder-shown:after:border-transparent after:rounded-tr-md after:border-t peer-focus:after:border-t-2 after:border-r peer-focus:after:border-r-2 after:pointer-events-none after:transition-all peer-disabled:after:border-transparent peer-placeholder-shown:leading-[3.75] text-blue-gray-400 peer-focus:text-blue-500 before:border-blue-gray-200 peer-focus:before:border-blue-500 after:border-blue-gray-200 peer-focus:after:border-blue-500">Type here</label>
                            </div>
                         </div>
                         <button className="relative middle none font-sans font-medium text-center uppercase transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none w-10 max-w-[40px] h-10 max-h-[40px] rounded-lg text-xs text-gray-500 hover:bg-blue-gray-500/10 active:bg-blue-gray-500/30 grid xl:hidden" type="button">
@@ -231,7 +258,7 @@ const Layout = () => {
                         </div>
                         <div className="border-t border-blue-gray-50 p-4">
                            <p className="block antialiased font-sans text-base leading-relaxed font-normal text-blue-gray-600">
-                              <strong className="text-fuchsia-500">{ Math.round((stadisticData.assistToChucrh * 100)/150) }%</strong>&nbsp;de los invitados asistirá
+                              <strong className="text-fuchsia-500">{Math.round((stadisticData.assistToChucrh * 100) / 150)}%</strong>&nbsp;de los invitados asistirá
                            </p>
                         </div>
                      </div>
@@ -249,7 +276,7 @@ const Layout = () => {
                         </div>
                         <div className="border-t border-blue-gray-50 p-4">
                            <p className="block antialiased font-sans text-base leading-relaxed font-normal text-blue-gray-600">
-                              <strong className="text-fuchsia-500">{ Math.round((stadisticData.assistsToWedding * 100)/150) }%</strong>&nbsp;asistirán a la boda
+                              <strong className="text-fuchsia-500">{Math.round((stadisticData.assistsToWedding * 100) / 150)}%</strong>&nbsp;asistirán a la boda
                            </p>
                         </div>
                      </div>
@@ -302,7 +329,7 @@ const Layout = () => {
                                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="3" stroke="currentColor" aria-hidden="true" className="h-4 w-4 text-blue-500">
                                     <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5"></path>
                                  </svg>
-                                 <strong>{ (fullData?.filter( guest => guest.message )).length } mensajes</strong> en total
+                                 <strong>{(fullData?.filter(guest => guest.message)).length} mensajes</strong> en total
                               </p>
                            </div>
                            <button aria-expanded="false" aria-haspopup="menu" id=":r5:" className="relative middle none font-sans font-medium text-center uppercase transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none w-8 max-w-[32px] h-8 max-h-[32px] rounded-lg text-xs text-blue-gray-500 hover:bg-blue-gray-500/10 active:bg-blue-gray-500/30" type="button">
@@ -328,22 +355,22 @@ const Layout = () => {
                               <tbody>
 
                                  {
-                                    fullData?.map( guest => (
-                                       
+                                    fullData?.map(guest => (
+
                                        <tr key={guest?._id}>
                                           <td className="py-3 px-5 border-b border-blue-gray-50">
                                              <div className="flex items-center gap-4">
-                                                <p className="block antialiased font-sans text-sm leading-normal text-blue-gray-900 font-bold"> { guest?.fullName } </p>
+                                                <p className="block antialiased font-sans text-sm leading-normal text-blue-gray-900 font-bold"> {guest?.fullName} </p>
                                              </div>
                                           </td>
 
                                           <td className="py-3 px-5 border-b border-blue-gray-50">
-                                             <p className="block antialiased font-sans text-xs font-medium text-blue-gray-600"> { guest?.message }</p>
+                                             <p className="block antialiased font-sans text-xs font-medium text-blue-gray-600"> {guest?.message}</p>
                                           </td>
                                        </tr>
 
                                     ))
-                                 }     
+                                 }
 
                               </tbody>
                            </table>
@@ -351,7 +378,7 @@ const Layout = () => {
                      </div>
                   </div>
 
-                  {/*  ----- GUESTS TABLE DATA ----- */}
+                  {/*  ----- PARTNERS TABLE DATA ----- */}
                   <div className="mb-4 grid grid-cols-1 gap-6 xl:grid-cols-3">
                      <div className="relative flex flex-col bg-clip-border rounded-xl bg-white text-gray-700 shadow-md overflow-hidden xl:col-span-2">
                         <div className="relative bg-clip-border rounded-xl overflow-hidden bg-transparent text-gray-700 shadow-none m-0 flex items-center justify-between p-6">
@@ -361,10 +388,10 @@ const Layout = () => {
                                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="3" stroke="currentColor" aria-hidden="true" className="h-4 w-4 text-blue-500">
                                     <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5"></path>
                                  </svg>
-                                 <strong>{ (stadisticData?.partner).length } mensajes</strong> en total
+                                 <strong>{(stadisticData?.partner).length} mensajes</strong> en total
                               </p>
                            </div>
-                           <button aria-expanded="false" aria-haspopup="menu" id=":r5:" className="relative middle none font-sans font-medium text-center uppercase transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none w-8 max-w-[32px] h-8 max-h-[32px] rounded-lg text-xs text-blue-gray-500 hover:bg-blue-gray-500/10 active:bg-blue-gray-500/30" type="button">
+                           <button aria-expanded="false" aria-haspopup="menu" id=":r5:" className="relative middle none font-sans font-medium text-center uppercase transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none w-8 max-w-[32px] h-8 max-h-[32px] rounded-lg text-xs text-blue-gray-500 hover:bg-blue-500/10 active:bg-blue-500/30" type="button">
                               <span className="absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2">
                                  <svg xmlns="http://www.w3.org/2000/svg" fill="currenColor" viewBox="0 0 24 24" strokeWidth="3" stroke="currentColor" aria-hidden="true" className="h-6 w-6">
                                     <path strokeLinecap="round" strokeLinejoin="round" d="M12 6.75a.75.75 0 110-1.5.75.75 0 010 1.5zM12 12.75a.75.75 0 110-1.5.75.75 0 010 1.5zM12 18.75a.75.75 0 110-1.5.75.75 0 010 1.5z"></path>
@@ -376,10 +403,10 @@ const Layout = () => {
                            <table className="w-full min-w-[640px] table-auto">
                               <thead>
                                  <tr>
-                                    <th className="border-b border-blue-gray-50 py-3 px-6 text-left">
+                                    <th className="border-b border-gray-50 py-3 px-6 text-left">
                                        <p className="block antialiased font-sans text-[11px] font-medium uppercase text-gray-400">Invitado</p>
                                     </th>
-                                    <th className="border-b border-blue-gray-50 py-3 px-6 text-left">
+                                    <th className="border-b border-gray-50 py-3 px-6 text-left">
                                        <p className="block antialiased font-sans text-[11px] text-center font-medium uppercase text-gray-400">Pareja</p>
                                     </th>
                                  </tr>
@@ -387,22 +414,22 @@ const Layout = () => {
                               <tbody>
 
                                  {
-                                    stadisticData?.partner?.map( guest => (
-                                       
+                                    stadisticData?.partner?.map(guest => (
+
                                        <tr key={guest?.partnerId}>
                                           <td className="py-3 px-5 border-b border-blue-gray-50">
                                              <div className="flex items-center gap-4">
-                                                <p className="block antialiased font-sans text-sm leading-normal text-blue-gray-900 font-bold"> { guest?.fullName } </p>
+                                                <p className="block antialiased font-sans text-sm leading-normal text-blue-gray-900 font-bold"> {guest?.fullName} </p>
                                              </div>
                                           </td>
 
                                           <td className="py-3 px-5 border-b border-blue-gray-50">
-                                             <p className="block antialiased font-sans text-xs font-medium text-blue-gray-600"> { guest?.partnerName }</p>
+                                             <p className="block antialiased font-sans text-xs font-medium text-blue-gray-600"> {guest?.partnerName}</p>
                                           </td>
                                        </tr>
 
                                     ))
-                                 }     
+                                 }
 
                               </tbody>
                            </table>

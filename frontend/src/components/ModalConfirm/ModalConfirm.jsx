@@ -14,12 +14,12 @@ const initialFormState = {
    message: '',
    drinkPreferences: {
       ['fernet_🥤']: false,
-      ['gin_tonic 🍸']: false,
+      ['gin_tonic_🍸']: false,
       ['campari_🍹']: false,
       ['vino_🍷']: false,
       ['cerveza_🍺']: false,
       ['no_tomo_alcohol_💧']: false,
-      ['otro']: '',
+      ['otro_🥂']: '',
    },
    foodPreferences: {
       ['como_sin_tac_❌🌾']: false,
