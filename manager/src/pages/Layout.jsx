@@ -23,7 +23,7 @@ const Layout = () => {
       food: [],
    });
 
-   const handleData = (e) => {
+   const handleData = () => {
       axios
          .get('https://wedding-invitation-backend.vercel.app/api/guests')
          .then((response) => {
@@ -36,8 +36,8 @@ const Layout = () => {
    };
 
    const handleStadistic = () => {
+      
       if (!executed) {
-
          fullData?.forEach(guest => {
             if (guest.assistChurch) {
                setStadisticData(prev => ({ ...prev, assistToChucrh: prev.assistToChucrh + 1 }));
@@ -55,27 +55,27 @@ const Layout = () => {
                setStadisticData(prev => ({ ...prev, partner: [...prev.partner, { fullName: guest.fullName, partnerName: guest.partnersName, partnerId: guest._id }] }));
             }
 
-            if (guest.drinkPreferences) {
-               const updatedStadisticData = { ...stadisticData.drinks };
+            // if (guest.drinkPreferences) {
+            //    const updatedStadisticData = { ...stadisticData.drinks };
 
-               for(let drink in guest.drinkPreferences){
-                  let formatKey = drink.slice(0, (drink.length -3))
+            //    for(let drink in guest.drinkPreferences){
+            //       let formatKey = drink.slice(0, (drink.length -3))
 
-                  if( guest.drinkPreferences[drink] ){
-                     updatedStadisticData[formatKey] = (updatedStadisticData[formatKey] || 0) + 1;
-                  }
+            //       if( guest.drinkPreferences[drink] ){
+            //          updatedStadisticData[formatKey] = (updatedStadisticData[formatKey] || 0) + 1;
+            //       }
 
-               } 
-               setStadisticData(prev => ({ ...prev, drinks: updatedStadisticData }));
-            }
+            //    } 
+            //    setStadisticData(prev => ({ ...prev, drinks: updatedStadisticData }));
+            // }
 
          })
-
          setExecuted(true);
       }
+      
    }
 
-   console.log(stadisticData.drinks);
+   console.log(stadisticData);
 
    useEffect(() => {
       handleData();
