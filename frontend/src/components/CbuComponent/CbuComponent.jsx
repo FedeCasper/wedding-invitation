@@ -22,15 +22,15 @@ const CbuComponent = () => {
 
          <header className="relative flex flex-col items-center justify-start gap-2  w-full rounded-t-md
             bg-[url('/assets/backgrounds/cbu-header-vertical.png')] bg-no-repeat bg-cover bg-bottom ">
-            <div className="h-[18vh] lg:h-[30vh] flex flex-col justify-center gap-2">
+            <div className="h-[18vh] lg:h-[30vh] flex flex-col pt-[4vh] gap-2">
                <h2 className="text-xl font-semibold text-center text-white z-50
                   lg:text-3xl">
                   ¿No sabés que <br></br> regalarnos?
                </h2>
-               <h3 className="text-base font-medium text-center text-gray-dark z-50
+               {/* <h3 className="text-base font-medium text-center text-gray-dark z-50
                   lg:text-xl">
                   Nuestros datos bancarios:
-               </h3>
+               </h3> */}
             </div>
             <img 
                onClick={ () => setModal( false ) }
