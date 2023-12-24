@@ -117,7 +117,7 @@ const CbuComponent = () => {
                </section>
                <p >
                   <span className='italic text-base/7'>
-                     No tenemos cuentas para recibir dinero extranjero, por lo tanto 👉🏻 sobre en mano.<br></br>
+                     No tenemos cuentas para recibir dinero extranjero, por lo tanto 👉🏼 sobre en mano.<br></br>
                      <span className='font-semibold not-italic'> Requisito único : </span>
                      No dólar cara chica o estropeado (es que después nadie los recibe 😥)
                   </span>
@@ -132,8 +132,8 @@ const CbuComponent = () => {
                </section>
                <p >
                   <span className='italic text-base/7'>
-                     Si estas afuera y de alguna manera querés hacernos llegar tu regalo 👉🏼 Western Union.<br></br>
-                     Y no olvides de mandarnos el comprobante para saber que lo mandaron 😏
+                     Si estas afuera y de alguna manera querés hacernos llegar tu cariño 👉🏼 Western Union.
+                     Y no olvides mandarnos el comprobante. 😏
                   </span>
                </p>
                <div className='flex-wrap'>
