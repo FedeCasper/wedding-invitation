@@ -64,23 +64,23 @@ const ModalWeather = () => {
 
 <header className="relative flex flex-col items-center justify-start gap-2 w-full rounded-t-md
             bg-[url('/assets/backgrounds/cbu-header-vertical.png')] bg-no-repeat bg-cover bg-bottom ">
-            <div className="h-[150px] md:h-[150px] lg:h-[150px] flex pt-[4vh]">
+            <div className="h-[150px] lg:h-[200px] flex pt-[4vh]">
                <h2 className="text-2xl font-semibold text-center text-white z-50
                   lg:text-3xl">
                   ¿Que pasa con <br className="md:hidden"></br> el clima?
                </h2>
             </div> 
             <img 
-               onClick={ () => setModal( false ) }
+               onClick={ () => setWeatherModal( false ) }
                src="./assets/images/btn-close.png" 
                alt=" Boton cerrar " 
                className="absolute top-4 right-4 h-10 cursor-pointer rounded-md z-50
                   transition-all delay-50 duration-150 hover:cursor-pointer hover:scale-90 hover:drop-shadow-md hover:rotate-90" 
             />
             <img src="./assets/images/weather-header-pieces-03.png" alt="Gift animation" className="h-16 absolute -bottom-4 right-5 jumping-element lg:h-20 lg:-bottom-4 lg:right-12" />
-            <img src="./assets/images/weather-header-pieces-01.png" alt="Star animation" className="h-6 absolute top-2 left-12 jumping-element-reverse lg:h-5 lg:top-5 lg:left-20" />
-            <img src="./assets/images/cbu-header-pieces-06.png" alt="Coins animation" className="h-4 absolute top-16 left-2 jumping-element-reverse lg:h-16 lg:top-16 lg:left-12" />
-            <img src="./assets/images/weather-header-pieces-02.png" alt="" className="h-12 absolute -bottom-2 left-5 jumping-element lg:h-8 lg:-bottom-2" />
+            <img src="./assets/images/weather-header-pieces-01.png" alt="Star animation" className="h-6 absolute top-2 left-12 jumping-element-reverse lg:h-12 lg:top-5 lg:left-20" />
+            <img src="./assets/images/cbu-header-pieces-06.png" alt="Coins animation" className="h-4 absolute top-16 left-2 jumping-element-reverse lg:h-6 lg:top-16 lg:left-12" />
+            <img src="./assets/images/weather-header-pieces-02.png" alt="" className="h-12 absolute -bottom-2 left-5 jumping-element lg:h-16 lg:-bottom-2 lg:left-10" />
          </header>
 
          <main className='flex flex-col items-center gap-8 grow bg-cream p-6 text-gray-dark text-sm'>
