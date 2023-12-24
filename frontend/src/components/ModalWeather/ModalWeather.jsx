@@ -62,26 +62,25 @@ const ModalWeather = () => {
       <div className="w-11/12 h-[95vh] flex flex-col rounded-md shadow-md
          md:w-8/12 md:h-5/6 md:self-center ">
 
-         <header className="relative flex flex-col items-center justify-start h-[20vh] w-full pt-6 rounded-t-md
-            bg-[url('/assets/backgrounds/cbu-header-vertical.png')] bg-no-repeat bg-cover bg-bottom 
-            lg:h-[30vh]">
-            <h2 className="text-xl font-semibold text-center text-white z-50
-               lg:text-3xl">
-               ¿Y el clima?
-            </h2>
-            <h3 className="text-base font-medium text-center text-gray-dark z-50
-               lg:text-xl">
-               Te contamos:
-            </h3>
-            <img
-               onClick={() => setWeatherModal(false)}
-               src="./assets/images/btn-close.png"
-               alt=" Boton cerrar "
+<header className="relative flex flex-col items-center justify-start gap-2 w-full rounded-t-md
+            bg-[url('/assets/backgrounds/cbu-header-vertical.png')] bg-no-repeat bg-cover bg-bottom ">
+            <div className="h-[150px] md:h-[150px] lg:h-[150px] flex pt-[4vh]">
+               <h2 className="text-2xl font-semibold text-center text-white z-50
+                  lg:text-3xl">
+                  ¿Que pasa con <br className="md:hidden"></br> el clima?
+               </h2>
+            </div> 
+            <img 
+               onClick={ () => setModal( false ) }
+               src="./assets/images/btn-close.png" 
+               alt=" Boton cerrar " 
                className="absolute top-4 right-4 h-10 cursor-pointer rounded-md z-50
-                  transition-all delay-50 duration-150 hover:cursor-pointer hover:scale-90 hover:drop-shadow-md hover:rotate-90"
+                  transition-all delay-50 duration-150 hover:cursor-pointer hover:scale-90 hover:drop-shadow-md hover:rotate-90" 
             />
-            <img src="./assets/images/weather-header-pieces-02.png" alt="" className="h-28 absolute bottom-5 right-5 jumping-element lg:h-40 lg:bottom-10 lg:right-32" />
-            <img src="./assets/images/weather-header-pieces-03.png" alt="" className="h-32 absolute top-5 left-8 jumping-element-reverse lg:h-40 lg:top-10 lg:left-32" />
+            <img src="./assets/images/weather-header-pieces-03.png" alt="Gift animation" className="h-16 absolute -bottom-4 right-5 jumping-element lg:h-20 lg:-bottom-4 lg:right-12" />
+            <img src="./assets/images/weather-header-pieces-01.png" alt="Star animation" className="h-6 absolute top-2 left-12 jumping-element-reverse lg:h-5 lg:top-5 lg:left-20" />
+            <img src="./assets/images/cbu-header-pieces-06.png" alt="Coins animation" className="h-4 absolute top-16 left-2 jumping-element-reverse lg:h-16 lg:top-16 lg:left-12" />
+            <img src="./assets/images/weather-header-pieces-02.png" alt="" className="h-12 absolute -bottom-2 left-5 jumping-element lg:h-8 lg:-bottom-2" />
          </header>
 
          <main className='flex flex-col items-center gap-8 grow bg-cream p-6 text-gray-dark text-sm'>
@@ -89,30 +88,39 @@ const ModalWeather = () => {
             <article className="flex flex-col gap-2 w-full">
                <section className="flex items-center gap-2 mb-4">
                   <img src={`${localWeather?.current?.condition?.icon}`} alt="" className='h-12' />
-                  <h2 className='font-semibold text-base'>Pronóstico: {localWeather?.current?.condition?.text}</h2>
+                  <h2 className='font-semibold text-lg'>Pronóstico: {localWeather?.current?.condition?.text}</h2>
                </section>
-               <div className='flex flex-col flex-wrap'>
-                  <span className='italic'>Temperatura actual:</span>
-                  <span className='font-semibold text-2xl'> {localWeather?.current?.temp_c}° </span>
+               <div className='flex flex-col flex-wrap gap-1'>
+                  <span className='italic text-base'>Temperatura actual:</span>
+                  <span className='font-bold text-xl'> {localWeather?.current?.temp_c}° </span>
+                  <hr className='w-56 border-1 border-green' />
                </div>
-               <div className='flex flex-col flex-wrap'>
-                  <span className='italic'>Sensación térmica: </span>
-                  <span className='font-semibold text-2xl'> {localWeather?.current?.feelslike_c}° </span>
+               <div className='flex flex-col flex-wrap gap-1'>
+                  <span className='italic text-base'>Sensación térmica: </span>
+                  <span className='font-bold text-xl'> {localWeather?.current?.feelslike_c}° </span>
+                  <hr className='w-56 border-1 border-green' />
                </div>
-               <div className='flex flex-col flex-wrap'>
-                  <span className='italic'>Humedad:</span>
-                  <span className='font-semibold text-2xl'> {localWeather?.current?.humidity}% </span>
+               <div className='flex flex-col flex-wrap gap-1'>
+                  <span className='italic text-base'>Humedad:</span>
+                  <span className='font-semibold text-xl'> {localWeather?.current?.humidity}% </span>
+                  <hr className='w-56 border-1 border-green' />
                </div>
-               <div className='flex flex-col flex-wrap mt-4'>
-                  <span className='italic'>Mañana:</span>
-                  <span className='font-semibold text-lg'>{futureWeather?.forecast?.forecastday[0]?.day?.condition?.text}.</span>
-                  <span className=' font-semibold text-2xl'> 
+               <div className='flex flex-col flex-wrap mt-4 gap-1'>
+                  <span className='italic text-base'>Mañana:</span>
+                  <span className='font-semibold text-sm'>{futureWeather?.forecast?.forecastday[0]?.day?.condition?.text}.</span>
+                  <span className=' font-bold text-xl'> 
                      {futureWeather?.forecast?.forecastday[0]?.day?.maxtemp_c}° 
-                     <span className='text-base mx-2'>(Máxima)</span>
+                     <span className='text-base mx-2'>(max.)</span>
                      - {futureWeather?.forecast?.forecastday[0]?.day?.mintemp_c}° 
-                     <span className='text-base ms-2'>(Mínima)</span>
+                     <span className='text-base ms-2'>(min.)</span>
                   </span>
-                  <span className='font-semibold text-2xl'> 
+                  <hr className='w-56 border-1 border-green' />
+                  <span className='flex mt-4'> 
+                  <img src="./assets/images/warning-icon.png" alt="" className='h-14 pe-3 self-center'/>
+                     <p>
+                        <span className='font-semibold text-sm'>Alerta Naranja<br></br></span>
+                        <span className='text-sm font-normal'>Fuertes resaca, moderado dolor de cabeza y náuseas. Posibilidad de amnesia temporal.</span>
+                     </p>
                   </span>
                </div>
             </article>
