@@ -17,7 +17,7 @@ const CbuComponent = () => {
    }
 
    return (
-      <div className="flex flex-col w-11/12 h-[95vh] rounded-md
+      <div className="flex flex-col w-11/12 rounded-md overflow-y-scroll
          md:w-8/12 md:h-5/6 md:self-center shadow-md">
 
          <header className="relative flex flex-col items-center justify-start gap-2 h-[20vh] w-full pt-6 rounded-t-md
@@ -122,6 +122,28 @@ const CbuComponent = () => {
                      No dólar cara chica o estropeado (es que después nadie los recibe 😥)
                   </span>
                </p>
+            </article>
+
+            <article className="flex flex-col gap-4 w-full
+               lg:w-[450px]">
+               <section className="flex items-center gap-2">
+                  <img src="./assets/images/green-arrows-icon.png" alt="" className='h-6'/>
+                  <h2 className='font-semibold text-base'>WESTERN UNION</h2>
+               </section>
+               <p >
+                  <span className='italic text-base/7'>
+                     Si estas afuera y de alguna manera querés hacernos llegar tu regalo 👉🏼 Western Union.<br></br>
+                     Y no olvides de mandarnos el comprobante para saber que lo mandaron 😏
+                  </span>
+               </p>
+               <div className='flex-wrap'>
+                  <span className='italic'>Nombre :</span>
+                  <span className='font-semibold'> Federica Risso Patrón</span>
+               </div>
+               <div className='flex-wrap'>
+                  <span className='italic'>DNI :</span>
+                  <span className='font-semibold'> 35183885</span>
+               </div>
                <article className='flex flex-col gap-3 items-center'>
                   <hr className='w-48 border border-[#5D7551]' />
                   <h2 className='text-lg font-medium'>¡Desde ya mil gracias!</h2>

@@ -92,7 +92,7 @@ const ModalWeather = () => {
                   <h2 className='font-semibold text-base'>Pronóstico: {localWeather?.current?.condition?.text}</h2>
                </section>
                <div className='flex flex-col flex-wrap'>
-                  <span className='italic'>Tempreatura actual:</span>
+                  <span className='italic'>Temperatura actual:</span>
                   <span className='font-semibold text-2xl'> {localWeather?.current?.temp_c}° </span>
                </div>
                <div className='flex flex-col flex-wrap'>
