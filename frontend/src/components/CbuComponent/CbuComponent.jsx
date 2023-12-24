@@ -17,12 +17,12 @@ const CbuComponent = () => {
    }
 
    return (
-      <div className="flex flex-col w-11/12 rounded-md overflow-y-scroll shadow-md h-full
+      <div className="flex flex-col w-[320px] rounded-md overflow-y-scroll shadow-md h-full
          md:w-8/12 md:h-5/6 md:self-center">
 
          <header className="relative flex flex-col items-center justify-start gap-2  w-full rounded-t-md
             bg-[url('/assets/backgrounds/cbu-header-vertical.png')] bg-no-repeat bg-cover bg-bottom ">
-            <div className="h-[25vh] lg:h-[30vh] pt-[3vh] flex flex-col gap-1">
+            <div className="h-[25vh] lg:h-[30vh] flex flex-col justify-center gap-2">
                <h2 className="text-xl font-semibold text-center text-white z-50
                   lg:text-3xl">
                   ¿No sabés que <br></br> regalarnos?
@@ -41,7 +41,7 @@ const CbuComponent = () => {
             />
             <img src="./assets/images/cbu-header-pieces-02.png" alt="" className="h-28 absolute bottom-5 right-5 jumping-element lg:h-40 lg:bottom-16 lg:right-32" />
             <img src="./assets/images/cbu-header-pieces-01.png" alt="" className="h-28 absolute top-5 left-2 jumping-element-reverse lg:h-40 lg:top-16 lg:left-32" />
-            <img src="./assets/images/cbu-header-pieces-03.png" alt="" className="h-8 absolute bottom-2 right-25 jumping-element lg:h-10 lg:bottom-8" />
+            {/* <img src="./assets/images/cbu-header-pieces-03.png" alt="" className="h-8 absolute bottom-2 right-25 jumping-element lg:h-10 lg:bottom-8" /> */}
          </header>
 
          <main className='flex flex-col items-center gap-8 grow bg-cream p-6 text-gray-dark text-sm'>
