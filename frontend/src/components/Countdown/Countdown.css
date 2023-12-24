@@ -8,7 +8,7 @@
   gap: 5px;
   justify-content: center;
   width: 100%;
-  fontSize: 0.4em;
+  font-size: 0.4em;
 }
 
 .flipUnitContainer {
@@ -35,9 +35,9 @@
 }
 .upperCard span,
 .lowerCard span {
-  fontSize: 5em;
-  fontFamily: "Poppins", sans-serif;
-  fontWeight:bold;
+  font-size: 5em;
+  font-family: "Poppins", sans-serif;
+  font-weight:bold;
   color: #333333;
 }
 
@@ -73,9 +73,9 @@
   backface-visibility: hidden;
 }
 .flipCard span {
-  fontFamily: "Poppins", sans-serif;
-  fontSize: 5em;
-  fontWeight:bold;
+  font-family: "Poppins", sans-serif;
+  font-size: 5em;
+  font-weight:bold;
   color: #333333;
 }
 .flipCard.unfold {
@@ -163,7 +163,7 @@
     gap: 15px;
     justify-content: center;
     width: 100%;
-    fontSize: 0.8em;
+    font-size: 0.8em;
   }
   
   .flipUnitContainer {
