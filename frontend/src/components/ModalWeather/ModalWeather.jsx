@@ -62,7 +62,7 @@ const ModalWeather = () => {
       <div className="w-11/12 h-[95vh] flex flex-col rounded-md shadow-md
          md:w-8/12 md:h-5/6 md:self-center ">
 
-         <header className="relative flex flex-col items-center justify-start gap-2 h-[20vh] w-full pt-6 rounded-t-md
+         <header className="relative flex flex-col items-center justify-start h-[20vh] w-full pt-6 rounded-t-md
             bg-[url('/assets/backgrounds/cbu-header-vertical.png')] bg-no-repeat bg-cover bg-bottom 
             lg:h-[30vh]">
             <h2 className="text-xl font-semibold text-center text-white z-50

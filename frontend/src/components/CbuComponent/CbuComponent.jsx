@@ -17,10 +17,10 @@ const CbuComponent = () => {
    }
 
    return (
-      <div className="flex flex-col w-11/12 rounded-md overflow-y-scroll
-         md:w-8/12 md:h-5/6 md:self-center shadow-md">
+      <div className="flex flex-col w-11/12 rounded-md overflow-y-scroll shadow-md h-[100vh]
+         md:w-8/12 md:h-5/6 md:self-center">
 
-         <header className="relative flex flex-col items-center justify-start gap-2 h-[20vh] w-full pt-6 rounded-t-md
+         <header className="relative flex flex-col items-center justify-start gap-2 h-[25vh] w-full pt-6 rounded-t-md
             bg-[url('/assets/backgrounds/cbu-header-vertical.png')] bg-no-repeat bg-cover bg-bottom 
             lg:h-[30vh]">
             <h2 className="text-xl font-semibold text-center text-white z-50
@@ -45,52 +45,110 @@ const CbuComponent = () => {
 
          <main className='flex flex-col items-center gap-8 grow bg-cream p-6 text-gray-dark text-sm'>
 
+            {/* Patagonia Bank Section */}
             <article className="flex flex-col gap-2 w-full
             lg:w-[450px]">
                <section className="flex items-center gap-2">
                   <img src="./assets/images/green-arrows-icon.png" alt="" className='h-6'/>
                   <h2 className='font-semibold text-base'>BANCO PATAGONIA</h2>
                </section>
-               <div className='flex-wrap'>
-                  <span className='italic'>Titular de cuenta :</span>
-                  <span className='font-semibold'> Federica Risso Patrón</span>
-               </div>
-               <div className='flex items-center gap-2 flex-wrap'>
-                  <span className='italic'>Alias :</span>
-                     <div className='flex items-center gap-2'>
-                        <span className='font-semibold'> FEDE.Y.FEDE</span>
-                     </div>
-                     <button
-                        className="group relative inline-flex " >
-                        <img 
-                           onClick={ () => copyToClipboard('FEDE.Y.FEDE') } 
-                           src="./assets/images/copy-icon.png" 
-                           alt=" Boton copiar " 
-                           title='Copiar' 
-                           className='h-6 cursor-pointer
-                           transition origin-bottom-left duration-300 ease-in-out hover:scale-110 hover:rotate-3' />
-                        <div className="hidden group-hover:block">
-                           <div
-                              className="group absolute -top-12 left-1/2 z-50 flex -translate-x-1/2 flex-col items-center rounded-sm text-center text-sm text-cream before:-top-2">
-                              <div className={`rounded-md py-1 px-2 ${ copied ? 'bg-mustard' : 'bg-green' }`}>
-                                 <p className="whitespace-nowrap">{ copied ? 'Copiado!' : 'Copiar' }</p>
+               <div className="flex flex-col gap-1.5">
+                  <div className='flex-wrap'>
+                     <span className='italic'>Titular de cuenta :</span>
+                     <span className='font-semibold'> Federica Risso Patrón</span>
+                  </div>
+                  <div className='flex items-center gap-2 flex-wrap'>
+                     <span className='italic'>Alias :</span>
+                        <div className='flex items-center gap-2'>
+                           <span className='font-semibold'> FEDE.Y.FEDE</span>
+                        </div>
+                        <button
+                           className="group relative inline-flex " >
+                           <img 
+                              onClick={ () => copyToClipboard('FEDE.Y.FEDE') } 
+                              src="./assets/images/copy-icon.png" 
+                              alt=" Boton copiar " 
+                              title='Copiar' 
+                              className='h-6 cursor-pointer
+                              transition origin-bottom-left duration-300 ease-in-out hover:scale-110 hover:rotate-3' />
+                           <div className="hidden group-hover:block">
+                              <div
+                                 className="group absolute -top-12 left-1/2 z-50 flex -translate-x-1/2 flex-col items-center rounded-sm text-center text-sm text-cream before:-top-2">
+                                 <div className={`rounded-md py-1 px-2 ${ copied ? 'bg-mustard' : 'bg-green' }`}>
+                                    <p className="whitespace-nowrap">{ copied ? 'Copiado!' : 'Copiar' }</p>
+                                 </div>
                               </div>
                            </div>
-                        </div>
-                     </button>
+                        </button>
+                  </div>
+                  <div className='flex-wrap'>
+                     <span className='italic'>CUIL/CUIT :</span>
+                     <span className='font-semibold'> 27351838855</span>
+                  </div>
+                  <div className='flex items-center gap-2 flex-wrap'>
+                     <span className='italic'>CBU :</span>
+                     <div className='flex items-center gap-2'>
+                        <span className='font-semibold'> 0340060908600037774006</span>
+                        <button
+                           className="group relative inline-flex " >
+                           <img 
+                              onClick={ () => copyToClipboard('0340060908600037774006') } 
+                              src="./assets/images/copy-icon.png" 
+                              alt=" Boton copiar " 
+                              title='Copiar' 
+                              className='h-6 cursor-pointer
+                              transition origin-bottom-left duration-300 ease-in-out hover:scale-110 hover:rotate-3' />
+                           <div className="hidden group-hover:block">
+                              <div
+                                 className="group absolute -top-12 left-1/2 z-50 flex -translate-x-1/2 flex-col items-center rounded-sm text-center text-sm text-[#EAE8E4] before:-top-2">
+                                 <div className={`rounded-md py-1 px-2 ${ copied ? 'bg-mustard' : 'bg-green' }`}>
+                                    <p className="whitespace-nowrap">{ copied ? 'Copiado!' : 'Copiar' }</p>
+                                 </div>
+                              </div>
+                           </div>
+                        </button>
+                     </div>
+                  </div>
                </div>
-               <div className='flex-wrap'>
-                  <span className='italic'>CUIL/CUIT :</span>
-                  <span className='font-semibold'> 27351838855</span>
-               </div>
+            </article>
+
+            {/* Dolars Section */}
+            <article className="flex flex-col gap-2 w-full
+               lg:w-[450px]">
+               <section className="flex items-center gap-2">
+                  <img src="./assets/images/green-arrows-icon.png" alt="" className='h-6'/>
+                  <h2 className='font-semibold text-base'>DINERO EN MONEDA EXTRANJERA</h2>
+               </section>
+               <p >
+                  <span className='italic text-sm leading-6'>
+                     No tenemos cuentas para recibir dinero extranjero, por lo tanto 👉🏼 sobre en mano.<br></br>
+                     <span className='font-semibold not-italic'> Requisito único : </span>
+                     No dólar cara chica o estropeado (después nadie nos los recibe 😥)
+                  </span>
+               </p>
+            </article>
+
+            {/* Western Union Section */}
+            <article className="flex flex-col gap-2 w-full
+               lg:w-[450px]">
+               <section className="flex items-center gap-2">
+                  <img src="./assets/images/green-arrows-icon.png" alt="" className='h-6'/>
+                  <h2 className='font-semibold text-base'>WESTERN UNION</h2>
+               </section>
+               <p >
+                  <span className='italic text-sm leading-6'>
+                     Si estas afuera y de alguna manera querés hacernos llegar tu cariño 👉🏼 Western Union.
+                     Y no olvides mandarnos el comprobante. 😏
+                  </span>
+               </p>
                <div className='flex items-center gap-2 flex-wrap'>
-                  <span className='italic'>CBU :</span>
+                  <span className='italic'>Nombre :</span>
                   <div className='flex items-center gap-2'>
-                     <span className='font-semibold'> 0340060908600037774006</span>
+                     <span className='font-semibold'> Federica Risso Patrón</span>
                      <button
                         className="group relative inline-flex " >
                         <img 
-                           onClick={ () => copyToClipboard('0340060908600037774006') } 
+                           onClick={ () => copyToClipboard('Federica Risso Patrón') } 
                            src="./assets/images/copy-icon.png" 
                            alt=" Boton copiar " 
                            title='Copiar' 
@@ -107,42 +165,29 @@ const CbuComponent = () => {
                      </button>
                   </div>
                </div>
-            </article>
-
-            <article className="flex flex-col gap-4 w-full
-               lg:w-[450px]">
-               <section className="flex items-center gap-2">
-                  <img src="./assets/images/green-arrows-icon.png" alt="" className='h-6'/>
-                  <h2 className='font-semibold text-base'>DINERO EN MONEDA EXTRANJERA</h2>
-               </section>
-               <p >
-                  <span className='italic text-base/7'>
-                     No tenemos cuentas para recibir dinero extranjero, por lo tanto 👉🏼 sobre en mano.<br></br>
-                     <span className='font-semibold not-italic'> Requisito único : </span>
-                     No dólar cara chica o estropeado (es que después nadie los recibe 😥)
-                  </span>
-               </p>
-            </article>
-
-            <article className="flex flex-col gap-4 w-full
-               lg:w-[450px]">
-               <section className="flex items-center gap-2">
-                  <img src="./assets/images/green-arrows-icon.png" alt="" className='h-6'/>
-                  <h2 className='font-semibold text-base'>WESTERN UNION</h2>
-               </section>
-               <p >
-                  <span className='italic text-base/7'>
-                     Si estas afuera y de alguna manera querés hacernos llegar tu cariño 👉🏼 Western Union.
-                     Y no olvides mandarnos el comprobante. 😏
-                  </span>
-               </p>
-               <div className='flex-wrap'>
-                  <span className='italic'>Nombre :</span>
-                  <span className='font-semibold'> Federica Risso Patrón</span>
-               </div>
-               <div className='flex-wrap'>
+               <div className='flex items-center gap-2 flex-wrap'>
                   <span className='italic'>DNI :</span>
-                  <span className='font-semibold'> 35183885</span>
+                  <div className='flex items-center gap-2'>
+                     <span className='font-semibold'> 35183885</span>
+                     <button
+                        className="group relative inline-flex " >
+                        <img 
+                           onClick={ () => copyToClipboard('35183885') } 
+                           src="./assets/images/copy-icon.png" 
+                           alt=" Boton copiar " 
+                           title='Copiar' 
+                           className='h-6 cursor-pointer
+                           transition origin-bottom-left duration-300 ease-in-out hover:scale-110 hover:rotate-3' />
+                        <div className="hidden group-hover:block">
+                           <div
+                              className="group absolute -top-12 left-1/2 z-50 flex -translate-x-1/2 flex-col items-center rounded-sm text-center text-sm text-[#EAE8E4] before:-top-2">
+                              <div className={`rounded-md py-1 px-2 ${ copied ? 'bg-mustard' : 'bg-green' }`}>
+                                 <p className="whitespace-nowrap">{ copied ? 'Copiado!' : 'Copiar' }</p>
+                              </div>
+                           </div>
+                        </div>
+                     </button>
+                  </div>
                </div>
                <article className='flex flex-col gap-3 items-center'>
                   <hr className='w-48 border border-[#5D7551]' />

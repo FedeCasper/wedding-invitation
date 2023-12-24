@@ -49,7 +49,7 @@ const Layout = () => {
 
          {
             confirmationModal && (
-               <div className="fixed inset-0 mx-auto flex justify-center py-4 h-screen over w-full backdrop-blur-sm bg-cream/40 z-50 ">
+               <div className="fixed inset-0 mx-auto flex justify-center py-4 h-screen w-full backdrop-blur-sm bg-cream/40 z-50 ">
                   <ModalConfirm />
                </div>
             )
