@@ -18,20 +18,21 @@ const CbuComponent = () => {
 
    return (
       <div className="flex flex-col w-[320px] rounded-md overflow-y-scroll shadow-md h-full
-         md:w-8/12 md:h-5/6 md:self-center">
+         md:w-[640px] md:h-5/6 md:self-center
+         lg:w-[720px]">
 
          <header className="relative flex flex-col items-center justify-start gap-2  w-full rounded-t-md
             bg-[url('/assets/backgrounds/cbu-header-vertical.png')] bg-no-repeat bg-cover bg-bottom ">
-            <div className="h-[18vh] lg:h-[30vh] flex flex-col pt-[4vh] gap-2">
+            <div className="h-[18vh] md:h-[22vh] lg:h-[30vh] flex flex-col pt-[4vh] gap-2 border-2 border-red">
                <h2 className="text-xl font-semibold text-center text-white z-50
                   lg:text-3xl">
-                  ¿No sabés que <br></br> regalarnos?
+                  ¿No sabés que <br className="md:hidden"></br> regalarnos?
                </h2>
                {/* <h3 className="text-base font-medium text-center text-gray-dark z-50
                   lg:text-xl">
                   Nuestros datos bancarios:
                </h3> */}
-            </div>
+            </div> 
             <img 
                onClick={ () => setModal( false ) }
                src="./assets/images/btn-close.png" 
@@ -55,7 +56,7 @@ const CbuComponent = () => {
                </section>
                <div className="flex flex-col gap-1.5">
                   <div className='flex-wrap'>
-                     <span className='italic'>Titular de cuenta :</span>
+                     <span className='italic'>Titular :</span>
                      <span className='font-semibold'> Federica Risso Patrón</span>
                   </div>
                   <div className='flex items-center gap-2 flex-wrap'>
@@ -118,7 +119,7 @@ const CbuComponent = () => {
                lg:w-[450px]">
                <section className="flex items-center gap-2">
                   <img src="./assets/images/green-arrows-icon.png" alt="" className='h-6'/>
-                  <h2 className='font-semibold text-base'>DINERO EN MONEDA EXTRANJERA</h2>
+                  <h2 className='font-semibold text-base'>MONEDA EXTRANJERA</h2>
                </section>
                <p >
                   <span className='italic text-sm leading-6'>

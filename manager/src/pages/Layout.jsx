@@ -38,22 +38,23 @@ const Layout = () => {
    const handleStadistic = () => {
       
       if (!executed) {
-         fullData?.forEach(guest => {
+         fullData?.forEach( guest => {
             if (guest.assistChurch) {
-               setStadisticData(prev => ({ ...prev, assistToChucrh: prev.assistToChucrh + 1 }));
+               console.log("first")
+               setStadisticData( prev => ({ ...prev, assistToChucrh: prev.assistToChucrh + 1 }));
             } else {
-               setStadisticData(prev => ({ ...prev, notAssistToChucrh: prev.notAssistToChucrh + 1 }));
+               setStadisticData( prev => ({ ...prev, notAssistToChucrh: prev.notAssistToChucrh + 1 }));
             }
 
-            if (guest.assist) {
-               setStadisticData(prev => ({ ...prev, assistsToWedding: prev.assistsToWedding + 1 }));
-            } else {
-               setStadisticData(prev => ({ ...prev, notAssistsToWedding: prev.notAssistsToWedding + 1 }));
-            }
+            // if (guest.assist) {
+            //    setStadisticData(prev => ({ ...prev, assistsToWedding: prev.assistsToWedding + 1 }));
+            // } else {
+            //    setStadisticData(prev => ({ ...prev, notAssistsToWedding: prev.notAssistsToWedding + 1 }));
+            // }
 
-            if (guest.partner) {
-               setStadisticData(prev => ({ ...prev, partner: [...prev.partner, { fullName: guest.fullName, partnerName: guest.partnersName, partnerId: guest._id }] }));
-            }
+            // if (guest.partner) {
+            //    setStadisticData(prev => ({ ...prev, partner: [...prev.partner, { fullName: guest.fullName, partnerName: guest.partnersName, partnerId: guest._id }] }));
+            // }
 
             // if (guest.drinkPreferences) {
             //    const updatedStadisticData = { ...stadisticData.drinks };
@@ -70,9 +71,9 @@ const Layout = () => {
             // }
 
          })
-         setExecuted(true);
+         
       }
-      
+      setExecuted(true);
    }
 
    console.log(stadisticData);
