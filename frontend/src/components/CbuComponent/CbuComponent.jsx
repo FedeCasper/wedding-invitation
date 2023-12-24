@@ -17,20 +17,21 @@ const CbuComponent = () => {
    }
 
    return (
-      <div className="flex flex-col w-11/12 rounded-md overflow-y-scroll shadow-md h-[100vh]
+      <div className="flex flex-col w-11/12 rounded-md overflow-y-scroll shadow-md h-full
          md:w-8/12 md:h-5/6 md:self-center">
 
-         <header className="relative flex flex-col items-center justify-start gap-2 h-[25vh] w-full pt-6 rounded-t-md
-            bg-[url('/assets/backgrounds/cbu-header-vertical.png')] bg-no-repeat bg-cover bg-bottom 
-            lg:h-[30vh]">
-            <h2 className="text-xl font-semibold text-center text-white z-50
-               lg:text-3xl">
-               ¡Llegó el esperado<br></br> regalo!
-            </h2>
-            <h3 className="text-base font-medium text-center text-gray-dark z-50
-               lg:text-xl">
-               Nuestros datos bancarios:
-            </h3>
+         <header className="relative flex flex-col items-center justify-start gap-2  w-full rounded-t-md
+            bg-[url('/assets/backgrounds/cbu-header-vertical.png')] bg-no-repeat bg-cover bg-bottom ">
+            <div className="h-[25vh] lg:h-[30vh] pt-6 flex flex-col gap-1">
+               <h2 className="text-xl font-semibold text-center text-white z-50
+                  lg:text-3xl">
+                  ¿No sabés que <br></br> regalarnos?
+               </h2>
+               <h3 className="text-base font-medium text-center text-gray-dark z-50
+                  lg:text-xl">
+                  Nuestros datos bancarios:
+               </h3>
+            </div>
             <img 
                onClick={ () => setModal( false ) }
                src="./assets/images/btn-close.png" 
