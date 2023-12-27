@@ -25,7 +25,7 @@ const initialFormState = {
       ['como_sin_tac_❌🌾']: false,
       ['soy_vegano_❌🥩']: false,
       ['soy_vegetariano_💗🥑']: false,
-      ['otro']: false,
+      ['otro_🍟🥩']: false,
    },
 };
 
@@ -168,72 +168,6 @@ const ModalConfirm = () => {
                   </span>
                </label>
 
-               {/* Drinks section ---------------------- */}
-               <label>
-                  <input className="peer/showLabel absolute scale-0 unselectable" type="checkbox" name='drinks' />
-                  <div className="section-line"></div>
-                  <span className="block bg-white max-h-14 overflow-hidden rounded-b-lg  px-4 py-0  shadow-lg transition-all duration-300 peer-checked/showLabel:max-h-fit">
-                     <div className="section-header">
-                        <h3>
-                           ¿Qué bebidas preferís?
-                           <span className='section-required'>*</span>
-                        </h3>
-                        <KeyboardArrowDownIcon className={ `text-gray-dark ${ (arrowBehavior.checked && arrowBehavior.name === 'drinks') && 'rotate-180' }` } fontSize='medium' /> 
-                     </div>
-                     <h3 className="font-medium mb-4">Tendremos una barra pequeña y por eso queremos saber qué preferís tomar (no vaya a ser que te deshidrates)</h3>
-                     <div className="flex flex-col pb-6">
-                        {Object.entries(formData.drinkPreferences).map(([key, value]) => (
-                           <label key={key} className="section-label-radio">
-                              <input
-                                 type={key === 'otro' ? 'text' : 'checkbox'}
-                                 name={key}
-                                 checked={key === 'otro' ? false : formData.drinkPreferences[key]}
-                                 value={key === 'otro' ? value : key}
-                                 onChange={key === 'otro' ? handleChange : () => handleCheckboxChange('drinkPreferences', event)}
-                                 placeholder={key === 'otro' ? 'Ingresá tu bebida favorita' : ''}
-                                 className={key === "otro" ?
-                                    "section-input-text" :
-                                    "section-input-radio"
-                                 }
-                              />
-                              {key === 'otro' ? '' : key.toUpperCase().replace(/_/g, ' ')} {key === 'otro' && value}
-                           </label>
-                        ))}
-                     </div>
-                  </span>
-               </label>
-
-               {/* Food section ---------------------- */}
-               <label>
-                  <input className="peer/showLabel absolute scale-0 unselectable" type="checkbox" name='food' />
-                  <div className="section-line"></div>
-                  <span className="block bg-white max-h-14 overflow-hidden rounded-b-lg  px-4 py-0  shadow-lg transition-all duration-300 peer-checked/showLabel:max-h-96">
-                     <div className="section-header">
-                        <h3>
-                           ¿Tenés preferencia de menú?
-                           <span className='section-required'>*</span>
-                        </h3>
-                        <KeyboardArrowDownIcon className={ `text-gray-dark ${ (arrowBehavior.checked && arrowBehavior.name === 'food') && 'rotate-180' }` } fontSize='medium' /> 
-                     </div>
-                     <h3 className="font-medium mb-4">Seleccioná si tenés alguna restricción alimentaria. Haremos lo posible para sumar al menú alguna opción apta para vos.</h3>
-                     <div className="flex flex-col pb-6">
-                        {Object.entries(formData.foodPreferences).map(([key, value]) => (
-                           <label key={key} className="section-label-radio">
-                              <input
-                                 type={'checkbox'}
-                                 name={key}
-                                 checked={formData.foodPreferences[key]}
-                                 value={key}
-                                 onChange={() => handleCheckboxChange('foodPreferences', event)}
-                                 className='section-input-radio'
-                              />
-                              {key.toUpperCase().replace(/_/g, ' ')} {value}
-                           </label>
-                        ))}
-                     </div>
-                  </span>
-               </label>
-
                {/* Partners section ---------------------- */}
                <label>
                   <input className="peer/showLabel absolute scale-0 unselectable" type="checkbox" name='partner' />
@@ -241,7 +175,7 @@ const ModalConfirm = () => {
                   <span className="block bg-white max-h-14 overflow-hidden rounded-b-lg  px-4 py-0  shadow-lg transition-all duration-300 peer-checked/showLabel:max-h-52">
                      <div className="section-header">
                         <h3>
-                           ¿Venís en pareja?
+                           ¿Venís con alguien?
                            <span className='section-required'>*</span>
                         </h3>
                         <KeyboardArrowDownIcon className={ `text-gray-dark ${ (arrowBehavior.checked && arrowBehavior.name === 'partner') && 'rotate-180' }` } fontSize='medium' /> 
@@ -297,6 +231,72 @@ const ModalConfirm = () => {
                   </span>
                </label>
 
+               {/* Food section ---------------------- */}
+               <label>
+                  <input className="peer/showLabel absolute scale-0 unselectable" type="checkbox" name='food' />
+                  <div className="section-line"></div>
+                  <span className="block bg-white max-h-14 overflow-hidden rounded-b-lg  px-4 py-0  shadow-lg transition-all duration-300 peer-checked/showLabel:max-h-96">
+                     <div className="section-header">
+                        <h3>
+                           ¿Tenés alguna restricción alimentaria?
+                           <span className='section-required'>*</span>
+                        </h3>
+                        <KeyboardArrowDownIcon className={ `text-gray-dark ${ (arrowBehavior.checked && arrowBehavior.name === 'food') && 'rotate-180' }` } fontSize='medium' /> 
+                     </div>
+                     <h3 className="font-medium mb-4">Seleccioná si tenés alguna restricción alimentaria. Haremos lo posible para sumar al menú alguna opción apta para vos.</h3>
+                     <div className="flex flex-col pb-6">
+                        {Object.entries(formData.foodPreferences).map(([key, value]) => (
+                           <label key={key} className="section-label-radio">
+                              <input
+                                 type={'checkbox'}
+                                 name={key}
+                                 checked={formData.foodPreferences[key]}
+                                 value={key}
+                                 onChange={() => handleCheckboxChange('foodPreferences', event)}
+                                 className='section-input-radio'
+                              />
+                              {key.toUpperCase().replace(/_/g, ' ')} {value}
+                           </label>
+                        ))}
+                     </div>
+                  </span>
+               </label>
+
+               {/* Drinks section ---------------------- */}
+               <label>
+                  <input className="peer/showLabel absolute scale-0 unselectable" type="checkbox" name='drinks' />
+                  <div className="section-line"></div>
+                  <span className="block bg-white max-h-14 overflow-hidden rounded-b-lg  px-4 py-0  shadow-lg transition-all duration-300 peer-checked/showLabel:max-h-fit">
+                     <div className="section-header">
+                        <h3>
+                           ¿Bebida de preferencia?
+                           <span className='section-required'>*</span>
+                        </h3>
+                        <KeyboardArrowDownIcon className={ `text-gray-dark ${ (arrowBehavior.checked && arrowBehavior.name === 'drinks') && 'rotate-180' }` } fontSize='medium' /> 
+                     </div>
+                     <h3 className="font-medium mb-4">Tendremos una barra pequeña y por eso queremos saber qué preferís tomar (no vaya a ser que te deshidrates)</h3>
+                     <div className="flex flex-col pb-6">
+                        {Object.entries(formData.drinkPreferences).map(([key, value]) => (
+                           <label key={key} className="section-label-radio">
+                              <input
+                                 type={key === 'otro' ? 'text' : 'checkbox'}
+                                 name={key}
+                                 checked={key === 'otro' ? false : formData.drinkPreferences[key]}
+                                 value={key === 'otro' ? value : key}
+                                 onChange={key === 'otro' ? handleChange : () => handleCheckboxChange('drinkPreferences', event)}
+                                 placeholder={key === 'otro' ? 'Ingresá tu bebida favorita' : ''}
+                                 className={key === "otro" ?
+                                    "section-input-text" :
+                                    "section-input-radio"
+                                 }
+                              />
+                              {key === 'otro' ? '' : key.toUpperCase().replace(/_/g, ' ')} {key === 'otro' && value}
+                           </label>
+                        ))}
+                     </div>
+                  </span>
+               </label>
+
                {/* Assist church section ---------------------- */}
                <label>
                   <input className="peer/showLabel absolute scale-0 unselectable" type="checkbox" name='assist_church' />
@@ -304,7 +304,7 @@ const ModalConfirm = () => {
                   <span className="block bg-white max-h-14 overflow-hidden rounded-b-lg  px-4 py-0  shadow-lg transition-all duration-300 peer-checked/showLabel:max-h-52">
                      <div className="section-header">
                         <h3>
-                           ¿Asistís a la iglesia?
+                           ¿Asistiras a la Iglesia?
                            <span className='section-required'>*</span>
                         </h3>
                         <KeyboardArrowDownIcon className={ `text-gray-dark ${ (arrowBehavior.checked && arrowBehavior.name === 'assist_church') && 'rotate-180' }` } fontSize='medium' /> 
@@ -339,7 +339,7 @@ const ModalConfirm = () => {
                   <span className="block bg-white max-h-14 overflow-hidden rounded-b-lg  px-4 py-0  shadow-lg transition-all duration-300 peer-checked/showLabel:max-h-64">
                      <div className="section-header">
                         <h3>
-                           Contacto
+                           Dejanos tu contacto por cualquier cosa
                            <span className='section-required'>*</span>
                         </h3>
                         <KeyboardArrowDownIcon className={ `text-gray-dark ${ (arrowBehavior.checked && arrowBehavior.name === 'contact') && 'rotate-180' }` } fontSize='medium' /> 

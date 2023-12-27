@@ -67,7 +67,7 @@ const ModalWeather = () => {
             <div className="h-[150px] lg:h-[200px] flex pt-[4vh]">
                <h2 className="text-2xl font-semibold text-center text-white z-50
                   lg:text-3xl">
-                  ¿Que pasa con <br className="md:hidden"></br> el clima?
+                  ¿Qué pasa con <br className="md:hidden"></br> el clima?
                </h2>
             </div> 
             <img 
@@ -119,7 +119,7 @@ const ModalWeather = () => {
                   <img src="./assets/images/warning-icon.png" alt="" className='h-14 pe-3 self-center'/>
                      <p>
                         <span className='font-semibold text-sm'>Alerta Naranja<br></br></span>
-                        <span className='text-sm font-normal'>Fuertes resaca, moderado dolor de cabeza y náuseas. Posibilidad de amnesia temporal.</span>
+                        <span className='text-sm font-normal'>Fuertes resacas, moderado dolor de cabeza y náuseas. Posibilidad de amnesia temporal.</span>
                      </p>
                   </span>
                </div>
