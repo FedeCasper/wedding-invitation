@@ -81,11 +81,15 @@ const ModalConfirm = () => {
          });
    };
 
+      // <div className="flex flex-col w-[375px] rounded-md overflow-y-scroll  h-full
+   // md:w-[640px] md:h-5/6 md:self-center
+   // lg:w-[720px]">
 
    return (
-      <div className="relative flex flex-col justify-start w-11/12 rounded-md antialiased overflow-y-scroll bg-cream text-gray-dark py-6 shadow-md
+      <div className="relative flex flex-col justify-start w-[375px] rounded-md antialiased overflow-y-scroll bg-cream text-gray-dark py-6 shadow-md
          sm:py-12
-         lg:w-6/12">
+         md:w-[640px]
+         lg:w-[720px]">
 
          <img
             onClick={ () => setConfirmationModal(false) }
