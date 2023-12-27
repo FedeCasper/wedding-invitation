@@ -210,7 +210,7 @@ const ModalConfirm = () => {
                   <span className="block bg-white max-h-14 overflow-hidden rounded-b-lg  px-4 py-0  shadow-lg transition-all duration-300 peer-checked/showLabel:max-h-52">
                      <div className="section-header">
                         <h3>
-                           ¿Cómo se llama tu pareja?
+                           ¿Nombre y apellido de tu acompañante?
                            <span className='section-required'>*</span>
                         </h3>
                         <KeyboardArrowDownIcon className={ `text-gray-dark ${ (arrowBehavior.checked && arrowBehavior.name === 'partners_name') && 'rotate-180' }` } fontSize='medium' /> 
@@ -304,7 +304,7 @@ const ModalConfirm = () => {
                   <span className="block bg-white max-h-14 overflow-hidden rounded-b-lg  px-4 py-0  shadow-lg transition-all duration-300 peer-checked/showLabel:max-h-52">
                      <div className="section-header">
                         <h3>
-                           ¿Asistiras a la Iglesia?
+                           ¿Asistirás a la Iglesia?
                            <span className='section-required'>*</span>
                         </h3>
                         <KeyboardArrowDownIcon className={ `text-gray-dark ${ (arrowBehavior.checked && arrowBehavior.name === 'assist_church') && 'rotate-180' }` } fontSize='medium' /> 
