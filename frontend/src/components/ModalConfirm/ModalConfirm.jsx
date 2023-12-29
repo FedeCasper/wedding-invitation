@@ -231,6 +231,34 @@ const ModalConfirm = () => {
                   </span>
                </label>
 
+               {/* Childrens section ---------------------- */}
+               <label>
+                  <input className="peer/showLabel absolute scale-0 unselectable" type="checkbox" name='partners_name' />
+                  <div className="section-line"></div>
+                  <span className="block bg-white max-h-14 overflow-hidden rounded-b-lg  px-4 py-0  shadow-lg transition-all duration-300 peer-checked/showLabel:max-h-52">
+                     <div className="section-header">
+                        <h3>
+                           ¿Venis con niños?
+                           <span className='section-required'>*</span>
+                        </h3>
+                        <KeyboardArrowDownIcon className={ `text-gray-dark ${ (arrowBehavior.checked && arrowBehavior.name === 'partners_name') && 'rotate-180' }` } fontSize='medium' /> 
+                     </div>
+                     <h3 className="font-medium mb-4">Necesitamos saber si son mayores de 4 años para poder agregarlos a la lista.</h3>
+                     <div className="section-label-text">
+                        <label>
+                           <input
+                              type="text"
+                              name="partnersName"
+                              placeholder="Nombre y apellido de tu acompañante"
+                              // value={}
+                              // onChange={}
+                              className="section-input-text"
+                           />
+                        </label>
+                     </div>
+                  </span>
+               </label>
+
                {/* Food section ---------------------- */}
                <label>
                   <input className="peer/showLabel absolute scale-0 unselectable" type="checkbox" name='food' />
