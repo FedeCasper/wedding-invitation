@@ -58,10 +58,6 @@ const ModalWeather = () => {
       fechaActual()
    }, [])
 
-   // <div className="flex flex-col w-[375px] rounded-md overflow-y-scroll  h-full
-   // md:w-[640px] md:h-5/6 md:self-center
-   // lg:w-[720px]">
-
    return (
       <div className="w-[375px] h-[95vh] flex flex-col rounded-md shadow-md
          md:w-[640px] md:h-5/6 md:self-center
