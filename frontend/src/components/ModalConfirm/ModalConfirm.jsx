@@ -3,11 +3,13 @@ import axios from 'axios';
 import { ModalContext } from "../../context/ModalContext"
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import './ModalConfirm.css';
+import Swal from 'sweetalert2'
 
 const initialFormState = {
    fullName: '',
    assist: '',
    partner: '',
+   childrens: 0,
    assistChurch: '',
    partnersName: '',
    contact: '',
@@ -32,22 +34,29 @@ const initialFormState = {
 const ModalConfirm = () => {
 
    const { setConfirmationModal } = useContext(ModalContext);
-   const [formData, setFormData] = useState(initialFormState);
+   const [ formData, setFormData ] = useState(initialFormState);
    const [ arrowBehavior, setArrowBehavior ] = useState(false);
-
-   console.log(formData);
+   const [ childrensInput, setChildrensInput ] = useState(true);
 
    const handleChange = (event) => {
-      console.log([event.target.name], [event.target.value]);
       const { name, type, value, checked } = event.target;
+      console.log(name, type, value, checked);
       setFormData( prevData => ({
          ...prevData,
          [name]: type === 'checkbox' ? checked : value,
       }));
    };
 
+   const handleCheckboxDeactivation = (event) => {
+      console.log([event.target.value]);
+      if(event.target.value === 'true'){
+         setChildrensInput(false);
+      } else {
+         setChildrensInput(true);
+      }
+   }
+
    const handleCheckboxChange = (group, event) => {
-      console.log([group], [event.target.value]);
       const { name, checked } = event.target;
       setFormData((prevData) => ({
          ...prevData,
@@ -67,18 +76,32 @@ const ModalConfirm = () => {
          })
    }
 
+   console.log(formData);
+
    const handleSubmit = (e) => {
       e.preventDefault();
-      console.log('Form Data:', formData);
 
       axios
          .post('https://wedding-invitation-backend.vercel.app/api/guests', formData)
          .then((response) => {
             console.log('Response:', response.data);
+            if( formData.assist ){
+               setTimeout(() => {
+                  Swal.fire("¡Es un si! 💜", "Te esperamos para compartir y darlo todo con nosotros.");
+               }, 1000);
+            } else {
+               setTimeout(() => {
+                  Swal.fire("¡Te vamos a extrañar!", "pero creemos que la energía lo atraviesa todo así que igualmente ahí estarás con nosotros ✨");
+               }, 1000);
+            }
          })
          .catch((error) => {
             console.error('Error:', error);
+            setTimeout(() => {
+               Swal.fire("¡Ups", "Algo salió mal");
+            }, 1000);
          });
+
    };
 
    return (
@@ -139,7 +162,7 @@ const ModalConfirm = () => {
                   <span className="block bg-white max-h-14 overflow-hidden rounded-b-lg  px-4 py-0  shadow-lg transition-all duration-300 peer-checked/showLabel:max-h-52">
                   <div className="section-header">
                      <h3>
-                        ¿Venís a nuestro casamiento?
+                        Confirmación
                         <span className='section-required'>*</span>
                      </h3>
                      <KeyboardArrowDownIcon className={ `text-gray-dark ${ (arrowBehavior.checked && arrowBehavior.name === 'assist') && 'rotate-180' }` } fontSize='medium' /> 
@@ -167,64 +190,50 @@ const ModalConfirm = () => {
                      </div>
                   </span>
                </label>
-
+               
                {/* Partners section ---------------------- */}
-               <label>
-                  <input className="peer/showLabel absolute scale-0 unselectable" type="checkbox" name='partner' />
-                  <div className="section-line"></div>
-                  <span className="block bg-white max-h-14 overflow-hidden rounded-b-lg  px-4 py-0  shadow-lg transition-all duration-300 peer-checked/showLabel:max-h-52">
-                     <div className="section-header">
-                        <h3>
-                           ¿Venís con alguien?
-                           <span className='section-required'>*</span>
-                        </h3>
-                        <KeyboardArrowDownIcon className={ `text-gray-dark ${ (arrowBehavior.checked && arrowBehavior.name === 'partner') && 'rotate-180' }` } fontSize='medium' /> 
-                     </div>
-                     <div className='flex flex-col pb-6'>
-                     <label className='section-label-radio'>
-                        <input
-                           type='radio'
-                           name='partner'
-                           value={ false }
-                           onChange={ handleChange }
-                           className='section-input-radio'
-                        />VOY SOLO 😏
-                     </label>
-                     <label className='section-label-radio'>
-                        <input
-                           type='radio'
-                           name='partner'
-                           value={ true }
-                           onChange={ handleChange }
-                           className='section-input-radio'
-                        />VOY CON ALGUIEN 😉
-                     </label>
-                     </div>
-                  </span>
-               </label>
-
-               {/* Partners name section ---------------------- */}
                <label>
                   <input className="peer/showLabel absolute scale-0 unselectable" type="checkbox" name='partners_name' />
                   <div className="section-line"></div>
-                  <span className="block bg-white max-h-14 overflow-hidden rounded-b-lg  px-4 py-0  shadow-lg transition-all duration-300 peer-checked/showLabel:max-h-52">
+                  <span className="block bg-white max-h-14 overflow-hidden rounded-b-lg  px-4 py-0  shadow-lg transition-all duration-300 peer-checked/showLabel:max-h-72">
                      <div className="section-header">
                         <h3>
-                           ¿Nombre y apellido de tu acompañante?
+                           Acompañante/s
                            <span className='section-required'>*</span>
                         </h3>
                         <KeyboardArrowDownIcon className={ `text-gray-dark ${ (arrowBehavior.checked && arrowBehavior.name === 'partners_name') && 'rotate-180' }` } fontSize='medium' /> 
                      </div>
-                     <h3 className="font-medium mb-4">Necesitamos saber el Nombre y Apellido de esa persona para poder agregarla a la lista.</h3>
+                     <h3 className="font-medium mb-4">Si venís con acompañante necesitamos saber su nombre y apellido para poder agregarlo a la lista.</h3>
                      <div className="section-label-text">
-                        <label>
+                        <div className='flex gap-4'>
+                           <label htmlFor="childrensYes" className='flex gap-2 cursor-pointer'>Si
+                              <input 
+                                 type="radio" 
+                                 name="childrens" 
+                                 id="childrensYes" 
+                                 value={true} 
+                                 onClick={ handleCheckboxDeactivation }
+                                 className='section-input-radio'/>
+                           </label>
+                           <label htmlFor="childrensNo" className='flex gap-2 cursor-pointer'>No
+                              <input 
+                                 type="radio" 
+                                 name="childrens" 
+                                 id="childrensNo" 
+                                 value={false} 
+                                 onClick={ handleCheckboxDeactivation }
+                                 className='section-input-radio'/>
+                           </label>
+                        </div>
+                        <label className='flex flex-col'>
                            <input
                               type="text"
                               name="partnersName"
-                              placeholder="Nombre y apellido de tu acompañante"
-                              value={formData.partnersName}
-                              onChange={handleChange}
+                              placeholder="Nombre y apellido del acompañante"
+                              value={ formData.partnersName }
+                              onChange={ handleChange }
                               className="section-input-text"
+                              disabled={ childrensInput }
                            />
                         </label>
                      </div>
@@ -235,24 +244,47 @@ const ModalConfirm = () => {
                <label>
                   <input className="peer/showLabel absolute scale-0 unselectable" type="checkbox" name='partners_name' />
                   <div className="section-line"></div>
-                  <span className="block bg-white max-h-14 overflow-hidden rounded-b-lg  px-4 py-0  shadow-lg transition-all duration-300 peer-checked/showLabel:max-h-52">
+                  <span className="block bg-white max-h-14 overflow-hidden rounded-b-lg  px-4 py-0  shadow-lg transition-all duration-300 peer-checked/showLabel:max-h-72">
                      <div className="section-header">
                         <h3>
-                           ¿Venis con niños?
+                           Niños
                            <span className='section-required'>*</span>
                         </h3>
                         <KeyboardArrowDownIcon className={ `text-gray-dark ${ (arrowBehavior.checked && arrowBehavior.name === 'partners_name') && 'rotate-180' }` } fontSize='medium' /> 
                      </div>
-                     <h3 className="font-medium mb-4">Necesitamos saber si son mayores de 4 años para poder agregarlos a la lista.</h3>
+                     <h3 className="font-medium mb-4">Necesitamos saber la cantidad de niños mayores de 4 años para poder agregarlos a la lista.</h3>
                      <div className="section-label-text">
-                        <label>
+                        <div className='flex gap-4'>
+                           <label htmlFor="childrensYes" className='flex gap-2 cursor-pointer'>Si
+                              <input 
+                              type="radio" 
+                              name="childrens" 
+                              id="childrensYes" 
+                              value={true} 
+                              onClick={ handleCheckboxDeactivation } 
+                              className='section-input-radio'
+                              />
+                           </label>
+                           <label htmlFor="childrensNo" className='flex gap-2 cursor-pointer'>No
+                              <input 
+                              type="radio" 
+                              name="childrens" 
+                              id="childrensNo" 
+                              value={false} 
+                              onClick={ handleCheckboxDeactivation }
+                              className='section-input-radio'
+                              />
+                           </label>
+                        </div>
+                        <label className='flex flex-col'>
                            <input
-                              type="text"
-                              name="partnersName"
-                              placeholder="Nombre y apellido de tu acompañante"
-                              // value={}
-                              // onChange={}
+                              type="number"
+                              name="childrens"
+                              placeholder="Ingresá cantidad de niños"
+                              value={ formData.childrens }
+                              onChange={ handleChange }
                               className="section-input-text"
+                              disabled={ childrensInput }
                            />
                         </label>
                      </div>
@@ -266,7 +298,7 @@ const ModalConfirm = () => {
                   <span className="block bg-white max-h-14 overflow-hidden rounded-b-lg  px-4 py-0  shadow-lg transition-all duration-300 peer-checked/showLabel:max-h-96">
                      <div className="section-header">
                         <h3>
-                           ¿Tenés alguna restricción alimentaria?
+                           Restricciones alimentarias
                            <span className='section-required'>*</span>
                         </h3>
                         <KeyboardArrowDownIcon className={ `text-gray-dark ${ (arrowBehavior.checked && arrowBehavior.name === 'food') && 'rotate-180' }` } fontSize='medium' /> 
@@ -297,7 +329,7 @@ const ModalConfirm = () => {
                   <span className="block bg-white max-h-14 overflow-hidden rounded-b-lg  px-4 py-0  shadow-lg transition-all duration-300 peer-checked/showLabel:max-h-fit">
                      <div className="section-header">
                         <h3>
-                           ¿Bebida de preferencia?
+                           Bebida
                            <span className='section-required'>*</span>
                         </h3>
                         <KeyboardArrowDownIcon className={ `text-gray-dark ${ (arrowBehavior.checked && arrowBehavior.name === 'drinks') && 'rotate-180' }` } fontSize='medium' /> 
@@ -332,7 +364,7 @@ const ModalConfirm = () => {
                   <span className="block bg-white max-h-14 overflow-hidden rounded-b-lg  px-4 py-0  shadow-lg transition-all duration-300 peer-checked/showLabel:max-h-52">
                      <div className="section-header">
                         <h3>
-                           ¿Asistirás a la Iglesia?
+                           Iglesia
                            <span className='section-required'>*</span>
                         </h3>
                         <KeyboardArrowDownIcon className={ `text-gray-dark ${ (arrowBehavior.checked && arrowBehavior.name === 'assist_church') && 'rotate-180' }` } fontSize='medium' /> 
@@ -342,8 +374,8 @@ const ModalConfirm = () => {
                            <input
                               type="radio"
                               name='assistChurch'
-                              value={true}
-                              onChange={handleChange}
+                              value={ true }
+                              onChange={ handleChange }
                               className="section-input-radio"
                            />Sí, 17hs estoy en la iglesia 💒
                         </label>
@@ -351,8 +383,8 @@ const ModalConfirm = () => {
                            <input
                               type="radio"
                               name='assistChurch'
-                              value={false}
-                              onChange={handleChange}
+                              value={ false }
+                              onChange={ handleChange }
                               className="section-input-radio"
                            />No, directo al salón a las 19h 🙌🏼
                         </label>
@@ -367,7 +399,7 @@ const ModalConfirm = () => {
                   <span className="block bg-white max-h-14 overflow-hidden rounded-b-lg  px-4 py-0  shadow-lg transition-all duration-300 peer-checked/showLabel:max-h-64">
                      <div className="section-header">
                         <h3>
-                           Dejanos tu contacto por cualquier cosa
+                           Contacto
                            <span className='section-required'>*</span>
                         </h3>
                         <KeyboardArrowDownIcon className={ `text-gray-dark ${ (arrowBehavior.checked && arrowBehavior.name === 'contact') && 'rotate-180' }` } fontSize='medium' /> 
@@ -424,7 +456,6 @@ const ModalConfirm = () => {
                      Enviar
                   </button>
                </div>
-
 
             </form>
          </div>
