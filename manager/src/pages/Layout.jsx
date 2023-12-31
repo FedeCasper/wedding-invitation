@@ -28,7 +28,7 @@ const Layout = () => {
          como_sin_tac: 0,
          soy_vegano: 0,
          soy_vegetariano: 0,
-         otro: 0,
+         otro: 0
       }
    });
 
@@ -89,7 +89,8 @@ const Layout = () => {
                console.log("updatedFoodStadisticData", updatedFoodStadisticData);
 
                for(let food in guest.foodPreferences){
-                  let formatKey = food.slice(0, (food.length -3))
+                  let lastUnderscoreIndex = food.lastIndexOf('_');
+                  let formatKey = food.slice(0, lastUnderscoreIndex);
 
                   if( guest.foodPreferences[food] ){
                      setStadisticData( prev => ({ ...prev, food: { ...prev.food, [formatKey]: prev.food[formatKey] + 1  }}));
@@ -303,7 +304,7 @@ const Layout = () => {
                            <CheckIcon />
                         </div>
                         <div className="p-4 text-right">
-                           <p className="block antialiased font-sans text-sm leading-normal font-normal text-blue-gray-600">Invitaciones confirmads</p>
+                           <p className="block antialiased font-sans text-sm leading-normal font-normal text-blue-gray-600">Invitaciones confirmadas</p>
                            <h4 className="block antialiased tracking-normal font-sans text-2xl font-semibold leading-snug text-blue-gray-900"> {stadisticData.assistsToWedding} </h4>
                         </div>
                         <div className="border-t border-blue-gray-50 p-4">
@@ -326,7 +327,7 @@ const Layout = () => {
                         </div>
                         <div className="border-t border-blue-gray-50 p-4">
                            <p className="block antialiased font-sans text-base leading-relaxed font-normal text-blue-gray-600">
-                              <strong className="text-fuchsia-500">-2%</strong>&nbsp;than yesterday
+                              <strong className="text-fuchsia-500">{fullData?.childrensQuantity}</strong> niños
                            </p>
                         </div>
                      </div>
@@ -402,7 +403,7 @@ const Layout = () => {
                                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="3" stroke="currentColor" aria-hidden="true" className="h-4 w-4 text-blue-500">
                                     <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5"></path>
                                  </svg>
-                                 <strong>{(stadisticData?.partner).length} acompañantes</strong> en total
+                                 <strong>{(stadisticData?.partner).length} parejas</strong> en total
                               </p>
                            </div>
                            <button aria-expanded="false" aria-haspopup="menu" id=":r5:" className="relative middle none font-sans font-medium text-center uppercase transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none w-8 max-w-[32px] h-8 max-h-[32px] rounded-lg text-xs text-blue-gray-500 hover:bg-blue-500/10 active:bg-blue-500/30" type="button">
