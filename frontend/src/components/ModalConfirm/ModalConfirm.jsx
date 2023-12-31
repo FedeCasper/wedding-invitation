@@ -6,15 +6,15 @@ import './ModalConfirm.css';
 import Swal from 'sweetalert2'
 
 const initialFormState = {
-   fullName: '',
-   assist: '',
-   partner: '',
-   partnersName: '',
-   childrens: '',
+   fullName: 'None',
+   assist: 'None',
+   partner: 'None',
+   partnersName: 'None',
+   childrens: 'None',
    childrensQuantity: 0,
-   assistChurch: '',
-   contact: '',
-   message: '',
+   assistChurch: 'None',
+   contact: 'None',
+   message: 'None',
    drinkPreferences: {
       ['fernet_🥤']: false,
       ['gin_tonic_🍸']: false,
@@ -41,27 +41,16 @@ const ModalConfirm = () => {
 
    const handleChange = (event) => {
       const { name, type, value, checked } = event.target;
-      console.log("value", value)
       if(type === "radio"){
          value === "false" ? setOptionalInput(true) : setOptionalInput(false);
       }
-      console.log("optionalInput", optionalInput)
-      console.log(name, type, value, checked);
       setFormData( prevData => ({
          ...prevData,
          [name]: type === 'checkbox' ? checked : value,
       }));
    };
 
-   // const handleCheckboxDeactivation = (event) => {
-   //    console.log([event.target.value]);
-   //    if(event.target.value === 'true'){
-   //       setChildrensInput(false);
-   //    } else {
-   //       setChildrensInput(true);
-   //    }
-   // }
-
+ 
    const handleCheckboxChange = (group, event) => {
       const { name, checked } = event.target;
       setFormData( (prevData) => ({
