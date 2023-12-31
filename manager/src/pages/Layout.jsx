@@ -91,13 +91,21 @@ const Layout = () => {
                console.log("updatedStadisticData", updatedStadisticData);
 
                for(let food in guest.foodPreferences){
-                  let formatKey = food.slice(0, (food.length -4))
+                  let formatKey = food.slice(0, (food.length -3))
 
                   if( guest.foodPreferences[food] ){
                      setStadisticData(prev => ({ ...prev, food: { ...prev.food, [formatKey]: prev.food[formatKey] + 1  }}));
                   }
                   
                } 
+            }
+
+            if(guest.assist && guest.partner && guest.childrens){
+               setStadisticData(prev => ({ ...prev, totalAssists: prev.totalAssists + guest.childrensQuantity + 2 }));
+            } else if(guest.assist && guest.partner){
+               setStadisticData(prev => ({ ...prev, totalAssists: prev.totalAssists + 2 }));
+            } else if(guest.assist){
+               setStadisticData(prev => ({ ...prev, totalAssists: prev.totalAssists + 1 }));
             }
 
             setExecuted(true);
@@ -297,7 +305,7 @@ const Layout = () => {
                            <CheckIcon />
                         </div>
                         <div className="p-4 text-right">
-                           <p className="block antialiased font-sans text-sm leading-normal font-normal text-blue-gray-600">Invitados confirmados</p>
+                           <p className="block antialiased font-sans text-sm leading-normal font-normal text-blue-gray-600">Invitaciones confirmadas</p>
                            <h4 className="block antialiased tracking-normal font-sans text-2xl font-semibold leading-snug text-blue-gray-900"> {stadisticData.assistsToWedding} </h4>
                         </div>
                         <div className="border-t border-blue-gray-50 p-4">
@@ -315,8 +323,8 @@ const Layout = () => {
                            </svg>
                         </div>
                         <div className="p-4 text-right">
-                           <p className="block antialiased font-sans text-sm leading-normal font-normal text-blue-gray-600">New Clients</p>
-                           <h4 className="block antialiased tracking-normal font-sans text-2xl font-semibold leading-snug text-blue-gray-900">3,462</h4>
+                           <p className="block antialiased font-sans text-sm leading-normal font-normal text-blue-gray-600">Total de invitados confirmados</p>
+                           <h4 className="block antialiased tracking-normal font-sans text-2xl font-semibold leading-snug text-blue-gray-900">{totalAssists}</h4>
                         </div>
                         <div className="border-t border-blue-gray-50 p-4">
                            <p className="block antialiased font-sans text-base leading-relaxed font-normal text-blue-gray-600">
@@ -345,7 +353,7 @@ const Layout = () => {
 
                   </div>
 
-                  {/*  ----- GUESTS TABLE DATA ----- */}
+                  {/*  ----- MESSAGE DATA TABLE ----- */}
                   <div className="mb-4 grid grid-cols-1 gap-6 xl:grid-cols-3">
                      <div className="relative flex flex-col bg-clip-border rounded-xl bg-white text-gray-700 shadow-md overflow-hidden xl:col-span-2">
                         <div className="relative bg-clip-border rounded-xl overflow-hidden bg-transparent text-gray-700 shadow-none m-0 flex items-center justify-between p-6">
@@ -381,7 +389,7 @@ const Layout = () => {
                               <tbody>
 
                                  {
-                                    fullData?.map(guest => (
+                                    fullData?.message?.map( guest => (
 
                                        <tr key={guest?._id}>
                                           <td className="py-3 px-5 border-b border-blue-gray-50">
