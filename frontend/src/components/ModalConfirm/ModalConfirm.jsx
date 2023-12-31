@@ -7,14 +7,14 @@ import Swal from 'sweetalert2'
 
 const initialFormState = {
    fullName: 'None',
-   assist: 'None',
-   partner: 'None',
-   partnersName: 'None',
-   childrens: 'None',
+   assist: '',
+   partner: 'false',
+   partnersName: '',
+   childrens: 'false',
    childrensQuantity: 0,
-   assistChurch: 'None',
-   contact: 'None',
-   message: 'None',
+   assistChurch: '',
+   contact: '',
+   message: '',
    drinkPreferences: {
       ['fernet_🥤']: false,
       ['gin_tonic_🍸']: false,
