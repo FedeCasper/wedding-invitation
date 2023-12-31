@@ -15,16 +15,16 @@ let invitadoSchema = new Schema({
       ['otro_🥂']: '',
    }},
    partner: {type: Boolean, required: true, default: false},
-   partnersName: {type: String, required: true, default: ''},
+   partnersName: {type: String, default: ''},
    assistChurch: {type: Boolean, required: true, default: false},
-   contact: {type: String, required: true, default: ''},
+   contact: {type: String, default: ''},
    foodPreferences: {type: {} , required: true, default: {
       ['como_sin_tac_❌🌾']: false,
       ['soy_vegano_❌🥩']: false,
       ['soy_vegetariano_💗🥑']: false,
       ['otro_🍟🥩']: false,
    }},
-   message: {type: String, required: true, default: ''},
+   message: {type: String, default: ''},
 }, {
    timestamps: true
 });
