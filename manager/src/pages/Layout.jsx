@@ -305,7 +305,7 @@ const Layout = () => {
                            <CheckIcon />
                         </div>
                         <div className="p-4 text-right">
-                           <p className="block antialiased font-sans text-sm leading-normal font-normal text-blue-gray-600">Invitaciones confirmadas</p>
+                           <p className="block antialiased font-sans text-sm leading-normal font-normal text-blue-gray-600">Invitaciones confirmads</p>
                            <h4 className="block antialiased tracking-normal font-sans text-2xl font-semibold leading-snug text-blue-gray-900"> {stadisticData.assistsToWedding} </h4>
                         </div>
                         <div className="border-t border-blue-gray-50 p-4">
@@ -324,7 +324,7 @@ const Layout = () => {
                         </div>
                         <div className="p-4 text-right">
                            <p className="block antialiased font-sans text-sm leading-normal font-normal text-blue-gray-600">Total de invitados confirmados</p>
-                           <h4 className="block antialiased tracking-normal font-sans text-2xl font-semibold leading-snug text-blue-gray-900">{totalAssists}</h4>
+                           <h4 className="block antialiased tracking-normal font-sans text-2xl font-semibold leading-snug text-blue-gray-900">{stadisticData.totalAssists}</h4>
                         </div>
                         <div className="border-t border-blue-gray-50 p-4">
                            <p className="block antialiased font-sans text-base leading-relaxed font-normal text-blue-gray-600">
