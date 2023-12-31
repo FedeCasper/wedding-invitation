@@ -72,16 +72,15 @@ const Layout = () => {
             }
 
             if (guest.drinkPreferences) {
-               const updatedDrinksStadisticData = { ...stadisticData.drinks };
-               console.log("updatedDrinksStadisticData", updatedDrinksStadisticData);
+               const updatedDrinkStadisticData = { ...stadisticData.drinks };
+               console.log("updatedDrinksStadisticData", updatedDrinkStadisticData);
 
                for(let drink in guest.drinkPreferences){
                   let formatKey = drink.slice(0, (drink.length -3))
 
                   if( guest.drinkPreferences[drink] ){
-                     setStadisticData(prev => ({ ...prev, drinks: { ...prev.drinks, [formatKey]: prev.drinks[formatKey] + 1  }}));
+                     setStadisticData( prev => ({ ...prev, drinks: { ...prev.drinks, [formatKey]: prev.drinks[formatKey] + 1  }}));
                   }
-
                } 
             }
 
@@ -370,7 +369,7 @@ const Layout = () => {
                               <tbody>
 
                                  {
-                                    stadisticData?.message?.map( guest => (
+                                    stadisticData?.assistsToWedding?.map( guest => (
 
                                        <tr key={guest?._id}>
                                           <td className="py-3 px-5 border-b border-blue-gray-50">
