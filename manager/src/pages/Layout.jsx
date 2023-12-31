@@ -369,7 +369,7 @@ const Layout = () => {
                               <tbody>
 
                                  {
-                                    fullData?.map( guest => (
+                                    fullData?.filter( guest => guest.message ).map( guest => (
 
                                        <tr key={guest?._id}>
                                           <td className="py-3 px-5 border-b border-blue-gray-50">
@@ -383,7 +383,7 @@ const Layout = () => {
                                           </td>
                                        </tr>
 
-                                    )).filter( guest => guest.message )
+                                    ))
                                  }
 
                               </tbody>
