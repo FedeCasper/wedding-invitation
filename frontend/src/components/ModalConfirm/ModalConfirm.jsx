@@ -8,11 +8,11 @@ import Swal from 'sweetalert2'
 const initialFormState = {
    fullName: '',
    assist: '',
-   partner: 'false',
+   partner: false,
    partnersName: '',
-   childrens: 'false',
+   childrens: false,
    childrensQuantity: 0,
-   assistChurch: '',
+   assistChurch: false,
    contact: '',
    message: '',
    drinkPreferences: {
