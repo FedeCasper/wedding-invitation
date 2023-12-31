@@ -82,26 +82,48 @@ const ModalConfirm = () => {
             console.log('Response:', response.data);
             if( formData.assist != "false"){
                setTimeout(() => {
-                  Swal.fire("¡Es un si! 💜", "Te esperamos para compartir y darlo todo con nosotros.");
-               }, 1000);
+                  // Swal.fire("¡Es un si! 💜", "Te esperamos para compartir y darlo todo con nosotros.");
+                  Swal.fire({
+                     confirmButtonText: 'Cerrar', 
+                     title: '¡Es un si! 💜"',
+                     text: 'Te esperamos para compartir y darlo todo con nosotros.',
+                     background: '#EAE8E4',
+                     customClass: {
+                        confirmButton: "mt-4 bg-green text-white py-2 px-6 transition-all duration-200 rounded-md hover:bg-green-dark active:scale-95 focus:outline-none focus:ring focus:ring-mustard"
+                     },
+                     buttonsStyling: false
+                  });
+               }, 500);
             } else {
                setTimeout(() => {
-                  Swal.fire("¡Te vamos a extrañar!", "pero creemos que la energía lo atraviesa todo así que igualmente ahí estarás con nosotros ✨");
-               }, 1000);
+                  // Swal.fire("¡Te vamos a extrañar!", "pero creemos que la energía lo atraviesa todo así que igualmente ahí estarás con nosotros ✨");
+                  Swal.fire({
+                     confirmButtonText: 'Cerrar', 
+                     title: '¡Te vamos a extrañar!',
+                     text: 'pero creemos que la energía lo atraviesa todo así que igualmente ahí estarás con nosotros ✨.',
+                     background: '#EAE8E4',
+                     customClass: {
+                        confirmButton: "mt-4 bg-green text-white py-2 px-6 transition-all duration-200 rounded-md hover:bg-green-dark active:scale-95 focus:outline-none focus:ring focus:ring-mustard"
+                     },
+                     buttonsStyling: false
+                  });
+               }, 500);
             }
          })
          .catch((error) => {
             console.error('Error:', error);
             setTimeout(() => {
-               Swal.fire({confirmButtonText: 'Cerrar', 
-               title: 'Ups!',
-               text: 'Algo salió mal, intenta de nuevo',
-               customClass: {
-                  confirmButton: "mt-4 bg-green text-white py-2 px-6 transition-all duration-200 rounded-md hover:bg-green-dark active:scale-95",
-                },
-                buttonsStyling: false
+               Swal.fire({
+                  confirmButtonText: 'Cerrar', 
+                  title: 'Ups!',
+                  text: 'Algo salió mal, intenta de nuevo.',
+                  background: '#EAE8E4',
+                  customClass: {
+                     confirmButton: "mt-4 bg-green text-white py-2 px-6 transition-all duration-200 rounded-md hover:bg-green-dark active:scale-95 focus:outline-none focus:ring focus:ring-mustard"
+                  },
+                  buttonsStyling: false
                });
-            }, 1000);
+            }, 500);
          });
 
    };
