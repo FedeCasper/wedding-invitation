@@ -9,9 +9,10 @@ const initialFormState = {
    fullName: '',
    assist: '',
    partner: '',
-   childrens: 0,
-   assistChurch: '',
    partnersName: '',
+   childrens: null,
+   childrensQuantity: 0,
+   assistChurch: '',
    contact: '',
    message: '',
    drinkPreferences: {
@@ -36,7 +37,7 @@ const ModalConfirm = () => {
    const { setConfirmationModal } = useContext(ModalContext);
    const [ formData, setFormData ] = useState(initialFormState);
    const [ arrowBehavior, setArrowBehavior ] = useState(false);
-   const [ childrensInput, setChildrensInput ] = useState(true);
+   const [ optionalInput, setOptionalInput ] = useState(true);
 
    const handleChange = (event) => {
       const { name, type, value, checked } = event.target;
@@ -47,18 +48,19 @@ const ModalConfirm = () => {
       }));
    };
 
-   const handleCheckboxDeactivation = (event) => {
-      console.log([event.target.value]);
-      if(event.target.value === 'true'){
-         setChildrensInput(false);
-      } else {
-         setChildrensInput(true);
-      }
-   }
+   // const handleCheckboxDeactivation = (event) => {
+   //    console.log([event.target.value]);
+   //    if(event.target.value === 'true'){
+   //       setChildrensInput(false);
+   //    } else {
+   //       setChildrensInput(true);
+   //    }
+   // }
 
    const handleCheckboxChange = (group, event) => {
-      const { name, checked } = event.target;
-      setFormData((prevData) => ({
+      const { name, checked, value } = event.target;
+      value? setOptionalInput(false) : setOptionalInput(true);
+      setFormData( (prevData) => ({
          ...prevData,
          [group]: {
             ...prevData[group],
@@ -209,18 +211,18 @@ const ModalConfirm = () => {
                            <label htmlFor="childrensYes" className='flex gap-2 cursor-pointer'>Si
                               <input 
                                  type="radio" 
-                                 name="childrens" 
+                                 name="partner" 
                                  id="childrensYes" 
-                                 value={true} 
+                                 value={ true } 
                                  onClick={ handleCheckboxDeactivation }
                                  className='section-input-radio'/>
                            </label>
                            <label htmlFor="childrensNo" className='flex gap-2 cursor-pointer'>No
                               <input 
                                  type="radio" 
-                                 name="childrens" 
+                                 name="partner" 
                                  id="childrensNo" 
-                                 value={false} 
+                                 value={ false } 
                                  onClick={ handleCheckboxDeactivation }
                                  className='section-input-radio'/>
                            </label>
@@ -233,7 +235,7 @@ const ModalConfirm = () => {
                               value={ formData.partnersName }
                               onChange={ handleChange }
                               className="section-input-text"
-                              disabled={ childrensInput }
+                              disabled={ optionalInput }
                            />
                         </label>
                      </div>
@@ -279,12 +281,12 @@ const ModalConfirm = () => {
                         <label className='flex flex-col'>
                            <input
                               type="number"
-                              name="childrens"
+                              name="childrensQuantity"
                               placeholder="Ingresá cantidad de niños"
                               value={ formData.childrens }
                               onChange={ handleChange }
                               className="section-input-text"
-                              disabled={ childrensInput }
+                              disabled={ optionalInput }
                            />
                         </label>
                      </div>
