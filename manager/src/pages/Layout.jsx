@@ -72,14 +72,13 @@ const Layout = () => {
             }
 
             if (guest.drinkPreferences) {
-               const updatedStadisticData = { ...stadisticData.drinks };
-               console.log("updatedStadisticData", updatedStadisticData);
+               const updatedDrinksStadisticData = { ...stadisticData.drinks };
+               console.log("updatedDrinksStadisticData", updatedDrinksStadisticData);
 
                for(let drink in guest.drinkPreferences){
                   let formatKey = drink.slice(0, (drink.length -3))
 
                   if( guest.drinkPreferences[drink] ){
-                     // updatedStadisticData[formatKey] = updatedStadisticData[formatKey] + 1;
                      setStadisticData(prev => ({ ...prev, drinks: { ...prev.drinks, [formatKey]: prev.drinks[formatKey] + 1  }}));
                   }
 
@@ -87,14 +86,14 @@ const Layout = () => {
             }
 
             if (guest.foodPreferences) {
-               const updatedStadisticData = { ...stadisticData.food };
-               console.log("updatedStadisticData", updatedStadisticData);
+               const updatedFoodStadisticData = { ...stadisticData.food };
+               console.log("updatedFoodStadisticData", updatedFoodStadisticData);
 
                for(let food in guest.foodPreferences){
                   let formatKey = food.slice(0, (food.length -3))
 
                   if( guest.foodPreferences[food] ){
-                     setStadisticData(prev => ({ ...prev, food: { ...prev.food, [formatKey]: prev.food[formatKey] + 1  }}));
+                     setStadisticData( prev => ({ ...prev, food: { ...prev.food, [formatKey]: prev.food[formatKey] + 1  }}));
                   }
                   
                } 
@@ -404,7 +403,7 @@ const Layout = () => {
                                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="3" stroke="currentColor" aria-hidden="true" className="h-4 w-4 text-blue-500">
                                     <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5"></path>
                                  </svg>
-                                 <strong>{(stadisticData?.partner).length} mensajes</strong> en total
+                                 <strong>{(stadisticData?.partner).length} acompañantes</strong> en total
                               </p>
                            </div>
                            <button aria-expanded="false" aria-haspopup="menu" id=":r5:" className="relative middle none font-sans font-medium text-center uppercase transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none w-8 max-w-[32px] h-8 max-h-[32px] rounded-lg text-xs text-blue-gray-500 hover:bg-blue-500/10 active:bg-blue-500/30" type="button">
