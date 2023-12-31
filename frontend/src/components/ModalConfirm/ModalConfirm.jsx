@@ -93,7 +93,14 @@ const ModalConfirm = () => {
          .catch((error) => {
             console.error('Error:', error);
             setTimeout(() => {
-               Swal.fire("¡Ups", "Algo salió mal");
+               Swal.fire({confirmButtonText: 'Cerrar', 
+               title: 'Ups!',
+               text: 'Algo salió mal, intenta de nuevo',
+               customClass: {
+                  confirmButton: "mt-4 bg-green text-white py-2 px-6 transition-all duration-200 rounded-md hover:bg-green-dark active:scale-95",
+                },
+                buttonsStyling: false
+               });
             }, 1000);
          });
 
