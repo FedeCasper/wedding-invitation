@@ -6,7 +6,7 @@ import './ModalConfirm.css';
 import Swal from 'sweetalert2'
 
 const initialFormState = {
-   fullName: 'None',
+   fullName: '',
    assist: '',
    partner: 'false',
    partnersName: '',
