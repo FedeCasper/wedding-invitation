@@ -10,7 +10,7 @@ const initialFormState = {
    assist: '',
    partner: '',
    partnersName: '',
-   childrens: null,
+   childrens: '',
    childrensQuantity: 0,
    assistChurch: '',
    contact: '',
@@ -41,6 +41,11 @@ const ModalConfirm = () => {
 
    const handleChange = (event) => {
       const { name, type, value, checked } = event.target;
+      console.log("value", value)
+      if(type === "radio"){
+         value === "false" ? setOptionalInput(true) : setOptionalInput(false);
+      }
+      console.log("optionalInput", optionalInput)
       console.log(name, type, value, checked);
       setFormData( prevData => ({
          ...prevData,
@@ -58,8 +63,7 @@ const ModalConfirm = () => {
    // }
 
    const handleCheckboxChange = (group, event) => {
-      const { name, checked, value } = event.target;
-      value? setOptionalInput(false) : setOptionalInput(true);
+      const { name, checked } = event.target;
       setFormData( (prevData) => ({
          ...prevData,
          [group]: {
@@ -208,22 +212,22 @@ const ModalConfirm = () => {
                      <h3 className="font-medium mb-4">Si venís con acompañante necesitamos saber su nombre y apellido para poder agregarlo a la lista.</h3>
                      <div className="section-label-text">
                         <div className='flex gap-4'>
-                           <label htmlFor="childrensYes" className='flex gap-2 cursor-pointer'>Si
+                           <label htmlFor="partnerConfirm" className='flex gap-2 cursor-pointer'>Si
                               <input 
                                  type="radio" 
                                  name="partner" 
-                                 id="childrensYes" 
+                                 id="partnerConfirm" 
                                  value={ true } 
-                                 onClick={ handleCheckboxDeactivation }
+                                 onClick={ handleChange }
                                  className='section-input-radio'/>
                            </label>
-                           <label htmlFor="childrensNo" className='flex gap-2 cursor-pointer'>No
+                           <label htmlFor="partnerNotConfirm" className='flex gap-2 cursor-pointer'>No
                               <input 
                                  type="radio" 
                                  name="partner" 
-                                 id="childrensNo" 
+                                 id="partnerNotConfirm" 
                                  value={ false } 
-                                 onClick={ handleCheckboxDeactivation }
+                                 onClick={ handleChange }
                                  className='section-input-radio'/>
                            </label>
                         </div>
@@ -257,23 +261,23 @@ const ModalConfirm = () => {
                      <h3 className="font-medium mb-4">Necesitamos saber la cantidad de niños mayores de 4 años para poder agregarlos a la lista.</h3>
                      <div className="section-label-text">
                         <div className='flex gap-4'>
-                           <label htmlFor="childrensYes" className='flex gap-2 cursor-pointer'>Si
+                           <label htmlFor="childrensConfirm" className='flex gap-2 cursor-pointer'>Si
                               <input 
                               type="radio" 
                               name="childrens" 
-                              id="childrensYes" 
-                              value={true} 
-                              onClick={ handleCheckboxDeactivation } 
+                              id="childrensConfirm" 
+                              value={ true } 
+                              onClick={ handleChange } 
                               className='section-input-radio'
                               />
                            </label>
-                           <label htmlFor="childrensNo" className='flex gap-2 cursor-pointer'>No
+                           <label htmlFor="childrensNotConfirm" className='flex gap-2 cursor-pointer'>No
                               <input 
                               type="radio" 
                               name="childrens" 
-                              id="childrensNo" 
-                              value={false} 
-                              onClick={ handleCheckboxDeactivation }
+                              id="childrensNotConfirm" 
+                              value={ false } 
+                              onClick={ handleChange }
                               className='section-input-radio'
                               />
                            </label>
@@ -283,7 +287,7 @@ const ModalConfirm = () => {
                               type="number"
                               name="childrensQuantity"
                               placeholder="Ingresá cantidad de niños"
-                              value={ formData.childrens }
+                              value={ formData.childrensQuantity }
                               onChange={ handleChange }
                               className="section-input-text"
                               disabled={ optionalInput }
