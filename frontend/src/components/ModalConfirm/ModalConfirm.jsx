@@ -80,7 +80,7 @@ const ModalConfirm = () => {
          .post('https://wedding-invitation-backend.vercel.app/api/guests', formData)
          .then((response) => {
             console.log('Response:', response.data);
-            if( formData.assist ){
+            if( formData.assist != "false"){
                setTimeout(() => {
                   Swal.fire("¡Es un si! 💜", "Te esperamos para compartir y darlo todo con nosotros.");
                }, 1000);
