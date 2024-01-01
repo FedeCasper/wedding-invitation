@@ -59,7 +59,7 @@ const ModalWeather = () => {
    }, [])
 
    return (
-      <div className="w-[375px] h-[95vh] flex flex-col rounded-md shadow-md
+      <div className="w-11/12 h-[95vh] flex flex-col rounded-md shadow-md
          md:w-[640px] md:h-5/6 md:self-center
          lg:w-[720px] ">
 

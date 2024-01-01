@@ -30,6 +30,8 @@ const initialFormState = {
       ['soy_vegetariano_💗🥑']: false,
       ['otro_🍟🥩']: false,
    },
+   otherFoodPreference: '',
+   otherDrinkPreference: ''
 };
 
 const ModalConfirm = () => {
@@ -51,15 +53,14 @@ const ModalConfirm = () => {
    };
 
  
-   const handleCheckboxChange = (group, event) => {
-      const { name, checked } = event.target;
-      setFormData( (prevData) => ({
+   const handleCheckboxChange = (group, e) => {
+      console.log([e.target.value])
+      const { id, type, value, checked } = e.target;
+      setFormData( prevData => ({
          ...prevData,
-         [group]: {
-            ...prevData[group],
-            [name]: name === 'other' ? 
-               (checked ? '' : prevData[group].other) :
-               checked,
+         [ group ]: {
+            ...prevData[ group ],
+            [ id ]: type === 'checkbox' ? checked : (  value === "on" ? true : false),
          },
       }));
    };
@@ -82,7 +83,6 @@ const ModalConfirm = () => {
             console.log('Response:', response.data);
             if( formData.assist != "false"){
                setTimeout(() => {
-                  // Swal.fire("¡Es un si! 💜", "Te esperamos para compartir y darlo todo con nosotros.");
                   Swal.fire({
                      confirmButtonText: 'Cerrar', 
                      title: '¡Es un si! 💜"',
@@ -92,11 +92,13 @@ const ModalConfirm = () => {
                         confirmButton: "mt-4 bg-green text-white py-2 px-6 transition-all duration-200 rounded-md hover:bg-green-dark active:scale-95 focus:outline-none focus:ring focus:ring-mustard"
                      },
                      buttonsStyling: false
-                  });
-               }, 500);
+                  }).then((result) => {
+                     if (result.isConfirmed) {
+                        setConfirmationModal(false);
+                     }});
+               }, 300);
             } else {
                setTimeout(() => {
-                  // Swal.fire("¡Te vamos a extrañar!", "pero creemos que la energía lo atraviesa todo así que igualmente ahí estarás con nosotros ✨");
                   Swal.fire({
                      confirmButtonText: 'Cerrar', 
                      title: '¡Te vamos a extrañar!',
@@ -106,8 +108,11 @@ const ModalConfirm = () => {
                         confirmButton: "mt-4 bg-green text-white py-2 px-6 transition-all duration-200 rounded-md hover:bg-green-dark active:scale-95 focus:outline-none focus:ring focus:ring-mustard"
                      },
                      buttonsStyling: false
-                  });
-               }, 500);
+                  }).then((result) => {
+                     if (result.isConfirmed) {
+                        setConfirmationModal(false);
+                     }});
+               }, 300);
             }
          })
          .catch((error) => {
@@ -123,13 +128,13 @@ const ModalConfirm = () => {
                   },
                   buttonsStyling: false
                });
-            }, 500);
+            }, 300);
          });
 
    };
 
    return (
-      <div className="relative flex flex-col justify-start w-[375px] rounded-md antialiased overflow-y-scroll bg-cream text-gray-dark py-6 shadow-md
+      <div className="relative flex flex-col justify-start w-11/12 rounded-md antialiased overflow-y-scroll bg-cream text-gray-dark py-6 shadow-md
          sm:py-12
          md:w-[640px]
          lg:w-[720px]">
@@ -329,19 +334,32 @@ const ModalConfirm = () => {
                      </div>
                      <h3 className="font-medium mb-4">Seleccioná si tenés alguna restricción alimentaria. Haremos lo posible para sumar al menú alguna opción apta para vos.</h3>
                      <div className="flex flex-col pb-6">
-                        {Object.entries(formData.foodPreferences).map(([key, value]) => (
-                           <label key={key} className="section-label-radio">
-                              <input
-                                 type={'checkbox'}
-                                 name={key}
-                                 checked={formData.foodPreferences[key]}
-                                 value={key}
-                                 onChange={() => handleCheckboxChange('foodPreferences', event)}
-                                 className='section-input-radio'
-                              />
-                              {key.toUpperCase().replace(/_/g, ' ')} {value}
-                           </label>
-                        ))}
+                        {
+                           Object.entries( formData.foodPreferences ).map( ( [ key, value ] ) => (
+                              <label key={ key } className="section-label-radio">
+                                 <input
+                                    type='radio'
+                                    name='foodPreferences'
+                                    id={ key }
+                                    // checked={ formData.foodPreferences[ key ] }
+                                    // value={ key }
+                                    onChange={ (e) => handleCheckboxChange('foodPreferences', e) }
+                                    className='section-input-radio'
+                                 />
+                                 {key.toUpperCase().replace(/_/g, ' ')}
+                                 {/* {value} */}
+                              </label>
+                           ))
+                        }
+                        <label htmlFor="other"></label>
+                        <input 
+                           type="text" 
+                           name="otherFoodPreference" 
+                           id="other" 
+                           placeholder='Ingrese otra restricción' 
+                           className={ `section-input-text ${formData.foodPreferences['otro_🍟🥩'] ? 'visible' : 'hidden'}` }
+                           onChange={ handleChange }
+                           disabled={ !formData.foodPreferences['otro_🍟🥩'] }/>
                      </div>
                   </span>
                </label>
@@ -367,7 +385,7 @@ const ModalConfirm = () => {
                                  name={key}
                                  checked={key === 'otro' ? false : formData.drinkPreferences[key]}
                                  value={key === 'otro' ? value : key}
-                                 onChange={key === 'otro' ? handleChange : () => handleCheckboxChange('drinkPreferences', event)}
+                                 onChange={key === 'otro' ? handleChange : () => handleCheckboxChange('drinkPreferences', e)}
                                  placeholder={key === 'otro' ? 'Ingresá tu bebida favorita' : ''}
                                  className={key === "otro" ?
                                     "section-input-text" :

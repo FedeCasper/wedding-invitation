@@ -17,7 +17,7 @@ const CbuComponent = () => {
    }
 
    return (
-      <div className="flex flex-col w-[375px] rounded-md overflow-y-scroll shadow-md h-full
+      <div className="flex flex-col w-11/12 rounded-md overflow-y-scroll shadow-md h-full
          md:w-[640px] md:h-5/6 md:self-center
          lg:w-[720px]">
 
