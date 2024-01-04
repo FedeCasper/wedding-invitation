@@ -53,14 +53,26 @@ const ModalConfirm = () => {
    };
 
  
-   const handleCheckboxChange = (group, e) => {
+   const handleMultipleRadiosChange = (group, e) => {
       console.log([e.target.value])
       const { id, type, value, checked } = e.target;
+      setFormData(prevData => ({
+         ...prevData,
+         [group]: Object.keys(prevData[group]).reduce((acc, key) => ({
+            ...acc,
+            [key]: key === id ? true : false,
+         }), {}),
+      }));
+   };
+
+   const handleCheckboxChange = (group, e) => {
+      console.log([e.target.value])
+      const { name, type, value, checked } = e.target;
       setFormData( prevData => ({
          ...prevData,
          [ group ]: {
             ...prevData[ group ],
-            [ id ]: type === 'checkbox' ? checked : (  value === "on" ? true : false),
+            [ name ]: type === 'checkbox' ? checked : value,
          },
       }));
    };
@@ -341,13 +353,10 @@ const ModalConfirm = () => {
                                     type='radio'
                                     name='foodPreferences'
                                     id={ key }
-                                    // checked={ formData.foodPreferences[ key ] }
-                                    // value={ key }
-                                    onChange={ (e) => handleCheckboxChange('foodPreferences', e) }
+                                    onChange={ (e) => handleMultipleRadiosChange( 'foodPreferences', e ) }
                                     className='section-input-radio'
                                  />
                                  {key.toUpperCase().replace(/_/g, ' ')}
-                                 {/* {value} */}
                               </label>
                            ))
                         }
@@ -378,23 +387,31 @@ const ModalConfirm = () => {
                      </div>
                      <h3 className="font-medium mb-4">Tendremos una barra pequeña y por eso queremos saber qué preferís tomar (no vaya a ser que te deshidrates)</h3>
                      <div className="flex flex-col pb-6">
-                        {Object.entries(formData.drinkPreferences).map(([key, value]) => (
-                           <label key={key} className="section-label-radio">
-                              <input
-                                 type={key === 'otro' ? 'text' : 'checkbox'}
-                                 name={key}
-                                 checked={key === 'otro' ? false : formData.drinkPreferences[key]}
-                                 value={key === 'otro' ? value : key}
-                                 onChange={key === 'otro' ? handleChange : () => handleCheckboxChange('drinkPreferences', e)}
-                                 placeholder={key === 'otro' ? 'Ingresá tu bebida favorita' : ''}
-                                 className={key === "otro" ?
-                                    "section-input-text" :
-                                    "section-input-radio"
-                                 }
-                              />
-                              {key === 'otro' ? '' : key.toUpperCase().replace(/_/g, ' ')} {key === 'otro' && value}
-                           </label>
-                        ))}
+                        {
+                           Object.entries( formData.drinkPreferences ).map( ( [ key, value ] ) => (
+                              <label key={key} className="section-label-radio">
+                                 <input
+                                    type='checkbox' 
+                                    name={ key }
+                                    checked={ formData.drinkPreferences[key] }
+                                    value={ key }
+                                    onChange={ (e) => handleCheckboxChange('drinkPreferences', e) }
+                                    className="section-input-radio" 
+                                 />
+                                 { key.toUpperCase().replace(/_/g, ' ') }
+                              </label>
+                              
+                           ))
+                        }
+                        <label htmlFor="other"></label>
+                        <input 
+                           type="text" 
+                           name="otherDrinkPreference" 
+                           id="other" 
+                           placeholder='Ingrese su bebida favorita' 
+                           className={ `section-input-text ${ formData.drinkPreferences['otro_🥂'] ? 'visible' : 'hidden' }` }
+                           onChange={ handleChange }
+                           disabled={ !formData.drinkPreferences['otro_🥂'] }/>
                      </div>
                   </span>
                </label>
