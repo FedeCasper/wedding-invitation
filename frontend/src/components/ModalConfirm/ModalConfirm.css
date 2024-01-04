@@ -91,10 +91,12 @@
    border-radius: 50%;
    appearance: none;
    cursor: pointer;
+   transition: all 0.2s ease-in-out;
 }
 
 .section-input-radio:hover{
-   background-color: #a38145;
+   background-color: #8d6e39;
+   transform: scale(1.2);
 }
 
 .section-input-radio:active{
