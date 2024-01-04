@@ -100,15 +100,14 @@ const ModalConfirm = () => {
                      title: '¡Es un si! 💜"',
                      text: 'Te esperamos para compartir y darlo todo con nosotros.',
                      background: '#EAE8E4',
-                     customClass: {
-                        confirmButton: "mt-4 bg-green text-white py-2 px-6 transition-all duration-200 rounded-md hover:bg-green-dark active:scale-95 focus:outline-none focus:ring focus:ring-mustard"
-                     },
+                     customClass: { confirmButton: "mt-4 bg-green text-white py-2 px-6 transition-all duration-200 rounded-md hover:bg-green-dark active:scale-95 focus:outline-none focus:ring focus:ring-mustard" },
                      buttonsStyling: false
                   }).then((result) => {
                      if (result.isConfirmed) {
+                        Swal.fire("Formulario Enviado!", "", "success");
                         setConfirmationModal(false);
                      }});
-               }, 300);
+               }, 100);
             } else {
                setTimeout(() => {
                   Swal.fire({
@@ -116,15 +115,14 @@ const ModalConfirm = () => {
                      title: '¡Te vamos a extrañar!',
                      text: 'pero creemos que la energía lo atraviesa todo así que igualmente ahí estarás con nosotros ✨.',
                      background: '#EAE8E4',
-                     customClass: {
-                        confirmButton: "mt-4 bg-green text-white py-2 px-6 transition-all duration-200 rounded-md hover:bg-green-dark active:scale-95 focus:outline-none focus:ring focus:ring-mustard"
-                     },
+                     customClass: { confirmButton: "mt-4 bg-green text-white py-2 px-6 transition-all duration-200 rounded-md hover:bg-green-dark active:scale-95 focus:outline-none focus:ring focus:ring-mustard" },
                      buttonsStyling: false
                   }).then((result) => {
                      if (result.isConfirmed) {
+                        Swal.fire("Formulario Enviado!", "", "success");
                         setConfirmationModal(false);
                      }});
-               }, 300);
+               }, 100);
             }
          })
          .catch((error) => {
@@ -133,14 +131,17 @@ const ModalConfirm = () => {
                Swal.fire({
                   confirmButtonText: 'Cerrar', 
                   title: 'Ups!',
-                  text: 'Algo salió mal, intenta de nuevo.',
+                  text: 'Algo salió mal, el formulario no se ha enviado.',
                   background: '#EAE8E4',
-                  customClass: {
-                     confirmButton: "mt-4 bg-green text-white py-2 px-6 transition-all duration-200 rounded-md hover:bg-green-dark active:scale-95 focus:outline-none focus:ring focus:ring-mustard"
-                  },
+                  icon: 'error',
+                  customClass: { confirmButton: "mt-4 bg-green text-white py-2 px-6 transition-all duration-200 rounded-md hover:bg-green-dark active:scale-95 focus:outline-none focus:ring focus:ring-mustard" },
                   buttonsStyling: false
-               });
-            }, 300);
+               }).then((result) => {
+                  if (result.isConfirmed) {
+                     setConfirmationModal(false);
+                     }
+                  });
+            }, 100);
          });
 
    };
