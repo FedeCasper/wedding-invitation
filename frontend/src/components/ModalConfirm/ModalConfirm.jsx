@@ -15,15 +15,15 @@ const initialFormState = {
    assistChurch: false,
    contact: '',
    message: '',
-   drinkPreferences: {
-      ['fernet_🥤']: false,
-      ['gin_tonic_🍸']: false,
-      ['campari_🍹']: false,
-      ['vino_🍷']: false,
-      ['cerveza_🍺']: false,
-      ['no_tomo_alcohol_💧']: false,
-      ['otro_🥂']: '',
-   },
+   // drinkPreferences: {
+   //    ['fernet_🥤']: false,
+   //    ['gin_tonic_🍸']: false,
+   //    ['campari_🍹']: false,
+   //    ['vino_🍷']: false,
+   //    ['cerveza_🍺']: false,
+   //    ['no_tomo_alcohol_💧']: false,
+   //    ['otro_🥂']: '',
+   // },
    foodPreferences: {
       ['ninguna_🥩🥗']: false,
       ['como_sin_tac_❌🌾']: false,
@@ -410,7 +410,7 @@ const ModalConfirm = () => {
                </label>
 
                {/* Drinks section ---------------------- */}
-               <label>
+               {/*<label>
                   <input className="peer/showLabel absolute scale-0 unselectable" type="checkbox" name='drinks' />
                   <div className="section-line"></div>
                   <span className="block bg-white max-h-14 overflow-hidden rounded-b-lg  px-4 py-0  shadow-lg transition-all duration-300 peer-checked/showLabel:max-h-fit">
@@ -449,7 +449,7 @@ const ModalConfirm = () => {
                            disabled={ !formData.drinkPreferences['otro_🥂'] }/>
                      </div>
                   </span>
-               </label>
+               </label>*/}
 
                {/* Contact section ---------------------- */}
                <label>
