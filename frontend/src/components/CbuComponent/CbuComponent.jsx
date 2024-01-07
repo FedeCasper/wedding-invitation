@@ -54,12 +54,12 @@ const CbuComponent = () => {
                <div className="flex flex-col gap-1.5">
                   <div className='flex-wrap'>
                      <span className='italic'>Titular :</span>
-                     <span className='font-semibold'> Federica Risso Patrón</span>
+                     <span className='font-semibold'> Federico Rouyere</span>
                   </div>
                   <div className='flex items-center gap-2 flex-wrap'>
                      <span className='italic'>Alias :</span>
                         <div className='flex items-center gap-2'>
-                           <span className='font-semibold'> FEDE.Y.FEDE</span>
+                           <span className='font-semibold'> FEDERICO.CASPER.BBVA</span>
                         </div>
                         <button
                            className="group relative inline-flex " >
@@ -82,12 +82,12 @@ const CbuComponent = () => {
                   </div>
                   <div className='flex-wrap'>
                      <span className='italic'>CUIL/CUIT :</span>
-                     <span className='font-semibold'> 27351838855</span>
+                     <span className='font-semibold'> 20308193242</span>
                   </div>
                   <div className='flex items-center gap-2 flex-wrap'>
                      <span className='italic'>CBU :</span>
                      <div className='flex items-center gap-2'>
-                        <span className='font-semibold'> 0340060908600037774006</span>
+                        <span className='font-semibold'> 0170237040000005581238</span>
                         <button
                            className="group relative inline-flex " >
                            <img 
@@ -136,7 +136,7 @@ const CbuComponent = () => {
                </section>
                <p >
                   <span className='italic text-sm leading-6'>
-                     Si estas afuera y de alguna manera querés hacernos llegar tu cariño 👉🏼 Western Union.
+                     Si estás afuera y de alguna manera querés hacernos llegar tu cariño 👉🏼 Western Union.
                      Y no olvides mandarnos el comprobante. 😏
                   </span>
                </p>

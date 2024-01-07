@@ -3,11 +3,13 @@ import { Schema, model, Types } from "mongoose";
 let collection = 'invitados';
 
 let invitadoSchema = new Schema({
-   fullName: {type: String, required: true},
+   fullName: {type: String, required: true, default: ''},
    assist: {type: Boolean, required: true, default: false},
-   assistChurch: {type: Boolean, required: true, default: false},
    partner: {type: Boolean, required: true, default: false},
    partnersName: {type: String, default: ''},
+   childrens: {type: Boolean, required: true, default: false},
+   childrensQuantity: {type: Number, default: 0},
+   assistChurch: {type: Boolean, required: true, default: false},
    // drinkPreferences: {type: {} , required: true, default: {
    //    ['fernet_🥤']: false,
    //    ['gin_tonic_🍸']: false,
@@ -17,13 +19,15 @@ let invitadoSchema = new Schema({
    //    ['no_tomo_alcohol_💧']: false,
    //    ['otro_🥂']: '',
    // }},
-   foodPreferences: {type: {} , required: true, default: {
+   // otherDrinkPreference: {type: String, default: ''},
+   foodPreferences: {type: {} , default: {
       ['ninguna_🥩🥗']: false,
       ['como_sin_tac_❌🌾']: false,
       ['soy_vegano/a_❌🥩']: false,
       ['soy_vegetariano/a_💗🥑']: false,
       ['otra_🍤🍧']: false,
    }},
+   otherFoodPreference: {type: String, default: ''},
    contact: {type: String, default: ''},
    message: {type: String, default: ''},
 }, {

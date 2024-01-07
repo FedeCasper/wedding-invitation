@@ -253,7 +253,7 @@ const ModalConfirm = () => {
                               value={ true }
                               onChange={ handleChange }
                               className="section-input-radio"
-                           />Sí, 17hs estoy en la iglesia. 💒
+                           />Sí, 17 hs estoy en la iglesia. 💒
                         </label>
                         <label className="section-label-radio">
                            <input
