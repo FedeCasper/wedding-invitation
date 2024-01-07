@@ -127,14 +127,26 @@ const ModalConfirm = () => {
        .then((response) => {
          console.log('Response:', response.data);
          if (formData.assist !== "false") {
-           showConfirmation('¡Es un si! 💜', 'Te esperamos para compartir y darlo todo con nosotros.', 'Formulario enviado con éxito!', 'success');
+           showConfirmation(
+            '¡Es un si! 💜', 
+            'Te esperamos para compartir y darlo todo con nosotros.', 
+            'Formulario enviado con éxito!'
+            );
          } else {
-           showConfirmation('¡Te vamos a extrañar!', 'pero creemos que la energía lo atraviesa todo así que igualmente ahí estarás con nosotros ✨.', 'Formulario enviado con éxito!', 'success');
+           showConfirmation(
+            '¡Te vamos a extrañar!', 
+            'pero creemos que la energía lo atraviesa todo así que igualmente ahí estarás con nosotros ✨.', 
+            'Formulario enviado con éxito!'
+            );
          }
        })
        .catch((error) => {
          console.error('Error:', error);
-         showConfirmation('Ups!', 'Algo salió mal.', 'El formulario no se ha enviado', 'error');
+         showConfirmation(
+            'Ups!', 
+            'Algo salió mal.', 
+            'El formulario no se ha enviado'
+            );
        });
 
    };
