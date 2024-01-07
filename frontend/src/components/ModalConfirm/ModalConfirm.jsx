@@ -29,10 +29,10 @@ const initialFormState = {
       ['soy_vegano/a_❌🥩']: false,
       ['soy_vegetariano/a_💗🥑']: false,
       ['otra_🍟🥩']: false,
-      contact: '',
-      message: '',
    },
    otherFoodPreference: '',
+   contact: '',
+   message: '',
 };
 
 const ModalConfirm = () => {
@@ -90,60 +90,52 @@ const ModalConfirm = () => {
    const handleSubmit = (e) => {
       e.preventDefault();
 
-      axios
-         .post('https://wedding-invitation-backend.vercel.app/api/guests', formData)
-         .then((response) => {
-            console.log('Response:', response.data);
-            if( formData.assist != "false"){
-               setTimeout(() => {
-                  Swal.fire({
-                     confirmButtonText: 'Cerrar', 
-                     title: '¡Es un si! 💜"',
-                     text: 'Te esperamos para compartir y darlo todo con nosotros.',
-                     background: '#EAE8E4',
-                     customClass: { confirmButton: "mt-4 bg-green text-white py-2 px-6 transition-all duration-200 rounded-md hover:bg-green-dark active:scale-95 focus:outline-none focus:ring focus:ring-mustard" },
-                     buttonsStyling: false
-                  }).then((result) => {
-                     if (result.isConfirmed) {
-                        Swal.fire("Formulario Enviado!", "", "success");
-                        setConfirmationModal(false);
-                     }});
-               }, 100);
-            } else {
-               setTimeout(() => {
-                  Swal.fire({
-                     confirmButtonText: 'Cerrar', 
-                     title: '¡Te vamos a extrañar!',
-                     text: 'pero creemos que la energía lo atraviesa todo así que igualmente ahí estarás con nosotros ✨.',
-                     background: '#EAE8E4',
-                     customClass: { confirmButton: "mt-4 bg-green text-white py-2 px-6 transition-all duration-200 rounded-md hover:bg-green-dark active:scale-95 focus:outline-none focus:ring focus:ring-mustard" },
-                     buttonsStyling: false
-                  }).then((result) => {
-                     if (result.isConfirmed) {
-                        Swal.fire("Formulario Enviado!", "", "success");
-                        setConfirmationModal(false);
-                     }});
-               }, 100);
-            }
-         })
-         .catch((error) => {
-            console.error('Error:', error);
-            setTimeout(() => {
-               Swal.fire({
-                  confirmButtonText: 'Cerrar', 
-                  title: 'Ups!',
-                  text: 'Algo salió mal, el formulario no se ha enviado.',
+      const showConfirmation = (title, text, confirmedText) => {
+         setTimeout(() => {
+           Swal.fire({
+             confirmButtonText: 'Siguiente',
+             title: title,
+             text: text,
+             background: '#EAE8E4',
+             customClass: {
+               confirmButton: "btn-alert bg-green hover:bg-green-dark"
+             },
+             buttonsStyling: false
+           }).then((result) => {
+             if (result.isConfirmed) {
+               Swal.fire( {
+                  confirmButtonText: 'Cerrar',
+                  text: confirmedText,
                   background: '#EAE8E4',
-                  icon: 'error',
-                  customClass: { confirmButton: "mt-4 bg-green text-white py-2 px-6 transition-all duration-200 rounded-md hover:bg-green-dark active:scale-95 focus:outline-none focus:ring focus:ring-mustard" },
+                  customClass: {
+                    confirmButton: "btn-alert bg-green hover:bg-green-dark"
+                  },
                   buttonsStyling: false
                }).then((result) => {
                   if (result.isConfirmed) {
                      setConfirmationModal(false);
-                     }
-                  });
-            }, 100);
-         });
+                  }
+               })
+             }
+           });
+         }, 100);
+       };
+
+
+       axios
+       .post('https://wedding-invitation-backend.vercel.app/api/guests', formData)
+       .then((response) => {
+         console.log('Response:', response.data);
+         if (formData.assist !== "false") {
+           showConfirmation('¡Es un si! 💜', 'Te esperamos para compartir y darlo todo con nosotros.', 'Formulario enviado con éxito!', 'success');
+         } else {
+           showConfirmation('¡Te vamos a extrañar!', 'pero creemos que la energía lo atraviesa todo así que igualmente ahí estarás con nosotros ✨.', 'Formulario enviado con éxito!', 'success');
+         }
+       })
+       .catch((error) => {
+         console.error('Error:', error);
+         showConfirmation('Ups!', 'Algo salió mal.', 'El formulario no se ha enviado', 'error');
+       });
 
    };
 
