@@ -253,7 +253,7 @@ const ModalConfirm = () => {
                               value={ true }
                               onChange={ handleChange }
                               className="section-input-radio"
-                           />Sí, 17hs estoy en la iglesia 💒
+                           />Sí, 17hs estoy en la iglesia. 💒
                         </label>
                         <label className="section-label-radio">
                            <input
@@ -262,7 +262,7 @@ const ModalConfirm = () => {
                               value={ false }
                               onChange={ handleChange }
                               className="section-input-radio"
-                           />No, directo al salón a las 19h 🙌🏼
+                           />No, 19 hs estoy en el salón. 🙌🏼
                         </label>
                      </div>
                   </span>
@@ -325,7 +325,6 @@ const ModalConfirm = () => {
                      <div className="section-header">
                         <h3>
                            Niños
-                           <span className='section-required'>*</span>
                         </h3>
                         <KeyboardArrowDownIcon className={ `text-gray-dark ${ (arrowBehavior.checked && arrowBehavior.name === 'partners_name') && 'rotate-180' }` } fontSize='medium' /> 
                      </div>
@@ -372,7 +371,7 @@ const ModalConfirm = () => {
                <label>
                   <input className="peer/showLabel absolute scale-0 unselectable" type="checkbox" name='food' />
                   <div className="section-line"></div>
-                  <span className="block bg-white max-h-14 overflow-hidden rounded-b-lg  px-4 py-0  shadow-lg transition-all duration-300 peer-checked/showLabel:max-h-96">
+                  <span className="block bg-white max-h-14 overflow-hidden rounded-b-lg  px-4 py-0  shadow-lg transition-all duration-300 peer-checked/showLabel:max-h-fit">
                      <div className="section-header">
                         <h3>
                            Restricciones alimentarias
