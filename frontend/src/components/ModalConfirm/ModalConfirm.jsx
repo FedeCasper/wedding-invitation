@@ -13,8 +13,6 @@ const initialFormState = {
    childrens: 'false',
    childrensQuantity: 0,
    assistChurch: false,
-   contact: '',
-   message: '',
    // drinkPreferences: {
    //    ['fernet_🥤']: false,
    //    ['gin_tonic_🍸']: false,
@@ -24,15 +22,17 @@ const initialFormState = {
    //    ['no_tomo_alcohol_💧']: false,
    //    ['otro_🥂']: '',
    // },
+   // otherDrinkPreference: ''
    foodPreferences: {
       ['ninguna_🥩🥗']: false,
       ['como_sin_tac_❌🌾']: false,
       ['soy_vegano/a_❌🥩']: false,
       ['soy_vegetariano/a_💗🥑']: false,
       ['otra_🍟🥩']: false,
+      contact: '',
+      message: '',
    },
    otherFoodPreference: '',
-   otherDrinkPreference: ''
 };
 
 const ModalConfirm = () => {
@@ -65,17 +65,18 @@ const ModalConfirm = () => {
       }));
    };
 
-   const handleCheckboxChange = (group, e) => {
-      console.log([e.target.value])
-      const { name, type, value, checked } = e.target;
-      setFormData( prevData => ({
-         ...prevData,
-         [ group ]: {
-            ...prevData[ group ],
-            [ name ]: type === 'checkbox' ? checked : value,
-         },
-      }));
-   };
+   // Function for drinks preference section
+   // const handleCheckboxChange = (group, e) => {
+   //    console.log([e.target.value])
+   //    const { name, type, value, checked } = e.target;
+   //    setFormData( prevData => ({
+   //       ...prevData,
+   //       [ group ]: {
+   //          ...prevData[ group ],
+   //          [ name ]: type === 'checkbox' ? checked : value,
+   //       },
+   //    }));
+   // };
 
    const handleArrowBehavior = (e) => {
          setArrowBehavior({
