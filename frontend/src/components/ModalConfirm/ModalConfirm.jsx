@@ -42,25 +42,24 @@ const ModalConfirm = () => {
    const [ arrowBehavior, setArrowBehavior ] = useState(false);
    const [ optionalInput, setOptionalInput ] = useState(true);
 
-   const handleChange = (event) => {
-      const { name, type, value, checked } = event.target;
-      if(type === "radio"){
+   const handleChange = ( e ) => {
+      const { name, type, value, checked } = e.target;
+      if( type === "radio" ){
          value === "false" ? setOptionalInput(true) : setOptionalInput(false);
       }
       setFormData( prevData => ({
          ...prevData,
-         [name]: type === 'checkbox' ? checked : value,
+         [ name ]: type === 'checkbox' ? checked : value,
       }));
    };
 
-   const handleMultipleRadiosChange = (group, e) => {
-      console.log([e.target.value])
-      const { id, type, value, checked } = e.target;
-      setFormData(prevData => ({
+   const handleMultipleRadiosChange = ( group, e ) => {
+      const { id } = e.target;
+      setFormData( prevData => ({
          ...prevData,
-         [group]: Object.keys(prevData[group]).reduce((acc, key) => ({
+         [ group ]: Object.keys( prevData[ group ] ).reduce( ( acc, key ) => ({
             ...acc,
-            [key]: key === id ? true : false,
+            [ key ]: key === id ? true : false,
          }), {}),
       }));
    };
@@ -90,7 +89,7 @@ const ModalConfirm = () => {
    const handleSubmit = (e) => {
       e.preventDefault();
 
-      const showConfirmation = (title, text, confirmedText) => {
+      const showConfirmation = ( title, text, confirmedText ) => {
          setTimeout(() => {
            Swal.fire({
              confirmButtonText: 'Siguiente',
@@ -98,7 +97,7 @@ const ModalConfirm = () => {
              text: text,
              background: '#EAE8E4',
              customClass: {
-               confirmButton: "btn-alert bg-green hover:bg-green-dark"
+               confirmButton: 'btn-alert bg-green hover:bg-green-dark'
              },
              buttonsStyling: false
            }).then((result) => {
@@ -108,7 +107,7 @@ const ModalConfirm = () => {
                   text: confirmedText,
                   background: '#EAE8E4',
                   customClass: {
-                    confirmButton: "btn-alert bg-green hover:bg-green-dark"
+                    confirmButton: 'btn-alert bg-green hover:bg-green-dark'
                   },
                   buttonsStyling: false
                }).then((result) => {
