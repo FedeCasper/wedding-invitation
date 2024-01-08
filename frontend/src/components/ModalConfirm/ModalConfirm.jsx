@@ -63,6 +63,13 @@ const ModalConfirm = () => {
          }), {}),
       }));
    };
+   
+   const handleArrowBehavior = (e) => {
+         setArrowBehavior({
+            name: e.target.name,
+            checked: e.target.checked
+         })
+   }
 
    // Function for drinks preference section
    // const handleCheckboxChange = (group, e) => {
@@ -76,13 +83,6 @@ const ModalConfirm = () => {
    //       },
    //    }));
    // };
-
-   const handleArrowBehavior = (e) => {
-         setArrowBehavior({
-            name: e.target.name,
-            checked: e.target.checked
-         })
-   }
 
    console.log(formData);
 
