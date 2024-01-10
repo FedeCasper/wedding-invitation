@@ -379,7 +379,6 @@ const ModalConfirm = () => {
                      <div className="section-header">
                         <h3>
                            Restricciones alimentarias
-                           <span className='section-required'>*</span>
                         </h3>
                         <KeyboardArrowDownIcon className={ `text-gray-dark ${ (arrowBehavior.checked && arrowBehavior.name === 'food') && 'rotate-180' }` } fontSize='medium' /> 
                      </div>
@@ -458,7 +457,7 @@ const ModalConfirm = () => {
                <label>
                   <input className="peer/showLabel absolute scale-0 unselectable" type="checkbox" name='contact' />
                   <div className="section-line"></div>
-                  <span className="block bg-white max-h-14 overflow-hidden rounded-b-lg  px-4 py-0  shadow-lg transition-all duration-300 peer-checked/showLabel:max-h-64">
+                  <span className="block bg-white max-h-14 overflow-hidden rounded-b-lg  px-4 py-0  shadow-lg transition-all duration-300 peer-checked/showLabel:max-h-72">
                      <div className="section-header">
                         <h3>
                            Contacto
@@ -472,8 +471,8 @@ const ModalConfirm = () => {
                               type="text"
                               name="contact"
                               placeholder="Dejanos un número de celular o mail"
-                              value={formData.contact}
-                              onChange={handleChange}
+                              value={ formData.contact }
+                              onChange={ handleChange }
                               className="section-input-text"
                            />
                         </label>
@@ -492,7 +491,7 @@ const ModalConfirm = () => {
                         </h3>
                         <KeyboardArrowDownIcon className={ `text-gray-dark ${ (arrowBehavior.checked && arrowBehavior.name === 'message') && 'rotate-180' }` } fontSize='medium' /> 
                      </div>
-                     <h3 className="font-medium mb-4">Si necesitas hacernos alguna consulta o querés dejarnos algún mensaje este es el lugar.</h3>
+                     <h3 className="font-medium mb-4">Si necesitás hacernos alguna consulta o querés dejarnos algún mensaje este es el lugar.</h3>
                      <div className="section-label-text">
                         <label>
                            <input
