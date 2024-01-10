@@ -20,7 +20,7 @@ This repository contains a digital wedding invitation system built with a React 
 2. Navigate to the project directory: 
    ```bash
    cd wedding-invitation
-3. Navigate to the backend directory: 
+3. Navigate to the frontend directory: 
    ```bash
    cd frontend
 4. Install dependencies: 
