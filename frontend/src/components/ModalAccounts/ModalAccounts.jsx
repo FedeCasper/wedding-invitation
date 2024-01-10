@@ -1,9 +1,9 @@
 import { ModalContext } from "../../context/ModalContext"
 import { useContext, useState } from "react"
-import './CbuComponent.css'
+import './ModalAccounts.css'
 
 
-const CbuComponent = () => {
+const ModalAccounts = () => {
 
    const { setModal } = useContext(ModalContext);
    const [ copied, setCopied ] = useState(false);
@@ -204,4 +204,4 @@ const CbuComponent = () => {
    )
 }
 
-export default CbuComponent
+export default ModalAccounts

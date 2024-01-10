@@ -12,7 +12,8 @@ import Portrait from "../components/Portrait/Portrait"
 import Spinner from "../components/Spinner/Spinner"
 import { useContext } from "react"
 import { ModalContext } from "../context/ModalContext"
-import CbuComponent from "../components/CbuComponent/CbuComponent"
+import ModalContainer from "../components/ModalContainer/ModalContainer"
+import ModalAccounts from "../components/ModalAccounts/ModalAccounts"
 import ModalConfirm from "../components/ModalConfirm/ModalConfirm"
 import ModalWeather from "../components/ModalWeather/ModalWeather"
 import SectionContainer from "../components/SectionContainer/SectionContainer"
@@ -31,29 +32,18 @@ const Layout = () => {
          <ButtonGift />
 
          {/* Modals --------------------------------------- */}
-         {
-            modal && (
-               <div className="fixed inset-0 mx-auto flex justify-center py-4 h-screen w-full backdrop-blur-md bg-cream/60 z-50 ">
-                  <CbuComponent />
-               </div>
-            )
-         }
+         <ModalContainer isOpen={ modal }>
+            <ModalAccounts />
+         </ModalContainer>
+         
+         <ModalContainer isOpen={ weatherModal }>
+            <ModalWeather />
+         </ModalContainer>
+         
+         <ModalContainer isOpen={ confirmationModal }>
+            <ModalConfirm />
+         </ModalContainer>
 
-         {
-            weatherModal && (
-               <div className="fixed inset-0 mx-auto flex justify-center py-4 h-screen w-full backdrop-blur-md bg-cream/60 z-50 ">
-                  <ModalWeather />
-               </div>
-            )
-         }
-
-         {
-            confirmationModal && (
-               <div className="fixed inset-0 mx-auto flex justify-center py-4 h-screen w-full backdrop-blur-sm bg-cream/40 z-50 ">
-                  <ModalConfirm />
-               </div>
-            )
-         }
 
          {/* 1° Portrait Section --------------------------------------- */}
          <section className="relative flex flex-col items-center w-full h-[100vh] text-sm bg-cream pt-8 px-8 overflow-hidden z-20">
