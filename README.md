@@ -12,7 +12,7 @@ This repository contains a digital wedding invitation system built with a React 
 - Vite.js (v5.0.4)
 - React.js (v18.2.0)
 
-### Frontend Setup
+## Installation
 
 1. Clone the Repository:
    ```bash
@@ -20,6 +20,9 @@ This repository contains a digital wedding invitation system built with a React 
 2. Navigate to the project directory: 
    ```bash
    cd wedding-invitation
+
+### Frontend Setup
+
 3. Navigate to the frontend directory: 
    ```bash
    cd frontend
@@ -27,8 +30,17 @@ This repository contains a digital wedding invitation system built with a React 
    ```bash
    npm install 
 
+### Backend Setup
 
-### Installation
+5. Navigate to the backend directory: 
+   ```bash
+   cd frontend
+
+### Manager Setup
+
+6. Navigate to the manager directory: 
+   ```bash
+   cd frontend
 
 1. Open a new terminal and navigate to the frontend directory
 2. Start the frontend: 
