@@ -56,7 +56,7 @@ This repository contains a digital wedding invitation system built with a React 
 
 ### Usage
 
-The application comprises two primary sections. The first is the Welcome Section, serving as a static example page to provide a brief introduction. The second is the Dashboard Section, where users can seamlessly perform script management tasks. This includes creating, modifying, and deleting scripts using CRUD operations. Additionally, users can track script versions, gaining insights into changes over time. The Dashboard further offers a text-based search filter for efficient script retrieval based on content. 
+...
 
 ### Database
 
