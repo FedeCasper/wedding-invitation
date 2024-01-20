@@ -7,6 +7,7 @@ import Swal from 'sweetalert2'
 
 const initialFormState = {
    fullName: '',
+   phone: '',
    assist: '',
    partner: 'false',
    partnersName: '',
@@ -31,7 +32,7 @@ const initialFormState = {
       ['otra_🍟🥩']: false,
    },
    otherFoodPreference: '',
-   contact: '',
+   // contact: '',
    message: '',
 };
 
@@ -91,23 +92,23 @@ const ModalConfirm = () => {
 
       const showConfirmation = ( title, text, confirmedText ) => {
          setTimeout(() => {
-           Swal.fire({
-             confirmButtonText: 'Siguiente',
-             title: title,
-             text: text,
-             background: '#EAE8E4',
-             customClass: {
-               confirmButton: 'btn-alert bg-green hover:bg-green-dark'
-             },
-             buttonsStyling: false
-           }).then((result) => {
-             if (result.isConfirmed) {
+            Swal.fire({
+               confirmButtonText: 'Siguiente',
+               title: title,
+               text: text,
+               background: '#EAE8E4',
+               customClass: {
+                  confirmButton: 'btn-alert bg-green hover:bg-green-dark'
+               },
+               buttonsStyling: false
+            }).then((result) => {
+               if (result.isConfirmed) {
                Swal.fire( {
                   confirmButtonText: 'Cerrar',
                   text: confirmedText,
                   background: '#EAE8E4',
                   customClass: {
-                    confirmButton: 'btn-alert bg-green hover:bg-green-dark'
+                     confirmButton: 'btn-alert bg-green hover:bg-green-dark'
                   },
                   buttonsStyling: false
                }).then((result) => {
@@ -115,38 +116,38 @@ const ModalConfirm = () => {
                      setConfirmationModal(false);
                   }
                })
-             }
-           });
+            }
+         });
          }, 100);
-       };
+      };
 
 
-       axios
-       .post('https://wedding-invitation-backend.vercel.app/api/guests', formData)
-       .then((response) => {
+      axios
+      .post('https://wedding-invitation-backend.vercel.app/api/guests', formData)
+      .then((response) => {
          console.log('Response:', response.data);
          if (formData.assist !== "false") {
-           showConfirmation(
-            '¡Es un si! 💜', 
-            'Te esperamos para compartir y darlo todo con nosotros.', 
-            'Formulario enviado con éxito!'
+            showConfirmation(
+               '¡Es un si! 💜', 
+               'Te esperamos para compartir y darlo todo con nosotros.', 
+               'Formulario enviado con éxito!'
             );
          } else {
-           showConfirmation(
-            '¡Te vamos a extrañar!', 
-            'pero creemos que la energía lo atraviesa todo así que igualmente ahí estarás con nosotros ✨.', 
-            'Formulario enviado con éxito!'
+            showConfirmation(
+               '¡Te vamos a extrañar!', 
+               'pero creemos que la energía lo atraviesa todo así que igualmente ahí estarás con nosotros ✨.', 
+               'Formulario enviado con éxito!'
             );
          }
-       })
-       .catch((error) => {
+      })
+      .catch((error) => {
          console.error('Error:', error);
          showConfirmation(
             'Ups!', 
             'Algo salió mal.', 
             'El formulario no se ha enviado'
             );
-       });
+      });
 
    };
 
@@ -177,15 +178,16 @@ const ModalConfirm = () => {
                <label>
                   <input className="peer/showLabel absolute scale-0 unselectable" type="checkbox" name='fullname' />
                   <div className="section-line"></div>
-                  <span className="block bg-white max-h-14 overflow-hidden rounded-b-lg px-4 py-0 shadow-lg transition-all duration-300 peer-checked/showLabel:max-h-52">
+                  <span className="block bg-white max-h-14 overflow-hidden rounded-b-lg px-4 py-0 shadow-lg transition-all duration-300 peer-checked/showLabel:max-h-96">
                      <div className="section-header">
                         <h3>
-                           Nombre y Apellido
+                           Nombre completo y teléfono
                            <span className='section-required'>*</span>
                         </h3>
                         <KeyboardArrowDownIcon className={ `text-gray-dark ${ (arrowBehavior.checked && arrowBehavior.name === 'fullname') && 'rotate-180' }` } fontSize='medium' /> 
                      </div>
-                     <div className="section-label-text">
+                     <h3 className="font-medium mb-4">Dejanos tu nombre completo y un número de teléfono (preferentemente con whatsapp) para poder contactarte por cualquier cosa.</h3>
+                     <div className="flex flex-col pb-6 gap-2">
                         <label>
                            <input
                               required
@@ -193,6 +195,17 @@ const ModalConfirm = () => {
                               name="fullName"
                               placeholder="Ingresá tu nombre y apellido"
                               value={ formData.fullName }
+                              onChange={ handleChange }
+                              className="section-input-text"
+                           />
+                        </label>
+                        <label>
+                           <input
+                              required
+                              type="text"
+                              name="phone"
+                              placeholder="Ingresá tu teléfono"
+                              value={ formData.phone }
                               onChange={ handleChange }
                               className="section-input-text"
                            />
@@ -454,7 +467,7 @@ const ModalConfirm = () => {
                </label>*/}
 
                {/* Contact section ---------------------- */}
-               <label>
+               {/* <label>
                   <input className="peer/showLabel absolute scale-0 unselectable" type="checkbox" name='contact' />
                   <div className="section-line"></div>
                   <span className="block bg-white max-h-14 overflow-hidden rounded-b-lg  px-4 py-0  shadow-lg transition-all duration-300 peer-checked/showLabel:max-h-72">
@@ -478,13 +491,13 @@ const ModalConfirm = () => {
                         </label>
                      </div>
                   </span>
-               </label>
+               </label> */}
 
                {/* Message section ---------------------- */}
                <label>
                   <input className="peer/showLabel absolute scale-0 unselectable" type="checkbox" name='message' />
                   <div className="section-line"></div>
-                  <span className="block bg-white max-h-14 overflow-hidden rounded-b-lg px-4 py-0 shadow-lg transition-all duration-300 peer-checked/showLabel:max-h-52">
+                  <span className="block bg-white max-h-14 overflow-hidden rounded-b-lg px-4 py-0 shadow-lg transition-all duration-300 peer-checked/showLabel:max-h-64">
                      <div className="section-header">
                         <h3>
                            Mensaje para los novios
