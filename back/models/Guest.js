@@ -23,9 +23,9 @@ let invitadoSchema = new Schema({
    // otherDrinkPreference: {type: String, default: ''},
    foodPreferences: {type: {} , default: {
       ['ninguna_🥩🥗']: false,
-      ['como_sin_tac_❌🌾']: false,
-      ['soy_vegano/a_❌🥩']: false,
-      ['soy_vegetariano/a_💗🥑']: false,
+      ['sin_tacc❌🌾']: false,
+      ['vegano/a_❌🥩']: false,
+      ['vegetariano/a_💗🥑']: false,
       ['otra_🍤🍧']: false,
    }},
    otherFoodPreference: {type: String, default: ''},
