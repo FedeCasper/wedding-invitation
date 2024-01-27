@@ -15,15 +15,15 @@ const Layout = () => {
       notAssistsToWedding: 0,
       partner: [],
       totalAssists: 0,
-      drinks: {
-         fernet: 0,
-         gin_tonic: 0,
-         campari: 0,
-         vino: 0,
-         cerveza: 0,
-         no_tomo_alcohol: 0,
-         otro: 0
-      },
+      // drinks: {
+      //    fernet: 0,
+      //    gin_tonic: 0,
+      //    campari: 0,
+      //    vino: 0,
+      //    cerveza: 0,
+      //    no_tomo_alcohol: 0,
+      //    otro: 0
+      // },
       food:{
          como_sin_tac: 0,
          soy_vegano: 0,
@@ -71,18 +71,18 @@ const Layout = () => {
                setStadisticData(prev => ({ ...prev, partner: [...prev.partner, { fullName: guest.fullName, partnerName: guest.partnersName, partnerId: guest._id }] }));
             }
 
-            if (guest.drinkPreferences) {
-               const updatedDrinkStadisticData = { ...stadisticData.drinks };
-               console.log("updatedDrinksStadisticData", updatedDrinkStadisticData);
+            // if (guest.drinkPreferences) {
+            //    const updatedDrinkStadisticData = { ...stadisticData.drinks };
+            //    console.log("updatedDrinksStadisticData", updatedDrinkStadisticData);
 
-               for(let drink in guest.drinkPreferences){
-                  let formatKey = drink.slice(0, (drink.length -3))
+            //    for(let drink in guest.drinkPreferences){
+            //       let formatKey = drink.slice(0, (drink.length -3))
 
-                  if( guest.drinkPreferences[drink] ){
-                     setStadisticData( prev => ({ ...prev, drinks: { ...prev.drinks, [formatKey]: prev.drinks[formatKey] + 1  }}));
-                  }
-               } 
-            }
+            //       if( guest.drinkPreferences[drink] ){
+            //          setStadisticData( prev => ({ ...prev, drinks: { ...prev.drinks, [formatKey]: prev.drinks[formatKey] + 1  }}));
+            //       }
+            //    } 
+            // }
 
             if (guest.foodPreferences) {
                const updatedFoodStadisticData = { ...stadisticData.food };
@@ -453,7 +453,7 @@ const Layout = () => {
                   </div>
 
                   {/*  ----- DRINKS TABLE DATA ----- */}
-                  <div className="mb-4 grid grid-cols-1 gap-6 xl:grid-cols-3">
+                  {/* <div className="mb-4 grid grid-cols-1 gap-6 xl:grid-cols-3">
                      <div className="relative flex flex-col bg-clip-border rounded-xl bg-white text-gray-700 shadow-md overflow-hidden xl:col-span-2">
                         <div className="relative bg-clip-border rounded-xl overflow-hidden bg-transparent text-gray-700 shadow-none m-0 flex items-center justify-between p-6">
                            <div>
@@ -512,7 +512,7 @@ const Layout = () => {
                            </table>
                         </div>
                      </div>
-                  </div>
+                  </div> */}
 
                   {/*  ----- FOOD TABLE DATA ----- */}
                   <div className="mb-4 grid grid-cols-1 gap-6 xl:grid-cols-3">
