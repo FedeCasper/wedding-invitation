@@ -249,7 +249,7 @@ const handlePartnerNameChange = ( index, value ) => {
                         </h3>
                         <KeyboardArrowDownIcon className={ `text-gray-dark ${ (arrowBehavior.checked && arrowBehavior.name === 'fullname') && 'rotate-180' }` } fontSize='medium' /> 
                      </div>
-                     <h3 className="text-sm font-medium mb-4">Dejanos un número de teléfono, preferentemente con whatsapp, para poder contactarte por cualquier cosa.</h3>
+                     <h3 className="text-sm font-medium mb-4">Dejanos un número de teléfono para poder contactarte por cualquier cosa.</h3>
                      <div className="flex flex-col pb-6 gap-2">
                         <label>
                            <input
@@ -314,7 +314,7 @@ const handlePartnerNameChange = ( index, value ) => {
                         </h3>
                         <KeyboardArrowDownIcon className={ `text-gray-dark ${ (arrowBehavior.checked && arrowBehavior.name === 'partners_name') && 'rotate-180' }` } fontSize='medium' /> 
                      </div>
-                     <h3 className="text-sm font-medium mb-4">Si venís con acompañante necesitamos saber su nombre y apellido para poder agregarlo a la lista.</h3>
+                     <h3 className="text-sm font-medium mb-4">¿Fuiste invitado con alguien? Necesitamos su nombre y apellido para la lista. (Los niños van aparte).</h3>
                      <div className="section-label-text">
                         <div className='flex gap-4'>
                            <label htmlFor="partnerConfirm" className='flex gap-2 cursor-pointer'>Si
@@ -372,7 +372,7 @@ const handlePartnerNameChange = ( index, value ) => {
                         </h3>
                         <KeyboardArrowDownIcon className={ `text-gray-dark ${ (arrowBehavior.checked && arrowBehavior.name === 'partners_name') && 'rotate-180' }` } fontSize='medium' /> 
                      </div>
-                     <h3 className="text-sm font-medium mb-4">Necesitamos saber la cantidad de niños mayores de 4 años para poder agregarlos a la lista.</h3>
+                     <h3 className="text-sm font-medium mb-4">¿Venís con niños que sean mayores a 4 años? Necesitamos agregarlos a la lista.</h3>
                      <div className="section-label-text">
                         <div className='flex gap-4'>
                            <label htmlFor="childrensConfirm" className='flex gap-2 cursor-pointer'>Si
@@ -396,7 +396,7 @@ const handlePartnerNameChange = ( index, value ) => {
                               />
                            </label>
                         </div>
-                        <label className='flex flex-col'>
+                        <label className='flex flex-col mt-2'>
                            <input
                               type="number"
                               name="childrensQuantity"
@@ -431,7 +431,7 @@ const handlePartnerNameChange = ( index, value ) => {
                               value={ true }
                               onChange={ handleChange }
                               className="section-input-radio"
-                           />Sí, 17 hs estoy en la iglesia. 💒
+                           />Sí, 17 h estoy en la iglesia. 💒
                         </label>
                         <label className="section-label-radio">
                            <input
@@ -440,7 +440,7 @@ const handlePartnerNameChange = ( index, value ) => {
                               value={ false }
                               onChange={ handleChange }
                               className="section-input-radio"
-                           />No, 19 hs estoy en el salón. 🙌🏼
+                           />No, 19 h estoy en el salón. 🙌🏼
                         </label>
                      </div>
                   </span>
@@ -457,7 +457,7 @@ const handlePartnerNameChange = ( index, value ) => {
                         </h3>
                         <KeyboardArrowDownIcon className={ `text-gray-dark ${ (arrowBehavior.checked && arrowBehavior.name === 'food') && 'rotate-180' }` } fontSize='medium' /> 
                      </div>
-                     <h3 className="text-sm font-medium mb-4">Seleccioná si tenés alguna restricción alimentaria. Haremos lo posible para sumar al menú alguna opción apta para vos.</h3>
+                     <h3 className="text-sm font-medium mb-4">¿Vos o alguno de tu/s acompañante/s tienen alguna restricción alimentaria? Decinos quién y a qué.</h3>
                      <div className="flex flex-col pb-6">
                         {
                            Object.entries( formData.foodPreferences ).map( ( [ key, value ] ) => (
@@ -566,7 +566,7 @@ const handlePartnerNameChange = ( index, value ) => {
                         </h3>
                         <KeyboardArrowDownIcon className={ `text-gray-dark ${ (arrowBehavior.checked && arrowBehavior.name === 'message') && 'rotate-180' }` } fontSize='medium' /> 
                      </div>
-                     <h3 className="text-sm font-medium mb-4">Si necesitás hacernos alguna consulta o querés dejarnos algún mensaje este es el lugar.</h3>
+                     <h3 className="text-sm font-medium mb-4">¿Querés decirnos algo? Consulta, declaraciones de amor, lo que sea, este es el espacio.</h3>
                      <div className="section-label-text">
                         <label>
                            <input
