@@ -188,11 +188,50 @@ const ModalAccounts = () => {
                      </button>
                   </div>
                </div>
+            </article>
+
+            {/* Western Union Section */}
+            <article className="flex flex-col gap-2 w-full
+               lg:w-[450px]">
+               <section className="flex items-center gap-2">
+                  <img src="./assets/images/green-arrows-icon.png" alt="" className='h-6'/>
+                  <h2 className='font-semibold text-base'>PAYONEER</h2>
+               </section>
+               <p >
+                  <span className='italic text-sm leading-6'>
+                     También tenemos cuenta en payoneer. 😎
+                  </span>
+               </p>
+               <div className='flex items-center gap-2 flex-wrap'>
+                  <span className='italic'>Mail :</span>
+                  <div className='flex items-center gap-2'>
+                     <span className='font-semibold'> federicarissopatron@gmail.com</span>
+                     <button
+                        className="group relative inline-flex " >
+                        <img 
+                           onClick={ () => copyToClipboard('federicarissopatron@gmail.com') } 
+                           src="./assets/images/copy-icon.png" 
+                           alt=" Boton copiar " 
+                           title='Copiar' 
+                           className='h-6 cursor-pointer
+                           transition origin-bottom-left duration-300 ease-in-out hover:scale-110 hover:rotate-3' />
+                        <div className="hidden group-hover:block">
+                           <div
+                              className="group absolute -top-12 left-1/2 z-50 flex -translate-x-1/2 flex-col items-center rounded-sm text-center text-sm text-[#EAE8E4] before:-top-2">
+                              <div className={`rounded-md py-1 px-2 ${ copied ? 'bg-mustard' : 'bg-green' }`}>
+                                 <p className="whitespace-nowrap">{ copied ? 'Copiado!' : 'Copiar' }</p>
+                              </div>
+                           </div>
+                        </div>
+                     </button>
+                  </div>
+               </div>
+            </article>
+
                <article className='flex flex-col gap-3 items-center mt-2'>
                   <hr className='w-48 border border-[#5D7551]' />
                   <h2 className='text-lg font-medium'>¡Desde ya mil gracias!</h2>
                </article>
-            </article>
 
          </main>
 
