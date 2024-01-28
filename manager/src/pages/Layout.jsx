@@ -15,31 +15,18 @@ const Layout = () => {
       notAssistsToWedding: 0,
       partner: [],
       totalAssists: 0,
-      // drinks: {
-      //    fernet: 0,
-      //    gin_tonic: 0,
-      //    campari: 0,
-      //    vino: 0,
-      //    cerveza: 0,
-      //    no_tomo_alcohol: 0,
-      //    otro: 0
-      // },
-      food:{
-         como_sin_tac: 0,
-         soy_vegano: 0,
-         soy_vegetariano: 0,
-         otro: 0
-      }
+      foodRestrictions: 0,
+      totalChildrens: 0,
    });
 
    console.log(executed);
-   console.log(Object.entries(stadisticData?.food));
 
    const handleData = () => {
       axios
          .get('https://wedding-invitation-backend.vercel.app/api/guests')
          .then((response) => {
-            console.log('Response:', response.data);
+            console.log('Response:----------->', response.data);
+            console.log('Response type:----------->', typeof response.data );
             setFullData(response.data);
          })
          .catch((error) => {
@@ -47,19 +34,18 @@ const Layout = () => {
          });
    };
 
-   console.log("stadistic data food", Object.entries(stadisticData?.food));
 
    const handleStadistic = () => {
 
       if (!executed) {
          fullData?.forEach( guest => {
 
-            if (guest.assistChurch) {
-               console.log("first")
-               setStadisticData( prev => ({ ...prev, assistToChucrh: prev.assistToChucrh + 1 }));
-            } else {
-               setStadisticData( prev => ({ ...prev, notAssistToChucrh: prev.notAssistToChucrh + 1 }));
-            }
+            // if (guest.assistChurch) {
+            //    console.log("first")
+            //    setStadisticData( prev => ({ ...prev, assistToChucrh: prev.assistToChucrh + 1 }));
+            // } else {
+            //    setStadisticData( prev => ({ ...prev, notAssistToChucrh: prev.notAssistToChucrh + 1 }));
+            // }
 
             if (guest.assist) {
                setStadisticData(prev => ({ ...prev, assistsToWedding: prev.assistsToWedding + 1 }));
@@ -71,32 +57,12 @@ const Layout = () => {
                setStadisticData(prev => ({ ...prev, partner: [...prev.partner, { fullName: guest.fullName, partnerName: guest.partnersName, partnerId: guest._id }] }));
             }
 
-            // if (guest.drinkPreferences) {
-            //    const updatedDrinkStadisticData = { ...stadisticData.drinks };
-            //    console.log("updatedDrinksStadisticData", updatedDrinkStadisticData);
+            if (guest.childrens) {
+               setStadisticData( prev => ({ ...prev, totalChildrens: prev.totalChildrens + guest.childrensQuantity }) );
+            }
 
-            //    for(let drink in guest.drinkPreferences){
-            //       let formatKey = drink.slice(0, (drink.length -3))
-
-            //       if( guest.drinkPreferences[drink] ){
-            //          setStadisticData( prev => ({ ...prev, drinks: { ...prev.drinks, [formatKey]: prev.drinks[formatKey] + 1  }}));
-            //       }
-            //    } 
-            // }
-
-            if (guest.foodPreferences) {
-               const updatedFoodStadisticData = { ...stadisticData.food };
-               console.log("updatedFoodStadisticData", updatedFoodStadisticData);
-
-               for(let food in guest.foodPreferences){
-                  let lastUnderscoreIndex = food.lastIndexOf('_');
-                  let formatKey = food.slice(0, lastUnderscoreIndex);
-
-                  if( guest.foodPreferences[food] ){
-                     setStadisticData( prev => ({ ...prev, food: { ...prev.food, [formatKey]: prev.food[formatKey] + 1  }}));
-                  }
-                  
-               } 
+            if (guest.dietaryRestrictions) {
+               setStadisticData(prev => ({ ...prev, foodRestrictions: prev.foodRestrictions + 1 }));
             }
 
             if(guest.assist && guest.partner && guest.childrens){
@@ -105,6 +71,14 @@ const Layout = () => {
                setStadisticData(prev => ({ ...prev, totalAssists: prev.totalAssists + 2 }));
             } else if(guest.assist){
                setStadisticData(prev => ({ ...prev, totalAssists: prev.totalAssists + 1 }));
+            }
+
+            if(guest.assistChurch && guest.partner && guest.childrens){
+               setStadisticData(prev => ({ ...prev, assistToChucrh: prev.assistToChucrh + guest.childrensQuantity + 2 }));
+            } else if(guest.assistChurch && guest.partner){
+               setStadisticData(prev => ({ ...prev, assistToChucrh: prev.assistToChucrh + 2 }));
+            } else if(guest.assistChurch){
+               setStadisticData(prev => ({ ...prev, assistToChucrh: prev.assistToChucrh + 1 }));
             }
 
             setExecuted(true);
@@ -327,7 +301,7 @@ const Layout = () => {
                         </div>
                         <div className="border-t border-blue-gray-50 p-4">
                            <p className="block antialiased font-sans text-base leading-relaxed font-normal text-blue-gray-600">
-                              <strong className="text-fuchsia-500">{fullData?.childrensQuantity}</strong> niños
+                              <strong className="text-fuchsia-500">{stadisticData?.totalChildrens}</strong> son niños.
                            </p>
                         </div>
                      </div>
@@ -452,68 +426,6 @@ const Layout = () => {
                      </div>
                   </div>
 
-                  {/*  ----- DRINKS TABLE DATA ----- */}
-                  {/* <div className="mb-4 grid grid-cols-1 gap-6 xl:grid-cols-3">
-                     <div className="relative flex flex-col bg-clip-border rounded-xl bg-white text-gray-700 shadow-md overflow-hidden xl:col-span-2">
-                        <div className="relative bg-clip-border rounded-xl overflow-hidden bg-transparent text-gray-700 shadow-none m-0 flex items-center justify-between p-6">
-                           <div>
-                              <h6 className="block antialiased tracking-normal font-sans text-base font-semibold leading-relaxed text-purple-900 mb-1">Bebidas elegidas 🍻</h6>
-                              <p className="antialiased font-sans text-sm leading-normal flex items-center gap-1 font-normal text-blue-gray-600">
-                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="3" stroke="currentColor" aria-hidden="true" className="h-4 w-4 text-blue-500">
-                                    <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5"></path>
-                                 </svg>
-                                 <strong>{(stadisticData?.partner).length} mensajes</strong> en total
-                              </p>
-                           </div>
-                           <button aria-expanded="false" aria-haspopup="menu" id=":r5:" className="relative middle none font-sans font-medium text-center uppercase transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none w-8 max-w-[32px] h-8 max-h-[32px] rounded-lg text-xs text-blue-gray-500 hover:bg-blue-500/10 active:bg-blue-500/30" type="button">
-                              <span className="absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2">
-                                 <svg xmlns="http://www.w3.org/2000/svg" fill="currenColor" viewBox="0 0 24 24" strokeWidth="3" stroke="currentColor" aria-hidden="true" className="h-6 w-6">
-                                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 6.75a.75.75 0 110-1.5.75.75 0 010 1.5zM12 12.75a.75.75 0 110-1.5.75.75 0 010 1.5zM12 18.75a.75.75 0 110-1.5.75.75 0 010 1.5z"></path>
-                                 </svg>
-                              </span>
-                           </button>
-                        </div>
-                        <div className="p-6 overflow-x-scroll px-0 pt-0 pb-2">
-                           <table className="w-full table-auto">
-                              <thead>
-                                 <tr>
-                                    <th className="border-b border-gray-50 py-3 px-6 text-left">
-                                       <p className="block antialiased font-sans text-[11px] font-medium uppercase text-gray-400">Bebida</p>
-                                    </th>
-                                    <th className="border-b border-gray-50 py-3 px-6 text-left">
-                                       <p className="block antialiased font-sans text-[11px] text-center font-medium uppercase text-gray-400">N° veces elegida</p>
-                                    </th>
-                                 </tr>
-                              </thead>
-                              <tbody>
-
-                                 {
-                                    
-                                    Object.entries(stadisticData?.drinks)
-                                    .sort((a, b) => b[1] - a[1])
-                                    .map( drink => (
-
-                                       <tr key={drink[0]}>
-                                          <td className="py-3 px-5 border-b border-blue-gray-50">
-                                             <div className="flex items-center gap-4">
-                                                <p className="block antialiased font-sans text-sm leading-normal text-blue-gray-900 font-bold"> {drink[0]} </p>
-                                             </div>
-                                          </td>
-
-                                          <td className="py-3 px-5 border-b border-blue-gray-50">
-                                             <p className="block antialiased font-sans text-xs font-medium text-blue-gray-600"> {drink[1]}</p>
-                                          </td>
-                                       </tr>
-
-                                    ))
-                                 }
-
-                              </tbody>
-                           </table>
-                        </div>
-                     </div>
-                  </div> */}
-
                   {/*  ----- FOOD TABLE DATA ----- */}
                   <div className="mb-4 grid grid-cols-1 gap-6 xl:grid-cols-3">
                      <div className="relative flex flex-col bg-clip-border rounded-xl bg-white text-gray-700 shadow-md overflow-hidden xl:col-span-2">
@@ -524,7 +436,7 @@ const Layout = () => {
                                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="3" stroke="currentColor" aria-hidden="true" className="h-4 w-4 text-blue-500">
                                     <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5"></path>
                                  </svg>
-                                 <strong>{Object.keys(stadisticData?.food).length} mensajes</strong> en total
+                                 <strong>{stadisticData?.foodRestrictions} restricciones</strong> en total
                               </p>
                            </div>
                            <button aria-expanded="false" aria-haspopup="menu" id=":r5:" className="relative middle none font-sans font-medium text-center uppercase transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none w-8 max-w-[32px] h-8 max-h-[32px] rounded-lg text-xs text-blue-gray-500 hover:bg-blue-500/10 active:bg-blue-500/30" type="button">
@@ -540,35 +452,150 @@ const Layout = () => {
                               <thead>
                                  <tr>
                                     <th className="border-b border-gray-50 py-3 px-6 text-left">
-                                       <p className="block antialiased font-sans text-[11px] font-medium uppercase text-gray-400">Menú Comida</p>
+                                       <p className="block antialiased font-sans text-[11px] font-medium uppercase text-gray-400">Invitado</p>
                                     </th>
                                     <th className="border-b border-gray-50 py-3 px-6 text-left">
-                                       <p className="block antialiased font-sans text-[11px] text-center font-medium uppercase text-gray-400">N° veces elegida</p>
+                                       <p className="block antialiased font-sans text-[11px] text-center font-medium uppercase text-gray-400">Restricción</p>
                                     </th>
                                  </tr>
                               </thead>
                               <tbody>
 
                                  {
-                                    
-                                    Object.entries(stadisticData?.food)
-                                    .sort((a, b) => b[1] - a[1])
-                                    .map( food => (
+                                       fullData?.filter( guest => guest.dietaryRestrictions ).map( guest => (
 
-                                       <tr key={food[0]}>
-                                          <td className="py-3 px-5 border-b border-blue-gray-50">
-                                             <div className="flex items-center gap-4">
-                                                <p className="block antialiased font-sans text-sm leading-normal text-blue-gray-900 font-bold"> {food[0]} </p>
-                                             </div>
-                                          </td>
+                                          <tr key={guest?._id}>
+                                             <td className="py-3 px-5 border-b border-blue-gray-50">
+                                                <div className="flex items-center gap-4">
+                                                   <p className="block antialiased font-sans text-sm leading-normal text-blue-gray-900 font-bold"> {guest?.fullName} </p>
+                                                </div>
+                                             </td>
 
-                                          <td className="py-3 px-5 border-b border-blue-gray-50">
-                                             <p className="block antialiased font-sans text-xs font-medium text-blue-gray-600"> {food[1]}</p>
-                                          </td>
-                                       </tr>
+                                             <td className="py-3 px-5 border-b border-blue-gray-50">
+                                                <p className="block antialiased font-sans text-xs font-medium text-blue-gray-600"> {guest?.dietaryRestrictionsIndications}</p>
+                                             </td>
+                                          </tr>
 
-                                    ))
-                                 }
+                                       ))
+                                    }
+
+                              </tbody>
+                           </table>
+                        </div>
+                     </div>
+                  </div>
+
+                  {/*  ----- CHILDRENS TABLE DATA ----- */}
+                  <div className="mb-4 grid grid-cols-1 gap-6 xl:grid-cols-3">
+                     <div className="relative flex flex-col bg-clip-border rounded-xl bg-white text-gray-700 shadow-md overflow-hidden xl:col-span-2">
+                        <div className="relative bg-clip-border rounded-xl overflow-hidden bg-transparent text-gray-700 shadow-none m-0 flex items-center justify-between p-6">
+                           <div>
+                              <h6 className="block antialiased tracking-normal font-sans text-base font-semibold leading-relaxed text-purple-900 mb-1">Invitados con niños 👩‍👩‍👧‍👦</h6>
+                              <p className="antialiased font-sans text-sm leading-normal flex items-center gap-1 font-normal text-blue-gray-600">
+                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="3" stroke="currentColor" aria-hidden="true" className="h-4 w-4 text-blue-500">
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5"></path>
+                                 </svg>
+                                 <strong>{stadisticData?.totalChildrens} niños</strong> en total
+                              </p>
+                           </div>
+                           <button aria-expanded="false" aria-haspopup="menu" id=":r5:" className="relative middle none font-sans font-medium text-center uppercase transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none w-8 max-w-[32px] h-8 max-h-[32px] rounded-lg text-xs text-blue-gray-500 hover:bg-blue-500/10 active:bg-blue-500/30" type="button">
+                              <span className="absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2">
+                                 <svg xmlns="http://www.w3.org/2000/svg" fill="currenColor" viewBox="0 0 24 24" strokeWidth="3" stroke="currentColor" aria-hidden="true" className="h-6 w-6">
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 6.75a.75.75 0 110-1.5.75.75 0 010 1.5zM12 12.75a.75.75 0 110-1.5.75.75 0 010 1.5zM12 18.75a.75.75 0 110-1.5.75.75 0 010 1.5z"></path>
+                                 </svg>
+                              </span>
+                           </button>
+                        </div>
+                        <div className="p-6 overflow-x-scroll px-0 pt-0 pb-2">
+                           <table className="w-full table-auto">
+                              <thead>
+                                 <tr>
+                                    <th className="border-b border-gray-50 py-3 px-6 text-left">
+                                       <p className="block antialiased font-sans text-[11px] font-medium uppercase text-gray-400">Invitado</p>
+                                    </th>
+                                    <th className="border-b border-gray-50 py-3 px-6 text-left">
+                                       <p className="block antialiased font-sans text-[11px] text-center font-medium uppercase text-gray-400">Restricción</p>
+                                    </th>
+                                 </tr>
+                              </thead>
+                              <tbody>
+
+                                 {
+                                       fullData?.filter( guest => guest.childrens ).map( guest => (
+
+                                          <tr key={guest?._id}>
+                                             <td className="py-3 px-5 border-b border-blue-gray-50">
+                                                <div className="flex items-center gap-4">
+                                                   <p className="block antialiased font-sans text-sm leading-normal text-blue-gray-900 font-bold"> {guest?.fullName} </p>
+                                                </div>
+                                             </td>
+
+                                             <td className="py-3 px-5 border-b border-blue-gray-50">
+                                                <p className="block antialiased font-sans text-xs font-medium text-blue-gray-600"> {guest?.childrensQuantity}</p>
+                                             </td>
+                                          </tr>
+
+                                       ))
+                                    }
+
+                              </tbody>
+                           </table>
+                        </div>
+                     </div>
+                  </div>
+
+                  {/*  ----- CHURCH TABLE DATA ----- */}
+                  <div className="mb-4 grid grid-cols-1 gap-6 xl:grid-cols-3">
+                     <div className="relative flex flex-col bg-clip-border rounded-xl bg-white text-gray-700 shadow-md overflow-hidden xl:col-span-2">
+                        <div className="relative bg-clip-border rounded-xl overflow-hidden bg-transparent text-gray-700 shadow-none m-0 flex items-center justify-between p-6">
+                           <div>
+                              <h6 className="block antialiased tracking-normal font-sans text-base font-semibold leading-relaxed text-purple-900 mb-1">Invitados que asisten a la iglesia 💒</h6>
+                              <p className="antialiased font-sans text-sm leading-normal flex items-center gap-1 font-normal text-blue-gray-600">
+                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="3" stroke="currentColor" aria-hidden="true" className="h-4 w-4 text-blue-500">
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5"></path>
+                                 </svg>
+                                 <strong>{ stadisticData?.assistToChucrh } invitados asistirán </strong> a la iglesia.
+                              </p>
+                           </div>
+                           <button aria-expanded="false" aria-haspopup="menu" id=":r5:" className="relative middle none font-sans font-medium text-center uppercase transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none w-8 max-w-[32px] h-8 max-h-[32px] rounded-lg text-xs text-blue-gray-500 hover:bg-blue-500/10 active:bg-blue-500/30" type="button">
+                              <span className="absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2">
+                                 <svg xmlns="http://www.w3.org/2000/svg" fill="currenColor" viewBox="0 0 24 24" strokeWidth="3" stroke="currentColor" aria-hidden="true" className="h-6 w-6">
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 6.75a.75.75 0 110-1.5.75.75 0 010 1.5zM12 12.75a.75.75 0 110-1.5.75.75 0 010 1.5zM12 18.75a.75.75 0 110-1.5.75.75 0 010 1.5z"></path>
+                                 </svg>
+                              </span>
+                           </button>
+                        </div>
+                        <div className="p-6 overflow-x-scroll px-0 pt-0 pb-2">
+                           <table className="w-full table-auto">
+                              <thead>
+                                 <tr>
+                                    <th className="border-b border-gray-50 py-3 px-6 text-left">
+                                       <p className="block antialiased font-sans text-[11px] font-medium uppercase text-gray-400">Invitado</p>
+                                    </th>
+                                    <th className="border-b border-gray-50 py-3 px-6 text-left">
+                                       <p className="block antialiased font-sans text-[11px] text-center font-medium uppercase text-gray-400">Restricción</p>
+                                    </th>
+                                 </tr>
+                              </thead>
+                              <tbody>
+
+                                 {
+                                       fullData?.filter( guest => guest.assistChurch ).map( guest => (
+
+                                          <tr key={guest?._id}>
+                                             <td className="py-3 px-5 border-b border-blue-gray-50">
+                                                <div className="flex items-center gap-4">
+                                                   <p className="block antialiased font-sans text-sm leading-normal text-blue-gray-900 font-bold"> {guest?.fullName} </p>
+                                                </div>
+                                             </td>
+
+                                             <td className="py-3 px-5 border-b border-blue-gray-50">
+                                                <p className="block antialiased font-sans text-xs font-medium text-blue-gray-600"> {guest?.childrensQuantity}</p>
+                                             </td>
+                                          </tr>
+
+                                       ))
+                                    }
 
                               </tbody>
                            </table>
