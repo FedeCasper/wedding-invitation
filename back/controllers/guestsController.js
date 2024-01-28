@@ -13,9 +13,14 @@ const guestsController = {
    },
 
    postGuests: async (req, res) => {
-      const { fullName, phone, assist, partner, partnersName, assistChurch, foodPreferences, message } = req.body;
+      const { fullName, phone, assist, partner, partnersName, childrens, childrensQuantity, assistChurch, dietaryRestrictions, dietaryRestrictionsIndications, message } = req.body;
       try {
-         const newGuest = new Guest({ fullName, phone, assist, partner, partnersName, assistChurch, foodPreferences, message });
+         const existingGuest = await Guest.findOne({ phone });
+         if (existingGuest) {
+            return res.status(400).json({ success: false, error: 'Ya existe un invitado con el mismo número de teléfono' });
+         }
+
+         const newGuest = new Guest({ fullName, phone, assist, partner, partnersName, childrens, childrensQuantity, assistChurch, dietaryRestrictions, dietaryRestrictionsIndications, message });
          await newGuest.save();
          res.json({ success: true });
       } catch (error) {
