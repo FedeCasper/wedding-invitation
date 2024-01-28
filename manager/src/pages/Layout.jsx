@@ -590,7 +590,7 @@ const Layout = () => {
                                              </td>
 
                                              <td className="py-3 px-5 border-b border-blue-gray-50">
-                                                <p className="block antialiased font-sans text-xs font-medium text-blue-gray-600"> {guest?.childrensQuantity}</p>
+                                                <p className="block antialiased font-sans text-xs font-medium text-blue-gray-600"> { 1 + (guest?.childrensQuantity) +(guest?.partner? 1 : 0) }</p>
                                              </td>
                                           </tr>
 
