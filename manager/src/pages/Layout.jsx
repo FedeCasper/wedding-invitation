@@ -267,7 +267,7 @@ const Layout = () => {
                         </div>
                         <div className="border-t border-blue-gray-50 p-4">
                            <p className="block antialiased font-sans text-base leading-relaxed font-normal text-blue-gray-600">
-                              <strong className="text-fuchsia-500">{Math.round((stadisticData.assistToChucrh * 100) / 150)}%</strong>&nbsp;de los invitados asistirá
+                              <strong className="text-fuchsia-500">{Math.round((stadisticData?.assistToChucrh * 100) / 150)}%</strong>&nbsp;de los invitados asistirá
                            </p>
                         </div>
                      </div>
@@ -283,7 +283,7 @@ const Layout = () => {
                         </div>
                         <div className="border-t border-blue-gray-50 p-4">
                            <p className="block antialiased font-sans text-base leading-relaxed font-normal text-blue-gray-600">
-                              <strong className="text-fuchsia-500">{Math.round((stadisticData.assistsToWedding * 100) / 150)}%</strong>&nbsp;asistirán a la boda
+                              <strong className="text-fuchsia-500">{Math.round((stadisticData?.assistsToWedding * 100) / 150)}%</strong>&nbsp;asistirán a la boda
                            </p>
                         </div>
                      </div>
