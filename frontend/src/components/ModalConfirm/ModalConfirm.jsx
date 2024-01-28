@@ -164,7 +164,9 @@ const handlePartnerNameChange = ( index, value ) => {
 
             <section className="flex flex-col">
                <span className="text-2xl font-medium mb-4">¿Hay equipo?</span>
-               <span className="text-base font-light ">Esperamos que puedas acompañarnos en este momento tan especial</span>
+               <span className="text-base font-light ">Hay que enviar un solo formulario por pareja, grupo familiar o individual, si te llegó a vos es porque es tu función 😉 
+                  <br></br> ¡Esperamos que nos acompañes!
+               </span>
                <span className="text-sm font-light italic mt-2">( Los campos con <span className='text-red'>*</span> son obligatorios )</span>
             </section>
 
@@ -424,7 +426,7 @@ const handlePartnerNameChange = ( index, value ) => {
                            <label htmlFor="childrensConfirm" className='flex gap-2 cursor-pointer'>Si
                               <input 
                               type="radio" 
-                              name="restrictions" 
+                              name="dietaryRestrictions" 
                               id="restrictionsConfirm" 
                               value={ true } 
                               onClick={ handleChange } 
@@ -434,7 +436,7 @@ const handlePartnerNameChange = ( index, value ) => {
                            <label htmlFor="childrensNotConfirm" className='flex gap-2 cursor-pointer'>No
                               <input 
                               type="radio" 
-                              name="restrictions" 
+                              name="dietaryRestrictions" 
                               id="restrictionsNotConfirm" 
                               value={ false } 
                               onClick={ handleChange }
@@ -443,15 +445,15 @@ const handlePartnerNameChange = ( index, value ) => {
                            </label>
                         </div>
                         <label className='flex flex-col mt-2'>
-                           <input
-                              type="number"
-                              name="restrictionsIndication"
-                              placeholder="Ingresá el tipo de restricción"
-                              value={ formData.dietaryRestrictionsIndications }
-                              onChange={ handleChange }
-                              className={ `section-input-text ${ formData.dietaryRestrictions !== 'false' ? 'visible section-input-text' : 'hidden'}` }
-                              disabled={ optionalInput }
-                           />
+                        <input
+                           type="text"
+                           name="dietaryRestrictionsIndications"
+                           placeholder="Ingresá el tipo de restricción"
+                           value={formData.dietaryRestrictionsIndications}
+                           onChange={ handleChange } 
+                           className={`section-input-text ${formData.dietaryRestrictions !== 'false' ? 'visible section-input-text' : 'hidden'}`}
+                           disabled={optionalInput} // Utiliza optionalInput para controlar la desactivación del input
+                        />
                         </label>
                      </div>
                   </span>
