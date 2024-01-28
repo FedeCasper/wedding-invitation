@@ -22,7 +22,7 @@ import SectionContainerElement from "../components/SectionContainerElement/Secti
 
 const Layout = () => {
 
-   const { modal, confirmationModal, weatherModal } = useContext(ModalContext);
+   const { modal, confirmationModal, weatherModal, sent } = useContext(ModalContext);
 
    return (
       <div className={` relative flex flex-col items-center overflow-hidden
@@ -238,8 +238,8 @@ const Layout = () => {
 
                   </InfoSection>
                   <Button
-                     buttonText={'Confirmar asistencia'}
-                     
+                     buttonText={ sent ? 'Formulario enviado' : 'Confirmar asistencia' }
+                     disabled={ sent }
                      colorCode={'bg-green'}
                      action={'openConfirmationModal'}
                   />

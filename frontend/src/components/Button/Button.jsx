@@ -3,9 +3,9 @@ import AnimatedElement from "../AnimatedElement/AnimatedElement"
 import { ModalContext } from "../../context/ModalContext"
 import { useContext } from "react"
 
-const Button = ( { buttonText, colorCode, url, action } ) => {
+const Button = ( { buttonText, colorCode, url, action, disabled } ) => {
    
-   const { setModal, setConfirmationModal, setWeatherModal } = useContext(ModalContext);
+   const { setModal, setConfirmationModal, setWeatherModal, sent } = useContext(ModalContext);
 
    const handleForm = () => {
       switch(action) {
@@ -39,6 +39,7 @@ const Button = ( { buttonText, colorCode, url, action } ) => {
       <AnimatedElement>
          <button 
             onClick={ url ? () => handleUrl(url) : handleForm }
+            disabled={ sent }
             type="button" 
             className={` unselectable w-64 text-lg active:bg-green-dark
             ${colorCode}

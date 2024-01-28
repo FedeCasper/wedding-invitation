@@ -25,7 +25,7 @@ const initialFormState = {
 
 const ModalConfirm = () => {
 
-   const { setConfirmationModal } = useContext(ModalContext);
+   const { setConfirmationModal, sent, setSent } = useContext(ModalContext);
    const [ formData, setFormData ] = useState(initialFormState);
    const [ arrowBehavior, setArrowBehavior ] = useState(false);
    const [ optionalInput, setOptionalInput ] = useState(true);
@@ -128,12 +128,14 @@ const handlePartnerNameChange = ( index, value ) => {
                'Te esperamos para compartir y darlo todo con nosotros.', 
                'Formulario enviado con éxito!'
             );
+            setSent(true);
          } else {
             showConfirmation(
                '¡Te vamos a extrañar!', 
                'pero creemos que la energía lo atraviesa todo así que igualmente ahí estarás con nosotros ✨.', 
                'Formulario enviado con éxito!'
             );
+            setSent(true);
          }
       })
       .catch((error) => {
@@ -162,7 +164,7 @@ const handlePartnerNameChange = ( index, value ) => {
 
          <div className="relative py-3 w-10/12 mx-auto text-center">
 
-            <section className="flex flex-col">
+            <section className="flex flex-col mb-6">
                <span className="text-2xl font-medium mb-4">¿Hay equipo?</span>
                <span className="text-base font-light ">Hay que enviar un solo formulario por pareja, grupo familiar o individual, si te llegó a vos es porque es tu función 😉 
                   <br></br> ¡Esperamos que nos acompañes!
@@ -488,12 +490,17 @@ const handlePartnerNameChange = ( index, value ) => {
                </label>
 
                <div className="flex justify-between items-baseline">
-                  <button
-                     onClick={ handleSubmit }
-                     type="submit"
-                     className="mt-4 bg-green text-white py-2 px-6 transition-all duration-200 rounded-md hover:bg-green-dark active:scale-95">
-                     Enviar
-                  </button>
+                  {
+                     sent ?
+                     <p className='text-green italic'>Formulario Enviado!</p>:
+                     <button
+                        onClick={ handleSubmit }
+                        type="submit"
+                        className="mt-4 bg-green text-white py-2 px-6 transition-all duration-200 rounded-md hover:bg-green-dark active:scale-95">
+                        Enviar
+                     </button>
+                  }
+
                </div>
 
             </form>
