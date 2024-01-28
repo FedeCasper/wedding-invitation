@@ -514,7 +514,7 @@ const Layout = () => {
                                        <p className="block antialiased font-sans text-[11px] font-medium uppercase text-gray-400">Invitado</p>
                                     </th>
                                     <th className="border-b border-gray-50 py-3 px-6 text-left">
-                                       <p className="block antialiased font-sans text-[11px] text-center font-medium uppercase text-gray-400">Restricción</p>
+                                       <p className="block antialiased font-sans text-[11px] text-center font-medium uppercase text-gray-400">Cantidad de niños</p>
                                     </th>
                                  </tr>
                               </thead>
