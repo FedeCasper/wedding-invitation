@@ -30,6 +30,7 @@ const ModalConfirm = () => {
    const [ arrowBehavior, setArrowBehavior ] = useState(false);
    const [ optionalInput, setOptionalInput ] = useState(true);
    const [ partnerNames, setPartnerNames ] = useState(['']);
+   const [isLoading, setIsLoading] = useState(false);
 
 // Función para manejar el cambio en un input
 const handlePartnerNameChange = ( index, value ) => {
@@ -84,6 +85,7 @@ const handlePartnerNameChange = ( index, value ) => {
 
    const handleSubmit = (e) => {
       e.preventDefault();
+      setIsLoading(true);
 
       const showConfirmation = ( title, text, confirmedText ) => {
          setTimeout(() => {
@@ -496,8 +498,9 @@ const handlePartnerNameChange = ( index, value ) => {
                      <button
                         onClick={ handleSubmit }
                         type="submit"
+                        disabled={ isLoading }
                         className="mt-4 bg-green text-white py-2 px-6 transition-all duration-200 rounded-md hover:bg-green-dark active:scale-95">
-                        Enviar
+                        { isLoading ? 'Enviando...' : 'Enviar' }
                      </button>
                   }
 
