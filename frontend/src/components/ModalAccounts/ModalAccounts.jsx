@@ -64,7 +64,7 @@ const ModalAccounts = () => {
                         <button
                            className="group relative inline-flex " >
                            <img 
-                              onClick={ () => copyToClipboard('FEDE.Y.FEDE') } 
+                              onClick={ () => copyToClipboard('FEDERICO.CASPER.BBVA') } 
                               src="./assets/images/copy-icon.png" 
                               alt=" Boton copiar " 
                               title='Copiar' 
@@ -91,7 +91,7 @@ const ModalAccounts = () => {
                         <button
                            className="group relative inline-flex " >
                            <img 
-                              onClick={ () => copyToClipboard('0340060908600037774006') } 
+                              onClick={ () => copyToClipboard('0170237040000005581238') } 
                               src="./assets/images/copy-icon.png" 
                               alt=" Boton copiar " 
                               title='Copiar' 
