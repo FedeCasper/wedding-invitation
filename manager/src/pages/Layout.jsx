@@ -451,7 +451,7 @@ const Layout = () => {
                                     fullData?.filter(guest => guest.message).slice(0, visibleItems).map(guest => (
                                     // stadisticData?.partner?.map( guest => (
 
-                                       <tr key={guest?.partnerId}>
+                                       <tr key={guest?._id}>
                                           <td className="py-3 px-5 border-b border-blue-gray-50">
                                              <div className="flex items-start gap-4 w-48">
                                                 <p className="block antialiased font-sans text-sm leading-normal text-blue-gray-900 font-bold"> {guest?.fullName} </p>
@@ -459,7 +459,7 @@ const Layout = () => {
                                           </td>
 
                                           <td className="py-3 px-5 border-b border-blue-gray-50">
-                                             <p className="block antialiased font-sans text-xs font-medium text-blue-gray-600"> {guest?.partnerName}</p>
+                                             <p className="block antialiased font-sans text-xs font-medium text-blue-gray-600"> {guest?.partnersName}</p>
                                           </td>
                                        </tr>
 
