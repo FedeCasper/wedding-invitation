@@ -4,10 +4,12 @@ import ChurchIcon from '@mui/icons-material/Church';
 import CheckIcon from '@mui/icons-material/Check';
 import RemoveCircleIcon from '@mui/icons-material/RemoveCircle';
 import AddCircleIcon from '@mui/icons-material/AddCircle';
+import Swal from 'sweetalert2'
 
 
 const Layout = () => {
 
+   const [foundGuests, setFoundGuests] = useState({});
    const [fullData, setFullData] = useState([]);
    const [executed, setExecuted] = useState(false);
    const [stadisticData, setStadisticData] = useState({
@@ -34,6 +36,12 @@ const Layout = () => {
 
    const handleShowLess = () => {
       setVisibleItems(prev => prev - itemsPerPage);
+   }
+
+   const guestIndividualData = (id) => {
+      let guest = fullData?.find(guest => guest._id === id)
+      setFoundGuests(guest);
+      console.log(foundGuests);
    }
 
    console.log(executed);
@@ -92,9 +100,6 @@ const Layout = () => {
                setStadisticData(prev => ({ ...prev, totalAssists: prev.totalAssists + 1 }));
             } 
             
-            
-
-
             if(guest.assistChurch && guest.partner && guest.childrens){
                setStadisticData(prev => ({ ...prev, assistToChucrh: prev.assistToChucrh + guest.childrensQuantity + 2 }));
             } else if(guest.assistChurch && guest.partner){
@@ -121,11 +126,7 @@ const Layout = () => {
 
             setExecuted(true);
          })
-
-         
-         
       }
-      
    }
 
    console.log(stadisticData);
@@ -137,6 +138,52 @@ const Layout = () => {
    useEffect(() => {
       handleStadistic();
    }, [fullData])
+
+   useEffect(() => {
+      console.log(foundGuests);
+      if(Object.keys(foundGuests).length !== 0){
+         Swal.fire({
+            title: foundGuests?.fullName,
+            html: `<table class="w-fit flex mx-auto">
+               <tbody>
+                  <tr class="flex justify-between px-3 gap-3 border border-violet-300">
+                     <td class="font-bold">Contacto:</td>
+                     <td>${foundGuests?.phone}</td>
+                  </tr>
+                  <tr class="flex justify-between px-3 gap-3 border border-violet-300">
+                     <td class="font-bold">Asiste:</td>
+                     <td>${foundGuests?.assist ? "Si " : "No " }${foundGuests?.assistChurch ? "(iglesia)" : "(salón)" }</td>
+                  </tr>
+                  <tr class="flex justify-between px-3 gap-3 border border-violet-300">
+                     <td class="font-bold">Acompañantes:</td>
+                     <td>${(foundGuests?.partnersName).length}</td>
+                  </tr>
+                  ${ (foundGuests?.partnersName).map( guest => {
+                     return `<tr class="flex justify-between px-3 gap-3 border border-violet-300">
+                        <td class="font-bold">Acompañante:</td>
+                        <td>${guest}</td>
+                     </tr>`
+                  })}
+                  <tr class="flex justify-between px-3 gap-3 border border-violet-300">
+                     <td class="font-bold">Hijos:</td>
+                     <td>${foundGuests?.childrensQuantity}</td>
+                  </tr>
+                  <tr class="flex justify-between px-3 gap-3 border border-violet-300">
+                  <td class="font-bold">Resticciones:</td>
+                  <td>${foundGuests?.dietaryRestrictions ? "Si" : "No" }</td>
+                  ${
+                     foundGuests?.dietaryRestrictions ? `<tr class="border border-violet-300">
+                     <td class="px-3">${foundGuests?.dietaryRestrictionsIndications}</td>
+                     </tr>` : ""
+                  }
+               </tr>
+               </tbody>
+            </table>`,
+            icon: "info"
+         });
+      }
+
+   }, [foundGuests])
 
    return (
       <>
@@ -393,8 +440,11 @@ const Layout = () => {
 
                                        <tr key={guest?._id}>
                                           <td className="py-3 px-5 border-b border-blue-gray-50">
-                                             <div className="flex items-start gap-4 w-48">
-                                                <p className="block antialiased font-sans text-sm leading-normal text-blue-gray-900 font-bold"> {guest?.fullName} </p>
+                                             <div className="flex items-start gap-4 w-fit">
+                                                <a onClick={() => guestIndividualData(guest?._id)} className="cursor-pointer">
+                                                   <p className="block antialiased font-sans text-sm leading-normal text-blue-gray-900 font-bold"> {guest?.fullName} </p>
+                                                </a>
+                                                
                                              </div>
                                           </td>
 
@@ -468,12 +518,14 @@ const Layout = () => {
                                        <tr key={guest?._id}>
                                           <td className="py-3 px-5 border-b border-blue-gray-50">
                                              <div className="flex items-start gap-4 w-48">
+                                             <a onClick={() => guestIndividualData(guest?._id)} className="cursor-pointer">
                                                 <p className="block antialiased font-sans text-sm leading-normal text-blue-gray-900 font-bold"> {guest?.fullName} </p>
+                                                </a>
                                              </div>
                                           </td>
 
                                           <td className="py-3 px-5 border-b border-blue-gray-50">
-                                             <p className="block antialiased font-sans text-xs font-medium text-blue-gray-600"> {(guest?.partnersName).length == 1 ? guest?.partnersName : <span className="text-red-500 italic">Sin pareja</span>}</p>
+                                             <p className="block antialiased font-sans text-xs font-medium text-blue-gray-600"> {(guest?.partnersName).length == 1 ? guest?.partnersName : <span className="text-red-500 italic">Sin pareja</span>}</p> 
                                           </td>
                                        </tr>
 
@@ -539,7 +591,9 @@ const Layout = () => {
                                           <tr key={guest?._id}>
                                              <td className="py-3 px-5 border-b border-blue-gray-50">
                                                 <div className="flex items-start gap-4 w-48">
+                                                <a onClick={() => guestIndividualData(guest?._id)} className="cursor-pointer">
                                                    <p className="block antialiased font-sans text-sm leading-normal text-blue-gray-900 font-bold"> {guest?.fullName} </p>
+                                                </a>
                                                 </div>
                                              </td>
 
@@ -598,7 +652,9 @@ const Layout = () => {
                                           <tr key={guest?._id}>
                                              <td className="py-3 px-5 border-b border-blue-gray-50">
                                                 <div className="flex items-start gap-4 w-48">
+                                                <a onClick={() => guestIndividualData(guest?._id)} className="cursor-pointer">
                                                    <p className="block antialiased font-sans text-sm leading-normal text-blue-gray-900 font-bold"> {guest?.fullName} </p>
+                                                </a>
                                                 </div>
                                              </td>
 
@@ -658,7 +714,9 @@ const Layout = () => {
                                           <tr key={guest?._id}>
                                              <td className="py-3 px-5 border-b border-blue-gray-50">
                                                 <div className="flex items-start gap-4 w-48">
+                                                <a onClick={() => guestIndividualData(guest?._id)} className="cursor-pointer">
                                                    <p className="block antialiased font-sans text-sm leading-normal text-blue-gray-900 font-bold"> {guest?.fullName} </p>
+                                                </a>
                                                 </div>
                                              </td>
 
@@ -693,7 +751,7 @@ const Layout = () => {
                      <div className="relative flex flex-col bg-clip-border rounded-xl bg-slate-100 text-gray-700 shadow-md overflow-hidden xl:col-span-2">
                         <div className="relative bg-clip-border rounded-xl overflow-hidden bg-transparent text-gray-700 shadow-none m-0 flex items-center justify-between p-6">
                            <div>
-                              <h6 className="block antialiased tracking-normal font-sans text-xl font-bold leading-relaxed text-purple-600 mb-1 text-left">SIN ACOMPAÑANTSES 🙍🏻‍♀️</h6>
+                              <h6 className="block antialiased tracking-normal font-sans text-xl font-bold leading-relaxed text-purple-600 mb-1 text-left">SIN ACOMPAÑANTSE 🙍🏻‍♀️</h6>
                               <p className="antialiased font-sans text-sm leading-normal flex items-center gap-1 font-normal text-blue-gray-600">
                                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="3" stroke="currentColor" aria-hidden="true" className="h-4 w-4 text-blue-500">
                                     <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5"></path>
@@ -729,7 +787,9 @@ const Layout = () => {
                                        <tr key={guest?._id}>
                                           <td className="py-3 px-5 border-b border-blue-gray-50">
                                              <div className="flex items-start gap-4 w-48">
+                                             <a onClick={() => guestIndividualData(guest?._id)} className="cursor-pointer">
                                                 <p className="block antialiased font-sans text-sm leading-normal text-blue-gray-900 font-bold"> {guest?.fullName} </p>
+                                             </a>
                                              </div>
                                           </td>
 
