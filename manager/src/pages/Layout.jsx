@@ -69,19 +69,15 @@ const Layout = () => {
                setStadisticData(prev => ({ ...prev, foodRestrictions: prev.foodRestrictions + 1 }));
             }
 
-            // if(guest.assist && guest.partner && guest.childrens){
-            //    setStadisticData(prev => ({ ...prev, totalAssists: prev.totalAssists + 1 + guest.childrensQuantity + ( (guest.partnersName).length ) }));
-            //    console.log(guest.fullName);
-            //    console.log("Numero", 1 + guest.childrensQuantity + ( (guest.partnersName).length ));
-            // } else if(guest.assist && guest.partner){
-            //    setStadisticData(prev => ({ ...prev, totalAssists: prev.totalAssists + 1 + (guest.partnersName).length  }));
-            //    console.log(guest.fullName);
-            //    console.log("Numero", 1 + guest.childrensQuantity + ( (guest.partnersName).length ));
-            // } else if(guest.assist){
-            //    setStadisticData(prev => ({ ...prev, totalAssists: prev.totalAssists + 1 }));
-            //    console.log(guest.fullName);
-            //    console.log("Numero", 1 + guest.childrensQuantity + ( (guest.partnersName).length ));
-            // }
+            if(guest.assist && guest.partner && guest.childrens){
+               setStadisticData(prev => ({ ...prev, totalAssists: prev.totalAssists + 1 + guest.childrensQuantity + ( (guest.partnersName).length ) }));
+            } else if(guest.assist && guest.partner){
+               setStadisticData(prev => ({ ...prev, totalAssists: prev.totalAssists + 1 + (guest.partnersName).length  }));
+            } else if(guest.assist){
+               setStadisticData(prev => ({ ...prev, totalAssists: prev.totalAssists + 1 }));
+            } else if(guest.assist && guest.childrens){
+               setStadisticData(prev => ({ ...prev, totalAssists: prev.totalAssists + 1 + guest.childrensQuantity }));
+            }
 
             if(guest.assistChurch && guest.partner && guest.childrens){
                setStadisticData(prev => ({ ...prev, assistToChucrh: prev.assistToChucrh + guest.childrensQuantity + 2 }));
