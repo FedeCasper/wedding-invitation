@@ -441,9 +441,9 @@ const Layout = () => {
                                        <tr key={guest?._id}>
                                           <td className="py-3 px-5 border-b border-blue-gray-50">
                                              <div className="flex items-start gap-4 w-fit">
-                                                <a onClick={() => guestIndividualData(guest?._id)} className="cursor-pointer">
+                                                <span onClick={() => guestIndividualData(guest?._id)} className="cursor-pointer">
                                                    <p className="block antialiased font-sans text-sm leading-normal text-blue-gray-900 font-bold"> {guest?.fullName} </p>
-                                                </a>
+                                                </span>
                                                 
                                              </div>
                                           </td>
@@ -518,9 +518,9 @@ const Layout = () => {
                                        <tr key={guest?._id}>
                                           <td className="py-3 px-5 border-b border-blue-gray-50">
                                              <div className="flex items-start gap-4 w-48">
-                                             <a onClick={() => guestIndividualData(guest?._id)} className="cursor-pointer">
+                                             <span onClick={() => guestIndividualData(guest?._id)} className="cursor-pointer">
                                                 <p className="block antialiased font-sans text-sm leading-normal text-blue-gray-900 font-bold"> {guest?.fullName} </p>
-                                                </a>
+                                                </span>
                                              </div>
                                           </td>
 
@@ -714,9 +714,9 @@ const Layout = () => {
                                           <tr key={guest?._id}>
                                              <td className="py-3 px-5 border-b border-blue-gray-50">
                                                 <div className="flex items-start gap-4 w-48">
-                                                <a onClick={() => guestIndividualData(guest?._id)} className="cursor-pointer">
+                                                <span onClick={() => guestIndividualData(guest?._id)} className="cursor-pointer">
                                                    <p className="block antialiased font-sans text-sm leading-normal text-blue-gray-900 font-bold"> {guest?.fullName} </p>
-                                                </a>
+                                                </span>
                                                 </div>
                                              </td>
 
@@ -787,9 +787,9 @@ const Layout = () => {
                                        <tr key={guest?._id}>
                                           <td className="py-3 px-5 border-b border-blue-gray-50">
                                              <div className="flex items-start gap-4 w-48">
-                                             <a onClick={() => guestIndividualData(guest?._id)} className="cursor-pointer">
+                                             <span onClick={() => guestIndividualData(guest?._id)} className="cursor-pointer">
                                                 <p className="block antialiased font-sans text-sm leading-normal text-blue-gray-900 font-bold"> {guest?.fullName} </p>
-                                             </a>
+                                             </span>
                                              </div>
                                           </td>
 
