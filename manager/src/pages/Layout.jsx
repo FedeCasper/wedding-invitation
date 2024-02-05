@@ -369,7 +369,7 @@ const Layout = () => {
 
                   {/*  ----- PARTNERS TABLE DATA ----- */}
                   <div className="mb-4 grid grid-cols-1 gap-6 xl:grid-cols-3">
-                     <div className="relative flex flex-col bg-clip-border rounded-xl bg-violet-200 text-gray-700 shadow-md overflow-hidden xl:col-span-2">
+                     <div className="relative flex flex-col bg-clip-border rounded-xl bg-slate-100 text-gray-700 shadow-md overflow-hidden xl:col-span-2">
                         <div className="relative bg-clip-border rounded-xl overflow-hidden bg-transparent text-gray-700 shadow-none m-0 flex items-center justify-between p-6">
                            <div>
                               <h6 className="block antialiased tracking-normal font-sans text-base font-semibold leading-relaxed text-purple-900 mb-1">ACOMPAÑANTES 👫</h6>
@@ -393,10 +393,10 @@ const Layout = () => {
                               <thead>
                                  <tr>
                                     <th className="border-b border-gray-50 py-3 px-6 text-left">
-                                       <p className="block antialiased font-sans text-[11px] font-medium uppercase text-gray-400">Invitado</p>
+                                       <p className="block antialiased font-sans text-[11px] font-medium uppercase text-violet-500">Invitado</p>
                                     </th>
                                     <th className="border-b border-gray-50 py-3 px-6 text-left">
-                                       <p className="block antialiased font-sans text-[11px] text-center font-medium uppercase text-gray-400">Pareja</p>
+                                       <p className="block antialiased font-sans text-[11px] text-center font-medium uppercase text-violet-500">Pareja</p>
                                     </th>
                                  </tr>
                               </thead>
@@ -487,7 +487,7 @@ const Layout = () => {
 
                   {/*  ----- CHILDRENS TABLE DATA ----- */}
                   <div className="mb-4 grid grid-cols-1 gap-6 xl:grid-cols-3">
-                     <div className="relative flex flex-col bg-clip-border rounded-xl bg-violet-200 text-gray-700 shadow-md overflow-hidden xl:col-span-2">
+                     <div className="relative flex flex-col bg-clip-border rounded-xl bg-slate-100 text-gray-700 shadow-md overflow-hidden xl:col-span-2">
                         <div className="relative bg-clip-border rounded-xl overflow-hidden bg-transparent text-gray-700 shadow-none m-0 flex items-center justify-between p-6">
                            <div>
                               <h6 className="block antialiased tracking-normal font-sans text-base font-semibold leading-relaxed text-purple-900 mb-1">NIÑOS 👩‍👩‍👧‍👦</h6>
@@ -511,10 +511,10 @@ const Layout = () => {
                               <thead>
                                  <tr>
                                     <th className="border-b border-gray-50 py-3 px-6 text-left">
-                                       <p className="block antialiased font-sans text-[11px] font-medium uppercase text-gray-400">Invitado</p>
+                                       <p className="block antialiased font-sans text-[11px] font-medium uppercase text-violet-500">Invitado</p>
                                     </th>
                                     <th className="border-b border-gray-50 py-3 px-6 text-left">
-                                       <p className="block antialiased font-sans text-[11px] text-center font-medium uppercase text-gray-400">Cantidad de niños</p>
+                                       <p className="block antialiased font-sans text-[11px] text-center font-medium uppercase text-violet-500">Cantidad de niños</p>
                                     </th>
                                  </tr>
                               </thead>
@@ -605,7 +605,7 @@ const Layout = () => {
 
                   {/*  ----- SINGLES TABLE DATA ----- */}
                   <div className="mb-4 grid grid-cols-1 gap-6 xl:grid-cols-3">
-                     <div className="relative flex flex-col bg-clip-border rounded-xl bg-violet-200 text-gray-700 shadow-md overflow-hidden xl:col-span-2">
+                     <div className="relative flex flex-col bg-clip-border rounded-xl bg-slate-100 text-gray-700 shadow-md overflow-hidden xl:col-span-2">
                         <div className="relative bg-clip-border rounded-xl overflow-hidden bg-transparent text-gray-700 shadow-none m-0 flex items-center justify-between p-6">
                            <div>
                               <h6 className="block antialiased tracking-normal font-sans text-base font-semibold leading-relaxed text-purple-900 mb-1">Invitados sin acompañantes 🙍🏻‍♀️</h6>
@@ -613,7 +613,7 @@ const Layout = () => {
                                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="3" stroke="currentColor" aria-hidden="true" className="h-4 w-4 text-blue-500">
                                     <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5"></path>
                                  </svg>
-                                 <strong>{(stadisticData?.partner).length} invitados solos</strong> en total
+                                 <strong>{(fullData?.filter( guest => !guest.partner).length)} invitados solos</strong> en total
                               </p>
                            </div>
                            <button aria-expanded="false" aria-haspopup="menu" id=":r5:" className="relative middle none font-sans font-medium text-center uppercase transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none w-8 max-w-[32px] h-8 max-h-[32px] rounded-lg text-xs text-blue-gray-500 hover:bg-blue-500/10 active:bg-blue-500/30" type="button">
