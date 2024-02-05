@@ -347,7 +347,7 @@ const Layout = () => {
                      <div className="relative flex flex-col bg-clip-border rounded-xl bg-white text-gray-700 shadow-md overflow-hidden xl:col-span-2">
                         <div className="relative bg-clip-border rounded-xl overflow-hidden bg-transparent text-gray-700 shadow-none m-0 flex items-center justify-between p-6">
                            <div>
-                              <h6 className="block antialiased tracking-normal font-sans text-xl font-bold leading-relaxed text-purple-900 mb-1 text-left">MENSAJES ❤</h6>
+                              <h6 className="block antialiased tracking-normal font-sans text-xl font-bold leading-relaxed text-purple-600 mb-1 text-left">MENSAJES ❤</h6>
                               <p className="antialiased font-sans text-sm leading-normal flex items-center gap-1 font-normal text-blue-gray-600">
                                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="3" stroke="currentColor" aria-hidden="true" className="h-4 w-4 text-blue-500">
                                     <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5"></path>
@@ -417,12 +417,12 @@ const Layout = () => {
                      <div className="relative flex flex-col bg-clip-border rounded-xl bg-slate-100 text-gray-700 shadow-md overflow-hidden xl:col-span-2">
                         <div className="relative bg-clip-border rounded-xl overflow-hidden bg-transparent text-gray-700 shadow-none m-0 flex items-center justify-between p-6">
                            <div>
-                              <h6 className="block antialiased tracking-normal font-sans text-xl font-bold leading-relaxed text-purple-900 mb-1 text-left">ACOMPAÑANTES 👫</h6>
+                              <h6 className="block antialiased tracking-normal font-sans text-xl font-bold leading-relaxed text-purple-600 mb-1 text-left">ACOMPAÑANTES 👫</h6>
                               <p className="antialiased font-sans text-sm leading-normal flex items-center gap-1 font-normal text-blue-gray-600">
                                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="3" stroke="currentColor" aria-hidden="true" className="h-4 w-4 text-blue-500">
                                     <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5"></path>
                                  </svg>
-                                 <strong>{(stadisticData?.partner).length} parejas</strong> en total
+                                 <strong>{(stadisticData?.partner).length} invitados</strong> confirmaron acompañantes.
                               </p>
                            </div>
                            <button aria-expanded="false" aria-haspopup="menu" id=":r5:" className="relative middle none font-sans font-medium text-center uppercase transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none w-8 max-w-[32px] h-8 max-h-[32px] rounded-lg text-xs text-blue-gray-500 hover:bg-blue-500/10 active:bg-blue-500/30" type="button">
@@ -459,7 +459,7 @@ const Layout = () => {
                                           </td>
 
                                           <td className="py-3 px-5 border-b border-blue-gray-50">
-                                             <p className="block antialiased font-sans text-xs font-medium text-blue-gray-600"> {guest?.partnersName}</p>
+                                             <p className="block antialiased font-sans text-xs font-medium text-blue-gray-600"> {guest?.partnersName ? guest?.partnersName : "Sin pareja"}</p>
                                           </td>
                                        </tr>
 
@@ -484,12 +484,12 @@ const Layout = () => {
                      <div className="relative flex flex-col bg-clip-border rounded-xl bg-white text-gray-700 shadow-md overflow-hidden xl:col-span-2">
                         <div className="relative bg-clip-border rounded-xl overflow-hidden bg-transparent text-gray-700 shadow-none m-0 flex items-center justify-between p-6">
                            <div>
-                              <h6 className="block antialiased tracking-normal font-sans text-xl font-bold leading-relaxed text-purple-900 mb-1 text-left">COMIDA 🥗🍖</h6>
+                              <h6 className="block antialiased tracking-normal font-sans text-xl font-bold leading-relaxed text-purple-600 mb-1 text-left">COMIDA 🥗🍖</h6>
                               <p className="antialiased font-sans text-sm leading-normal flex items-center gap-1 font-normal text-blue-gray-600">
                                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="3" stroke="currentColor" aria-hidden="true" className="h-4 w-4 text-blue-500">
                                     <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5"></path>
                                  </svg>
-                                 <strong>{stadisticData?.foodRestrictions} restricciones</strong> en total
+                                 <strong>{stadisticData?.foodRestrictions} restricciones</strong> en total.
                               </p>
                            </div>
                            <button aria-expanded="false" aria-haspopup="menu" id=":r5:" className="relative middle none font-sans font-medium text-center uppercase transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none w-8 max-w-[32px] h-8 max-h-[32px] rounded-lg text-xs text-blue-gray-500 hover:bg-blue-500/10 active:bg-blue-500/30" type="button">
@@ -543,12 +543,12 @@ const Layout = () => {
                      <div className="relative flex flex-col bg-clip-border rounded-xl bg-slate-100 text-gray-700 shadow-md overflow-hidden xl:col-span-2">
                         <div className="relative bg-clip-border rounded-xl overflow-hidden bg-transparent text-gray-700 shadow-none m-0 flex items-center justify-between p-6">
                            <div>
-                              <h6 className="block antialiased tracking-normal font-sans text-xl font-bold leading-relaxed text-purple-900 mb-1 text-left">NIÑOS 👩‍👩‍👧‍👦</h6>
+                              <h6 className="block antialiased tracking-normal font-sans text-xl font-bold leading-relaxed text-purple-600 mb-1 text-left">NIÑOS 👩‍👩‍👧‍👦</h6>
                               <p className="antialiased font-sans text-sm leading-normal flex items-center gap-1 font-normal text-blue-gray-600">
                                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="3" stroke="currentColor" aria-hidden="true" className="h-4 w-4 text-blue-500">
                                     <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5"></path>
                                  </svg>
-                                 <strong>{stadisticData?.totalChildrens} niños</strong> en total
+                                 <strong>{stadisticData?.totalChildrens} niños</strong> en total.
                               </p>
                            </div>
                            <button aria-expanded="false" aria-haspopup="menu" id=":r5:" className="relative middle none font-sans font-medium text-center uppercase transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none w-8 max-w-[32px] h-8 max-h-[32px] rounded-lg text-xs text-blue-gray-500 hover:bg-blue-500/10 active:bg-blue-500/30" type="button">
@@ -602,12 +602,12 @@ const Layout = () => {
                      <div className="relative flex flex-col bg-clip-border rounded-xl bg-white text-gray-700 shadow-md overflow-hidden xl:col-span-2">
                         <div className="relative bg-clip-border rounded-xl overflow-hidden bg-transparent text-gray-700 shadow-none m-0 flex items-center justify-between p-6">
                            <div>
-                              <h6 className="block antialiased tracking-normal font-sans text-xl font-bold leading-relaxed text-purple-900 mb-1 text-left">IGLESIA 💒</h6>
+                              <h6 className="block antialiased tracking-normal font-sans text-xl font-bold leading-relaxed text-purple-600 mb-1 text-left">IGLESIA 💒</h6>
                               <p className="antialiased font-sans text-sm leading-normal flex items-center gap-1 font-normal text-blue-gray-600">
                                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="3" stroke="currentColor" aria-hidden="true" className="h-4 w-4 text-blue-500">
                                     <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5"></path>
                                  </svg>
-                                 <strong>{ stadisticData?.assistToChucrh } invitados asistirán </strong> a la iglesia.
+                                 <strong>{ stadisticData?.assistToChucrh } invitados </strong> asistirán a la iglesia.
                               </p>
                            </div>
                            <button aria-expanded="false" aria-haspopup="menu" id=":r5:" className="relative middle none font-sans font-medium text-center uppercase transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none w-8 max-w-[32px] h-8 max-h-[32px] rounded-lg text-xs text-blue-gray-500 hover:bg-blue-500/10 active:bg-blue-500/30" type="button">
@@ -669,12 +669,12 @@ const Layout = () => {
                      <div className="relative flex flex-col bg-clip-border rounded-xl bg-slate-100 text-gray-700 shadow-md overflow-hidden xl:col-span-2">
                         <div className="relative bg-clip-border rounded-xl overflow-hidden bg-transparent text-gray-700 shadow-none m-0 flex items-center justify-between p-6">
                            <div>
-                              <h6 className="block antialiased tracking-normal font-sans text-xl font-bold leading-relaxed text-purple-900 mb-1 text-left">SIN ACOMPAÑANTSES 🙍🏻‍♀️</h6>
+                              <h6 className="block antialiased tracking-normal font-sans text-xl font-bold leading-relaxed text-purple-600 mb-1 text-left">SIN ACOMPAÑANTSES 🙍🏻‍♀️</h6>
                               <p className="antialiased font-sans text-sm leading-normal flex items-center gap-1 font-normal text-blue-gray-600">
                                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="3" stroke="currentColor" aria-hidden="true" className="h-4 w-4 text-blue-500">
                                     <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5"></path>
                                  </svg>
-                                 <strong>{(fullData?.filter( guest => !guest.partner).length)} invitados solos</strong> en total
+                                 <strong>{(fullData?.filter( guest => !guest.partner).length)} invitados</strong> sin acompañantes.
                               </p>
                            </div>
                            <button aria-expanded="false" aria-haspopup="menu" id=":r5:" className="relative middle none font-sans font-medium text-center uppercase transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none w-8 max-w-[32px] h-8 max-h-[32px] rounded-lg text-xs text-blue-gray-500 hover:bg-blue-500/10 active:bg-blue-500/30" type="button">
