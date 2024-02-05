@@ -742,7 +742,7 @@ const Layout = () => {
                      <div className="relative flex flex-col bg-clip-border rounded-xl bg-slate-100 text-gray-700 shadow-md overflow-hidden xl:col-span-2">
                         <div className="relative bg-clip-border rounded-xl overflow-hidden bg-transparent text-gray-700 shadow-none m-0 flex items-center justify-between p-6">
                            <div>
-                              <h6 className="block antialiased tracking-normal font-sans text-xl font-bold leading-relaxed text-purple-600 mb-1 text-left">SIN ACOMPAÑANTSE 🙍🏻‍♀️</h6>
+                              <h6 className="block antialiased tracking-normal font-sans text-xl font-bold leading-relaxed text-purple-600 mb-1 text-left">SIN ACOMPAÑANTES 🙍🏻‍♀️</h6>
                               <p className="antialiased font-sans text-sm leading-normal flex items-center gap-1 font-normal text-blue-gray-600">
                                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="3" stroke="currentColor" aria-hidden="true" className="h-4 w-4 text-blue-500">
                                     <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5"></path>
