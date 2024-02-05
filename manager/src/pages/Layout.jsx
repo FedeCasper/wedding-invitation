@@ -73,11 +73,14 @@ const Layout = () => {
                setStadisticData(prev => ({ ...prev, totalAssists: prev.totalAssists + 1 + guest.childrensQuantity + ( (guest.partnersName).length ) }));
             } else if(guest.assist && guest.partner){
                setStadisticData(prev => ({ ...prev, totalAssists: prev.totalAssists + 1 + (guest.partnersName).length  }));
-            } else if(guest.assist){
-               setStadisticData(prev => ({ ...prev, totalAssists: prev.totalAssists + 1 }));
             } else if(guest.assist && guest.childrens){
                setStadisticData(prev => ({ ...prev, totalAssists: prev.totalAssists + 1 + guest.childrensQuantity }));
-            }
+            } else if(guest.assist){
+               setStadisticData(prev => ({ ...prev, totalAssists: prev.totalAssists + 1 }));
+            } 
+            
+            
+
 
             if(guest.assistChurch && guest.partner && guest.childrens){
                setStadisticData(prev => ({ ...prev, assistToChucrh: prev.assistToChucrh + guest.childrensQuantity + 2 }));
