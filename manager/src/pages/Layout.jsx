@@ -23,6 +23,13 @@ const Layout = () => {
       totalChildrens: 0,
    });
 
+   const [visibleItems, setVisibleItems] = useState(10);
+   const itemsPerPage = 10;
+
+   const handleShowMore = () => {
+      setVisibleItems(prev => prev + itemsPerPage);
+   };
+
    console.log(executed);
 
    const handleData = () => {
@@ -294,7 +301,7 @@ const Layout = () => {
                         </div>
                         <div className="border-t border-blue-gray-50 p-4">
                            <p className="block antialiased font-sans text-base leading-relaxed font-normal text-blue-gray-600">
-                              <strong className="text-fuchsia-500">{Math.round((stadisticData?.assistToChucrh * 100) / 150)}%</strong>&nbsp;de los invitados asistirá
+                              <strong className="text-fuchsia-500">{Math.round((stadisticData?.assistToChucrh * 100) / 175)}%</strong>&nbsp;de los invitados asistirá
                            </p>
                         </div>
                      </div>
@@ -305,12 +312,12 @@ const Layout = () => {
                            <CheckIcon />
                         </div>
                         <div className="p-4 text-right">
-                           <p className="block antialiased font-sans text-sm leading-normal font-normal text-blue-gray-600">Invitaciones confirmadas</p>
-                           <h4 className="block antialiased tracking-normal font-sans text-2xl font-semibold leading-snug text-blue-gray-900"> {stadisticData.assistsToWedding} </h4>
+                           <p className="block antialiased font-sans text-sm leading-normal font-normal text-blue-gray-600">Personas invitadas</p>
+                           <h4 className="block antialiased tracking-normal font-sans text-2xl font-semibold leading-snug text-blue-gray-900"> 175 </h4>
                         </div>
                         <div className="border-t border-blue-gray-50 p-4">
                            <p className="block antialiased font-sans text-base leading-relaxed font-normal text-blue-gray-600">
-                              <strong className="text-fuchsia-500">{Math.round((stadisticData?.assistsToWedding * 100) / 150)}%</strong>&nbsp;asistirán a la boda
+                              <strong className="text-fuchsia-500">{Math.round((stadisticData?.totalAssists * 100) / 175)}%</strong>&nbsp;asistirán a la boda
                            </p>
                         </div>
                      </div>
@@ -340,7 +347,7 @@ const Layout = () => {
                      <div className="relative flex flex-col bg-clip-border rounded-xl bg-white text-gray-700 shadow-md overflow-hidden xl:col-span-2">
                         <div className="relative bg-clip-border rounded-xl overflow-hidden bg-transparent text-gray-700 shadow-none m-0 flex items-center justify-between p-6">
                            <div>
-                              <h6 className="block antialiased tracking-normal font-sans text-base font-semibold leading-relaxed text-purple-900 mb-1">MENSAJES ❤</h6>
+                              <h6 className="block antialiased tracking-normal font-sans text-xl font-bold leading-relaxed text-purple-900 mb-1 text-left">MENSAJES ❤</h6>
                               <p className="antialiased font-sans text-sm leading-normal flex items-center gap-1 font-normal text-blue-gray-600">
                                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="3" stroke="currentColor" aria-hidden="true" className="h-4 w-4 text-blue-500">
                                     <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5"></path>
@@ -371,11 +378,16 @@ const Layout = () => {
                               <tbody>
 
                                  {
-                                    fullData?.filter( guest => guest.message ).map( guest => (
+
+                                    fullData?.filter(guest => guest.message).slice(0, visibleItems).map(guest => (
+                                       // <tr key={guest?._id}>
+                                       //    {/* Renderizar datos de cada invitado */}
+                                       // </tr>
+                                    // fullData?.filter( guest => guest.message ).map( guest => (
 
                                        <tr key={guest?._id}>
                                           <td className="py-3 px-5 border-b border-blue-gray-50">
-                                             <div className="flex items-center gap-4">
+                                             <div className="flex items-start gap-4 w-48">
                                                 <p className="block antialiased font-sans text-sm leading-normal text-blue-gray-900 font-bold"> {guest?.fullName} </p>
                                              </div>
                                           </td>
@@ -387,9 +399,15 @@ const Layout = () => {
 
                                     ))
                                  }
-
                               </tbody>
                            </table>
+                           {
+                              fullData?.filter(guest => guest.message).length > visibleItems && (    
+                                 <button onClick={handleShowMore} className="bg-violet-600 hover:bg-violet-600 text-white font-bold py-2 px-4 rounded mt-4 mb-2">
+                                    Mostrar más
+                                 </button>
+                              )
+                           }
                         </div>
                      </div>
                   </div>
@@ -399,7 +417,7 @@ const Layout = () => {
                      <div className="relative flex flex-col bg-clip-border rounded-xl bg-slate-100 text-gray-700 shadow-md overflow-hidden xl:col-span-2">
                         <div className="relative bg-clip-border rounded-xl overflow-hidden bg-transparent text-gray-700 shadow-none m-0 flex items-center justify-between p-6">
                            <div>
-                              <h6 className="block antialiased tracking-normal font-sans text-base font-semibold leading-relaxed text-purple-900 mb-1">ACOMPAÑANTES 👫</h6>
+                              <h6 className="block antialiased tracking-normal font-sans text-xl font-bold leading-relaxed text-purple-900 mb-1 text-left">ACOMPAÑANTES 👫</h6>
                               <p className="antialiased font-sans text-sm leading-normal flex items-center gap-1 font-normal text-blue-gray-600">
                                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="3" stroke="currentColor" aria-hidden="true" className="h-4 w-4 text-blue-500">
                                     <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5"></path>
@@ -430,11 +448,12 @@ const Layout = () => {
                               <tbody>
 
                                  {
-                                    stadisticData?.partner?.map( guest => (
+                                    fullData?.filter(guest => guest.message).slice(0, visibleItems).map(guest => (
+                                    // stadisticData?.partner?.map( guest => (
 
                                        <tr key={guest?.partnerId}>
                                           <td className="py-3 px-5 border-b border-blue-gray-50">
-                                             <div className="flex items-center gap-4">
+                                             <div className="flex items-start gap-4 w-48">
                                                 <p className="block antialiased font-sans text-sm leading-normal text-blue-gray-900 font-bold"> {guest?.fullName} </p>
                                              </div>
                                           </td>
@@ -449,6 +468,13 @@ const Layout = () => {
 
                               </tbody>
                            </table>
+                           {
+                              fullData?.filter(guest => guest.message).length > visibleItems && (    
+                                 <button onClick={handleShowMore} className="bg-violet-600 hover:bg-violet-600 text-white font-bold py-2 px-4 rounded mt-4 mb-2">
+                                    Mostrar más
+                                 </button>
+                              )
+                           }
                         </div>
                      </div>
                   </div>
@@ -458,7 +484,7 @@ const Layout = () => {
                      <div className="relative flex flex-col bg-clip-border rounded-xl bg-white text-gray-700 shadow-md overflow-hidden xl:col-span-2">
                         <div className="relative bg-clip-border rounded-xl overflow-hidden bg-transparent text-gray-700 shadow-none m-0 flex items-center justify-between p-6">
                            <div>
-                              <h6 className="block antialiased tracking-normal font-sans text-base font-semibold leading-relaxed text-purple-900 mb-1">COMIDA 🥗🍖</h6>
+                              <h6 className="block antialiased tracking-normal font-sans text-xl font-bold leading-relaxed text-purple-900 mb-1 text-left">COMIDA 🥗🍖</h6>
                               <p className="antialiased font-sans text-sm leading-normal flex items-center gap-1 font-normal text-blue-gray-600">
                                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="3" stroke="currentColor" aria-hidden="true" className="h-4 w-4 text-blue-500">
                                     <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5"></path>
@@ -493,7 +519,7 @@ const Layout = () => {
 
                                           <tr key={guest?._id}>
                                              <td className="py-3 px-5 border-b border-blue-gray-50">
-                                                <div className="flex items-center gap-4">
+                                                <div className="flex items-start gap-4 w-48">
                                                    <p className="block antialiased font-sans text-sm leading-normal text-blue-gray-900 font-bold"> {guest?.fullName} </p>
                                                 </div>
                                              </td>
@@ -517,7 +543,7 @@ const Layout = () => {
                      <div className="relative flex flex-col bg-clip-border rounded-xl bg-slate-100 text-gray-700 shadow-md overflow-hidden xl:col-span-2">
                         <div className="relative bg-clip-border rounded-xl overflow-hidden bg-transparent text-gray-700 shadow-none m-0 flex items-center justify-between p-6">
                            <div>
-                              <h6 className="block antialiased tracking-normal font-sans text-base font-semibold leading-relaxed text-purple-900 mb-1">NIÑOS 👩‍👩‍👧‍👦</h6>
+                              <h6 className="block antialiased tracking-normal font-sans text-xl font-bold leading-relaxed text-purple-900 mb-1 text-left">NIÑOS 👩‍👩‍👧‍👦</h6>
                               <p className="antialiased font-sans text-sm leading-normal flex items-center gap-1 font-normal text-blue-gray-600">
                                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="3" stroke="currentColor" aria-hidden="true" className="h-4 w-4 text-blue-500">
                                     <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5"></path>
@@ -552,7 +578,7 @@ const Layout = () => {
 
                                           <tr key={guest?._id}>
                                              <td className="py-3 px-5 border-b border-blue-gray-50">
-                                                <div className="flex items-center gap-4">
+                                                <div className="flex items-start gap-4 w-48">
                                                    <p className="block antialiased font-sans text-sm leading-normal text-blue-gray-900 font-bold"> {guest?.fullName} </p>
                                                 </div>
                                              </td>
@@ -576,7 +602,7 @@ const Layout = () => {
                      <div className="relative flex flex-col bg-clip-border rounded-xl bg-white text-gray-700 shadow-md overflow-hidden xl:col-span-2">
                         <div className="relative bg-clip-border rounded-xl overflow-hidden bg-transparent text-gray-700 shadow-none m-0 flex items-center justify-between p-6">
                            <div>
-                              <h6 className="block antialiased tracking-normal font-sans text-base font-semibold leading-relaxed text-purple-900 mb-1">IGLESIA 💒</h6>
+                              <h6 className="block antialiased tracking-normal font-sans text-xl font-bold leading-relaxed text-purple-900 mb-1 text-left">IGLESIA 💒</h6>
                               <p className="antialiased font-sans text-sm leading-normal flex items-center gap-1 font-normal text-blue-gray-600">
                                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="3" stroke="currentColor" aria-hidden="true" className="h-4 w-4 text-blue-500">
                                     <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5"></path>
@@ -607,11 +633,12 @@ const Layout = () => {
                               <tbody>
 
                                  {
-                                       fullData?.filter( guest => guest.assistChurch ).map( guest => (
+                                       fullData?.filter(guest => guest.message).slice(0, visibleItems).map(guest => (
+                                       // fullData?.filter( guest => guest.assistChurch ).map( guest => (
 
                                           <tr key={guest?._id}>
                                              <td className="py-3 px-5 border-b border-blue-gray-50">
-                                                <div className="flex items-center gap-4">
+                                                <div className="flex items-start gap-4 w-48">
                                                    <p className="block antialiased font-sans text-sm leading-normal text-blue-gray-900 font-bold"> {guest?.fullName} </p>
                                                 </div>
                                              </td>
@@ -626,6 +653,13 @@ const Layout = () => {
 
                               </tbody>
                            </table>
+                           {
+                              fullData?.filter(guest => guest.message).length > visibleItems && (    
+                                 <button onClick={handleShowMore} className="bg-violet-600 hover:bg-violet-600 text-white font-bold py-2 px-4 rounded mt-4 mb-2">
+                                    Mostrar más
+                                 </button>
+                              )
+                           }
                         </div>
                      </div>
                   </div>
@@ -635,7 +669,7 @@ const Layout = () => {
                      <div className="relative flex flex-col bg-clip-border rounded-xl bg-slate-100 text-gray-700 shadow-md overflow-hidden xl:col-span-2">
                         <div className="relative bg-clip-border rounded-xl overflow-hidden bg-transparent text-gray-700 shadow-none m-0 flex items-center justify-between p-6">
                            <div>
-                              <h6 className="block antialiased tracking-normal font-sans text-base font-semibold leading-relaxed text-purple-900 mb-1">Invitados sin acompañantes 🙍🏻‍♀️</h6>
+                              <h6 className="block antialiased tracking-normal font-sans text-xl font-bold leading-relaxed text-purple-900 mb-1 text-left">SIN ACOMPAÑANTSES 🙍🏻‍♀️</h6>
                               <p className="antialiased font-sans text-sm leading-normal flex items-center gap-1 font-normal text-blue-gray-600">
                                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="3" stroke="currentColor" aria-hidden="true" className="h-4 w-4 text-blue-500">
                                     <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5"></path>
@@ -670,7 +704,7 @@ const Layout = () => {
 
                                        <tr key={guest?._id}>
                                           <td className="py-3 px-5 border-b border-blue-gray-50">
-                                             <div className="flex items-center gap-4">
+                                             <div className="flex items-start gap-4 w-48">
                                                 <p className="block antialiased font-sans text-sm leading-normal text-blue-gray-900 font-bold"> {guest?.fullName} </p>
                                              </div>
                                           </td>
