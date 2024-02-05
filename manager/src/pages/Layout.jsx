@@ -15,6 +15,10 @@ const Layout = () => {
       notAssistsToWedding: 0,
       partner: [],
       totalAssists: 0,
+      totalNoAssists: 0,
+      totalNoPartners: 0,
+      totalAssistSingleNumber: 0,
+      totalPartnersNumber: 0,
       foodRestrictions: 0,
       totalChildrens: 0,
    });
@@ -65,13 +69,19 @@ const Layout = () => {
                setStadisticData(prev => ({ ...prev, foodRestrictions: prev.foodRestrictions + 1 }));
             }
 
-            if(guest.assist && guest.partner && guest.childrens){
-               setStadisticData(prev => ({ ...prev, totalAssists: prev.totalAssists + 1 + guest.childrensQuantity + ( guest.partner? ((guest.partnersName).length ) : 0) }));
-            } else if(guest.assist && guest.partner){
-               setStadisticData(prev => ({ ...prev, totalAssists: prev.totalAssists + 1 + (guest.partnersName).length  }));
-            } else if(guest.assist){
-               setStadisticData(prev => ({ ...prev, totalAssists: prev.totalAssists + 1 }));
-            }
+            // if(guest.assist && guest.partner && guest.childrens){
+            //    setStadisticData(prev => ({ ...prev, totalAssists: prev.totalAssists + 1 + guest.childrensQuantity + ( (guest.partnersName).length ) }));
+            //    console.log(guest.fullName);
+            //    console.log("Numero", 1 + guest.childrensQuantity + ( (guest.partnersName).length ));
+            // } else if(guest.assist && guest.partner){
+            //    setStadisticData(prev => ({ ...prev, totalAssists: prev.totalAssists + 1 + (guest.partnersName).length  }));
+            //    console.log(guest.fullName);
+            //    console.log("Numero", 1 + guest.childrensQuantity + ( (guest.partnersName).length ));
+            // } else if(guest.assist){
+            //    setStadisticData(prev => ({ ...prev, totalAssists: prev.totalAssists + 1 }));
+            //    console.log(guest.fullName);
+            //    console.log("Numero", 1 + guest.childrensQuantity + ( (guest.partnersName).length ));
+            // }
 
             if(guest.assistChurch && guest.partner && guest.childrens){
                setStadisticData(prev => ({ ...prev, assistToChucrh: prev.assistToChucrh + guest.childrensQuantity + 2 }));
@@ -81,11 +91,29 @@ const Layout = () => {
                setStadisticData(prev => ({ ...prev, assistToChucrh: prev.assistToChucrh + 1 }));
             }
 
+            if(!guest.assist){
+               setStadisticData(prev => ({ ...prev, totalNoAssists: prev.totalNoAssists + 1 }));
+            }
+
+            if(!guest.partner){
+               setStadisticData(prev => ({ ...prev, totalNoPartners: prev.totalNoPartners + 1 }));
+            }
+
+            if(guest.assist){
+               setStadisticData(prev => ({ ...prev, totalAssistSingleNumber: prev.totalAssistSingleNumber + 1 }));
+            }
+
+            if(guest.partner){
+               setStadisticData(prev => ({ ...prev, totalPartnersNumber: prev.totalPartnersNumber + guest.partnersName.length }));
+            }
+
             setExecuted(true);
          })
+
+         
          
       }
-
+      
    }
 
    console.log(stadisticData);
