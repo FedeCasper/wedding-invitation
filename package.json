@@ -1,5 +1,5 @@
 {
   "dependencies": {
-    "sweetalert2": "^11.10.5"
+    "reactjs-popup": "^2.0.6"
   }
 }

@@ -4,7 +4,6 @@ import ChurchIcon from '@mui/icons-material/Church';
 import CheckIcon from '@mui/icons-material/Check';
 import RemoveCircleIcon from '@mui/icons-material/RemoveCircle';
 import AddCircleIcon from '@mui/icons-material/AddCircle';
-import Swal from 'sweetalert2'
 
 
 const Layout = () => {
@@ -139,51 +138,6 @@ const Layout = () => {
       handleStadistic();
    }, [fullData])
 
-   useEffect(() => {
-      console.log(foundGuests);
-      if(Object.keys(foundGuests).length !== 0){
-         Swal.fire({
-            title: foundGuests?.fullName,
-            html: `<table class="w-fit flex mx-auto">
-               <tbody>
-                  <tr class="flex justify-between px-3 gap-3 border border-violet-300">
-                     <td class="font-bold">Contacto:</td>
-                     <td>${foundGuests?.phone}</td>
-                  </tr>
-                  <tr class="flex justify-between px-3 gap-3 border border-violet-300">
-                     <td class="font-bold">Asiste:</td>
-                     <td>${foundGuests?.assist ? "Si " : "No " }${foundGuests?.assistChurch ? "(iglesia)" : "(salón)" }</td>
-                  </tr>
-                  <tr class="flex justify-between px-3 gap-3 border border-violet-300">
-                     <td class="font-bold">Acompañantes:</td>
-                     <td>${(foundGuests?.partnersName).length}</td>
-                  </tr>
-                  ${ (foundGuests?.partnersName).map( guest => {
-                     return `<tr class="flex justify-between px-3 gap-3 border border-violet-300">
-                        <td class="font-bold">Acompañante:</td>
-                        <td>${guest}</td>
-                     </tr>`
-                  })}
-                  <tr class="flex justify-between px-3 gap-3 border border-violet-300">
-                     <td class="font-bold">Hijos:</td>
-                     <td>${foundGuests?.childrensQuantity}</td>
-                  </tr>
-                  <tr class="flex justify-between px-3 gap-3 border border-violet-300">
-                  <td class="font-bold">Resticciones:</td>
-                  <td>${foundGuests?.dietaryRestrictions ? "Si" : "No" }</td>
-                  ${
-                     foundGuests?.dietaryRestrictions ? `<tr class="border border-violet-300">
-                     <td class="px-3">${foundGuests?.dietaryRestrictionsIndications}</td>
-                     </tr>` : ""
-                  }
-               </tr>
-               </tbody>
-            </table>`,
-            icon: "info"
-         });
-      }
-
-   }, [foundGuests])
 
    return (
       <>
