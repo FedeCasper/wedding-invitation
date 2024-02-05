@@ -66,7 +66,7 @@ const Layout = () => {
             }
 
             if(guest.assist && guest.partner && guest.childrens){
-               setStadisticData(prev => ({ ...prev, totalAssists: prev.totalAssists + guest.childrensQuantity + 2 }));
+               setStadisticData(prev => ({ ...prev, totalAssists: prev.totalAssists + guest.childrensQuantity + (guest.partner).length }));
             } else if(guest.assist && guest.partner){
                setStadisticData(prev => ({ ...prev, totalAssists: prev.totalAssists + 2 }));
             } else if(guest.assist){

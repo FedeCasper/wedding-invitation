@@ -49,7 +49,7 @@ const ModalAccounts = () => {
             lg:w-[450px]">
                <section className="flex items-center gap-2">
                   <img src="./assets/images/green-arrows-icon.png" alt="" className='h-6'/>
-                  <h2 className='font-semibold text-base'>BANCO PATAGONIA</h2>
+                  <h2 className='font-semibold text-base'>BANCO BBVA</h2>
                </section>
                <div className="flex flex-col gap-1.5">
                   <div className='flex-wrap'>
