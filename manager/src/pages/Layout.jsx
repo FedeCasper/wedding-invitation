@@ -459,7 +459,7 @@ const Layout = () => {
                                           </td>
 
                                           <td className="py-3 px-5 border-b border-blue-gray-50">
-                                             <p className="block antialiased font-sans text-xs font-medium text-blue-gray-600"> {guest?.partnersName !== "" ? guest?.partnersName : "Sin pareja"}</p>
+                                             <p className="block antialiased font-sans text-xs font-medium text-blue-gray-600"> {(guest?.partnersName).length == 1 ? guest?.partnersName : <span className="text-red-500 italic">Sin pareja</span>}</p>
                                           </td>
                                        </tr>
 
