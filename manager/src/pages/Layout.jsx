@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import ChurchIcon from '@mui/icons-material/Church';
 import CheckIcon from '@mui/icons-material/Check';
 import RemoveCircleIcon from '@mui/icons-material/RemoveCircle';
+import AddCircleIcon from '@mui/icons-material/AddCircle';
 
 
 const Layout = () => {
@@ -406,20 +407,21 @@ const Layout = () => {
                                  }
                               </tbody>
                            </table>
-                           {
-                              fullData?.filter(guest => guest.message).length > visibleItems && (    
-                                 <button onClick={handleShowMore} className="bg-violet-600 hover:bg-violet-600 text-white font-bold py-2 px-4 rounded mt-4 mb-2">
-                                    Mostrar más
-                                 </button>
-                              )
-                           }
-                           {
-                              fullData?.filter(guest => guest.message).length > visibleItems && (    
-                                 <button onClick={handleShowLess} className="bg-violet-600 hover:bg-violet-600 text-white font-bold py-2 px-4 rounded mt-4 mb-2">
-                                    <RemoveCircleIcon />
-                                 </button>
-                              )
-                           }
+
+                                 <div className="w-full flex justify-center items-center gap-4 pt-4 pb-3">
+                                    {
+                                       fullData?.filter(guest => guest.message).length > visibleItems && (    
+                                          <AddCircleIcon fontSize='large' className='cursor-pointer' onClick={handleShowMore} sx={{ color: 'blueviolet' }}/>
+                                       )
+                                    }
+                                    {
+                                       fullData?.filter(guest => guest.message).length > visibleItems && (    
+                                          <RemoveCircleIcon fontSize='large' onClick={handleShowLess} className='cursor-pointer' sx={{ color: 'lightgray' }} />
+                                       )
+                                    }
+                                 </div>
+
+
                         </div>
                      </div>
                   </div>
@@ -480,13 +482,18 @@ const Layout = () => {
 
                               </tbody>
                            </table>
-                           {
-                              fullData?.filter(guest => guest.message).length > visibleItems && (    
-                                 <button onClick={handleShowMore} className="bg-violet-600 hover:bg-violet-600 text-white font-bold py-2 px-4 rounded mt-4 mb-2">
-                                    Mostrar más
-                                 </button>
-                              )
-                           }
+                           <div className="w-full flex justify-center items-center gap-4 pt-4 pb-3">
+                                    {
+                                       fullData?.filter(guest => guest.message).length > visibleItems && (    
+                                          <AddCircleIcon fontSize='large' className='cursor-pointer' onClick={handleShowMore} sx={{ color: 'blueviolet' }}/>
+                                       )
+                                    }
+                                    {
+                                       fullData?.filter(guest => guest.message).length > visibleItems && (    
+                                          <RemoveCircleIcon fontSize='large' onClick={handleShowLess} className='cursor-pointer' sx={{ color: 'lightgray' }} />
+                                       )
+                                    }
+                                 </div>
                         </div>
                      </div>
                   </div>
@@ -665,13 +672,18 @@ const Layout = () => {
 
                               </tbody>
                            </table>
-                           {
-                              fullData?.filter(guest => guest.message).length > visibleItems && (    
-                                 <button onClick={handleShowMore} className="bg-violet-600 hover:bg-violet-600 text-white font-bold py-2 px-4 rounded mt-4 mb-2">
-                                    Mostrar más
-                                 </button>
-                              )
-                           }
+                           <div className="w-full flex justify-center items-center gap-4 pt-4 pb-3">
+                                    {
+                                       fullData?.filter(guest => guest.message).length > visibleItems && (    
+                                          <AddCircleIcon fontSize='large' className='cursor-pointer' onClick={handleShowMore} sx={{ color: 'blueviolet' }}/>
+                                       )
+                                    }
+                                    {
+                                       fullData?.filter(guest => guest.message).length > visibleItems && (    
+                                          <RemoveCircleIcon fontSize='large' onClick={handleShowLess} className='cursor-pointer' sx={{ color: 'lightgray' }} />
+                                       )
+                                    }
+                                 </div>
                         </div>
                      </div>
                   </div>
