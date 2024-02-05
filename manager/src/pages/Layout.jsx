@@ -603,9 +603,9 @@ const Layout = () => {
                      </div>
                   </div>
 
-                  {/*  ----- PARTNERS TABLE DATA ----- */}
+                  {/*  ----- SINGLES TABLE DATA ----- */}
                   <div className="mb-4 grid grid-cols-1 gap-6 xl:grid-cols-3">
-                     <div className="relative flex flex-col bg-clip-border rounded-xl bg-white text-gray-700 shadow-md overflow-hidden xl:col-span-2">
+                     <div className="relative flex flex-col bg-clip-border rounded-xl bg-violet-200 text-gray-700 shadow-md overflow-hidden xl:col-span-2">
                         <div className="relative bg-clip-border rounded-xl overflow-hidden bg-transparent text-gray-700 shadow-none m-0 flex items-center justify-between p-6">
                            <div>
                               <h6 className="block antialiased tracking-normal font-sans text-base font-semibold leading-relaxed text-purple-900 mb-1">Invitados sin acompañantes 🙍🏻‍♀️</h6>
@@ -629,10 +629,10 @@ const Layout = () => {
                               <thead>
                                  <tr>
                                     <th className="border-b border-gray-50 py-3 px-6 text-left">
-                                       <p className="block antialiased font-sans text-[11px] font-medium uppercase text-gray-400">Invitado</p>
+                                       <p className="block antialiased font-sans text-[11px] font-medium uppercase text-violet-600">Invitado</p>
                                     </th>
                                     <th className="border-b border-gray-50 py-3 px-6 text-left">
-                                       <p className="block antialiased font-sans text-[11px] text-center font-medium uppercase text-gray-400">Pareja</p>
+                                       <p className="block antialiased font-sans text-[11px] text-center font-medium uppercase text-violet-600">Pareja</p>
                                     </th>
                                  </tr>
                               </thead>
@@ -641,7 +641,7 @@ const Layout = () => {
                                  {
                                     fullData?.filter( guest => !guest.partner).map( guest => (
 
-                                       <tr key={guest?.partnerId}>
+                                       <tr key={guest?._id}>
                                           <td className="py-3 px-5 border-b border-blue-gray-50">
                                              <div className="flex items-center gap-4">
                                                 <p className="block antialiased font-sans text-sm leading-normal text-blue-gray-900 font-bold"> {guest?.fullName} </p>
