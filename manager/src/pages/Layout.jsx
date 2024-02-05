@@ -66,9 +66,9 @@ const Layout = () => {
             }
 
             if(guest.assist && guest.partner && guest.childrens){
-               setStadisticData(prev => ({ ...prev, totalAssists: prev.totalAssists + guest.childrensQuantity + (guest.partner).length }));
+               setStadisticData(prev => ({ ...prev, totalAssists: prev.totalAssists + 1 + guest.childrensQuantity + ( guest.partner? ((guest.partnersName).length ) : 0) }));
             } else if(guest.assist && guest.partner){
-               setStadisticData(prev => ({ ...prev, totalAssists: prev.totalAssists + 2 }));
+               setStadisticData(prev => ({ ...prev, totalAssists: prev.totalAssists + 1 + (guest.partnersName).length  }));
             } else if(guest.assist){
                setStadisticData(prev => ({ ...prev, totalAssists: prev.totalAssists + 1 }));
             }
@@ -313,7 +313,7 @@ const Layout = () => {
                      <div className="relative flex flex-col bg-clip-border rounded-xl bg-white text-gray-700 shadow-md overflow-hidden xl:col-span-2">
                         <div className="relative bg-clip-border rounded-xl overflow-hidden bg-transparent text-gray-700 shadow-none m-0 flex items-center justify-between p-6">
                            <div>
-                              <h6 className="block antialiased tracking-normal font-sans text-base font-semibold leading-relaxed text-purple-900 mb-1">Mensajes de Amor ❤</h6>
+                              <h6 className="block antialiased tracking-normal font-sans text-base font-semibold leading-relaxed text-purple-900 mb-1">MENSAJES ❤</h6>
                               <p className="antialiased font-sans text-sm leading-normal flex items-center gap-1 font-normal text-blue-gray-600">
                                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="3" stroke="currentColor" aria-hidden="true" className="h-4 w-4 text-blue-500">
                                     <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5"></path>
@@ -369,10 +369,10 @@ const Layout = () => {
 
                   {/*  ----- PARTNERS TABLE DATA ----- */}
                   <div className="mb-4 grid grid-cols-1 gap-6 xl:grid-cols-3">
-                     <div className="relative flex flex-col bg-clip-border rounded-xl bg-white text-gray-700 shadow-md overflow-hidden xl:col-span-2">
+                     <div className="relative flex flex-col bg-clip-border rounded-xl bg-violet-200 text-gray-700 shadow-md overflow-hidden xl:col-span-2">
                         <div className="relative bg-clip-border rounded-xl overflow-hidden bg-transparent text-gray-700 shadow-none m-0 flex items-center justify-between p-6">
                            <div>
-                              <h6 className="block antialiased tracking-normal font-sans text-base font-semibold leading-relaxed text-purple-900 mb-1">Invitados con acompañantes 👫</h6>
+                              <h6 className="block antialiased tracking-normal font-sans text-base font-semibold leading-relaxed text-purple-900 mb-1">ACOMPAÑANTES 👫</h6>
                               <p className="antialiased font-sans text-sm leading-normal flex items-center gap-1 font-normal text-blue-gray-600">
                                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="3" stroke="currentColor" aria-hidden="true" className="h-4 w-4 text-blue-500">
                                     <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5"></path>
@@ -431,7 +431,7 @@ const Layout = () => {
                      <div className="relative flex flex-col bg-clip-border rounded-xl bg-white text-gray-700 shadow-md overflow-hidden xl:col-span-2">
                         <div className="relative bg-clip-border rounded-xl overflow-hidden bg-transparent text-gray-700 shadow-none m-0 flex items-center justify-between p-6">
                            <div>
-                              <h6 className="block antialiased tracking-normal font-sans text-base font-semibold leading-relaxed text-purple-900 mb-1">Comidas elegidas 🥗🍖</h6>
+                              <h6 className="block antialiased tracking-normal font-sans text-base font-semibold leading-relaxed text-purple-900 mb-1">COMIDA 🥗🍖</h6>
                               <p className="antialiased font-sans text-sm leading-normal flex items-center gap-1 font-normal text-blue-gray-600">
                                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="3" stroke="currentColor" aria-hidden="true" className="h-4 w-4 text-blue-500">
                                     <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5"></path>
@@ -487,10 +487,10 @@ const Layout = () => {
 
                   {/*  ----- CHILDRENS TABLE DATA ----- */}
                   <div className="mb-4 grid grid-cols-1 gap-6 xl:grid-cols-3">
-                     <div className="relative flex flex-col bg-clip-border rounded-xl bg-white text-gray-700 shadow-md overflow-hidden xl:col-span-2">
+                     <div className="relative flex flex-col bg-clip-border rounded-xl bg-violet-200 text-gray-700 shadow-md overflow-hidden xl:col-span-2">
                         <div className="relative bg-clip-border rounded-xl overflow-hidden bg-transparent text-gray-700 shadow-none m-0 flex items-center justify-between p-6">
                            <div>
-                              <h6 className="block antialiased tracking-normal font-sans text-base font-semibold leading-relaxed text-purple-900 mb-1">Invitados con niños 👩‍👩‍👧‍👦</h6>
+                              <h6 className="block antialiased tracking-normal font-sans text-base font-semibold leading-relaxed text-purple-900 mb-1">NIÑOS 👩‍👩‍👧‍👦</h6>
                               <p className="antialiased font-sans text-sm leading-normal flex items-center gap-1 font-normal text-blue-gray-600">
                                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="3" stroke="currentColor" aria-hidden="true" className="h-4 w-4 text-blue-500">
                                     <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5"></path>
@@ -549,7 +549,7 @@ const Layout = () => {
                      <div className="relative flex flex-col bg-clip-border rounded-xl bg-white text-gray-700 shadow-md overflow-hidden xl:col-span-2">
                         <div className="relative bg-clip-border rounded-xl overflow-hidden bg-transparent text-gray-700 shadow-none m-0 flex items-center justify-between p-6">
                            <div>
-                              <h6 className="block antialiased tracking-normal font-sans text-base font-semibold leading-relaxed text-purple-900 mb-1">Invitados que asisten a la iglesia 💒</h6>
+                              <h6 className="block antialiased tracking-normal font-sans text-base font-semibold leading-relaxed text-purple-900 mb-1">IGLESIA 💒</h6>
                               <p className="antialiased font-sans text-sm leading-normal flex items-center gap-1 font-normal text-blue-gray-600">
                                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="3" stroke="currentColor" aria-hidden="true" className="h-4 w-4 text-blue-500">
                                     <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5"></path>
@@ -573,7 +573,7 @@ const Layout = () => {
                                        <p className="block antialiased font-sans text-[11px] font-medium uppercase text-gray-400">Invitado</p>
                                     </th>
                                     <th className="border-b border-gray-50 py-3 px-6 text-left">
-                                       <p className="block antialiased font-sans text-[11px] text-center font-medium uppercase text-gray-400">Restricción</p>
+                                       <p className="block antialiased font-sans text-[11px] text-center font-medium uppercase text-gray-400">Cantidad</p>
                                     </th>
                                  </tr>
                               </thead>
@@ -590,7 +590,7 @@ const Layout = () => {
                                              </td>
 
                                              <td className="py-3 px-5 border-b border-blue-gray-50">
-                                                <p className="block antialiased font-sans text-xs font-medium text-blue-gray-600"> { 1 + (guest?.childrensQuantity) +(guest?.partner? 1 : 0) }</p>
+                                                <p className="block antialiased font-sans text-xs font-medium text-blue-gray-600"> { 1 + (guest?.childrensQuantity) +(guest?.partner? ( (guest.partnersName).length ) : 0 ) }</p>
                                              </td>
                                           </tr>
 
