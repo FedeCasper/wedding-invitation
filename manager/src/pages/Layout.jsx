@@ -395,7 +395,7 @@ const Layout = () => {
                                        <tr key={guest?._id}>
                                           <td className="py-3 px-5 border-b border-blue-gray-50">
                                              <div className="flex items-start gap-4 w-fit">
-                                                   <p on={() => guestIndividualData(guest?._id)} className="block antialiased font-sans text-sm leading-normal text-blue-gray-900 font-bold cursor-pointer"> {guest?.fullName} </p>
+                                                   <p className="block antialiased font-sans text-sm leading-normal text-blue-gray-900 font-bold cursor-pointer"> {guest?.fullName} </p>
                                              </div>
                                           </td>
 
@@ -469,9 +469,7 @@ const Layout = () => {
                                        <tr key={guest?._id}>
                                           <td className="py-3 px-5 border-b border-blue-gray-50">
                                              <div className="flex items-start gap-4 w-48">
-                                             <span onClick={() => guestIndividualData(guest?._id)} className="cursor-pointer">
                                                 <p className="block antialiased font-sans text-sm leading-normal text-blue-gray-900 font-bold"> {guest?.fullName} </p>
-                                                </span>
                                              </div>
                                           </td>
 
@@ -487,12 +485,12 @@ const Layout = () => {
                            </table>
                            <div className="w-full flex justify-center items-center gap-4 pt-4 pb-3">
                                     {
-                                       fullData?.filter(guest => guest.message).length > visibleItems && (    
+                                       fullData?.filter(guest => guest.partner).length > visibleItems && (    
                                           <AddCircleIcon fontSize='large' className='cursor-pointer' onClick={handleShowMore} sx={{ color: 'blueviolet' }}/>
                                        )
                                     }
                                     {
-                                       fullData?.filter(guest => guest.message).length > visibleItems && (    
+                                       fullData?.filter(guest => guest.partner).length > visibleItems && (    
                                           <RemoveCircleIcon fontSize='large' onClick={handleShowLess} className='cursor-pointer' sx={{ color: 'lightgray' }} />
                                        )
                                     }
@@ -542,7 +540,7 @@ const Layout = () => {
                                           <tr key={guest?._id}>
                                              <td className="py-3 px-5 border-b border-blue-gray-50">
                                                 <div className="flex items-start gap-4 w-48">
-                                                   <p on={() => guestIndividualData(guest?._id)} className="block antialiased font-sans text-sm leading-normal text-blue-gray-900 font-bold cursor-pointer"> {guest?.fullName} </p>
+                                                   <p className="block antialiased font-sans text-sm leading-normal text-blue-gray-900 font-bold cursor-pointer"> {guest?.fullName} </p>
                                                 </div>
                                              </td>
 
@@ -661,7 +659,7 @@ const Layout = () => {
                                           <tr key={guest?._id}>
                                              <td className="py-3 px-5 border-b border-blue-gray-50">
                                                 <div className="flex items-start gap-4 w-48">
-                                                   <p on={() => guestIndividualData(guest?._id)} className="block antialiased font-sans text-sm leading-normal text-blue-gray-900 font-bold cursor-pointer"> {guest?.fullName} </p>
+                                                   <p className="block antialiased font-sans text-sm leading-normal text-blue-gray-900 font-bold cursor-pointer"> {guest?.fullName} </p>
                                                 </div>
                                              </td>
 
@@ -677,12 +675,12 @@ const Layout = () => {
                            </table>
                            <div className="w-full flex justify-center items-center gap-4 pt-4 pb-3">
                                     {
-                                       fullData?.filter(guest => guest.message).length > visibleItems && (    
+                                       fullData?.filter(guest => guest.assistChurch).length > visibleItems && (    
                                           <AddCircleIcon fontSize='large' className='cursor-pointer' onClick={handleShowMore} sx={{ color: 'blueviolet' }}/>
                                        )
                                     }
                                     {
-                                       fullData?.filter(guest => guest.message).length > visibleItems && (    
+                                       fullData?.filter(guest => guest.assistChurch).length > visibleItems && (    
                                           <RemoveCircleIcon fontSize='large' onClick={handleShowLess} className='cursor-pointer' sx={{ color: 'lightgray' }} />
                                        )
                                     }
@@ -732,7 +730,7 @@ const Layout = () => {
                                        <tr key={guest?._id}>
                                           <td className="py-3 px-5 border-b border-blue-gray-50">
                                              <div className="flex items-start gap-4 w-48">
-                                                <p on={() => guestIndividualData(guest?._id)} className="block antialiased font-sans text-sm leading-normal text-blue-gray-900 font-bold cursor-pointer"> {guest?.fullName} </p>
+                                                <p className="block antialiased font-sans text-sm leading-normal text-blue-gray-900 font-bold cursor-pointer"> {guest?.fullName} </p>
                                              </div>
                                           </td>
 
